@@ -1,0 +1,13 @@
+raw/
+material/
+output/
+out_sample/
+fuentes/
+entregas/
+.env
+.claude/
+data/*
+!data/pseudonyms.json
+scripts/
+*.log
+.env.local

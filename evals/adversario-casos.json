@@ -1,0 +1,1470 @@
+[
+ {
+  "texto": "hola, soy juan perez y no puedo acceder a mi cuenta desde ayer. mi usuario es juan123. necesito ayuda para restablecer mi acceso.",
+  "debe_desaparecer": [
+   "juan perez",
+   "juan123"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres en minúsculas, MAYÚSCULAS sin tildes o con apodos"
+ },
+ {
+  "texto": "buenas tardes, soy laura gonzalez. intente realizar una transaccion de 300000 cop hacia davivienda pero no se completo. mi correo es laura_g@ejemplo.com.",
+  "debe_desaparecer": [
+   "laura gonzalez",
+   "laura_g@ejemplo.com"
+  ],
+  "debe_quedar": [
+   "davivienda",
+   "300000"
+  ],
+  "tema": "nombres en minúsculas, MAYÚSCULAS sin tildes o con apodos"
+ },
+ {
+  "texto": "hola, me llamo carlos m. y mi cedula es 1234567890. tengo problemas con la autenticacion de dos factores. ayudenme por favor.",
+  "debe_desaparecer": [
+   "carlos m.",
+   "1234567890"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres en minúsculas, MAYÚSCULAS sin tildes o con apodos"
+ },
+ {
+  "texto": "greetings, soy daniela lopez. no puedo recibir mi dinero del comercio 'supermercado el ahorrador'. mi celular es 3219876543.",
+  "debe_desaparecer": [
+   "daniela lopez",
+   "3219876543"
+  ],
+  "debe_quedar": [
+   "supermercado el ahorrador"
+  ],
+  "tema": "nombres en minúsculas, MAYÚSCULAS sin tildes o con apodos"
+ },
+ {
+  "texto": "buenas, soy diego rodriguez y tengo problemas con mi cuenta. el monto de mi saldo no es el correcto. mi usuario es diego_r.",
+  "debe_desaparecer": [
+   "diego rodriguez",
+   "diego_r"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres en minúsculas, MAYÚSCULAS sin tildes o con apodos"
+ },
+ {
+  "texto": "hola, soy carla sanchez. me aparece un error al intentar retirar 150000 de mi cuenta. necesito asistencia urgente. mi email es carla.s@ejemplo.com.",
+  "debe_desaparecer": [
+   "carla sanchez",
+   "carla.s@ejemplo.com"
+  ],
+  "debe_quedar": [
+   "150000"
+  ],
+  "tema": "nombres en minúsculas, MAYÚSCULAS sin tildes o con apodos"
+ },
+ {
+  "texto": "soy felipe h. y mi cedula es 9876543210. quiero saber sobre la transferencia de fondos a mi cuenta de bancolombia.",
+  "debe_desaparecer": [
+   "felipe h.",
+   "9876543210"
+  ],
+  "debe_quedar": [
+   "bancolombia"
+  ],
+  "tema": "nombres en minúsculas, MAYÚSCULAS sin tildes o con apodos"
+ },
+ {
+  "texto": "hola, soy andrea m. y tengo inconvenientes con una transaccion que hice el 15 de agosto. no llega a mi cuenta de movistar. mi correo es andrea@ejemplo.com.",
+  "debe_desaparecer": [
+   "andrea m.",
+   "andrea@ejemplo.com"
+  ],
+  "debe_quedar": [
+   "movistar"
+  ],
+  "tema": "nombres en minúsculas, MAYÚSCULAS sin tildes o con apodos"
+ },
+ {
+  "texto": "buen dia, soy sergio p. y mi cédula es 1231231234. tengo un problema con la verificacion de mi identidad para acceder a mis fondos.",
+  "debe_desaparecer": [
+   "sergio p.",
+   "1231231234"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres en minúsculas, MAYÚSCULAS sin tildes o con apodos"
+ },
+ {
+  "texto": "hola, soy laura torres y mi usuario es l.torres. no puedo confirmar una compra en el comercio 'electrodomesticos y mas'.",
+  "debe_desaparecer": [
+   "laura torres",
+   "l.torres"
+  ],
+  "debe_quedar": [
+   "electrodomesticos y mas"
+  ],
+  "tema": "nombres en minúsculas, MAYÚSCULAS sin tildes o con apodos"
+ },
+ {
+  "texto": "Hola, tengo un problema con mi correo elect rónico: juan.perez@ejemplo.com. No puedo acceder a mi cuenta en Kipu Pay y creo que mi cédula 12345678 está ligada a una dirección equivocada.",
+  "debe_desaparecer": [
+   "juan.perez@ejemplo.com",
+   "12345678"
+  ],
+  "debe_quedar": [],
+  "tema": "correos deletreados o con espacios raros"
+ },
+ {
+  "texto": "Buenos días, mi nombre es Laura Medina y necesito ayuda. Mi correo es lauramedina_1985@gmail.com, pero detecté un espacio en mi registro de usuario. Mi número de celular es 300-123-4567 y me gustaría corregirlo.",
+  "debe_desaparecer": [
+   "Laura Medina",
+   "lauramedina_1985@gmail.com",
+   "300-123-4567"
+  ],
+  "debe_quedar": [],
+  "tema": "correos deletreados o con espacios raros"
+ },
+ {
+  "texto": "Estimados, el correo de mi cuenta es carlos_gonzalez@hotmail.com. Últimamente he tenido problemas para recibir notificaciones y creo que mi cédula 98765432 está mal escrita. Agradezco su ayuda.",
+  "debe_desaparecer": [
+   "carlos_gonzalez@hotmail.com",
+   "98765432"
+  ],
+  "debe_quedar": [],
+  "tema": "correos deletreados o con espacios raros"
+ },
+ {
+  "texto": "¡Hola! Mi nombre es Andrés Torres. Mi cuenta está asociada al correo andres.torres2020@gmail.com, pero le faltan algunos caracteres. Además, mi número de celular es 3012345678. Necesito que lo revisen.",
+  "debe_desaparecer": [
+   "Andrés Torres",
+   "andres.torres2020@gmail.com",
+   "3012345678"
+  ],
+  "debe_quedar": [],
+  "tema": "correos deletreados o con espacios raros"
+ },
+ {
+  "texto": "Hola, soy Felipe Rojas y tengo un problema con mi dirección de correo: felipe.rojas@email.com. También noté que mi cédula 123456789 no está registrada correctamente. Gracias por su asistencia.",
+  "debe_desaparecer": [
+   "Felipe Rojas",
+   "felipe.rojas@email.com",
+   "123456789"
+  ],
+  "debe_quedar": [],
+  "tema": "correos deletreados o con espacios raros"
+ },
+ {
+  "texto": "Buenas tardes, tengo un inconveniente con mi cuenta de Kipu Pay. Mi correo es sofia_123@gmail.com, pero hay un espacio al final que no puedo quitar. Además, mi celular es 310-987-6543.",
+  "debe_desaparecer": [
+   "sofia_123@gmail.com",
+   "310-987-6543"
+  ],
+  "debe_quedar": [],
+  "tema": "correos deletreados o con espacios raros"
+ },
+ {
+  "texto": "Saludos, mi nombre es Ricardo Jiménez. Mi correo electrónico es ricardo.jimenez@ejemplo.com y tengo problemas para acceder. Mi número de cédula es 11223344.",
+  "debe_desaparecer": [
+   "Ricardo Jiménez",
+   "ricardo.jimenez@ejemplo.com",
+   "11223344"
+  ],
+  "debe_quedar": [],
+  "tema": "correos deletreados o con espacios raros"
+ },
+ {
+  "texto": "Hola, soy Diana López. Mi correo diana_lopez2021@gmail.com tiene un error y no sé cómo solucionarlo. Además, mi celular es 305-543-2109 y mi cédula es 98712345.",
+  "debe_desaparecer": [
+   "Diana López",
+   "diana_lopez2021@gmail.com",
+   "305-543-2109",
+   "98712345"
+  ],
+  "debe_quedar": [],
+  "tema": "correos deletreados o con espacios raros"
+ },
+ {
+  "texto": "Hola, tengo un problema con mi cuenta. Mi correo es juanita.m@correo.com y tengo la cédula 321654987, pero está mal escrita. Necesito su ayuda.",
+  "debe_desaparecer": [
+   "juanita.m@correo.com",
+   "321654987"
+  ],
+  "debe_quedar": [],
+  "tema": "correos deletreados o con espacios raros"
+ },
+ {
+  "texto": "Me gustaría reportar un problema. Mi correo es diego_84@unmail.com. He notado que al ingresar mi cédula 45678912 en el sistema, no coincide con mi información.",
+  "debe_desaparecer": [
+   "diego_84@unmail.com",
+   "45678912"
+  ],
+  "debe_quedar": [],
+  "tema": "correos deletreados o con espacios raros"
+ },
+ {
+  "texto": "Hola, necesito ayuda con mi cédula 1.234.567.890 y mi celular +57 300 123 4567. No puedo acceder a mi cuenta desde ayer.",
+  "debe_desaparecer": [
+   "1.234.567.890",
+   "+57 300 123 4567"
+  ],
+  "debe_quedar": [],
+  "tema": "cédulas y celulares con separadores raros (puntos, espacios, guiones, +57)"
+ },
+ {
+  "texto": "El día de ayer traté de hacer una transferencia y me pide mi cédula 987.654.321-0 pero no la puedo ingresar. Mi número es 320 456 7890.",
+  "debe_desaparecer": [
+   "987.654.321-0",
+   "320 456 7890"
+  ],
+  "debe_quedar": [],
+  "tema": "cédulas y celulares con separadores raros (puntos, espacios, guiones, +57)"
+ },
+ {
+  "texto": "Por favor, ayúdenme con mi cuenta. Mi cédula es 12.345.678.901, y mi celular es +57 310 987 6543. No recibo un código de verificación.",
+  "debe_desaparecer": [
+   "12.345.678.901",
+   "+57 310 987 6543"
+  ],
+  "debe_quedar": [],
+  "tema": "cédulas y celulares con separadores raros (puntos, espacios, guiones, +57)"
+ },
+ {
+  "texto": "Intenté registrarme, pero no puedo. Mi cédula es 12345678 y mi teléfono es +57 312 345 6789. Agradezco su apoyo.",
+  "debe_desaparecer": [
+   "12345678",
+   "+57 312 345 6789"
+  ],
+  "debe_quedar": [],
+  "tema": "cédulas y celulares con separadores raros (puntos, espacios, guiones, +57)"
+ },
+ {
+  "texto": "Tengo problemas para confirmar mi identidad, mi cédula es 1 234 567 89 y mi número es 317 654 3210. ¿Qué puedo hacer?",
+  "debe_desaparecer": [
+   "1 234 567 89",
+   "317 654 3210"
+  ],
+  "debe_quedar": [],
+  "tema": "cédulas y celulares con separadores raros (puntos, espacios, guiones, +57)"
+ },
+ {
+  "texto": "Quiero cambiar mi número de teléfono. Ahora es +57 314 123 4567, mi cédula es 98765432. Por favor, actualicen mis datos.",
+  "debe_desaparecer": [
+   "98765432",
+   "+57 314 123 4567"
+  ],
+  "debe_quedar": [],
+  "tema": "cédulas y celulares con separadores raros (puntos, espacios, guiones, +57)"
+ },
+ {
+  "texto": "Hola, tengo problemas para iniciar sesión. Mi cédula es 123-456-789 y mi celular es 300 987 6543. Necesito ayuda urgente.",
+  "debe_desaparecer": [
+   "123-456-789",
+   "300 987 6543"
+  ],
+  "debe_quedar": [],
+  "tema": "cédulas y celulares con separadores raros (puntos, espacios, guiones, +57)"
+ },
+ {
+  "texto": "Por favor, revisen mi cuenta. Mi cédula es 12.345.67.89 y el número que tengo registrado es +57 315 678 1234.",
+  "debe_desaparecer": [
+   "12.345.67.89",
+   "+57 315 678 1234"
+  ],
+  "debe_quedar": [],
+  "tema": "cédulas y celulares con separadores raros (puntos, espacios, guiones, +57)"
+ },
+ {
+  "texto": "No puedo recibir el código de validación. Mi cédula es 123456-78 y mi teléfono es 317 987 6543. Agradezco su pronta respuesta.",
+  "debe_desaparecer": [
+   "123456-78",
+   "317 987 6543"
+  ],
+  "debe_quedar": [],
+  "tema": "cédulas y celulares con separadores raros (puntos, espacios, guiones, +57)"
+ },
+ {
+  "texto": "He intentado acceder a mi cuenta con mi cédula 1 234 567 890 y mi celular +57 301 234 5678, pero me da error.",
+  "debe_desaparecer": [
+   "1 234 567 890",
+   "+57 301 234 5678"
+  ],
+  "debe_quedar": [],
+  "tema": "cédulas y celulares con separadores raros (puntos, espacios, guiones, +57)"
+ },
+ {
+  "texto": "Hola, tengo un problema con la transacción que hice el 15 de octubre. Mi usuario es juanperez91 y el monto fue de 250,000 COP. ¿Qué puedo hacer?",
+  "debe_desaparecer": [
+   "juanperez91"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres dentro de URLs, adjuntos y @usuarios"
+ },
+ {
+  "texto": "Buenos días, necesito ayuda urgentemente. Adjunto el archivo de mi factura. Mi nombre es Ana María Gómez, mi cédula es 123456789 y la transacción es TX-000456.",
+  "debe_desaparecer": [
+   "Ana María Gómez",
+   "123456789"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres dentro de URLs, adjuntos y @usuarios"
+ },
+ {
+  "texto": "¡Hola! Soy Carlos Alberto Ramírez y tengo un inconveniente en la app. Siempre que intento acceder con mi usuario carlosram, se presenta un error 404. ¿Puede ayudarme?",
+  "debe_desaparecer": [
+   "Carlos Alberto Ramírez",
+   "carlosram"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres dentro de URLs, adjuntos y @usuarios"
+ },
+ {
+  "texto": "Estimados, soy Laura Fernández y mi celular es 3001234567. Tengo un problema con el retiro de fondos. Adjunto una captura de pantalla.",
+  "debe_desaparecer": [
+   "Laura Fernández",
+   "3001234567"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres dentro de URLs, adjuntos y @usuarios"
+ },
+ {
+  "texto": "Hola Kipi, mi nombre es Andrés Suárez. La referencia de mi transacción es PQR-2026-0451 y el monto fue de 500,000 COP. ¿Cómo lo reclamo?",
+  "debe_desaparecer": [
+   "Andrés Suárez"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres dentro de URLs, adjuntos y @usuarios"
+ },
+ {
+  "texto": "Hola, soy Patricia Castañeda. Necesito reportar un error en el usuario patriciastar y un documento adjunto. Mi número de cédula es 987654321.",
+  "debe_desaparecer": [
+   "Patricia Castañeda",
+   "patriciastar",
+   "987654321"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres dentro de URLs, adjuntos y @usuarios"
+ },
+ {
+  "texto": "Buen día, mi nombre es Daniel Torres y tengo un problema con mi cuenta cuya referencia es CL-12345. El monto de la transacción es de 100,000 COP.",
+  "debe_desaparecer": [
+   "Daniel Torres"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres dentro de URLs, adjuntos y @usuarios"
+ },
+ {
+  "texto": "Hola, soy Valentina Morales y necesito que me ayuden con mi deuda. Mi número de cédula es 321654987 y mi usuario es valemora. Adjunto el documento.",
+  "debe_desaparecer": [
+   "Valentina Morales",
+   "321654987",
+   "valemora"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres dentro de URLs, adjuntos y @usuarios"
+ },
+ {
+  "texto": "Estimados, mi nombre es Felipe Ortega. Mi cédula es 123123123 y tengo problemas para verificar mi identidad. Mi usuario es felio123.",
+  "debe_desaparecer": [
+   "Felipe Ortega",
+   "123123123",
+   "felio123"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres dentro de URLs, adjuntos y @usuarios"
+ },
+ {
+  "texto": "Hola, soy Clara Ruiz. Adjunto un archivo con la transacción que hice usando mi usuario clararuiz y mi cédula es 456456456. Necesito ayuda.",
+  "debe_desaparecer": [
+   "Clara Ruiz",
+   "clararuiz",
+   "456456456"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres dentro de URLs, adjuntos y @usuarios"
+ },
+ {
+  "texto": "Hola, tengo un problema con la transferencia que hice a mi primo Juan Sebastián Zapata. El número de cuenta que utilicé fue 1234567890 y la transferencia fue de $500.000. No entiendo por qué no ha llegado a su cuenta.",
+  "debe_desaparecer": [
+   "Juan Sebastián Zapata",
+   "1234567890",
+   "$500.000"
+  ],
+  "debe_quedar": [],
+  "tema": "terceros: familiares, socios, vecinos, empleadores, con y sin apellido"
+ },
+ {
+  "texto": "Hola, soy Ana María López. Mi vecino Carlos Alberto me pidió que le ayudara a realizar una transacción usando mi cuenta, pero no recuerdo la dirección a la que debe enviarse el dinero. ¿Es posible recuperar los detalles?",
+  "debe_desaparecer": [
+   "Ana María López",
+   "Carlos Alberto"
+  ],
+  "debe_quedar": [],
+  "tema": "terceros: familiares, socios, vecinos, empleadores, con y sin apellido"
+ },
+ {
+  "texto": "Buenos días, contacté a soporte en relación a un pago que hice a la tienda de electrónicos de la ciudad, pero no tengo el comprobante. Mi número de cédula es 1234567890 y mi nombre es Diego Gómez. ¿Pueden ayudarme?",
+  "debe_desaparecer": [
+   "Diego Gómez",
+   "1234567890"
+  ],
+  "debe_quedar": [],
+  "tema": "terceros: familiares, socios, vecinos, empleadores, con y sin apellido"
+ },
+ {
+  "texto": "Hola, soy la hermana de Javier Martínez y él me pidió que revisara por qué su pago no llegó a su proveedor. He intentado comunicarme con él, pero no logro conseguirlo. ¿Pueden ayudarme con esto?",
+  "debe_desaparecer": [
+   "Javier Martínez"
+  ],
+  "debe_quedar": [],
+  "tema": "terceros: familiares, socios, vecinos, empleadores, con y sin apellido"
+ },
+ {
+  "texto": "Hola, tengo un inconveniente con una transferencia que hice a mi socio Felipe Hernández. El monto fue de $2.000.000 y la cuenta destinada era de un banco diferente. No he recibido confirmación.",
+  "debe_desaparecer": [
+   "Felipe Hernández",
+   "$2.000.000"
+  ],
+  "debe_quedar": [],
+  "tema": "terceros: familiares, socios, vecinos, empleadores, con y sin apellido"
+ },
+ {
+  "texto": "Saludos, soy Laura Torres y desempeño funciones en una empresa. Mi empleador me pidió que realizar un pago a su cliente, pero no tengo el ID de la transacción. ¿Cómo puedo proceder?",
+  "debe_desaparecer": [
+   "Laura Torres"
+  ],
+  "debe_quedar": [],
+  "tema": "terceros: familiares, socios, vecinos, empleadores, con y sin apellido"
+ },
+ {
+  "texto": "Hola, soy Andrés Pérez. Quisiera saber por qué el dinero que envié a mi amiga María José no ha llegado. Utilicé el número de celular 3001234567 para hacer la transferencia.",
+  "debe_desaparecer": [
+   "Andrés Pérez",
+   "María José",
+   "3001234567"
+  ],
+  "debe_quedar": [],
+  "tema": "terceros: familiares, socios, vecinos, empleadores, con y sin apellido"
+ },
+ {
+  "texto": "Buenos días, estoy preocupada porque mi padre, Abel Morales, no ha recibido el envío de dinero que le hice la semana pasada. Quiero saber si hay forma de rastrear la transacción.",
+  "debe_desaparecer": [
+   "Abel Morales"
+  ],
+  "debe_quedar": [],
+  "tema": "terceros: familiares, socios, vecinos, empleadores, con y sin apellido"
+ },
+ {
+  "texto": "Hola, necesito ayuda porque mi hermana, Paula Ramírez, intentó retirar dinero de su cuenta y no pudo. Ella me dijo que el saldo es incorrecto. ¿Qué puedo hacer?",
+  "debe_desaparecer": [
+   "Paula Ramírez"
+  ],
+  "debe_quedar": [],
+  "tema": "terceros: familiares, socios, vecinos, empleadores, con y sin apellido"
+ },
+ {
+  "texto": "Hola, mi vecina Lilia Sánchez me mencionó que no le llegó el dinero que le envié el viernes pasado. La transferencia estaba destinada a su cuenta en el Banco Popular. ¿Pueden ayudarme a verificar esto?",
+  "debe_desaparecer": [
+   "Lilia Sánchez"
+  ],
+  "debe_quedar": [
+   "Banco Popular"
+  ],
+  "tema": "terceros: familiares, socios, vecinos, empleadores, con y sin apellido"
+ },
+ {
+  "texto": "Hola, necesito ayuda con mi cuenta. Mi fecha de nacimiento es 15 de febrero de 1990 y no puedo acceder a mi perfil.",
+  "debe_desaparecer": [
+   "15 de febrero de 1990"
+  ],
+  "debe_quedar": [],
+  "tema": "fechas de nacimiento en todos los formatos"
+ },
+ {
+  "texto": "Buen día, mi nombre es Laura Martínez y tengo problemas para verificar mi identidad. Nací el 01/03/1985 y no reconozco algunos movimientos.",
+  "debe_desaparecer": [
+   "Laura Martínez",
+   "01/03/1985"
+  ],
+  "debe_quedar": [],
+  "tema": "fechas de nacimiento en todos los formatos"
+ },
+ {
+  "texto": "Estoy intentando registrar mi fecha de nacimiento que es el 1992-05-20, pero el sistema no me lo permite. ¿Qué puedo hacer?",
+  "debe_desaparecer": [
+   "1992-05-20"
+  ],
+  "debe_quedar": [],
+  "tema": "fechas de nacimiento en todos los formatos"
+ },
+ {
+  "texto": "Mi usuario es JuanP_1990 y mi fecha de nacimiento es 12-08-1990. ¿Por qué no puedo cambiar mi contraseña?",
+  "debe_desaparecer": [
+   "JuanP_1990",
+   "12-08-1990"
+  ],
+  "debe_quedar": [],
+  "tema": "fechas de nacimiento en todos los formatos"
+ },
+ {
+  "texto": "Hola, soy Andrés Ruiz. Nací el 2000/11/10 y necesito asistencia con mi cuenta. Recibí un mensaje de seguridad.",
+  "debe_desaparecer": [
+   "Andrés Ruiz",
+   "2000/11/10"
+  ],
+  "debe_quedar": [],
+  "tema": "fechas de nacimiento en todos los formatos"
+ },
+ {
+  "texto": "Me llamo Camila, y mi fecha de nacimiento es 05-01-1994. ¿Cómo puedo restablecer mi contraseña?",
+  "debe_desaparecer": [
+   "Camila",
+   "05-01-1994"
+  ],
+  "debe_quedar": [],
+  "tema": "fechas de nacimiento en todos los formatos"
+ },
+ {
+  "texto": "Buenas tardes, mi nombre es Felipe González y nací el 1987.04.15. Quiero vincular mi cuenta bancaria.",
+  "debe_desaparecer": [
+   "Felipe González",
+   "1987.04.15"
+  ],
+  "debe_quedar": [],
+  "tema": "fechas de nacimiento en todos los formatos"
+ },
+ {
+  "texto": "Hola, mi usuario es NataliaS_84 y mi fecha de nacimiento es 28 de Julio de 1984. Estoy teniendo problemas con las transacciones.",
+  "debe_desaparecer": [
+   "NataliaS_84",
+   "28 de Julio de 1984"
+  ],
+  "debe_quedar": [],
+  "tema": "fechas de nacimiento en todos los formatos"
+ },
+ {
+  "texto": "Soy Alejandro, mi fecha de nacimiento es 10/12/1988 y no puedo acceder a mi perfil de usuario. Necesito asistencia.",
+  "debe_desaparecer": [
+   "Alejandro",
+   "10/12/1988"
+  ],
+  "debe_quedar": [],
+  "tema": "fechas de nacimiento en todos los formatos"
+ },
+ {
+  "texto": "Hola, tengo inconvenientes con el sistema. Mi fecha de nacimiento es 1995-09-02, y no puedo actualizar mis datos.",
+  "debe_desaparecer": [
+   "1995-09-02"
+  ],
+  "debe_quedar": [],
+  "tema": "fechas de nacimiento en todos los formatos"
+ },
+ {
+  "texto": "Hola, tengo problemas con la conexión de mi cuenta. Mi cédula es 123456789 y la placa de mi moto es ABC-123. Por favor, ayúdame a resolverlo.",
+  "debe_desaparecer": [
+   "123456789",
+   "ABC-123"
+  ],
+  "debe_quedar": [],
+  "tema": "placas de carro y moto, pasaportes, números de cuenta y tarjeta"
+ },
+ {
+  "texto": "Mi nombre es Juan Pérez y tengo un problema con mi pasaporte. El número es AA1234567 y no puedo hacer una transferencia. ¿Me pueden ayudar?",
+  "debe_desaparecer": [
+   "Juan Pérez",
+   "AA1234567"
+  ],
+  "debe_quedar": [],
+  "tema": "placas de carro y moto, pasaportes, números de cuenta y tarjeta"
+ },
+ {
+  "texto": "Quiero verificar una transacción que hice hoy desde mi cuenta número 001-234567-89. La placa de mi carro es XYZ-456. ¿Cómo puedo hacerlo?",
+  "debe_desaparecer": [
+   "001-234567-89",
+   "XYZ-456"
+  ],
+  "debe_quedar": [],
+  "tema": "placas de carro y moto, pasaportes, números de cuenta y tarjeta"
+ },
+ {
+  "texto": "Hola, mi cédula es 987654321. Tengo un inconveniente con mi tarjeta de crédito y no puedo acceder a mi cuenta. Mi placa de la moto es QWE-789.",
+  "debe_desaparecer": [
+   "987654321",
+   "QWE-789"
+  ],
+  "debe_quedar": [],
+  "tema": "placas de carro y moto, pasaportes, números de cuenta y tarjeta"
+ },
+ {
+  "texto": "Me llamo Carla Rodríguez y necesito ayuda con mi pasaporte (número: XY9876543) porque no puedo realizar pagos. Pueden ayudarme?",
+  "debe_desaparecer": [
+   "Carla Rodríguez",
+   "XY9876543"
+  ],
+  "debe_quedar": [],
+  "tema": "placas de carro y moto, pasaportes, números de cuenta y tarjeta"
+ },
+ {
+  "texto": "Por favor, necesito asistencia. Mi número de cuenta es 123-456789-00. La placa de mi vehículo es DEF-321. Estoy teniendo problemas para transferir fondos.",
+  "debe_desaparecer": [
+   "123-456789-00",
+   "DEF-321"
+  ],
+  "debe_quedar": [],
+  "tema": "placas de carro y moto, pasaportes, números de cuenta y tarjeta"
+ },
+ {
+  "texto": "Hola, mi nombre es Luis González y no puedo acceder a mi cuenta. Mi cédula es 234567890. Mi pasaporte es AB9876543. Ayuda, por favor.",
+  "debe_desaparecer": [
+   "Luis González",
+   "234567890",
+   "AB9876543"
+  ],
+  "debe_quedar": [],
+  "tema": "placas de carro y moto, pasaportes, números de cuenta y tarjeta"
+ },
+ {
+  "texto": "Estoy tratando de usar mi tarjeta que termina en 1234 y mi placa de carro es GHI-654. Mi número de pasaporte es CD1234567. ¿Qué puedo hacer?",
+  "debe_desaparecer": [
+   "1234",
+   "GHI-654",
+   "CD1234567"
+  ],
+  "debe_quedar": [],
+  "tema": "placas de carro y moto, pasaportes, números de cuenta y tarjeta"
+ },
+ {
+  "texto": "Necesito asistencia para mi cuenta, número 789-123456-11. La placa de mi moto es JKL-987. No puedo hacer transferencias.",
+  "debe_desaparecer": [
+   "789-123456-11",
+   "JKL-987"
+  ],
+  "debe_quedar": [],
+  "tema": "placas de carro y moto, pasaportes, números de cuenta y tarjeta"
+ },
+ {
+  "texto": "Hola, mi cédula es 345678901. Tengo un problema con mi tarjeta de débito y el número de mi pasaporte es EF1234567. Gracias por su ayuda.",
+  "debe_desaparecer": [
+   "345678901",
+   "EF1234567"
+  ],
+  "debe_quedar": [],
+  "tema": "placas de carro y moto, pasaportes, números de cuenta y tarjeta"
+ },
+ {
+  "texto": "Hola, mi nombre es Juan Pérez y resido en la carrera 15 # 23-45 en Bogotá. Ayer intenté realizar una transferencia y me llegó un error. Mi número de cédula es 123456789 y necesito ayuda.",
+  "debe_desaparecer": [
+   "Juan Pérez",
+   "carrera 15 # 23-45",
+   "Bogotá",
+   "123456789"
+  ],
+  "debe_quedar": [],
+  "tema": "direcciones colombianas en todas sus variantes"
+ },
+ {
+  "texto": "Buen día, soy María González. Vivo en la Calle 36 Sur # 58-90 en Medellín. No puedo acceder a mi cuenta, el sistema me dice que mi usuario o contraseña son incorrectos. Mi celular es 3001234567.",
+  "debe_desaparecer": [
+   "María González",
+   "Calle 36 Sur # 58-90",
+   "Medellín",
+   "3001234567"
+  ],
+  "debe_quedar": [],
+  "tema": "direcciones colombianas en todas sus variantes"
+ },
+ {
+  "texto": "Saludos, me llamo Pedro Ruiz y estoy en la carrera 7 # 45-12 en Cali. Quisiera reportar un cargo no reconocido en mi cuenta. Mi correo es pedro.ruiz@gmail.com.",
+  "debe_desaparecer": [
+   "Pedro Ruiz",
+   "carrera 7 # 45-12",
+   "Cali",
+   "pedro.ruiz@gmail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "direcciones colombianas en todas sus variantes"
+ },
+ {
+  "texto": "Hola, soy Ana López y vivo en la avenida 5 # 100-20 en Barranquilla. Intenté actualizar mis datos y no funcionó. Mi número de identificación es 987654321.",
+  "debe_desaparecer": [
+   "Ana López",
+   "avenida 5 # 100-20",
+   "Barranquilla",
+   "987654321"
+  ],
+  "debe_quedar": [],
+  "tema": "direcciones colombianas en todas sus variantes"
+ },
+ {
+  "texto": "Estimados, me encuentro en la Diagonal 23 # 34-56 en Bucaramanga. Mi nombre es Carlos Martínez y he notado que mi saldo es incorrecto. Mi número de cuenta es 12345678.",
+  "debe_desaparecer": [
+   "Carlos Martínez",
+   "Diagonal 23 # 34-56",
+   "Bucaramanga",
+   "12345678"
+  ],
+  "debe_quedar": [],
+  "tema": "direcciones colombianas en todas sus variantes"
+ },
+ {
+  "texto": "Hola, soy Laura Méndez y tengo inconvenientes para recibir un giro en la Calle 10 # 20-30 en Cartagena. Mi cédula es 11223344 y mi teléfono es 3109876543.",
+  "debe_desaparecer": [
+   "Laura Méndez",
+   "Calle 10 # 20-30",
+   "Cartagena",
+   "11223344",
+   "3109876543"
+  ],
+  "debe_quedar": [],
+  "tema": "direcciones colombianas en todas sus variantes"
+ },
+ {
+  "texto": "Buen día, mi nombre es Jorge Castillo y resido en la Avenida 19 # 12-34 en Cúcuta. Estoy tratando de hacer una compra en línea pero no puedo usar mi tarjeta. Mi email es jorge.castillo@mail.com.",
+  "debe_desaparecer": [
+   "Jorge Castillo",
+   "Avenida 19 # 12-34",
+   "Cúcuta",
+   "jorge.castillo@mail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "direcciones colombianas en todas sus variantes"
+ },
+ {
+  "texto": "Hola, me llamo Isabel Gómez y estoy en la Calle 45 # 90-88 en Manizales. Quiero saber el estado de una transferencia que hice el 15 de septiembre. Mi celular es 3156543210.",
+  "debe_desaparecer": [
+   "Isabel Gómez",
+   "Calle 45 # 90-88",
+   "Manizales",
+   "3156543210"
+  ],
+  "debe_quedar": [],
+  "tema": "direcciones colombianas en todas sus variantes"
+ },
+ {
+  "texto": "Saludos, soy Fernando Castro y vivo en la carrera 20 # 80-95 en Pasto. No puedo acceder a mi cuenta desde hace dos días. Mi cédula es 567890123.",
+  "debe_desaparecer": [
+   "Fernando Castro",
+   "carrera 20 # 80-95",
+   "Pasto",
+   "567890123"
+  ],
+  "debe_quedar": [],
+  "tema": "direcciones colombianas en todas sus variantes"
+ },
+ {
+  "texto": "Hola, soy Valentina Rojas y resido en la Avenida 10 # 50-60 en Pereira. Tengo problemas con una compra que hice. Mi número de cuenta es 7654321.",
+  "debe_desaparecer": [
+   "Valentina Rojas",
+   "Avenida 10 # 50-60",
+   "Pereira",
+   "7654321"
+  ],
+  "debe_quedar": [],
+  "tema": "direcciones colombianas en todas sus variantes"
+ },
+ {
+  "texto": "Hi, I need assistance with my account. My name is Juan Pérez, and I can’t access my account since my cédula is 123456789. I live in Bogotá and want to know why I don’t see my last transaction for $150.",
+  "debe_desaparecer": [
+   "Juan Pérez",
+   "123456789",
+   "Bogotá"
+  ],
+  "debe_quedar": [
+   "$150"
+  ],
+  "tema": "mensajes en inglés o spanglish"
+ },
+ {
+  "texto": "Hello Kipu, I’m having issues with my transaction. My email is maria_garcia@mail.com, and my user id is user789. Please help me to resolve this.",
+  "debe_desaparecer": [
+   "maria_garcia@mail.com",
+   "user789"
+  ],
+  "debe_quedar": [],
+  "tema": "mensajes en inglés o spanglish"
+ },
+ {
+  "texto": "Buenas Kipi, necesito ayuda urgente. Mi número de celular es 3149876543 y no puedo transferir dinero. Además, mi cédula es 987654321.",
+  "debe_desaparecer": [
+   "3149876543",
+   "987654321"
+  ],
+  "debe_quedar": [],
+  "tema": "mensajes en inglés o spanglish"
+ },
+ {
+  "texto": "Hello, I just realized my account balance is incorrect. My cuenta number is 00123456789 and I am from Medellín. Can you please clarify?",
+  "debe_desaparecer": [
+   "00123456789",
+   "Medellín"
+  ],
+  "debe_quedar": [],
+  "tema": "mensajes en inglés o spanglish"
+ },
+ {
+  "texto": "Hi, I’m Sofia Ríos and I’m having trouble with my recent transaction TX-000456. My email is sofia.rios@example.com.",
+  "debe_desaparecer": [
+   "Sofia Ríos",
+   "TX-000456",
+   "sofia.rios@example.com"
+  ],
+  "debe_quedar": [],
+  "tema": "mensajes en inglés o spanglish"
+ },
+ {
+  "texto": "Hola, mi nombre es Andrés López. Mi cédula es 11223344 y no logro acceder a la app. Por favor, ayúdenme.",
+  "debe_desaparecer": [
+   "Andrés López",
+   "11223344"
+  ],
+  "debe_quedar": [],
+  "tema": "mensajes en inglés o spanglish"
+ },
+ {
+  "texto": "Hello Kipu, I’m having a problem with my payment of $200. My account is linked to my passport number AB123456 and I need to fix it.",
+  "debe_desaparecer": [
+   "$200",
+   "AB123456"
+  ],
+  "debe_quedar": [],
+  "tema": "mensajes en inglés o spanglish"
+ },
+ {
+  "texto": "Hi, I can't seem to locate my last transaction. My user is user1234 and I’m living in Cali. Please assist!",
+  "debe_desaparecer": [
+   "user1234",
+   "Cali"
+  ],
+  "debe_quedar": [],
+  "tema": "mensajes en inglés o spanglish"
+ },
+ {
+  "texto": "Por favor, Kipi, ayúdame. Mi cédula es 987654321, y mi celular es 3216549870. No puedo hacer transferencias.",
+  "debe_desaparecer": [
+   "987654321",
+   "3216549870"
+  ],
+  "debe_quedar": [],
+  "tema": "mensajes en inglés o spanglish"
+ },
+ {
+  "texto": "Hello, my name is Carlos Alvarado and my account number is 5544332211. I have a problem with my last deposit.",
+  "debe_desaparecer": [
+   "Carlos Alvarado",
+   "5544332211"
+  ],
+  "debe_quedar": [],
+  "tema": "mensajes en inglés o spanglish"
+ },
+ {
+  "texto": "Hola, espero que te encuentres bien. Me llamo Juan Carlos y tengo un problema con mi transacción reciente en Kipu Pay. La referencia es TX-000123. No puedo entender por qué no se ha completado. Agradezco tu ayuda.",
+  "debe_desaparecer": [
+   "Juan Carlos"
+  ],
+  "debe_quedar": [],
+  "tema": "firmas al final, saludos y despedidas con nombre"
+ },
+ {
+  "texto": "Saludos, soy Ana María. He notado que no me llegó el dinero de una venta realizada a un comercio en Bogotá. La referencia es PQR-2026-0451. ¿Podrías ayudarme a resolver este inconveniente? Espero tu respuesta pronto.",
+  "debe_desaparecer": [
+   "Ana María"
+  ],
+  "debe_quedar": [
+   "Bogotá"
+  ],
+  "tema": "firmas al final, saludos y despedidas con nombre"
+ },
+ {
+  "texto": "Hola, soy Luis Fernando y estoy estrenando la aplicación. Sin embargo, me gustaría solicitar soporte técnico porque mi cuenta no se sincroniza correctamente. Mi ID es CL-12345. Gracias por tu ayuda.",
+  "debe_desaparecer": [
+   "Luis Fernando"
+  ],
+  "debe_quedar": [],
+  "tema": "firmas al final, saludos y despedidas con nombre"
+ },
+ {
+  "texto": "Estimados, mi nombre es Mateo Rodríguez y he tenido problemas al intentar apagar una factura de un comercio en Medellín. El monto y ID de la transacción son confidenciales. Agradezco su pronta atención.",
+  "debe_desaparecer": [
+   "Mateo Rodríguez"
+  ],
+  "debe_quedar": [
+   "Medellín"
+  ],
+  "tema": "firmas al final, saludos y despedidas con nombre"
+ },
+ {
+  "texto": "Buen día, soy Camila y mi número de cédula es 1234567890. Estoy intentando retirar dinero, pero no me aparece la opción. Tengo la referencia TX-000123. Agradezco su apoyo.",
+  "debe_desaparecer": [
+   "Camila",
+   "1234567890"
+  ],
+  "debe_quedar": [],
+  "tema": "firmas al final, saludos y despedidas con nombre"
+ },
+ {
+  "texto": "Hola, me llamo Andrés y quiero saber por qué no puedo acceder a mis recibos de pago. Estoy en Barranquilla y mi usuario es andres100. Espero una pronta respuesta.",
+  "debe_desaparecer": [
+   "Andrés",
+   "andres100"
+  ],
+  "debe_quedar": [
+   "Barranquilla"
+  ],
+  "tema": "firmas al final, saludos y despedidas con nombre"
+ },
+ {
+  "texto": "Hola, mi nombre es Valentina Gómez. Estoy enfrentando un problema con una transacción que debería haber sido procesada ayer. Mi ID de transacción es CL-12345. Gracias por su ayuda.",
+  "debe_desaparecer": [
+   "Valentina Gómez"
+  ],
+  "debe_quedar": [],
+  "tema": "firmas al final, saludos y despedidas con nombre"
+ },
+ {
+  "texto": "Estimada Kipu Pay, soy Felipe y tengo un inconveniente con una petición de reembolso. El número de mi cuenta es 789654123. Estoy en Cali y espero su ayuda.",
+  "debe_desaparecer": [
+   "Felipe",
+   "789654123"
+  ],
+  "debe_quedar": [
+   "Cali"
+  ],
+  "tema": "firmas al final, saludos y despedidas con nombre"
+ },
+ {
+  "texto": "Hola, soy Laura y quisiera saber el estado de mi solicitud. Mi cédula es 987654321. Estoy preocupada porque necesito el dinero para un viaje pronto. Agradezco su pronta respuesta.",
+  "debe_desaparecer": [
+   "Laura",
+   "987654321"
+  ],
+  "debe_quedar": [],
+  "tema": "firmas al final, saludos y despedidas con nombre"
+ },
+ {
+  "texto": "Saludos, mi nombre es Jorge. He solicitado un cambio de datos personales y no he recibido respuesta. Mi cuenta es jorge_1990. Estoy en Bucaramanga.",
+  "debe_desaparecer": [
+   "Jorge",
+   "jorge_1990"
+  ],
+  "debe_quedar": [
+   "Bucaramanga"
+  ],
+  "tema": "firmas al final, saludos y despedidas con nombre"
+ },
+ {
+  "texto": "Hola, soy Santander de Pereira. Quiero reportar un problema con mi cuenta, ya que no puedo realizar pagos desde hace dos días. Mi cédula es 123456789 y el número de celular asociado es 3216549870.",
+  "debe_desaparecer": [
+   "Santander",
+   "Pereira",
+   "123456789",
+   "3216549870"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres que también son lugares o marcas (Santander, Bolívar, Carulla) usados como persona y como lugar"
+ },
+ {
+  "texto": "Hola, aquí Bolívar de Barranquilla. Intenté hacer una transferencia a mi amigo Carulla y no se procesó. Me gustaría saber qué está pasando.",
+  "debe_desaparecer": [
+   "Bolívar",
+   "Barranquilla",
+   "Carulla"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres que también son lugares o marcas (Santander, Bolívar, Carulla) usados como persona y como lugar"
+ },
+ {
+  "texto": "Estimados, soy Carulla de Bogotá, socio de una empresa. Mi usuario de Kipu es carulla123 y tengo problemas para acceder a mi cuenta. Mi fecha de nacimiento es 10 de enero de 1985.",
+  "debe_desaparecer": [
+   "Carulla",
+   "Bogotá",
+   "carulla123",
+   "10 de enero de 1985"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres que también son lugares o marcas (Santander, Bolívar, Carulla) usados como persona y como lugar"
+ },
+ {
+  "texto": "Hola Kipu, soy Santander de Medellín. La semana pasada hice una transacción y aún no se refleja mi saldo. Mi cédula es 987654321.",
+  "debe_desaparecer": [
+   "Santander",
+   "Medellín",
+   "987654321"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres que también son lugares o marcas (Santander, Bolívar, Carulla) usados como persona y como lugar"
+ },
+ {
+  "texto": "Quiero reportar una incidencia. Soy Bolívar de Cali y mi celular es 3219876543. No puedo realizar pagos a mi proveedor Carulla.",
+  "debe_desaparecer": [
+   "Bolívar",
+   "Cali",
+   "3219876543",
+   "Carulla"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres que también son lugares o marcas (Santander, Bolívar, Carulla) usados como persona y como lugar"
+ },
+ {
+  "texto": "Hola, soy Carulla de Bucaramanga. Mi número de cuenta es 1234-5678-9012, y no tengo acceso a mi aplicación desde ayer. Por favor ayúdenme.",
+  "debe_desaparecer": [
+   "Carulla",
+   "Bucaramanga",
+   "1234-5678-9012"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres que también son lugares o marcas (Santander, Bolívar, Carulla) usados como persona y como lugar"
+ },
+ {
+  "texto": "Saludos, soy Santander de Cartagena. Quisiera saber por qué mi cuenta está limitada. Mi email es santander.cartagena@example.com.",
+  "debe_desaparecer": [
+   "Santander",
+   "Cartagena",
+   "santander.cartagena@example.com"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres que también son lugares o marcas (Santander, Bolívar, Carulla) usados como persona y como lugar"
+ },
+ {
+  "texto": "Soy Bolívar de Cúcuta. Mi usuario es bolivar_cucuta y no puedo acceder a mi saldo. Por favor, ¿pueden ayudarme?",
+  "debe_desaparecer": [
+   "Bolívar",
+   "Cúcuta",
+   "bolivar_cucuta"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres que también son lugares o marcas (Santander, Bolívar, Carulla) usados como persona y como lugar"
+ },
+ {
+  "texto": "Hola, aquí Carulla de Envigado. Estoy teniendo problemas con mi transferencia a Santander. Mi cédula es 345678901.",
+  "debe_desaparecer": [
+   "Carulla",
+   "Envigado",
+   "345678901",
+   "Santander"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres que también son lugares o marcas (Santander, Bolívar, Carulla) usados como persona y como lugar"
+ },
+ {
+  "texto": "Buen día, soy Santander de Ibagué. No puedo recibir pagos desde hace tres días y mi celular es 3102345678.",
+  "debe_desaparecer": [
+   "Santander",
+   "Ibagué",
+   "3102345678"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres que también son lugares o marcas (Santander, Bolívar, Carulla) usados como persona y como lugar"
+ },
+ {
+  "texto": "Hola, tengo un problema con mi tarjeta de Kipu Pay que se usa en el Banco Bogotá. La última transacción* fue denegada y no sé por qué. Por favor, ayúdenme a resolverlo.",
+  "debe_desaparecer": [],
+  "debe_quedar": [
+   "Banco Bogotá"
+  ],
+  "tema": "marcas, bancos, lugares y figuras públicas que NO deben cambiar"
+ },
+ {
+  "texto": "Estimado soporte, he intentado realizar un pago en el comercio 'La Tienda de Juan' y me aparece un error. Mi usuario es juan.perez2021 y estoy en Barranquilla. ¿Pueden ayudarme?",
+  "debe_desaparecer": [
+   "juan.perez2021"
+  ],
+  "debe_quedar": [
+   "La Tienda de Juan",
+   "Barranquilla"
+  ],
+  "tema": "marcas, bancos, lugares y figuras públicas que NO deben cambiar"
+ },
+ {
+  "texto": "¡Hola! Tengo un inconveniente con mi cuenta de Kipu Pay. Mi cédula es 123456789 y quiero actualizar mi información personal. Estoy preocupado porque no quiero perder acceso a mi cuenta.",
+  "debe_desaparecer": [
+   "123456789"
+  ],
+  "debe_quedar": [],
+  "tema": "marcas, bancos, lugares y figuras públicas que NO deben cambiar"
+ },
+ {
+  "texto": "Hola, quiero saber por qué mi cuenta fue bloqueada. Soy cliente de Davivienda y mi cel es 3001234567. Agradezco su pronta respuesta.",
+  "debe_desaparecer": [
+   "3001234567"
+  ],
+  "debe_quedar": [
+   "Davivienda"
+  ],
+  "tema": "marcas, bancos, lugares y figuras públicas que NO deben cambiar"
+ },
+ {
+  "texto": "Buenas tardes, tengo problemas para vincular mi cuenta de Kipu Pay con mi tarjeta del Banco de Occidente. Mi ID de cliente es 987654321. ¿Qué debo hacer?",
+  "debe_desaparecer": [
+   "987654321"
+  ],
+  "debe_quedar": [
+   "Banco de Occidente"
+  ],
+  "tema": "marcas, bancos, lugares y figuras públicas que NO deben cambiar"
+ },
+ {
+  "texto": "Hola, me gustaría saber si puedo hacer transferencias desde mi cuenta en Kipu Pay a una cuenta de Bancolombia. Mi e-mail es maría@correo.com, por favor mantengan esto privado.",
+  "debe_desaparecer": [
+   "maría@correo.com"
+  ],
+  "debe_quedar": [
+   "Bancolombia"
+  ],
+  "tema": "marcas, bancos, lugares y figuras públicas que NO deben cambiar"
+ },
+ {
+  "texto": "Quiero reportar un cargo no reconocido en mi cuenta de Kipu Pay. El monto es de 150.000 COP y mi nombre es Luis Gómez, por favor, ayúdenme a aclarar esto.",
+  "debe_desaparecer": [
+   "Luis Gómez"
+  ],
+  "debe_quedar": [],
+  "tema": "marcas, bancos, lugares y figuras públicas que NO deben cambiar"
+ },
+ {
+  "texto": "Hola, he intentado realizar pagos en múltiples lugares, incluyendo 'Supermercado La 14', pero cada vez que intento, me aparece error. Estoy en Medellín, soy Mateo J., cédula 456789123.",
+  "debe_desaparecer": [
+   "Mateo J.",
+   "456789123"
+  ],
+  "debe_quedar": [
+   "Supermercado La 14",
+   "Medellín"
+  ],
+  "tema": "marcas, bancos, lugares y figuras públicas que NO deben cambiar"
+ },
+ {
+  "texto": "He recibido un mensaje de mi banco (Banco Popular) indicando que hay un problema con mi cuenta de Kipu Pay. Mi celular es 3101234567. Necesito asistencia.",
+  "debe_desaparecer": [
+   "3101234567"
+  ],
+  "debe_quedar": [
+   "Banco Popular"
+  ],
+  "tema": "marcas, bancos, lugares y figuras públicas que NO deben cambiar"
+ },
+ {
+  "texto": "Estoy interesado en el programa de recompensas de Kipu Pay, pero necesito más información. Mi dirección es Calle 123 #45-67, en Cali. ¿Podrían ayudarme?",
+  "debe_desaparecer": [
+   "Calle 123 #45-67"
+  ],
+  "debe_quedar": [
+   "Cali"
+  ],
+  "tema": "marcas, bancos, lugares y figuras públicas que NO deben cambiar"
+ },
+ {
+  "texto": "Hola, soy Luis Pérez, carpintero del barrio La Candelaria, y tengo un problema con mi transacción de $500.000. La referencia de mi pago fue PQR-2026-0451. Mi cédula es 123456789, y me gustaría saber cómo proceder.",
+  "debe_desaparecer": [
+   "Luis Pérez",
+   "La Candelaria",
+   "123456789"
+  ],
+  "debe_quedar": [
+   "$500.000",
+   "PQR-2026-0451"
+  ],
+  "tema": "combinaciones de oficio + barrio + año que identifican"
+ },
+ {
+  "texto": "Buenas, mi nombre es Juanita Gómez, trabajo como diseñadora gráfica en el barrio Chapinero. El mes pasado, tuve un inconveniente con un pago de $350.000 que no se reflejó en mi cuenta. Mi teléfono es 3216549870, y mi correo es juanita@gmail.com.",
+  "debe_desaparecer": [
+   "Juanita Gómez",
+   "Chapinero",
+   "3216549870",
+   "juanita@gmail.com"
+  ],
+  "debe_quedar": [
+   "$350.000"
+  ],
+  "tema": "combinaciones de oficio + barrio + año que identifican"
+ },
+ {
+  "texto": "Hola, soy Andrés López, plomero del barrio El Tejar. Realicé un pago por $200.000 y no ha llegado a su destino. Mi cédula es 987654321. ¿Qué debo hacer ahora?",
+  "debe_desaparecer": [
+   "Andrés López",
+   "El Tejar",
+   "987654321"
+  ],
+  "debe_quedar": [
+   "$200.000"
+  ],
+  "tema": "combinaciones de oficio + barrio + año que identifican"
+ },
+ {
+  "texto": "Saludos, mi nombre es Camila Rodríguez, y soy profesora en el barrio Santa Fe. Hice una transferencia de $700.000 y no sé por qué no ha sido procesada. Mi identificación es 456789123.",
+  "debe_desaparecer": [
+   "Camila Rodríguez",
+   "Santa Fe",
+   "456789123"
+  ],
+  "debe_quedar": [
+   "$700.000"
+  ],
+  "tema": "combinaciones de oficio + barrio + año que identifican"
+ },
+ {
+  "texto": "Hola, me llamo Javier Martínez, mecánico del barrio Los Mártires. Realicé una transferencia de $150.000 y necesito confirmar su estado. El número de mi celular es 3009876543.",
+  "debe_desaparecer": [
+   "Javier Martínez",
+   "Los Mártires",
+   "3009876543"
+  ],
+  "debe_quedar": [
+   "$150.000"
+  ],
+  "tema": "combinaciones de oficio + barrio + año que identifican"
+ },
+ {
+  "texto": "Buen día, soy Carolina Jiménez, abogada en el barrio Teusaquillo. He tenido un inconveniente con un pago de $1.000.000 que no se ha acreditado. Mi cédula es 1122334455.",
+  "debe_desaparecer": [
+   "Carolina Jiménez",
+   "Teusaquillo",
+   "1122334455"
+  ],
+  "debe_quedar": [
+   "$1.000.000"
+  ],
+  "tema": "combinaciones de oficio + barrio + año que identifican"
+ },
+ {
+  "texto": "Hola, soy Felipe Torres, electricista del barrio Kennedy. Hice un pago de $300.000, pero aún no aparece en mi historial. Mi número de identificación es 9988776655.",
+  "debe_desaparecer": [
+   "Felipe Torres",
+   "Kennedy",
+   "9988776655"
+  ],
+  "debe_quedar": [
+   "$300.000"
+  ],
+  "tema": "combinaciones de oficio + barrio + año que identifican"
+ },
+ {
+  "texto": "Hola, mi nombre es Isabel Mendoza, cocinera del barrio San Cristóbal. Hice una transacción por $450.000 y no ha llegado a su destino. Mi celular es 3123456789.",
+  "debe_desaparecer": [
+   "Isabel Mendoza",
+   "San Cristóbal",
+   "3123456789"
+  ],
+  "debe_quedar": [
+   "$450.000"
+  ],
+  "tema": "combinaciones de oficio + barrio + año que identifican"
+ },
+ {
+  "texto": "Saludos, soy David Hernández, carpintero del barrio Bosa. Realicé un pago de $600.000 y necesito saber qué pasó. Mi correo es david.hernandez@yahoo.com.",
+  "debe_desaparecer": [
+   "David Hernández",
+   "Bosa",
+   "david.hernandez@yahoo.com"
+  ],
+  "debe_quedar": [
+   "$600.000"
+  ],
+  "tema": "combinaciones de oficio + barrio + año que identifican"
+ },
+ {
+  "texto": "Hola, soy Ana María Ruiz, arquitecta del barrio Engativá. Hice una transferencia de $800.000 y aún no veo el dinero. Mi número de cédula es 2211334455.",
+  "debe_desaparecer": [
+   "Ana María Ruiz",
+   "Engativá",
+   "2211334455"
+  ],
+  "debe_quedar": [
+   "$800.000"
+  ],
+  "tema": "combinaciones de oficio + barrio + año que identifican"
+ },
+ {
+  "texto": "Hola, mi nombre es Juan Pérez y estoy teniendo problemas para acceder a mi cuenta. Mi cédula es 123456789. Intenté restablecer la contraseña, pero no recibí el correo a juanperez@mail.com.",
+  "debe_desaparecer": [
+   "Juan Pérez",
+   "123456789",
+   "juanperez@mail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "datos repartidos en varias líneas o en tablas markdown"
+ },
+ {
+  "texto": "Buenos días, mi nombre es Ana María López. Quiero reportar un cargo no reconocido de $250,000 que aparece en mi cuenta. Mi número de celular es 3001234567.",
+  "debe_desaparecer": [
+   "Ana María López",
+   "3001234567"
+  ],
+  "debe_quedar": [],
+  "tema": "datos repartidos en varias líneas o en tablas markdown"
+ },
+ {
+  "texto": "Hola, soy Carlos Ruiz y tengo una duda sobre una transferencia a mi cuenta. La referencia es TX-000123 y mi fecha de nacimiento es 01/01/1990.",
+  "debe_desaparecer": [
+   "Carlos Ruiz",
+   "TX-000123",
+   "01/01/1990"
+  ],
+  "debe_quedar": [],
+  "tema": "datos repartidos en varias líneas o en tablas markdown"
+ },
+ {
+  "texto": "Saludos, estoy escribiendo en nombre de María Torres. Mi cédula es 987654321 y tengo un problema con un pago en el comercio XYZ que fue cobrado dos veces.",
+  "debe_desaparecer": [
+   "María Torres",
+   "987654321",
+   "XYZ"
+  ],
+  "debe_quedar": [],
+  "tema": "datos repartidos en varias líneas o en tablas markdown"
+ },
+ {
+  "texto": "Hola, soy Andrés Gómez y necesito ayuda con mi cuenta. He intentado comunicarme al 3145671234 pero no he recibido respuesta.",
+  "debe_desaparecer": [
+   "Andrés Gómez",
+   "3145671234"
+  ],
+  "debe_quedar": [],
+  "tema": "datos repartidos en varias líneas o en tablas markdown"
+ },
+ {
+  "texto": "Hola, mi nombre es Paula Jiménez y tengo una incidencia con un depósito realizado el 15 de noviembre de 2023. Mi correo es paula.jimenez@gmail.com.",
+  "debe_desaparecer": [
+   "Paula Jiménez",
+   "15 de noviembre de 2023",
+   "paula.jimenez@gmail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "datos repartidos en varias líneas o en tablas markdown"
+ },
+ {
+  "texto": "Saludos, soy Felipe Martínez y quiero saber sobre un reembolso que nunca recibí. Mi cédula es 321654987 y mis datos están en la cuenta que termina en 1234.",
+  "debe_desaparecer": [
+   "Felipe Martínez",
+   "321654987"
+  ],
+  "debe_quedar": [],
+  "tema": "datos repartidos en varias líneas o en tablas markdown"
+ },
+ {
+  "texto": "Buenos días, mi nombre es Luisa Fernanda Castro y necesito ayuda con una transacción que no se ha procesado. Mi número de celular es 3106543210.",
+  "debe_desaparecer": [
+   "Luisa Fernanda Castro",
+   "3106543210"
+  ],
+  "debe_quedar": [],
+  "tema": "datos repartidos en varias líneas o en tablas markdown"
+ },
+ {
+  "texto": "Hola, soy Sebastián Hernández y tengo una pregunta sobre los límites de transferencia. Mi cédula es 768543210.",
+  "debe_desaparecer": [
+   "Sebastián Hernández",
+   "768543210"
+  ],
+  "debe_quedar": [],
+  "tema": "datos repartidos en varias líneas o en tablas markdown"
+ },
+ {
+  "texto": "Hola, mi nombre es Estefanía Rojas y estoy preocupada por un intento de ingreso no autorizado a mi cuenta. Mi correo electrónico es estefania.rojas@mail.com.",
+  "debe_desaparecer": [
+   "Estefanía Rojas",
+   "estefania.rojas@mail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "datos repartidos en varias líneas o en tablas markdown"
+ },
+ {
+  "texto": "Hola, soy Alejandro de la Torre. Me gustaría reportar que la transacción con ID TX-123456 no se reflejó en mi cuenta. Mi cédula es 123456789, y mi celular es 3001234567.",
+  "debe_desaparecer": [
+   "Alejandro de la Torre",
+   "123456789",
+   "3001234567"
+  ],
+  "debe_quedar": [
+   "TX-123456"
+  ],
+  "tema": "nombres compuestos con partículas (de, del, de la, y)"
+ },
+ {
+  "texto": "Soy Valentina de los Reyes y necesito cancelar mi suscripción. Mi correo es valentina.reyes@example.com y mi usuario es valereyes123. La última transacción fue de $200,000.",
+  "debe_desaparecer": [
+   "Valentina de los Reyes",
+   "valentina.reyes@example.com",
+   "valereyes123"
+  ],
+  "debe_quedar": [
+   "$200,000"
+  ],
+  "tema": "nombres compuestos con partículas (de, del, de la, y)"
+ },
+ {
+  "texto": "Estimados, soy Javier del Castillo. El número de mi placa es ABC-1234, y he tenido problemas para acceder a mi cuenta. Mi cédula es 987654321.",
+  "debe_desaparecer": [
+   "Javier del Castillo",
+   "ABC-1234",
+   "987654321"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres compuestos con partículas (de, del, de la, y)"
+ },
+ {
+  "texto": "Hola, escribo como Mariana de los Santos. Mi cuenta está bloqueada y mi número de pasaporte es AA123456. Quiero acceder a mis fondos pronto.",
+  "debe_desaparecer": [
+   "Mariana de los Santos",
+   "AA123456"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres compuestos con partículas (de, del, de la, y)"
+ },
+ {
+  "texto": "Soy Felipe de la Cruz y la última transacción que realicé fue de $50,000. Mi celular es 3159876543 y no tengo acceso a la aplicación.",
+  "debe_desaparecer": [
+   "Felipe de la Cruz",
+   "3159876543"
+  ],
+  "debe_quedar": [
+   "$50,000"
+  ],
+  "tema": "nombres compuestos con partículas (de, del, de la, y)"
+ },
+ {
+  "texto": "Hola, mi nombre es Paula del Valle. Necesito ayuda con un cargo no reconocido en mi cuenta, mi correo es paula.valle@example.com.",
+  "debe_desaparecer": [
+   "Paula del Valle",
+   "paula.valle@example.com"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres compuestos con partículas (de, del, de la, y)"
+ },
+ {
+  "texto": "Soy Andrés de la Hoz. Mi usuario es andres.hoz2023 y el último monto transaccionado fue de $150,000. Por favor, ayúdenme a solucionar esto.",
+  "debe_desaparecer": [
+   "Andrés de la Hoz",
+   "andres.hoz2023"
+  ],
+  "debe_quedar": [
+   "$150,000"
+  ],
+  "tema": "nombres compuestos con partículas (de, del, de la, y)"
+ },
+ {
+  "texto": "Hola, mi nombre es Carolina del Río. Mi cédula es 1234567890 y he tenido problemas para cambiar mi contraseña. Gracias por su ayuda.",
+  "debe_desaparecer": [
+   "Carolina del Río",
+   "1234567890"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres compuestos con partículas (de, del, de la, y)"
+ },
+ {
+  "texto": "Soy Luis de los Ángeles y necesito ayuda con un reembolso. Mi número de cuenta es 1000-123456789 y el monto es de $75,000.",
+  "debe_desaparecer": [
+   "Luis de los Ángeles",
+   "1000-123456789"
+  ],
+  "debe_quedar": [
+   "$75,000"
+  ],
+  "tema": "nombres compuestos con partículas (de, del, de la, y)"
+ },
+ {
+  "texto": "Hola, soy Sara de la Fuente. Mi celular es 3101234567. No pude realizar una transferencia a mi amigo y necesito apoyo.",
+  "debe_desaparecer": [
+   "Sara de la Fuente",
+   "3101234567"
+  ],
+  "debe_quedar": [],
+  "tema": "nombres compuestos con partículas (de, del, de la, y)"
+ }
+]

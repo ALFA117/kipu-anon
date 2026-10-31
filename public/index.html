@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>kipu-anon · Comparte tus datos, protege a tu gente</title>
+<meta name="description" content="Comparte tus datos sin exponer a tus clientes: kipu-anon cambia a cada persona por una inventada y deja todo lo demás igual.">
+<link rel="canonical" href="https://kipu-anon.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="kipu-anon · Comparte tus datos, protege a tu gente">
+<meta property="og:description" content="Anonimización determinista con demo en vivo: 8.297 registros, 0 fugas en el barrido propio, 0 tokens de LLM.">
+<meta property="og:url" content="https://kipu-anon.vercel.app/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#05070a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2305070a'/%3E%3Cpath d='M8 11l6 5-6 5' stroke='%2322C55E' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='16' y='19' width='9' height='3' rx='1.5' fill='%2322C55E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ---------- tokens (design-system/kipu-anon/MASTER.md: Dark Mode OLED · code dark + run green) ---------- */
+  :root {
+    --bg: #05070a; --bg-2: #0b1017; --card: #0f1620; --card-2: #131c28; --border: #223042; --border-soft: #182230;
+    --fg: #f1f5f9; --fg-2: #c3cfdb; --muted: #8a99a8; --accent: #22c55e; --accent-2: #4fb3ff; --on-accent: #04130a;
+    --real: #ff6b6b; --warn: #fbbf24; --ring: #ffffff;
+    --r-sm: 6px; --r-md: 10px; --r-lg: 16px;
+    --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+    --shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 20px 50px -20px rgba(0,0,0,.7);
+    --glow: 0 0 24px rgba(34,197,94,.25);
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+    --sans: Inter, "Segoe UI", system-ui, sans-serif;
+    --t-display: clamp(40px, 7.4vw, 84px); --t-h2: clamp(24px, 3.2vw, 34px); --t-body: 16px; --t-small: 13px; --t-eyebrow: 12px;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg: #f6f8fa; --bg-2: #eef2f6; --card: #ffffff; --card-2: #f3f6f9; --border: #d5dde6; --border-soft: #e4e9ef;
+      --fg: #0b1220; --fg-2: #2a3646; --muted: #556373; --accent: #15803d; --accent-2: #0b6cbf; --on-accent: #ffffff; --real: #c62828; --ring: #0b1220;
+      --shadow: 0 10px 30px -18px rgba(15,23,42,.35); --glow: none; color-scheme: light; }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); scroll-behavior: smooth; }
+  body { isolation: isolate; background: transparent; color: var(--fg); font: var(--t-body)/1.6 var(--sans); min-height: 100dvh; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent-2); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; border-radius: 4px; }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: var(--on-accent); padding: 10px 14px; border-radius: var(--r-sm); font: 600 14px var(--mono); z-index: 10; }
+  .skip:focus { left: 8px; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 max(16px, env(safe-area-inset-left)); }
+  .mono { font-family: var(--mono); }
+  .eyebrow { font: 500 var(--t-eyebrow)/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  .eyebrow i { color: var(--muted); font-style: normal; }
+
+  /* ---------- fondo ---------- */
+  #bg { position: fixed; inset: 0; z-index: -10; pointer-events: none; width: 100%; height: 100%; }
+  .veil { position: fixed; inset: 0; z-index: -9; pointer-events: none;
+    background: radial-gradient(1000px 600px at 75% 10%, transparent 0, var(--bg) 75%), linear-gradient(to bottom, transparent 0, var(--bg) 92%); opacity: .82; }
+
+  /* ---------- nav ---------- */
+  nav { position: sticky; top: 0; z-index: 5; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--bg) 72%, transparent); border-bottom: 1px solid var(--border-soft); padding-top: env(safe-area-inset-top); }
+  nav .wrap { display: flex; align-items: center; gap: var(--s4); min-height: 56px; }
+  .brand { font: 800 16px var(--mono); color: var(--fg); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+  .brand .cur { display: inline-block; width: 9px; height: 17px; background: var(--accent); animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .status { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; font: 12px var(--mono); color: var(--muted); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+  .dot.ok { background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); }
+  .dot.bad { background: var(--real); }
+  .navlinks { display: flex; gap: var(--s2); }
+  .navlinks a { font: 500 13px var(--mono); color: var(--fg-2); text-decoration: none; padding: 12px 10px; border-radius: var(--r-sm); min-height: 44px; display: inline-flex; align-items: center; }
+  .navlinks a:hover { color: var(--fg); background: var(--card); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: var(--s9) 0 var(--s7); display: grid; grid-template-columns: 1.15fr .85fr; gap: var(--s7); align-items: center; }
+  .hero h1 { font: 800 var(--t-display)/.98 var(--mono); letter-spacing: -.04em; margin: var(--s4) 0 var(--s5); }
+  .hero h1 .strike { position: relative; display: inline-block; white-space: nowrap; color: var(--muted); }
+  .hero h1 .strike::after { content: ""; position: absolute; left: -2%; right: -2%; top: 52%; height: .12em; background: var(--real); transform-origin: left; transform: scaleX(var(--k, 1)); }
+  .hero h1 em { font-style: normal; color: var(--accent); text-shadow: var(--glow); }
+  .lead { color: var(--fg-2); font-size: 18px; max-width: 56ch; }
+  .cta { display: flex; gap: var(--s3); flex-wrap: wrap; margin-top: var(--s6); }
+
+  .btn { --b: var(--card); font: 600 14px var(--mono); display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: var(--r-md);
+    border: 1px solid var(--border); background: var(--b); color: var(--fg); text-decoration: none; cursor: pointer; transition: border-color .2s, background .2s, color .2s; will-change: transform; }
+  .btn:hover { border-color: var(--muted); }
+  .btn.pri { --b: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: var(--glow); }
+  .btn.pri:hover { filter: brightness(1.08); }
+  .btn[disabled] { opacity: .65; cursor: progress; }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .spin { width: 16px; height: 16px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: rot .7s linear infinite; }
+  @keyframes rot { to { transform: rotate(360deg); } }
+
+  /* terminal del hero: hace una llamada real a /anonymize */
+  .term { background: color-mix(in srgb, var(--card) 88%, transparent); border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; }
+  .term .bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--border-soft); font: 12px var(--mono); color: var(--muted); }
+  .term .bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+  .term .bar span { margin-left: 8px; }
+  .term pre { margin: 0; padding: var(--s5) var(--s4); font: 14px/1.75 var(--mono); white-space: pre-wrap; word-break: break-word; color: var(--fg-2); min-height: 230px; }
+  .term .k { color: var(--accent-2); } .term .r { color: var(--real); } .term .g { color: var(--accent); } .term .c { color: var(--muted); }
+  .term .tag { display: inline-block; margin-top: 6px; font-size: 11px; color: var(--muted); border: 1px dashed var(--border); border-radius: 999px; padding: 2px 8px; }
+
+  /* ---------- métricas ---------- */
+  .stats { display: grid; grid-template-columns: repeat(6, 1fr); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; background: var(--border-soft); gap: 1px; }
+  .stat { background: color-mix(in srgb, var(--card) 92%, transparent); padding: var(--s5) var(--s4); }
+  .stat b { display: block; font: 800 28px/1.1 var(--mono); color: var(--fg); }
+  .stat b.g { color: var(--accent); }
+  .stat span { display: block; margin-top: 6px; font: 12px/1.4 var(--mono); color: var(--muted); }
+  .stats4 { grid-template-columns: repeat(4, 1fr); }
+  .devp { color: var(--fg-2); font-size: 15px; margin: var(--s2) 0 var(--s3); }
+  .note { margin-top: var(--s3); font: 12px var(--mono); color: var(--muted); }
+
+  section { padding: var(--s9) 0 0; }
+  h2 { font: 700 var(--t-h2)/1.15 var(--mono); letter-spacing: -.02em; margin: var(--s2) 0 var(--s5); }
+
+  /* ---------- demo ---------- */
+  .demo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
+  .pane { background: color-mix(in srgb, var(--card) 94%, transparent); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; display: flex; flex-direction: column; min-height: 300px; }
+  .pane header { display: flex; justify-content: space-between; align-items: center; gap: var(--s2); padding: 12px 16px; border-bottom: 1px solid var(--border-soft); font: 12px var(--mono); color: var(--muted); }
+  .pane header label, .pane header strong { color: var(--fg); font-weight: 600; }
+  textarea { flex: 1; width: 100%; min-height: 230px; resize: vertical; background: transparent; color: var(--fg); border: 0; padding: var(--s4); font: 15px/1.7 var(--mono); }
+  textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 0; }
+  .out { flex: 1; padding: var(--s4); font: 15px/1.7 var(--mono); white-space: pre-wrap; word-break: break-word; }
+  .out mark { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); border-bottom: 1px solid var(--accent); border-radius: 3px; padding: 0 2px; }
+  .empty, .err { color: var(--muted); display: grid; gap: var(--s3); align-content: center; justify-items: start; height: 100%; min-height: 200px; }
+  .err { color: var(--real); }
+  .err .btn { color: var(--fg); }
+  .sk { display: grid; gap: 10px; }
+  .sk i { height: 14px; border-radius: 4px; background: linear-gradient(90deg, var(--card-2), var(--border-soft), var(--card-2)); background-size: 200% 100%; animation: sh 1.2s infinite linear; }
+  .sk i:nth-child(2) { width: 86%; } .sk i:nth-child(3) { width: 64%; } .sk i:nth-child(4) { width: 78%; }
+  @keyframes sh { to { background-position: -200% 0; } }
+  .controls { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; margin-top: var(--s4); }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--s2); }
+  .chip { font: 500 13px var(--mono); min-height: 44px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; border: 1px dashed var(--border); background: transparent; color: var(--fg-2); cursor: pointer; transition: color .2s, border-color .2s; }
+  .chip:hover { color: var(--fg); border-color: var(--muted); }
+  .ents { margin-top: var(--s4); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; background: color-mix(in srgb, var(--card) 94%, transparent); }
+  .ents table { width: 100%; border-collapse: collapse; font: 13px var(--mono); }
+  .ents th { text-align: left; color: var(--muted); font-weight: 500; padding: 10px 14px; border-bottom: 1px solid var(--border-soft); }
+  .ents td { padding: 10px 14px; border-bottom: 1px solid var(--border-soft); vertical-align: top; word-break: break-word; }
+  .ents tr:last-child td { border-bottom: 0; }
+  .ents td.o { color: var(--real); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--real) 50%, transparent); }
+  .ents td.p { color: var(--accent); }
+  .ents td.e { color: var(--muted); }
+
+  /* ---------- pipeline ---------- */
+  .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s4); }
+  .step { position: relative; background: color-mix(in srgb, var(--card) 92%, transparent); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--s5); }
+  .step .n { font: 700 12px var(--mono); color: var(--accent-2); }
+  .step h3 { font: 700 17px var(--mono); margin: var(--s2) 0; }
+  .step p { color: var(--fg-2); font-size: 15px; }
+  .step code { font: 12px var(--mono); color: var(--warn); }
+  .step:nth-child(4) { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+
+  .split { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--s4); }
+  .card { background: color-mix(in srgb, var(--card) 92%, transparent); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--s5); }
+  .checks { list-style: none; display: grid; gap: var(--s3); margin-top: var(--s3); }
+  .checks li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; color: var(--fg-2); }
+  .checks svg { width: 18px; height: 18px; color: var(--accent); margin-top: 3px; }
+  .formula { margin-top: var(--s5); font: 13px/1.8 var(--mono); background: var(--bg-2); border-left: 2px solid var(--accent-2); padding: var(--s3) var(--s4); overflow-x: auto; white-space: pre; border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+  .ep { display: grid; grid-template-columns: 56px 1fr; gap: 10px 12px; font: 14px var(--mono); margin-top: var(--s3); }
+  .ep .m { color: var(--accent-2); font-weight: 700; }
+  .ep small { display: block; color: var(--muted); font: 12px var(--sans); }
+
+  footer { margin-top: var(--s9); border-top: 1px solid var(--border-soft); padding: var(--s5) 0 calc(var(--s6) + env(safe-area-inset-bottom)); display: flex; justify-content: space-between; gap: var(--s3); flex-wrap: wrap; font: 12px var(--mono); color: var(--muted); }
+
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; padding-top: var(--s8); }
+    .stats, .stats4 { grid-template-columns: repeat(2, 1fr); }
+    .demo, .split { grid-template-columns: 1fr; }
+    .flow { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .navlinks { display: none; }
+    .hero { padding-top: var(--s7); }
+    .lead { font-size: 16px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .flow { grid-template-columns: 1fr; }
+    .btn { width: 100%; justify-content: center; }
+    .term pre { font-size: 13px; }
+    .stat b { font-size: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .brand .cur, .spin, .sk i { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<nav aria-label="Principal">
+  <div class="wrap">
+    <a class="brand" href="/">kipu-anon<span class="cur" aria-hidden="true"></span></a>
+    <div class="navlinks">
+      <a href="#problema">el problema</a>
+      <a href="#como">cómo funciona</a>
+      <a href="#demo">pruébalo</a>
+      <a href="https://github.com/ALFA117/kipu-anon" target="_blank" rel="noopener">github</a>
+    </div>
+    <span class="status" role="status"><span class="dot" id="dot"></span><span id="st">comprobando…</span></span>
+  </div>
+</nav>
+
+<main id="main">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <p class="eyebrow" data-in>privacidad de datos <i>· para empresas que quieren entrenar IA</i></p>
+        <h1 data-in>Comparte tus datos.<br><em>Protege a tu gente.</em></h1>
+        <p class="lead" data-in>Las conversaciones con clientes valen mucho para entrenar inteligencia artificial, pero están llenas de nombres, cédulas, correos y teléfonos. kipu-anon cambia a cada persona por una persona inventada y deja todo lo demás igual. Así puedes compartir los datos sin exponer a nadie.</p>
+        <div class="cta" data-in>
+          <a class="btn pri" href="#demo" data-press>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            Pruébalo con tu texto
+          </a>
+          <a class="btn" href="#como" data-press>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
+            Ver cómo funciona
+          </a>
+        </div>
+      </div>
+      <div class="term" data-in aria-label="Ejemplo: un mensaje antes y después">
+        <div class="bar"><i></i><i></i><i></i><span>POST /v1/anonymize</span></div>
+        <pre id="hterm"><span class="c"># un mensaje real de soporte</span>
+<span class="k">antes</span>    <span class="r">Hola, me llamo Manuela Castaño.</span>
+<span class="k">después</span>  <span class="c">…</span></pre>
+      </div>
+    </div>
+
+    <div class="stats stats4" data-in>
+      <div class="stat"><b>8.297</b><span>mensajes, documentos y filas procesados</span></div>
+      <div class="stat"><b class="g">1.765</b><span>pruebas automáticas pasadas con los datos de ejemplo</span></div>
+      <div class="stat"><b>~2 s</b><span>para procesar todo</span></div>
+      <div class="stat"><b class="g">$0</b><span>por corrida: el motor no usa IA de pago</span></div>
+    </div>
+    <p class="note">Probado con los datos de ejemplo de una fintech colombiana (Kipu Pay) en el hackathon Frontier CDMX/26. Además lo atacamos con 300 mensajes inventados por una IA para engañarlo: hoy pasa limpios 250 de ellos y seguimos cerrando el resto.</p>
+
+    <section id="problema" aria-labelledby="prob-t">
+      <p class="eyebrow">el problema</p>
+      <h2 id="prob-t">Los datos ayudan. Las personas no deberían pagar el precio.</h2>
+      <div class="flow">
+        <article class="step" data-in><span class="n">¿qué pasa hoy?</span><h3>Los datos tienen dueño</h3><p>Una empresa tiene miles de chats con clientes. Ahí aparece “me llamo Ana, mi cédula es…”. Si los comparte así, cualquiera puede saber quién es quién.</p></article>
+        <article class="step" data-in><span class="n">¿por qué no basta tachar?</span><h3>Los datos se esconden</h3><p>Nombres en MAYÚSCULAS, correos escritos “ana arroba gmail punto com”, nombres dentro de archivos o pistas como “soy la única fotógrafa del barrio”.</p></article>
+        <article class="step" data-in><span class="n">¿y si borro todo?</span><h3>Se pierde el valor</h3><p>Un chat lleno de [BORRADO] ya no sirve para entrenar. Hay que proteger a la persona sin destruir la conversación.</p></article>
+      </div>
+    </section>
+
+    <section id="demo" aria-labelledby="demo-t">
+      <p class="eyebrow">pruébalo</p>
+      <h2 id="demo-t">Escribe un mensaje con datos inventados y mira qué pasa.</h2>
+      <div class="demo">
+        <div class="pane">
+          <header><label for="in">tu mensaje</label><span>con datos personales</span></header>
+          <textarea id="in" spellcheck="false">Hola, me llamo Valentina Ospitia Rangel. Me están cobrando una cuota que ya pagué. Mi cédula es 1.044.287.913 y mi correo valen.ospitia arroba gmail punto com. Pagué por PSE desde Bancolombia; soy fotógrafa y vivo en Granada.</textarea>
+        </div>
+        <div class="pane">
+          <header><strong>cómo queda</strong><span id="lat">—</span></header>
+          <div class="out" id="out" aria-live="polite"><div class="empty">Presiona <b>Anonimizar</b> o elige un ejemplo.</div></div>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn pri" id="go" data-press>Anonimizar</button>
+        <div class="chips" role="group" aria-label="Ejemplos">
+          <button class="chip" data-t="EXTRACTO DE CUENTA · TITULAR: MARIA FERNANDA RUIZ GOMEZ · CC 52.418.903 · Cel 310 555 0199" data-press>un extracto bancario</button>
+          <button class="chip" data-t="Te adjunto el certificado_laboral_jorge_pinto.pdf. La placa del carro es KTZ482 y mi pasaporte AR752831." data-press>archivo, placa y pasaporte</button>
+          <button class="chip" data-t="Shakira compró en Carulla con Nequi y la Superfinanciera abrió un caso en Plaza Botero." data-press>marcas y famosos (no se tocan)</button>
+        </div>
+      </div>
+      <div class="ents" id="ents" hidden>
+        <table><thead><tr><th scope="col">dato real</th><th scope="col">se cambió por</th><th scope="col">persona</th></tr></thead><tbody id="tb"></tbody></table>
+      </div>
+    </section>
+
+    <section id="como" aria-labelledby="como-t">
+      <p class="eyebrow">cómo funciona</p>
+      <h2 id="como-t">Tres ideas sencillas.</h2>
+      <div class="flow">
+        <article class="step" data-in><span class="n">01</span><h3>Conocer a cada persona</h3><p>Arma una ficha por persona con todas las formas en que aparece: nombre, cédula con o sin puntos, correo y celular. Si dos personas se llaman igual, las separa por su cédula.</p></article>
+        <article class="step" data-in><span class="n">02</span><h3>Cambiarla por alguien inventado</h3><p>Cada persona recibe un nombre, una cédula y un correo inventados pero creíbles. Siempre los mismos: si Ana aparece en 10 chats, en los 10 será “Olga”.</p></article>
+        <article class="step" data-in><span class="n">03</span><h3>No tocar nada más</h3><p>Montos, fechas, bancos, ciudades y la conversación quedan igual. Lo que delata sin decir el nombre (oficio + barrio + año) se vuelve más general.</p></article>
+      </div>
+    </section>
+
+    <section id="garantias" aria-labelledby="gar-t">
+      <p class="eyebrow">qué garantiza</p>
+      <h2 id="gar-t">Útil para entrenar. Inútil para espiar.</h2>
+      <div class="split">
+        <div class="card" data-in>
+          <ul class="checks">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>La misma persona tiene el mismo nombre inventado en chats, documentos y tablas.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Dos personas que se llaman igual no se mezclan.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Si llegan datos nuevos, las personas de antes conservan su nombre inventado.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Bancos, tiendas, ciudades y famosos no se cambian: no son personas privadas.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Ningún dato inventado coincide con el de una persona real.</li>
+          </ul>
+        </div>
+        <div class="card" data-in>
+          <p class="eyebrow">para desarrolladores</p>
+          <p class="devp">Es un servicio web: se conecta a la fuente de datos, la procesa completa y también anonimiza mensajes nuevos al momento.</p>
+          <div class="ep">
+            <span class="m">GET</span><span><a href="/v1/health">/v1/health</a><small>¿está funcionando?</small></span>
+            <span class="m">POST</span><span>/v1/run<small>procesa todos los datos</small></span>
+            <span class="m">GET</span><span>/v1/output/{archivo}<small>descarga el resultado</small></span>
+            <span class="m">POST</span><span>/v1/anonymize<small>anonimiza mensajes nuevos</small></span>
+          </div>
+          <p class="devp"><a href="https://github.com/ALFA117/kipu-anon" target="_blank" rel="noopener">Código abierto en GitHub →</a></p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="wrap">
+  <span>kipu-anon v1.1 · Node.js + auditor con IA en Python · Vercel</span>
+  <span>Hecho por Edgar López y Elizabeth Cruz · Frontier CDMX/26</span>
+</footer>
+
+<script>
+/* ---------- fondo: malla icosaédrica proyectada a mano (receta 6 adaptada, sin Three.js) ----------
+   Partículas rojas (datos reales) entran por la izquierda, cruzan la malla y salen verdes (seudónimos). */
+(() => {
+  const cv = document.getElementById('bg');
+  const ctx = cv.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobile = matchMedia('(max-width: 640px)').matches;
+  const light = matchMedia('(prefers-color-scheme: light)').matches;
+  const col = light ? { mesh: '21,128,61', real: '198,40,40', ok: '21,128,61', a: .28 } : { mesh: '34,197,94', real: '255,107,107', ok: '34,197,94', a: .5 };
+  let W, H, dpr;
+  const resize = () => { dpr = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+  resize(); addEventListener('resize', resize);
+  // icosaedro subdividido una vez
+  const t = (1 + Math.sqrt(5)) / 2;
+  let V = [[-1,t,0],[1,t,0],[-1,-t,0],[1,-t,0],[0,-1,t],[0,1,t],[0,-1,-t],[0,1,-t],[t,0,-1],[t,0,1],[-t,0,-1],[-t,0,1]].map(v => { const l = Math.hypot(...v); return v.map(x => x / l); });
+  let F = [[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]];
+  if (!mobile) {
+    const cache = {}, mid = (a, b) => { const k = a < b ? a + '_' + b : b + '_' + a; if (cache[k] != null) return cache[k]; const m = V[a].map((x, i) => (x + V[b][i]) / 2); const l = Math.hypot(...m); V.push(m.map(x => x / l)); return (cache[k] = V.length - 1); };
+    F = F.flatMap(([a, b, c]) => { const ab = mid(a, b), bc = mid(b, c), ca = mid(c, a); return [[a, ab, ca], [b, bc, ab], [c, ca, bc], [ab, bc, ca]]; });
+  }
+  const E = new Set(); F.forEach(([a, b, c]) => [[a, b], [b, c], [c, a]].forEach(([x, y]) => E.add(x < y ? x + '-' + y : y + '-' + x)));
+  const edges = [...E].map(s => s.split('-').map(Number));
+  const N = mobile ? 70 : 150;
+  const P = Array.from({ length: N }, () => ({ x: Math.random(), y: Math.random(), z: Math.random(), s: .0006 + Math.random() * .0016 }));
+  let px = 0, py = 0, tx = 0, ty = 0, sy = 0;
+  if (!mobile) addEventListener('pointermove', e => { tx = e.clientX / innerWidth - .5; ty = e.clientY / innerHeight - .5; }, { passive: true });
+  addEventListener('scroll', () => { sy = scrollY; }, { passive: true });
+  let raf = 0, time = 0;
+  function frame() {
+    time += reduce ? 0 : 1;
+    px += (tx - px) * .05; py += (ty - py) * .05;
+    ctx.clearRect(0, 0, W, H);
+    const cx = W * (mobile ? .5 : .7) + px * 30, cy = H * .42 - sy * .12 + py * 20;
+    const R = Math.min(W, H) * (mobile ? .32 : .3) * (1 + Math.sin(time * .012) * .03);
+    const ry = time * .0025 + px * .6, rx = .35 + py * .4;
+    const cyr = Math.cos(ry), syr = Math.sin(ry), cxr = Math.cos(rx), sxr = Math.sin(rx);
+    const pr = V.map(([x, y, z]) => { const x1 = x * cyr + z * syr, z1 = -x * syr + z * cyr; const y1 = y * cxr - z1 * sxr, z2 = y * sxr + z1 * cxr; const k = 2.6 / (2.6 + z2); return [cx + x1 * R * k, cy + y1 * R * k, z2]; });
+    // capa lejana: partículas (parallax de scroll distinto al de la malla)
+    for (const p of P) {
+      if (!reduce) { p.x += p.s; if (p.x > 1.05) { p.x = -.05; p.y = Math.random(); } }
+      const X = p.x * W + px * 12 * p.z, Y = p.y * H - sy * (.04 + p.z * .08) % H;
+      const yy = ((Y % H) + H) % H;
+      const passed = X > cx;
+      const near = Math.abs(X - cx) < R * 1.05 && Math.abs(yy - cy) < R;
+      ctx.fillStyle = `rgba(${passed ? col.ok : col.real},${(near ? .9 : .45) * (.4 + p.z * .6)})`;
+      const s = 1 + p.z * 1.6;
+      ctx.fillRect(X, yy, s, s);
+    }
+    // capa cercana: malla
+    ctx.lineWidth = 1;
+    for (const [a, b] of edges) {
+      const za = (pr[a][2] + pr[b][2]) / 2;
+      ctx.strokeStyle = `rgba(${col.mesh},${col.a * (.35 + (1 - za) * .35)})`;
+      ctx.beginPath(); ctx.moveTo(pr[a][0], pr[a][1]); ctx.lineTo(pr[b][0], pr[b][1]); ctx.stroke();
+    }
+    for (const [x, y, z] of pr) { ctx.fillStyle = `rgba(${col.mesh},${.25 + (1 - z) * .35})`; ctx.fillRect(x - 1, y - 1, 2, 2); }
+    if (!reduce && !document.hidden) raf = requestAnimationFrame(frame);
+  }
+  frame();
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && !reduce) { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); } });
+})();
+</script>
+
+<script type="module">
+/* ---------- datos y demo ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let motion = null;
+try { motion = await import('https://cdn.jsdelivr.net/npm/motion@13.4.6/+esm'); } catch { /* la página funciona sin Motion */ }
+
+fetch('/v1/health').then(r => r.json()).then(h => { $('dot').className = 'dot ok'; $('st').textContent = `en línea · v${h.version}`; })
+  .catch(() => { $('dot').className = 'dot bad'; $('st').textContent = 'sin conexión'; });
+
+async function anonymize(text) {
+  const r = await fetch('/v1/anonymize', { method: 'POST', headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ source: 'chats', records: [{ id: 'demo-' + Date.now(), thread_id: 'demo:' + Date.now(), author: '', ts: String(Date.now() / 1000), text, attachments: [] }] }) });
+  if (!r.ok) throw new Error(`el servicio respondió ${r.status}`);
+  return r.json();
+}
+
+// terminal del hero: ejemplo fijo (la página no llama al servicio hasta que alguien presiona un botón)
+(() => {
+  const target = document.getElementById('hterm');
+  target.innerHTML = `<span class="c"># un mensaje de soporte, antes y después</span>
+<span class="k">antes</span>    <span class="r">Hola, me llamo Manuela Castaño.</span>
+<span class="k">después</span>  <span class="g" id="hout"></span>
+
+<span class="c"># pruébalo con tu propio texto más abajo</span>`;
+  const out = 'Hola, me llamo Olga Garzón.';
+  const el = document.getElementById('hout');
+  if (reduce) { el.textContent = out; return; }
+  const glyphs = '01#$%&*@<>/';
+  let i = 0;
+  const tick = () => { i++; el.textContent = out.split('').map((c, k) => (k < i ? c : c === ' ' ? ' ' : glyphs[(k * 7 + i) % glyphs.length])).join(''); if (i <= out.length) setTimeout(tick, 28); };
+  setTimeout(tick, 500);
+})();
+
+function skeleton() { $('out').innerHTML = '<div class="sk" aria-label="anonimizando"><i></i><i></i><i></i><i></i></div>'; }
+
+async function run() {
+  const text = $('in').value.trim();
+  if (!text) { $('out').innerHTML = '<div class="empty">Escribe un mensaje con nombres, cédulas o correos y presiona <b>Anonimizar</b>.</div>'; $('ents').hidden = true; return; }
+  const go = $('go');
+  go.disabled = true; go.innerHTML = '<span class="spin" aria-hidden="true"></span> Anonimizando';
+  skeleton();
+  const t0 = performance.now();
+  try {
+    const d = await anonymize(text);
+    $('lat').textContent = `${Math.round(performance.now() - t0)} ms`;
+    const out = d.records?.[0]?.text ?? '';
+    const ents = (d.entities || []).filter(e => !e.kept);
+    const vals = [...new Set(ents.flatMap(e => Object.values(e.pseudonyms || {})))].filter(v => v && v.length > 2).sort((a, b) => b.length - a.length);
+    let html = esc(out);
+    for (const v of vals) html = html.split(esc(v)).join(`\u0001${esc(v)}\u0002`);
+    html = html.replace(/\u0001+/g, '<mark>').replace(/\u0002+/g, '</mark>');
+    $('out').innerHTML = html || '<div class="empty">Sin texto.</div>';
+    const rows = [];
+    for (const e of ents) {
+      const ps = e.pseudonyms || {};
+      for (const o of e.originals.filter(o => text.includes(o))) {
+        const kind = /@|arroba/.test(o) ? 'email' : /^\d[\d.\s-]+$/.test(o) ? (ps.cedula && o.replace(/\D/g, '').length !== 10 ? 'cedula' : (ps.phone ? 'phone' : 'cedula')) : /^[A-Z]{2,3}\d/.test(o) ? (ps.plate ? 'plate' : 'passport') : 'name';
+        rows.push(`<tr><td class="o">${esc(o)}</td><td class="p">${esc(ps[kind] || ps.name || Object.values(ps)[0] || '')}</td><td class="e">${esc(e.entity_id)}</td></tr>`);
+      }
+    }
+    const kept = (d.entities || []).filter(e => e.kept).map(e => `<tr><td>${esc(e.originals[0])}</td><td class="e">se deja igual: no es una persona</td><td class="e">—</td></tr>`);
+    $('tb').innerHTML = rows.concat(kept).join('') || '<tr><td colspan="3" class="e">No encontré datos personales en este texto.</td></tr>';
+    $('ents').hidden = false;
+    if (motion && !reduce) {
+      motion.animate('#out', { opacity: [0, 1], y: [6, 0] }, { duration: .25 });
+      motion.animate('#tb tr', { opacity: [0, 1], x: [-8, 0] }, { duration: .25, delay: i => i * .04 });
+    }
+  } catch (err) {
+    $('lat').textContent = 'error';
+    $('out').innerHTML = `<div class="err" role="alert"><span>No pude anonimizar: ${esc(err.message)}. Revisa tu conexión; el servicio puede estar arrancando.</span><button class="btn" id="retry">Reintentar</button></div>`;
+    $('retry').onclick = run;
+  } finally { go.disabled = false; go.textContent = 'Anonimizar'; }
+}
+$('go').addEventListener('click', run);
+document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => { $('in').value = c.dataset.t; run(); }));
+
+/* ---------- Motion: entrada del hero, línea tachada, scroll y presión ---------- */
+if (motion && !reduce) {
+  const { animate, inView } = motion;
+  const hero = document.querySelectorAll('.hero [data-in]');
+  hero.forEach((el, i) => animate(el, { opacity: [0.35, 1], y: [14, 0] }, { duration: .4, delay: .08 + i * .06, ease: [.16, 1, .3, 1] }));
+  document.querySelectorAll('main section [data-in], .stats').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < innerHeight) return; // lo visible al cargar no se oculta; sin JS todo se ve
+    el.style.opacity = '0';
+    inView(el, () => { animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: .35, ease: [.16, 1, .3, 1] }); }, { amount: .2 });
+  });
+  document.querySelectorAll('[data-press]').forEach(el => {
+    el.addEventListener('pointerdown', () => animate(el, { scale: .97 }, { type: 'spring', stiffness: 600, damping: 30 }));
+    const up = () => animate(el, { scale: 1 }, { type: 'spring', stiffness: 500, damping: 22 });
+    el.addEventListener('pointerup', up); el.addEventListener('pointerleave', up);
+    el.addEventListener('pointerenter', () => { if (matchMedia('(hover: hover)').matches) animate(el, { scale: 1.02 }, { type: 'spring', stiffness: 400, damping: 25 }); });
+  });
+}
+</script>
+</body>
+</html>

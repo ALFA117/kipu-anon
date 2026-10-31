@@ -1,0 +1,25 @@
+{
+  "name": "kipu-anon",
+  "version": "1.0.0",
+  "description": "Seudonimización determinista del corpus de Kipu Pay (Frontier CDMX/26, reto 1)",
+  "type": "module",
+  "main": "src/main.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/main.js",
+    "run:local": "node scripts/run-local.js",
+    "scan": "node scripts/scan.js",
+    "validate": "node scripts/validar.mjs output/ --public data/",
+    "eval": "node scripts/eval-local.js",
+    "eval:tabla": "node scripts/eval-local.js --tabla",
+    "live": "node scripts/live-test.js",
+    "watch": "node scripts/watch-sources.js --loop 60",
+    "post-incident": "node scripts/post-incident.js",
+    "juez": "node scripts/juez.js"
+  },
+  "dependencies": {
+    "fastify": "^5.2.1"
+  }
+}

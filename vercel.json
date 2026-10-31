@@ -1,0 +1,7 @@
+{
+  "framework": null,
+  "rewrites": [{ "source": "/(.*)", "destination": "/api" }],
+  "functions": {
+    "api/index.js": { "maxDuration": 300, "includeFiles": "{data/pseudonyms.json,src/empty/**,public/**}" }
+  }
+}
