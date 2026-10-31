@@ -18,7 +18,7 @@ export function loadStored(file) {
 function scanParticipants(an, text) {
   const out = new Set();
   const reg = an.reg;
-  for (const m of text.matchAll(/CL-\d{4,6}/g)) { const e = reg.byClient.get(m[0]); if (e) out.add(e); }
+  for (const m of text.matchAll(/(?:CL|PG)-\d{4,6}/g)) { const e = reg.byClient.get(m[0]); if (e) out.add(e); }
   for (const m of text.matchAll(/[a-z0-9][a-z0-9._%+-]*@[a-z0-9.-]+\.[a-z]{2,}/gi)) { const e = reg.byEmail.get(m[0].toLowerCase()); if (e) out.add(e); }
   const n = norm(text);
   for (const m of n.matchAll(an.rxNames)) {

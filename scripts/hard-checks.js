@@ -161,7 +161,9 @@ export function hardChecks(srcDir, outDir) {
   for (const p of people) { const t = p.name.split(/\s+/); const k = norm(`${t[0]} ${t[t.length >= 3 ? t.length - 2 : 1]}`); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(p); }
   let hOk = 0, hTot = 0;
   const hFails = [];
-  for (const [k, ps] of groups) {
+  for (const [k, ps0] of groups) {
+    // la misma cédula es la misma persona (cliente migrado con id nuevo): no son homónimos
+    const ps = [...new Map(ps0.map(p => [String(p.ced || p.id).replace(/\D/g, '') || p.id, p])).values()];
     if (ps.length < 2) continue;
     hTot++;
     const pe = ps.map(p => ents.find(e => e.originals.includes(p.ced) || e.originals.includes(p.mail)));

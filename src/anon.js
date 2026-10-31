@@ -120,9 +120,9 @@ export class Anonymizer {
       // radicado PQR o id de transacción en la misma zona apuntan al cliente correcto
       // (pesa más el id más cercano: en una tabla, el de la misma fila)
       const off = Math.max(0, start - 80);
-      for (const m of near.matchAll(/PQR-\d{4}-\d{3,5}|TX-\d{4,7}|CL-\d{4,6}/g)) {
-        const cl = m[0].startsWith('CL-') ? m[0] : (this.reg.pqrClient?.get(m[0])) || (this.reg.txClient?.get(m[0]));
-        if (cl && cl === e.clientId) s += Math.max(10, 90 - Math.abs(off + m.index - start) / 2);
+      for (const m of near.matchAll(/PQR-\d{4}-\d{3,5}|TX-\d{4,7}|(?:CL|PG)-\d{4,6}/g)) {
+        const cl = /^(?:CL|PG)-/.test(m[0]) ? m[0] : (this.reg.pqrClient?.get(m[0])) || (this.reg.txClient?.get(m[0]));
+        if (cl && this.reg.byClient.get(cl) === e) s += Math.max(10, 90 - Math.abs(off + m.index - start) / 2);
       }
       if (ctx.participants?.has(e)) s += 40;
       if (ctx.preferRole && e.role === ctx.preferRole) s += 5;
@@ -479,6 +479,8 @@ export class Anonymizer {
       if (!/(cuenta|account|tarjeta|card|ahorros|corriente|n[uú]mero de (?:la )?(?:cuenta|tarjeta))/i.test(before)) continue;
       const d = digits(m[0]);
       if (d.length < 8 || reg.byPhone.get(d) || reg.byCedula.get(d)) continue;
+      // una fecha no es una cuenta: "bloqueo desde el 2026-10-07"
+      if (/^(?:19|20)\d\d-[01]\d-[0-3]\d$|^[0-3]?\d-[01]?\d-(?:19|20)\d\d$/.test(m[0])) continue;
       push(m.index, m.index + m[0].length, 7, () => {
         const e = this.ownerForUnknown(ctx, 'account', d);
         const v = fakeFrom(e.key + 'acct' + d, d);

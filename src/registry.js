@@ -94,6 +94,7 @@ export class Registry {
 
   index(e) {
     if (e.clientId) this.byClient.set(e.clientId, e);
+    for (const id of e.altClientIds || []) this.byClient.set(id, e);
     if (e.empId) this.byEmp.set(e.empId, e);
     for (const u of e.uids) this.byUid.set(u, e);
     for (const c of e.cedulas) this.byCedula.set(c, e);

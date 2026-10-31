@@ -1,0 +1,1988 @@
+[
+ {
+  "texto": "Hola, soy Andrés Felipe y me llegó un correo a felipec@hotmail.com diciendo que mi cuenta 30255178 fue migrada, pero al ingresar con mi cédula 1019940033 no reconoce mis datos en Kipu Pay.",
+  "debe_desaparecer": [
+   "Andrés Felipe",
+   "felipec@hotmail.com",
+   "30255178",
+   "1019940033"
+  ],
+  "debe_quedar": [
+   "Kipu Pay"
+  ],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Buenas tardes, mi usuario era paula-rodriguez en Págalo y ahora con el nuevo id CL-45322 no tengo acceso a mis saldos. El soporte dice que mis datos están repetidos con el usuario paula.rodz.",
+  "debe_desaparecer": [
+   "paula-rodriguez",
+   "paula.rodz"
+  ],
+  "debe_quedar": [
+   "Págalo"
+  ],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Mi nombre es Camilo Carrillo y la cédula 79213499 fue usada en dos perfiles tras la migración. En el sistema viejo usaba el correo camilocar99@pagalo.com y ahora me sale error por duplicidad.",
+  "debe_desaparecer": [
+   "Camilo Carrillo",
+   "79213499",
+   "camilocar99@pagalo.com"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Hola Kipu, la cuenta con placa CXA234 y cédula 1002982009 se migró desde Págalo, pero el nuevo ID que me dieron no sirve y tengo documentos asociados aún a la cuenta vieja.",
+  "debe_desaparecer": [
+   "CXA234",
+   "1002982009"
+  ],
+  "debe_quedar": [
+   "Págalo"
+  ],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Mi correo anterior era maria_garcia85@gmail.com y ahora me sale que ese email está en uso cuando intento crear el acceso. ¿Pueden ayudarme? Mi usuario era mariagarcía.",
+  "debe_desaparecer": [
+   "maria_garcia85@gmail.com",
+   "mariagarcía"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Tengo el ID TX-999857 y mi usuario desde Págalo era daniel-ruiz, pero mi número 3174500012 quedó asociado a otra cuenta. ¿Qué debo hacer?",
+  "debe_desaparecer": [
+   "daniel-ruiz",
+   "3174500012"
+  ],
+  "debe_quedar": [
+   "Págalo"
+  ],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Después de la migración, mi perfil aparece con dos números de cédula: 1122993344 y 1122993345, pero ambos asociaban el mismo correo personal (jorgee@correo.net). ¿Pueden unificar mi información?",
+  "debe_desaparecer": [
+   "1122993344",
+   "1122993345",
+   "jorgee@correo.net"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Uso la cuenta ACC-55089, pero los datos de nacimiento asociados no son correctos. Nací el 22/07/1985 y el sistema muestra 10/10/1990, además el usuario angel.mendoza quedó duplicado.",
+  "debe_desaparecer": [
+   "22/07/1985",
+   "10/10/1990",
+   "angel.mendoza"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "El número de contacto que me aparece en el sistema es 3205678910 pero ese es de mi esposa. Yo registré 3121235678 en Págalo y ahora no puedo acceder con mi nueva cuenta.",
+  "debe_desaparecer": [
+   "3205678910",
+   "3121235678"
+  ],
+  "debe_quedar": [
+   "Págalo"
+  ],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Mi cédula vieja 72634589 fue usada en la migración, pero la nueva cuenta exige contraseña distinta para el correo oscarperez0101@yahoo.com, y el sistema dice que ya existe.",
+  "debe_desaparecer": [
+   "72634589",
+   "oscarperez0101@yahoo.com"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "No me deja recuperar acceso. Mi usuario era 'luisa-01' y mi cédula 1033344667, pero el correo luisa.correa@pagalo.com está duplicado tras migrar desde Págalo.",
+  "debe_desaparecer": [
+   "luisa-01",
+   "1033344667",
+   "luisa.correa@pagalo.com"
+  ],
+  "debe_quedar": [
+   "Págalo"
+  ],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Buenas, en mi nuevo perfil Kipu Pay dice que soy 'Ricardo Gómez', pero en el anterior de Págalo era 'Ricardo Gomez' (sin tilde), con la cuenta RICGO-110. Ahora no me llegan notificaciones.",
+  "debe_desaparecer": [
+   "Ricardo Gómez",
+   "Ricardo Gomez",
+   "RICGO-110"
+  ],
+  "debe_quedar": [
+   "Kipu Pay",
+   "Págalo"
+  ],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Intenté cambiar mi dirección (Cra 60 #45-10 apto 501) y el sistema muestra una dirección antigua (Cll 118 #22-19). Además, el usuario juancho23 aparece dos veces.",
+  "debe_desaparecer": [
+   "Cra 60 #45-10 apto 501",
+   "Cll 118 #22-19",
+   "juancho23"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Tengo dos cuentas diferentes: una con mi pasaporte AM456321 y otra con cédula 122334566. Ambas tienen el correo marcelavargas@gmail.com debido a la migración.",
+  "debe_desaparecer": [
+   "AM456321",
+   "122334566",
+   "marcelavargas@gmail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "El correo carlos.guerrero@hotmail.es fue duplicado y asocia dos usuarios: carlosg23 y c.guerrero en el sistema nuevo. ¿Cómo lo soluciono?",
+  "debe_desaparecer": [
+   "carlos.guerrero@hotmail.es",
+   "carlosg23",
+   "c.guerrero"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Mi fecha de nacimiento real es 15/03/1992 pero el sistema tiene 12/12/1992 y esto me impide validar mi cuenta. Mi usuario era santiagop.",
+  "debe_desaparecer": [
+   "15/03/1992",
+   "12/12/1992",
+   "santiagop"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Buenas noches, el número 3168009988 era el que usaba en Págalo, pero ahora en Kipu Pay sale registrado para otro usuario con documento 90012345.",
+  "debe_desaparecer": [
+   "3168009988",
+   "90012345"
+  ],
+  "debe_quedar": [
+   "Págalo",
+   "Kipu Pay"
+  ],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "No puedo ingresar mi cuenta vieja GP-3344 porque el correo diegogarcia71@correo.com aparece ahora asociado a otro usuario de nombre Diego García.",
+  "debe_desaparecer": [
+   "GP-3344",
+   "diegogarcia71@correo.com",
+   "Diego García"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Tras migrar desde Págalo, tengo el usuario l.patricia y también lpatricia23, ambos con cédula 1008776222, pero solo una contraseña funciona.",
+  "debe_desaparecer": [
+   "l.patricia",
+   "lpatricia23",
+   "1008776222"
+  ],
+  "debe_quedar": [
+   "Págalo"
+  ],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "El sistema pone mi correo como andres.torres@outlook.com pero debería ser andrest@correo.co. Por favor corrijan, mi usuario es at123.",
+  "debe_desaparecer": [
+   "andres.torres@outlook.com",
+   "andrest@correo.co",
+   "at123"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "En la migración quedaron dos cuentas a mi nombre, una con la cédula 1100442288 y la otra con mi correo personal j.valenzuela@hotmail.com. ¿Me pueden ayudar a unificar?",
+  "debe_desaparecer": [
+   "1100442288",
+   "j.valenzuela@hotmail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos"
+ },
+ {
+  "texto": "Exporté el listado y veo algo así en el log: Luis Alejandro;1032458796;luismora@gmail.com;3005678901, pero la columna de correo se quedó pegada con la de celular.",
+  "debe_desaparecer": [
+   "Luis Alejandro",
+   "1032458796",
+   "luismora@gmail.com",
+   "3005678901"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "¿Por qué el CSV muestra: carmen_ramos;52411123;carmen.ramos@correo.com;3120022211, pero a veces el número sale como 312****11 y otras como ese completo?",
+  "debe_desaparecer": [
+   "carmen_ramos",
+   "52411123",
+   "carmen.ramos@correo.com",
+   "3120022211"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "El usuario Juan Camilo Pérez con cédula 74839210 y mail juancamilo@hotmail.com aparece dos veces: juancamilo_perez;74839210;juancamilo@hotmail.com;3204949282.",
+  "debe_desaparecer": [
+   "Juan Camilo Pérez",
+   "74839210",
+   "juancamilo@hotmail.com",
+   "juancamilo_perez",
+   "3204949282"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "Cuando copio la línea \"marcela_lopez;53091100;marcela.lopez2020@gmail.com;3013344556\", el sistema me dice que hay caracteres inválidos en el campo de cédula.",
+  "debe_desaparecer": [
+   "marcela_lopez",
+   "53091100",
+   "marcela.lopez2020@gmail.com",
+   "3013344556"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "En el archivo, la línea: andres.castaneda;1094875213;andres.c@correo.com;3150091834 sale incompleta, el correo no se muestra bien.",
+  "debe_desaparecer": [
+   "andres.castaneda",
+   "1094875213",
+   "andres.c@correo.com",
+   "3150091834"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "Al exportar, algunos usuarios como maria_uribe;97456375;maria22@ejemplo.net;3119887766 aparecen con el correo cortado.",
+  "debe_desaparecer": [
+   "maria_uribe",
+   "97456375",
+   "maria22@ejemplo.net",
+   "3119887766"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "Me llegó este registro: rojas.gabriel;1023087654;gabrielr@empresa.co;3214455667, pero no lo encuentro en la interfaz de Kipu.",
+  "debe_desaparecer": [
+   "rojas.gabriel",
+   "1023087654",
+   "gabrielr@empresa.co",
+   "3214455667"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "Exportando desde otro sistema, el log trae: Paola Herrera;79563214;paolaherrera@prueba.com;3123322110, pero el nombre aparece en mayúsculas a veces.",
+  "debe_desaparecer": [
+   "Paola Herrera",
+   "79563214",
+   "paolaherrera@prueba.com",
+   "3123322110"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "Testeando el CSV veo: felipe_munoz;1019884432;felipemunoz@personal.io;3018837261 y la cédula no tiene el mismo formato que en Kipu.",
+  "debe_desaparecer": [
+   "felipe_munoz",
+   "1019884432",
+   "felipemunoz@personal.io",
+   "3018837261"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "Intenté importar la línea: sandra.ortiz;1132089123;sandraortiz@mail.com;3106578412 y me salta error en el celular.",
+  "debe_desaparecer": [
+   "sandra.ortiz",
+   "1132089123",
+   "sandraortiz@mail.com",
+   "3106578412"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "No veo el registro de julian.castro;1002345891;jcastro@worklab.com;3202288997 en la lista de usuarios al exportar, aunque debería estar.",
+  "debe_desaparecer": [
+   "julian.castro",
+   "1002345891",
+   "jcastro@worklab.com",
+   "3202288997"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "¿Por qué en el CSV me sale: gonzalez_diego;1122334455;diego.gonzalez@correo.co;3024567891 pero el mail está en minúscula y el usuario en mayúscula?",
+  "debe_desaparecer": [
+   "gonzalez_diego",
+   "1122334455",
+   "diego.gonzalez@correo.co",
+   "3024567891"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "Exportando desde el otro sistema la línea: nancy.medina;78594210;nancy-m@gmail.com;3145987235, algunos campos son tabulados en vez de punto y coma.",
+  "debe_desaparecer": [
+   "nancy.medina",
+   "78594210",
+   "nancy-m@gmail.com",
+   "3145987235"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "Me llegó este error de validación: oscar_ayala;1012453870;oscarayala1980@yahoo.com;3126778899 el correo parece tener un espacio en blanco al final.",
+  "debe_desaparecer": [
+   "oscar_ayala",
+   "1012453870",
+   "oscarayala1980@yahoo.com",
+   "3126778899"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "Una linea que da error es: laura.vera;1100345632;laura.vera@testing.com;3001122334, aunque la información parece bien.",
+  "debe_desaparecer": [
+   "laura.vera",
+   "1100345632",
+   "laura.vera@testing.com",
+   "3001122334"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "En el log están líneas como: jorge_ospina;1025468793;jorge.ospina@correo.com;3198765432, pero el usuario ya no existe.",
+  "debe_desaparecer": [
+   "jorge_ospina",
+   "1025468793",
+   "jorge.ospina@correo.com",
+   "3198765432"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "El registro 'victor.herrera;99012345;victorherrera@gmail.com;3134556677' aparece duplicado en mi exporte.",
+  "debe_desaparecer": [
+   "victor.herrera",
+   "99012345",
+   "victorherrera@gmail.com",
+   "3134556677"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "Tengo este caso: natalia_gomez;1082938777;natalia.gomez@mycompany.co;3179900112 y cuando lo pego, el nombre se parte en dos columnas.",
+  "debe_desaparecer": [
+   "natalia_gomez",
+   "1082938777",
+   "natalia.gomez@mycompany.co",
+   "3179900112"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "En el archivo procesado, la línea: catalina.palacios;1017783456;cpalacios@mail.com;3017733664 trae el usuario con espacios y da error.",
+  "debe_desaparecer": [
+   "catalina.palacios",
+   "1017783456",
+   "cpalacios@mail.com",
+   "3017733664"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "Cuando reviso el CSV: esteban.silva;1054327809;esteban.silva@empresa.net;3184557788, el sistema lo reconoce como dos usuarios diferentes.",
+  "debe_desaparecer": [
+   "esteban.silva",
+   "1054327809",
+   "esteban.silva@empresa.net",
+   "3184557788"
+  ],
+  "debe_quedar": [],
+  "tema": "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular"
+ },
+ {
+  "texto": "Estimados, adjuntamos el acta de integración firmada por Laura Restrepo y Andrés Gómez de QL Solutions, y por Miguel Ángel Herrera de Kipu Pay. Por favor confirmar recepción.",
+  "debe_desaparecer": [
+   "Laura Restrepo",
+   "Andrés Gómez",
+   "Miguel Ángel Herrera"
+  ],
+  "debe_quedar": [
+   "Kipu Pay",
+   "QL Solutions"
+  ],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "El correo enviado por lucia.bermudez@financesas.co contiene la copia escaneada del acuerdo con firmas de Pablo Cárdenas y Juan Felipe Salazar.",
+  "debe_desaparecer": [
+   "lucia.bermudez@financesas.co",
+   "Pablo Cárdenas",
+   "Juan Felipe Salazar"
+  ],
+  "debe_quedar": [],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "Se requiere que el gerente de operaciones de Betalabs, Daniel H. Maldonado, firme la adenda junto con María Juliana Torres (Kipu Pay).",
+  "debe_desaparecer": [
+   "Daniel H. Maldonado",
+   "María Juliana Torres"
+  ],
+  "debe_quedar": [
+   "Kipu Pay",
+   "Betalabs"
+  ],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "Adjunto el documento firmado electrónicamente por Carlos E. Castaño y diana.ospina@kipupay.co como testigos de la integración.",
+  "debe_desaparecer": [
+   "Carlos E. Castaño",
+   "diana.ospina@kipupay.co"
+  ],
+  "debe_quedar": [],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "Se ha recibido la minuta con las rúbricas de Hugo Iván Rojas (Devscol) y Sandra Milena Quiroz (Kipu Pay). Falta validar el correo de sandramq@gmail.com.",
+  "debe_desaparecer": [
+   "Hugo Iván Rojas",
+   "Sandra Milena Quiroz",
+   "sandramq@gmail.com"
+  ],
+  "debe_quedar": [
+   "Kipu Pay",
+   "Devscol"
+  ],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "Favor revisar la cédula 1045638791 de Luz Alejandra Cabrera, quien aparece como representante legal de la contraparte.",
+  "debe_desaparecer": [
+   "1045638791",
+   "Luz Alejandra Cabrera"
+  ],
+  "debe_quedar": [],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "En el último correo de integración, enviado por juanc.escobar@kipupay.co, se anexan firmas de Mauricio Quintero y Mónica del Pilar Sánchez.",
+  "debe_desaparecer": [
+   "juanc.escobar@kipupay.co",
+   "Mauricio Quintero",
+   "Mónica del Pilar Sánchez"
+  ],
+  "debe_quedar": [],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "Por favor confirmen que las rúbricas de José Gregorio Fajardo y Lina Paola Miranda, registradas el 2022-12-14, corresponden a quienes aparecen en el acta.",
+  "debe_desaparecer": [
+   "José Gregorio Fajardo",
+   "Lina Paola Miranda"
+  ],
+  "debe_quedar": [],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "El usuario marlonsuarez está asignado como responsable de la integración desde la cuenta marlon.suarez@kipupay.co.",
+  "debe_desaparecer": [
+   "marlonsuarez",
+   "marlon.suarez@kipupay.co"
+  ],
+  "debe_quedar": [],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "Quedamos atentos a la firma digital de Nelson Camilo Rivera, quien aparece con cédula 98472631 en el acuerdo con Paymentools.",
+  "debe_desaparecer": [
+   "Nelson Camilo Rivera",
+   "98472631"
+  ],
+  "debe_quedar": [
+   "Paymentools"
+  ],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "El acta subida por andresmoralesg@kipupay.co contiene nombres de Mariana López, Pedro Zalamea y Angela Lucía Muñoz.",
+  "debe_desaparecer": [
+   "andresmoralesg@kipupay.co",
+   "Mariana López",
+   "Pedro Zalamea",
+   "Angela Lucía Muñoz"
+  ],
+  "debe_quedar": [],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "Favor validar la firma manuscrita de Claudia Milena Rincón, jefe de TI de la empresa aliada, cuyo celular es 3135556798.",
+  "debe_desaparecer": [
+   "Claudia Milena Rincón",
+   "3135556798"
+  ],
+  "debe_quedar": [],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "La integración debe ser aprobada por el CEO de Kipu Pay, Rafael Medina García, y el CFO de Soluciones Dato, Edwin Vargas.",
+  "debe_desaparecer": [
+   "Rafael Medina García",
+   "Edwin Vargas"
+  ],
+  "debe_quedar": [
+   "Kipu Pay",
+   "Soluciones Dato"
+  ],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "Recibimos la notificación de integración desde diana.ruiz@solutions.com.co, con copias de firmas de: Luz Stella Arenas y Felipe Castro.",
+  "debe_desaparecer": [
+   "diana.ruiz@solutions.com.co",
+   "Luz Stella Arenas",
+   "Felipe Castro"
+  ],
+  "debe_quedar": [],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "El documento fue verificado y contiene datos sensibles de Andrés Felipe Palacio y Yesenia Bonilla, ambos colaboradores de Paynet.",
+  "debe_desaparecer": [
+   "Andrés Felipe Palacio",
+   "Yesenia Bonilla"
+  ],
+  "debe_quedar": [
+   "Paynet"
+  ],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "Solicitamos validar que la firma de erik.callejas@gmail.com corresponde efectivamente a Erik Callejas, representante de DataFlow.",
+  "debe_desaparecer": [
+   "erik.callejas@gmail.com",
+   "Erik Callejas"
+  ],
+  "debe_quedar": [
+   "DataFlow"
+  ],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "En el expediente, aparece la autorización de Mateo Sáenz, junto a la firma digital de William Barrios y la cuenta bancaria 458219774.",
+  "debe_desaparecer": [
+   "Mateo Sáenz",
+   "William Barrios",
+   "458219774"
+  ],
+  "debe_quedar": [],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "La minuta con fecha de nacimiento 1991-05-25 de Marcela Chacón contiene firma y correo mchacon@kipupay.co.",
+  "debe_desaparecer": [
+   "1991-05-25",
+   "Marcela Chacón",
+   "mchacon@kipupay.co"
+  ],
+  "debe_quedar": [],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "Confirmamos la recepción del documento adjunto firmado por Gabriel Rodríguez y la gerente comercial de Kipu Pay, Sara Cecilia Hoyos.",
+  "debe_desaparecer": [
+   "Gabriel Rodríguez",
+   "Sara Cecilia Hoyos"
+  ],
+  "debe_quedar": [
+   "Kipu Pay"
+  ],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "El acta de integración tiene como participantes a Laura Andrea Gutiérrez de SystemsPro y a Esteban Castaño de Kipu Pay, junto a sus respectivas firmas.",
+  "debe_desaparecer": [
+   "Laura Andrea Gutiérrez",
+   "Esteban Castaño"
+  ],
+  "debe_quedar": [
+   "SystemsPro",
+   "Kipu Pay"
+  ],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "Por favor verificar que el correo cristian.jimenez@prodata.com y la firma de Cristian Jiménez en la hoja 2 son válidos.",
+  "debe_desaparecer": [
+   "cristian.jimenez@prodata.com",
+   "Cristian Jiménez"
+  ],
+  "debe_quedar": [],
+  "tema": "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas"
+ },
+ {
+  "texto": "Hola, mi nombre es Camilo Herrera y deseo actualizar mi correo electrónico. El anterior era camilo.herrera@correo.com y ahora uso camilo.h1990@gmail.com. Por favor, hagan el cambio en mi cuenta con cédula 1072985112.",
+  "debe_desaparecer": [
+   "Camilo Herrera",
+   "camilo.herrera@correo.com",
+   "camilo.h1990@gmail.com",
+   "1072985112"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Buenas tardes, antes mi número era 3102558999, ahora es 3008821234. Me pueden confirmar si queda actualizado? Mi usuario es anaperez77.",
+  "debe_desaparecer": [
+   "3102558999",
+   "3008821234",
+   "anaperez77"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Soy Luis Eduardo Prieto, cambié de dirección porque me mudé de Cali a Bogotá. La antigua era Calle 5 #45-22, Cali y la nueva es Carrera 7 #93-11, Bogotá. Mi correo sigue siendo leprieto@gmail.com.",
+  "debe_desaparecer": [
+   "Luis Eduardo Prieto",
+   "Calle 5 #45-22, Cali",
+   "Carrera 7 #93-11, Bogotá",
+   "leprieto@gmail.com"
+  ],
+  "debe_quedar": [
+   "Cali",
+   "Bogotá"
+  ],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "¡Buen día! Soy Mónica Castro (CC: 1006543210). El correo monica13@gmail.com ya no lo uso, ahora es mcastro.nueva@outlook.com. Les agradezco confirmar por este medio.",
+  "debe_desaparecer": [
+   "Mónica Castro",
+   "1006543210",
+   "monica13@gmail.com",
+   "mcastro.nueva@outlook.com"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Saludos, escribo porque el número registrado al principio era 3139887766 y ahora debe ser 3205567123. Soy Felipe Quesada, mi dirección (Calle 123 #45-67, Medellín) también cambió: ahora vivo en la Calle 99 # 12-10, Medellín.",
+  "debe_desaparecer": [
+   "3139887766",
+   "3205567123",
+   "Felipe Quesada",
+   "Calle 123 #45-67, Medellín",
+   "Calle 99 # 12-10, Medellín"
+  ],
+  "debe_quedar": [
+   "Medellín"
+  ],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Hola, con cédula 1145224455 y usuario juanma123. Ya no tengo acceso al correo juanma.viejo@live.com, ahora estoy usando juanmanuel2024@gmail.com.",
+  "debe_desaparecer": [
+   "1145224455",
+   "juanma123",
+   "juanma.viejo@live.com",
+   "juanmanuel2024@gmail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Me pueden ayudar a actualizar la dirección de mi cuenta? Era Carrerra 70 # 33F-12, Barranquilla y ahora vivo en la Calle 45 #88-99, Barranquilla. Mi cedula es 80014578.",
+  "debe_desaparecer": [
+   "Carrerra 70 # 33F-12, Barranquilla",
+   "Calle 45 #88-99, Barranquilla",
+   "80014578"
+  ],
+  "debe_quedar": [
+   "Barranquilla"
+  ],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Cambio de teléfono: antes 3189994422, ahora 3168001237. Soy Carolina Suescún, documento 1057894568.",
+  "debe_desaparecer": [
+   "3189994422",
+   "3168001237",
+   "Carolina Suescún",
+   "1057894568"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Sigo en Bogotá pero me mudé. Dirección vieja: Av. 68 # 98B-15, la nueva: Transversal 24 #56-90. Mi correo registrado era maribel.munoz@yahoo.com y ahora uso maribel2024@protonmail.com.",
+  "debe_desaparecer": [
+   "Av. 68 # 98B-15",
+   "Transversal 24 #56-90",
+   "maribel.munoz@yahoo.com",
+   "maribel2024@protonmail.com"
+  ],
+  "debe_quedar": [
+   "Bogotá"
+  ],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Por favor actualicen mi correo. Antes era oscar_velez@hotmail.com y mi nuevo correo es oscarvelez73@gmail.com. Usuario: oscarv73.",
+  "debe_desaparecer": [
+   "oscar_velez@hotmail.com",
+   "oscarvelez73@gmail.com",
+   "oscarv73"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Mi teléfono anterior era 3026551447, ahora es 3045789966. Sigo como usuario luciapegado.",
+  "debe_desaparecer": [
+   "3026551447",
+   "3045789966",
+   "luciapegado"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "¡Hola! Cédula 1178452970, antes usaba claudiaramirez2010@hotmail.com, ahora mi email es claudia.ramirez@proton.me, necesito que se comunique todo allí.",
+  "debe_desaparecer": [
+   "1178452970",
+   "claudiaramirez2010@hotmail.com",
+   "claudia.ramirez@proton.me"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Soy Jairo. Mi número cambió de 3100123445 por 3155432123. Sigo en la misma casa: Calle 40 sur #22-13, Bogotá. Mi correo es jairob23@gmail.com.",
+  "debe_desaparecer": [
+   "Jairo",
+   "3100123445",
+   "3155432123",
+   "Calle 40 sur #22-13, Bogotá",
+   "jairob23@gmail.com"
+  ],
+  "debe_quedar": [
+   "Bogotá"
+  ],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Comedidamente solicito actualización de dirección y móvil: anterior teléfono 3209560678, nuevo 3217890067. Vieja dirección Calle 18 #11-45, Bucaramanga, nueva Calle 48 #10-29. Att: Paula Sarmiento, cédula 1033445566.",
+  "debe_desaparecer": [
+   "3209560678",
+   "3217890067",
+   "Calle 18 #11-45, Bucaramanga",
+   "Calle 48 #10-29",
+   "Paula Sarmiento",
+   "1033445566"
+  ],
+  "debe_quedar": [
+   "Bucaramanga"
+  ],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Anterior usuario: tomasm84, nuevo usuario: tomas.medina84. Mi correo también cambió de tomas.medina@gmail.com a tomas.m.2024@outlook.com.",
+  "debe_desaparecer": [
+   "tomasm84",
+   "tomas.medina84",
+   "tomas.medina@gmail.com",
+   "tomas.m.2024@outlook.com"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Cambié mi dirección de Calle 32 #14-21, Ibagué a Carrera 10 #42-88, Ibagué. El correo registrado sigue siendo valentinaibanez@gmail.com.",
+  "debe_desaparecer": [
+   "Calle 32 #14-21, Ibagué",
+   "Carrera 10 #42-88, Ibagué",
+   "valentinaibanez@gmail.com"
+  ],
+  "debe_quedar": [
+   "Ibagué"
+  ],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Mi nombre es Daniel Gómez. Mi celular era 3186547658 ahora tengo 3014432591. Por favor, cambiarlo en mi cuenta TX-000941.",
+  "debe_desaparecer": [
+   "Daniel Gómez",
+   "3186547658",
+   "3014432591"
+  ],
+  "debe_quedar": [
+   "TX-000941"
+  ],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Buenas, cambié de residencia y correo. Antes estaba en Calle 15 #6-77, Tunja y el mail era marcelareina@uemail.com. Nuevo: Calle 67 #44-21, Tunja y correo: m.reina2024@gmail.com.",
+  "debe_desaparecer": [
+   "Calle 15 #6-77, Tunja",
+   "Calle 67 #44-21, Tunja",
+   "marcelareina@uemail.com",
+   "m.reina2024@gmail.com"
+  ],
+  "debe_quedar": [
+   "Tunja"
+  ],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Mi teléfono registrado antes era 3029192232, el actual es 3154442311. Usuario: nestor_guzman.",
+  "debe_desaparecer": [
+   "3029192232",
+   "3154442311",
+   "nestor_guzman"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Por favor, actualicen mi dirección y correo. Viejo: Calle 94 #53-12, Cartagena y mail laurap77@correo.com; nuevo: Carrera 80 #45-101, Cartagena y email: lpabon2024@gmail.com.",
+  "debe_desaparecer": [
+   "Calle 94 #53-12, Cartagena",
+   "laurap77@correo.com",
+   "Carrera 80 #45-101, Cartagena",
+   "lpabon2024@gmail.com"
+  ],
+  "debe_quedar": [
+   "Cartagena"
+  ],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Solicito actualización de todos mis datos: cédula 1092334455, usuario sandramurillo, móvil antiguo 3145076612, móvil actual 3107765432, dirección: Calle 11A #16-21, Popayán (antigua) y Calle 3 #15-12, Popayán (actual). Correo anterior sandra.murillo@gmail.com, nuevo s.murillo2024@outlook.com.",
+  "debe_desaparecer": [
+   "1092334455",
+   "sandramurillo",
+   "3145076612",
+   "3107765432",
+   "Calle 11A #16-21, Popayán",
+   "Calle 3 #15-12, Popayán",
+   "sandra.murillo@gmail.com",
+   "s.murillo2024@outlook.com"
+  ],
+  "debe_quedar": [
+   "Popayán"
+  ],
+  "tema": "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje"
+ },
+ {
+  "texto": "Hola, tenemos dos usuarios llamados Camilo Reyes en este caso. Uno es de Bucaramanga y el otro de Cali. El de Bucaramanga indica cédula 1017234913, mientras que el de Cali es la 79544321. ¿Con quién de los dos nos comunicamos para el caso de la devolución en Nequi?",
+  "debe_desaparecer": [
+   "Camilo Reyes",
+   "1017234913",
+   "79544321"
+  ],
+  "debe_quedar": [
+   "Nequi",
+   "Bucaramanga",
+   "Cali"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Buen día Juan Bautista, nos aparecen dos registros tuyos: uno con correo juanb93@gmail.com y otro con juanb_bogota@gmail.com. ¿Podrías confirmar cuál es el que tiene la transacción por $320.000 en Bancolombia?",
+  "debe_desaparecer": [
+   "Juan Bautista",
+   "juanb93@gmail.com",
+   "juanb_bogota@gmail.com"
+  ],
+  "debe_quedar": [
+   "Bancolombia",
+   "$320.000"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Hola Andrea Castaño. En la cuenta con usuario andreac95 identificamos un recaudo que no coincide con la cédula 52478965. Al mismo tiempo, otra Andrea Castaño con número de celular 3015432233 reporta el mismo inconveniente a nombre de su comercio Tienda Pepito de Medellín.",
+  "debe_desaparecer": [
+   "Andrea Castaño",
+   "andreac95",
+   "52478965",
+   "3015432233"
+  ],
+  "debe_quedar": [
+   "Tienda Pepito",
+   "Medellín"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Señor Felipe Rivera, tenemos solicitudes tuyas desde dos perfiles: uno con la cédula 43829915 radicado en Cúcuta y otro con la ending de cuenta 8297 en Cartagena. ¿Podrías decirnos cuál es la correcta para liberar la transferencia Davivienda?",
+  "debe_desaparecer": [
+   "Felipe Rivera",
+   "43829915",
+   "8297"
+  ],
+  "debe_quedar": [
+   "Cúcuta",
+   "Cartagena",
+   "Davivienda"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "En el hilo aparecen dos Paulina Gómez. Una es de Pasto, documento 65091234, y la otra de Soledad con número de pasaporte HG28395. ¿Quién abrió el reclamo por $45.600 de retorno en BBVA?",
+  "debe_desaparecer": [
+   "Paulina Gómez",
+   "65091234",
+   "HG28395"
+  ],
+  "debe_quedar": [
+   "Pasto",
+   "Soledad",
+   "BBVA",
+   "$45.600"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Tenemos un caso extraño: Camila Arenas con cuenta cami_arenas desde Barranquilla y otra Camila Arenas con cédula 11297453 en Ibagué. ¿Cuál realizó el pago a Colsubsidio por $230.000?",
+  "debe_desaparecer": [
+   "Camila Arenas",
+   "cami_arenas",
+   "11297453"
+  ],
+  "debe_quedar": [
+   "Barranquilla",
+   "Ibagué",
+   "Colsubsidio",
+   "$230.000"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Buenos días, Liliana Suárez. Su perfil con correo lisuarez97@hotmail.com aparece en Cali, y el otro, liliana.suarez.zipa@gmail.com en Zipaquirá. ¿Quién solicitó el retiro a Banco de Bogotá por $1.000.000?",
+  "debe_desaparecer": [
+   "Liliana Suárez",
+   "lisuarez97@hotmail.com",
+   "liliana.suarez.zipa@gmail.com"
+  ],
+  "debe_quedar": [
+   "Cali",
+   "Zipaquirá",
+   "Banco de Bogotá",
+   "$1.000.000"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Hemos localizado dos perfiles llamados Mauricio Jaramillo. Uno con teléfono 3207658899 en Tunja y otro con cédula 76982234 viviendo en Pereira. Para el siniestro con PQR-2026-0451, ¿con cuál de los dos seguimos el caso?",
+  "debe_desaparecer": [
+   "Mauricio Jaramillo",
+   "3207658899",
+   "76982234"
+  ],
+  "debe_quedar": [
+   "Tunja",
+   "Pereira",
+   "PQR-2026-0451"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Daniela Cabrera, tu caso coincide con otra Daniela Cabrera que reside en Valledupar y tiene usuario dacab83. Tu documento termina en 3761, pero la otra Daniela usa el correo danielacvra.va@gmail.com. ¿Quién aprobó el pago en Surtimax?",
+  "debe_desaparecer": [
+   "Daniela Cabrera",
+   "dacab83",
+   "3761",
+   "danielacvra.va@gmail.com"
+  ],
+  "debe_quedar": [
+   "Valledupar",
+   "Surtimax"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Encontramos dos registros de Andrés Montoya. Uno en Armenia con cédula 1002988761 y otro en Popayán, correo andresmt.popa@gmail.com. Indique quién envió la solicitud de pago a Éxito por $900.000.",
+  "debe_desaparecer": [
+   "Andrés Montoya",
+   "1002988761",
+   "andresmt.popa@gmail.com"
+  ],
+  "debe_quedar": [
+   "Armenia",
+   "Popayán",
+   "Éxito",
+   "$900.000"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Estimado Jorge Quintero, tenemos un perfil radicado en Manizales con teléfono 3125553322 y otro Jorge Quintero en Sincelejo con usuario quintero_sj. ¿Cuál debe recibir el abono Bancolombia por $52.400?",
+  "debe_desaparecer": [
+   "Jorge Quintero",
+   "3125553322",
+   "quintero_sj"
+  ],
+  "debe_quedar": [
+   "Manizales",
+   "Sincelejo",
+   "Bancolombia",
+   "$52.400"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Saludo cordial, Ana Torres. Hay dos registros en Kipu con tu nombre: uno en el sur de Bogotá, cédula 5180033, y otro en Yopal con teléfono 3101122998. ¿Cuál solicita anular la operación en Banco Caja Social?",
+  "debe_desaparecer": [
+   "Ana Torres",
+   "5180033",
+   "3101122998"
+  ],
+  "debe_quedar": [
+   "Bogotá",
+   "Yopal",
+   "Banco Caja Social"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Nos aparecen dos perfiles Laura Ramos. Una tiene dirección Carrera 10 #15-24 en Montería, y la otra está en Cúcuta con usuario lauramos_cuc. ¿Quién hizo la compra en Claro Hogar por $100.000?",
+  "debe_desaparecer": [
+   "Laura Ramos",
+   "Carrera 10 #15-24",
+   "lauramos_cuc"
+  ],
+  "debe_quedar": [
+   "Montería",
+   "Cúcuta",
+   "Claro Hogar",
+   "$100.000"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Para el reclamo de la transacción TX-000123, tenemos dos Pedro Correa: uno con el correo pedrocorrea.1985@gmail.com y otro en Villavicencio, cédula 110873564. ¿Con quién procedemos?",
+  "debe_desaparecer": [
+   "Pedro Correa",
+   "pedrocorrea.1985@gmail.com",
+   "110873564"
+  ],
+  "debe_quedar": [
+   "Villavicencio",
+   "TX-000123"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Buenos días Santiago Ibáñez. Detectamos una diferencia entre tu perfil de Pasto con usuario santi_ibz y otro Santiago Ibáñez en Armenia con documento 90012021. Ambos reclaman el abono de $75.000 en Movistar.",
+  "debe_desaparecer": [
+   "Santiago Ibáñez",
+   "santi_ibz",
+   "90012021"
+  ],
+  "debe_quedar": [
+   "Pasto",
+   "Armenia",
+   "Movistar",
+   "$75.000"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Hola Beatriz Salas, aparecen dos cuentas: beatrizsalas8 en Itagüí y otra Beatriz Salas en Bogotá, cédula 43927654. ¿Quién pagó en Droguería Cruz Verde por $13.500?",
+  "debe_desaparecer": [
+   "Beatriz Salas",
+   "beatrizsalas8",
+   "43927654"
+  ],
+  "debe_quedar": [
+   "Itagüí",
+   "Bogotá",
+   "Droguería Cruz Verde",
+   "$13.500"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Estimado Andrés Guzmán, su perfil con número 3209118844 (Barranca) coincide con el otro Andrés Guzmán de Santa Marta, correo guzmanandres_sm@yahoo.com. ¿Cuál gestionó la transferencia Av Villas?",
+  "debe_desaparecer": [
+   "Andrés Guzmán",
+   "3209118844",
+   "guzmanandres_sm@yahoo.com"
+  ],
+  "debe_quedar": [
+   "Barranca",
+   "Santa Marta",
+   "Av Villas"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "En la revisión notamos dos usuarios Carolina Peña. Una con dirección Calle 45A #12-33 en Floridablanca y otra Carolina Peña en Tunja, pasaporte DE092388. ¿Quién redimió el cupón Daviplata?",
+  "debe_desaparecer": [
+   "Carolina Peña",
+   "Calle 45A #12-33",
+   "DE092388"
+  ],
+  "debe_quedar": [
+   "Floridablanca",
+   "Tunja",
+   "Daviplata"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Hay dos Óscar Romero diferentes. Uno es oscar_romo en Girardot, y el otro, con cédula 70415822, reside en Santa Rosa. Ambos reportan el mismo TX-001476. ¿Podrían aclarar quién originó el trámite?",
+  "debe_desaparecer": [
+   "Óscar Romero",
+   "oscar_romo",
+   "70415822"
+  ],
+  "debe_quedar": [
+   "Girardot",
+   "Santa Rosa",
+   "TX-001476"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Hola Natalia Paredes, existen dos registros: uno con la cuenta nataparedes en Fusagasugá y otro Natalia Paredes en La Dorada, documento 99348711. ¿Quién solicitó el reintegro Bancamía?",
+  "debe_desaparecer": [
+   "Natalia Paredes",
+   "nataparedes",
+   "99348711"
+  ],
+  "debe_quedar": [
+   "Fusagasugá",
+   "La Dorada",
+   "Bancamía"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Para el retiro por $2.500.000, hay dos perfiles Daniel Sierra. Uno con ID CL-12345, cédula 91547326 y otro Daniel Sierra radicado en Sincelejo con usuario dsie_sjl. ¿Cuál autorizó el movimiento a Bancoomeva?",
+  "debe_desaparecer": [
+   "Daniel Sierra",
+   "91547326",
+   "dsie_sjl"
+  ],
+  "debe_quedar": [
+   "Sincelejo",
+   "Bancoomeva",
+   "$2.500.000",
+   "CL-12345"
+  ],
+  "tema": "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad"
+ },
+ {
+  "texto": "Estimado/a Juan Carlos Patiño, CC 1025637845, le informamos que su saldo actual es de $4.223.100. Puede consultar su extracto en Calle 122 #9-85, Bogotá. Si requiere soporte adicional, contáctenos.",
+  "debe_desaparecer": [
+   "Juan Carlos Patiño",
+   "1025637845",
+   "Calle 122 #9-85"
+  ],
+  "debe_quedar": [
+   "Bogotá",
+   "$4.223.100"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Señorita Adriana Torres, CC 99887766, su tarjeta registrada con dirección Carrera 45B No. 22-11, Medellín presenta un saldo negativo de $-582.330 a corte del 4 de abril de 2024.",
+  "debe_desaparecer": [
+   "Adriana Torres",
+   "99887766",
+   "Carrera 45B No. 22-11"
+  ],
+  "debe_quedar": [
+   "Medellín",
+   "$-582.330",
+   "4 de abril de 2024"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Hola Diego F. Ríos, CC 77550664, detectamos actividad inusual en su cuenta domiciliada en Calle 63A #13-27, apto 302. Por favor verifique su saldo: $2.180.000.",
+  "debe_desaparecer": [
+   "Diego F. Ríos",
+   "77550664",
+   "Calle 63A #13-27",
+   "apto 302"
+  ],
+  "debe_quedar": [
+   "$2.180.000"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Apreciada Luisa Rincón, CC 321567799, la transferencia desde Bancolombia fue aplicada correctamente a su cuenta registrada en Diag 19 #15B-20. Saldo actual: $450.599.",
+  "debe_desaparecer": [
+   "Luisa Rincón",
+   "321567799",
+   "Diag 19 #15B-20"
+  ],
+  "debe_quedar": [
+   "Bancolombia",
+   "$450.599"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Estimado/a Jorge Eliecer Torres, CC 1003368901, confirmamos el cambio de dirección a Calle 8 Sur #34-19. Su saldo con Kipu Pay es de $83.000.",
+  "debe_desaparecer": [
+   "Jorge Eliecer Torres",
+   "1003368901",
+   "Calle 8 Sur #34-19"
+  ],
+  "debe_quedar": [
+   "Kipu Pay",
+   "$83.000"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Sr. Kevin Espitia, CC 1102894172, recuerde actualizar su dirección: Carr. 50A #21-60. Saldo al día: $12.500.",
+  "debe_disaparecer": [
+   "Kevin Espitia",
+   "1102894172",
+   "Carr. 50A #21-60"
+  ],
+  "debe_quedar": [
+   "$12.500"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)",
+  "debe_desaparecer": []
+ },
+ {
+  "texto": "Señora Mariana Díaz Pérez, CC 65432109, su extracto mensual fue enviado al correo m.diazperez82@gmail.com y domicilio Calle 41A #70A-91. Saldo al 30/05/2024: $1.091.210.",
+  "debe_desaparecer": [
+   "Mariana Díaz Pérez",
+   "65432109",
+   "m.diazperez82@gmail.com",
+   "Calle 41A #70A-91"
+  ],
+  "debe_quedar": [
+   "$1.091.210",
+   "30/05/2024"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Hola, Jesús A. Molano, CC 80019034, recibimos solicitud de PSE desde su cuenta asociada a Cra. 68 #100-44 Interior 5. Saldo actualizado: $311.700.",
+  "debe_disaparecer": [
+   "Jesús A. Molano",
+   "80019034",
+   "Cra. 68 #100-44",
+   "Interior 5"
+  ],
+  "debe_quedar": [
+   "$311.700",
+   "PSE"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)",
+  "debe_desaparecer": []
+ },
+ {
+  "texto": "Estimada Danna Paola Salazar, CC 30706655, el envío de fondos a su usuario kipulover21 fue finalizado. Dirección reportada: Calle 5#61C-12. Saldo nuevo: $298.000.",
+  "debe_desaparecer": [
+   "Danna Paola Salazar",
+   "30706655",
+   "kipulover21",
+   "Calle 5#61C-12"
+  ],
+  "debe_quedar": [
+   "$298.000"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Apreciado/a Jhonatan Méndez, CC 1090442331, su petición sobre saldo pendiente de $24.120 fue radicada. Direccionada a Carrera 19B #113-43, piso 2.",
+  "debe_desaparecer": [
+   "Jhonatan Méndez",
+   "1090442331",
+   "Carrera 19B #113-43",
+   "piso 2"
+  ],
+  "debe_quedar": [
+   "$24.120"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Sra. Claudia M. Rodríguez, CC 77123456, detectamos intento de ingreso desde IP desconocida para la dirección Av. El Dorado #95-55, Bogotá DC. Saldo actual: $7.900.",
+  "debe_desaparecer": [
+   "Claudia M. Rodríguez",
+   "77123456",
+   "Av. El Dorado #95-55"
+  ],
+  "debe_quedar": [
+   "Bogotá DC",
+   "$7.900"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Andrés Felipe Calvo, CC 11223344, le notificamos la expedición de su nueva tarjeta a Calle 98 No 65B-43. Su saldo no presentó variaciones: $502.000.",
+  "debe_desaparecer": [
+   "Andrés Felipe Calvo",
+   "11223344",
+   "Calle 98 No 65B-43"
+  ],
+  "debe_quedar": [
+   "$502.000"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Sr. Paulo Reyes P., CC 88779955, confirmamos el débito de $105.200 en su cuenta principal registrada en Cra. 7 #120-15. Verifique movimientos recientes.",
+  "debe_desaparecer": [
+   "Paulo Reyes P.",
+   "88779955",
+   "Cra. 7 #120-15"
+  ],
+  "debe_quedar": [
+   "$105.200"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Apreciada Mónica Estupiñán, CC 1000482120, el pago de su crédito fue aplicado a la dirección Guardado en: Calle 124F #90-10, subiendo su saldo a $10.700.",
+  "debe_desaparecer": [
+   "Mónica Estupiñán",
+   "1000482120",
+   "Calle 124F #90-10"
+  ],
+  "debe_quedar": [
+   "$10.700"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Estimado/a Camilo Fernández Gómez, CC 12348765, su tarjeta fue reportada como extraviada desde la ubicación Cra 18 #80C-33, apto 402. Saldo restante: $0.",
+  "debe_desaparecer": [
+   "Camilo Fernández Gómez",
+   "12348765",
+   "Cra 18 #80C-33",
+   "apto 402"
+  ],
+  "debe_quedar": [
+   "$0"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Hola, Teresa de Jesús Peña, CC 45678912, su saldo fue abonado tras recarga de Nequi, dirección registrada: Calle 69 #20G-31. Nuevo saldo: $789.000.",
+  "debe_desaparecer": [
+   "Teresa de Jesús Peña",
+   "45678912",
+   "Calle 69 #20G-31"
+  ],
+  "debe_quedar": [
+   "Nequi",
+   "$789.000"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Julián L. Villamil, CC 90080077, recibimos su notificación de cambio de domicilio (Carrera 14 #111-22, Torre E apt. 904). Saldo disponible: $34.111.",
+  "debe_desaparecer": [
+   "Julián L. Villamil",
+   "90080077",
+   "Carrera 14 #111-22",
+   "Torre E",
+   "apt. 904"
+  ],
+  "debe_quedar": [
+   "$34.111"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Estimado Ricardo Huertas Soler, CC 1022548993, le informamos que su extracto fue enviado a ricardohsoler23@hotmail.com para la dirección diagonal 110 #3D-22. Saldo al corte: $3.400.000.",
+  "debe_desaparecer": [
+   "Ricardo Huertas Soler",
+   "1022548993",
+   "ricardohsoler23@hotmail.com",
+   "diagonal 110 #3D-22"
+  ],
+  "debe_quedar": [
+   "$3.400.000"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Diana Paola Gómez, CC 1043905211, confirmamos que su saldo fue transferido a usuario d.gomezpaola. Recibo registrado en Cra. 55 #112-14, Medellín.",
+  "debe_desaparecer": [
+   "Diana Paola Gómez",
+   "1043905211",
+   "d.gomezpaola",
+   "Cra. 55 #112-14"
+  ],
+  "debe_quedar": [
+   "Medellín"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Sra. Laura Catalina Cruz, CC 61337229, su pago fue debitado correctamente. Su dirección registrada: Calle 100 #54-98 apto 1201. Saldo actual: $735.200.",
+  "debe_desaparecer": [
+   "Laura Catalina Cruz",
+   "61337229",
+   "Calle 100 #54-98",
+   "apto 1201"
+  ],
+  "debe_quedar": [
+   "$735.200"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Sr. Ernesto Botero Arango, CC 1098765432, le informamos que su correspondencia fue enviada a Carrera 36 #81-55, Barranquilla. Saldo Kipu Pay: $57.000.",
+  "debe_desaparecer": [
+   "Ernesto Botero Arango",
+   "1098765432",
+   "Carrera 36 #81-55"
+  ],
+  "debe_quedar": [
+   "Barranquilla",
+   "Kipu Pay",
+   "$57.000"
+  ],
+  "tema": "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)"
+ },
+ {
+  "texto": "Hola, pegué el siguiente JSON en la consola de Kipu Pay:\n{\n  \"nombre\": \"Juan Camilo Prada\",\n  \"documento\": \"1012579338\",\n  \"email\": \"juancamilo.prada98@gmail.com\",\n  \"telefono\": \"+57 3112459863\",\n  \"direccion\": \"Cra. 48 #32C-50, Medellín\"\n}\nEl sistema me dice que hay un error en el campo documento.",
+  "debe_desaparecer": [
+   "Juan Camilo Prada",
+   "1012579338",
+   "juancamilo.prada98@gmail.com",
+   "+57 3112459863",
+   "Cra. 48 #32C-50, Medellín"
+  ],
+  "debe_quedar": [
+   "Medellín"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "Intento validar esta información y no me deja asociar:\n{\n  \"nombre\": \"Clara Inés Rojas\",\n  \"documento\": \"80045677\",\n  \"email\": \"clara.ines.rojas@correo.com\",\n  \"telefono\": \"3055299981\",\n  \"direccion\": \"Av. Boyacá #45-67, Bogotá\"\n}\n¿Hay algún problema con el correo?",
+  "debe_desaparecer": [
+   "Clara Inés Rojas",
+   "80045677",
+   "clara.ines.rojas@correo.com",
+   "3055299981",
+   "Av. Boyacá #45-67, Bogotá"
+  ],
+  "debe_quedar": [
+   "Bogotá"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "Buenas, estoy pegando este XML en una integración con Bancolombia pero Kipu no lo acepta:\n<datos>\n  <nombre>Samuel Cortés Cruz</nombre>\n  <documento>1140383940</documento>\n  <email>scortescruz98@outlook.com</email>\n  <telefono>3185560044</telefono>\n  <direccion>Calle 10 Sur #43-17, Itagüí</direccion>\n</datos>",
+  "debe_desaparecer": [
+   "Samuel Cortés Cruz",
+   "1140383940",
+   "scortescruz98@outlook.com",
+   "3185560044",
+   "Calle 10 Sur #43-17, Itagüí"
+  ],
+  "debe_quedar": [
+   "Bancolombia",
+   "Itagüí"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "No me deja editar el email en este JSON:\n{\n  \"nombre\": \"Maria Paula González\",\n  \"documento\": \"1078422991\",\n  \"email\": \"mp.gonzalez7@uandes.edu.co\",\n  \"telefono\": \"3177721918\",\n  \"direccion\": \"Cl. 85 #14-40, Bogotá\"\n}",
+  "debe_desaparecer": [
+   "Maria Paula González",
+   "1078422991",
+   "mp.gonzalez7@uandes.edu.co",
+   "3177721918",
+   "Cl. 85 #14-40, Bogotá"
+  ],
+  "debe_quedar": [
+   "Bogotá"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "El sistema me devuelve error al ingresar este usuario:\n{\n  \"nombre\": \"Julio Cesar Muñoz\",\n  \"documento\": \"99221100\",\n  \"email\": \"juliocmunoz@yahoo.com\",\n  \"telefono\": \"+57 3133210908\",\n  \"direccion\": \"Calle 67B #69C-28, Soledad\"\n}\n¿Será por el formato del teléfono?",
+  "debe_desaparecer": [
+   "Julio Cesar Muñoz",
+   "99221100",
+   "juliocmunoz@yahoo.com",
+   "+57 3133210908",
+   "Calle 67B #69C-28, Soledad"
+  ],
+  "debe_quedar": [
+   "Soledad"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "¿Pueden revisar este XML? Kipu me saca este error:\n<usuario>\n  <nombre>Angela Torres</nombre>\n  <documento>1014282020</documento>\n  <email>angelatorres@misena.edu.co</email>\n  <telefono>3125698777</telefono>\n  <direccion>Transversal 54D #77-92, Barranquilla</direccion>\n</usuario>",
+  "debe_desaparecer": [
+   "Angela Torres",
+   "1014282020",
+   "angelatorres@misena.edu.co",
+   "3125698777",
+   "Transversal 54D #77-92, Barranquilla"
+  ],
+  "debe_quedar": [
+   "Barranquilla"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "Este es el JSON que intenté pegar:\n{\n  \"nombre\": \"Diego Alejandro Navarrete\",\n  \"documento\": \"73209052\",\n  \"email\": \"diegoanavarrete75@gmail.com\",\n  \"telefono\": \"3149987630\",\n  \"direccion\": \"Cl. 16 #31-42 Loc. 3, Cali\"\n}\n¿El error es porque la dirección tiene un local?",
+  "debe_desaparecer": [
+   "Diego Alejandro Navarrete",
+   "73209052",
+   "diegoanavarrete75@gmail.com",
+   "3149987630",
+   "Cl. 16 #31-42 Loc. 3, Cali"
+  ],
+  "debe_quedar": [
+   "Cali"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "¿Por qué no puedo guardar estos datos en el portal?\n{\n  \"nombre\": \"Lorena Prieto Suárez\",\n  \"documento\": \"1013112345\",\n  \"email\": \"lprisuarez@hotmail.com\",\n  \"telefono\": \"+57-3175553417\",\n  \"direccion\": \"Carrera 23 #12-08, Tunja\"\n}",
+  "debe_desaparecer": [
+   "Lorena Prieto Suárez",
+   "1013112345",
+   "lprisuarez@hotmail.com",
+   "+57-3175553417",
+   "Carrera 23 #12-08, Tunja"
+  ],
+  "debe_quedar": [
+   "Tunja"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "Estoy pegando esto y Kipu Pay me dice que el correo es inválido:\n{\n  \"nombre\": \"Victor Andrés Triana\",\n  \"documento\": \"1101627004\",\n  \"email\": \"vitriana@@gmail.com\",\n  \"telefono\": \"3014045666\",\n  \"direccion\": \"AV 1N #23-45, Palmira\"\n}",
+  "debe_desaparecer": [
+   "Victor Andrés Triana",
+   "1101627004",
+   "vitriana@@gmail.com",
+   "3014045666",
+   "AV 1N #23-45, Palmira"
+  ],
+  "debe_quedar": [
+   "Palmira"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "¿Me pueden decir cuál campo está mal?\n{\n  \"nombre\": \"Paola Villamizar\",\n  \"documento\": \"1004532110\",\n  \"email\": \"paola.villa@mymail.com\",\n  \"telefono\": \"3124320009\",\n  \"direccion\": \"Kr 7 #29-31, Neiva\"\n}",
+  "debe_desaparecer": [
+   "Paola Villamizar",
+   "1004532110",
+   "paola.villa@mymail.com",
+   "3124320009",
+   "Kr 7 #29-31, Neiva"
+  ],
+  "debe_quedar": [
+   "Neiva"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "No estoy seguro si escribí bien la dirección:\n{\n  \"nombre\": \"Diana Lucia Ibáñez\",\n  \"documento\": \"79600541\",\n  \"email\": \"diana.lucia.ibanez@dominio.com\",\n  \"telefono\": \"3156698001\",\n  \"direccion\": \"Av. Pedro Tafur 33-25, Ibagué\"\n}",
+  "debe_desaparecer": [
+   "Diana Lucia Ibáñez",
+   "79600541",
+   "diana.lucia.ibanez@dominio.com",
+   "3156698001",
+   "Av. Pedro Tafur 33-25, Ibagué"
+  ],
+  "debe_quedar": [
+   "Ibagué"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "Copié esto que me envió mi asesor del Banco de Bogotá y no funciona:\n<reg>\n  <nombre>Esteban Rico</nombre>\n  <documento>12389874</documento>\n  <email>esteban.rico@bancobogota.com</email>\n  <telefono>3117899900</telefono>\n  <direccion>Cll 7 sur #2-12, Popayán</direccion>\n</reg>",
+  "debe_desaparecer": [
+   "Esteban Rico",
+   "12389874",
+   "esteban.rico@bancobogota.com",
+   "3117899900",
+   "Cll 7 sur #2-12, Popayán"
+  ],
+  "debe_quedar": [
+   "Banco de Bogotá",
+   "Popayán"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "Mi JSON da error cuando tiene este teléfono:\n{\n  \"nombre\": \"Mariana Mesa\",\n  \"documento\": \"1093678442\",\n  \"email\": \"mariana.mesa@correouni.edu\",\n  \"telefono\": \"+57 316 8891011\",\n  \"direccion\": \"Cm 23 #9-70, Armenia\"\n}",
+  "debe_desaparecer": [
+   "Mariana Mesa",
+   "1093678442",
+   "mariana.mesa@correouni.edu",
+   "+57 316 8891011",
+   "Cm 23 #9-70, Armenia"
+  ],
+  "debe_quedar": [
+   "Armenia"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "Ayuda, pegué mal la dirección en este XML:\n<datos>\n  <nombre>Camilo Ruiz</nombre>\n  <documento>1140286433</documento>\n  <email>camilo.ruiz@empresa.com</email>\n  <telefono>3150033221</telefono>\n  <direccion>Calle Falsa 123, Sabaneta</direccion>\n</datos>",
+  "debe_desaparecer": [
+   "Camilo Ruiz",
+   "1140286433",
+   "camilo.ruiz@empresa.com",
+   "3150033221",
+   "Calle Falsa 123, Sabaneta"
+  ],
+  "debe_quedar": [
+   "Sabaneta"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "El validador de Kipu rechaza estos datos:\n{\n  \"nombre\": \"Sofía Lizcano\",\n  \"documento\": \"1042223109\",\n  \"email\": \"sofia.lizcano_90@mail.net\",\n  \"telefono\": \"3254445698\",\n  \"direccion\": \"Cll 8 #6-15, Bucaramanga\"\n}",
+  "debe_desaparecer": [
+   "Sofía Lizcano",
+   "1042223109",
+   "sofia.lizcano_90@mail.net",
+   "3254445698",
+   "Cll 8 #6-15, Bucaramanga"
+  ],
+  "debe_quedar": [
+   "Bucaramanga"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "No supe cómo poner la dirección en este JSON, ¿así está bien?:\n{\n  \"nombre\": \"Manuel E. Pacheco\",\n  \"documento\": \"1001444665\",\n  \"email\": \"manuelpacheco@client.com\",\n  \"telefono\": \"3003801103\",\n  \"direccion\": \"Transv 42 #25-37, Cartagena\"\n}",
+  "debe_desaparecer": [
+   "Manuel E. Pacheco",
+   "1001444665",
+   "manuelpacheco@client.com",
+   "3003801103",
+   "Transv 42 #25-37, Cartagena"
+  ],
+  "debe_quedar": [
+   "Cartagena"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "Este es el XML con el que pido soporte, ¿me ayudan?:\n<cliente>\n  <nombre>Isabel Cristina Moya</nombre>\n  <documento>74639452</documento>\n  <email>isacmoya@gmail.com</email>\n  <telefono>3138899101</telefono>\n  <direccion>Cl 6A #10-89, Santa Marta</direccion>\n</cliente>",
+  "debe_desaparecer": [
+   "Isabel Cristina Moya",
+   "74639452",
+   "isacmoya@gmail.com",
+   "3138899101",
+   "Cl 6A #10-89, Santa Marta"
+  ],
+  "debe_quedar": [
+   "Santa Marta"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "El sistema me está botando error al cargar este JSON:\n{\n  \"nombre\": \"Juan Pablo Segura\",\n  \"documento\": \"1194003322\",\n  \"email\": \"jpsegura@empresa.co\",\n  \"telefono\": \"3199098877\",\n  \"direccion\": \"Av. Chile #98-25, Bogotá\"\n}",
+  "debe_desaparecer": [
+   "Juan Pablo Segura",
+   "1194003322",
+   "jpsegura@empresa.co",
+   "3199098877",
+   "Av. Chile #98-25, Bogotá"
+  ],
+  "debe_quedar": [
+   "Bogotá"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "No puedo validar el usuario, este es el XML:\n<user>\n  <nombre>Ricardo Villamil</nombre>\n  <documento>80102344</documento>\n  <email>ricardov@hotmail.com</email>\n  <telefono>3112223334</telefono>\n  <direccion>Kra 50 #19-21, Pereira</direccion>\n</user>",
+  "debe_desaparecer": [
+   "Ricardo Villamil",
+   "80102344",
+   "ricardov@hotmail.com",
+   "3112223334",
+   "Kra 50 #19-21, Pereira"
+  ],
+  "debe_quedar": [
+   "Pereira"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "El error aparece con este correo:\n{\n  \"nombre\": \"Daniela Sánchez\",\n  \"documento\": \"1031456782\",\n  \"email\": \"daniela.sanchez#gmail.com\",\n  \"telefono\": \"3158866400\",\n  \"direccion\": \"Cll 7 #10-13, Pasto\"\n}",
+  "debe_desaparecer": [
+   "Daniela Sánchez",
+   "1031456782",
+   "daniela.sanchez#gmail.com",
+   "3158866400",
+   "Cll 7 #10-13, Pasto"
+  ],
+  "debe_quedar": [
+   "Pasto"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "La API de Kipu Pay marca error con la cédula de este usuario:\n{\n  \"nombre\": \"Valentina Restrepo\",\n  \"documento\": \"99543211\",\n  \"email\": \"valenrestrepo@correo.edu\",\n  \"telefono\": \"3125678990\",\n  \"direccion\": \"Cra 34 #2-40, Villavicencio\"\n}",
+  "debe_desaparecer": [
+   "Valentina Restrepo",
+   "99543211",
+   "valenrestrepo@correo.edu",
+   "3125678990",
+   "Cra 34 #2-40, Villavicencio"
+  ],
+  "debe_quedar": [
+   "Villavicencio"
+  ],
+  "tema": "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion"
+ },
+ {
+  "texto": "Hola, les dejo mis datos como lo solicitan: mi número de cuenta es 1002-4438-55, está al nombre de C. A. Rodríguez, cédula setenta y nueve millones doscientos quince mil cuatro, teléfono tres, diez, dos, noventa y siete, ochenta, sesenta y uno.",
+  "debe_desaparecer": [
+   "C. A. Rodríguez",
+   "setenta y nueve millones doscientos quince mil cuatro",
+   "tres, diez, dos, noventa y siete, ochenta, sesenta y uno",
+   "1002-4438-55"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "Mi usuario para ingresar: j.p.e.r.e.z-89. Mi correo es julianperezgu@gmail.com y mi cédula ochenta y tres cero cero cuarenta y cinco seis.",
+  "debe_desaparecer": [
+   "j.p.e.r.e.z-89",
+   "julianperezgu@gmail.com",
+   "ochenta y tres cero cero cuarenta y cinco seis"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "La cédula es uno dos tres cuatro cinco seis siete ocho nueve y mi nombre, repito, es Camila Valencia, escribo Camila con C y Valencia con V pequeña.",
+  "debe_desaparecer": [
+   "uno dos tres cuatro cinco seis siete ocho nueve",
+   "Camila Valencia"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "El correo es carla.garciap@hotmail.com y mi número, por si requieren, es 311, 555, 7767.",
+  "debe_desaparecer": [
+   "carla.garciap@hotmail.com",
+   "311, 555, 7767"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "Registré la cuenta con la cédula nueve uno ocho tres seis dos tres cuatro y nombre completo: Juan Antonio Torres Gómez.",
+  "debe_desaparecer": [
+   "nueve uno ocho tres seis dos tres cuatro",
+   "Juan Antonio Torres Gómez"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "Mi número de celular es tres veinte, ocho, veintidós, noventa y uno, cincuenta y cuatro y mi usuario: maria.verdugo.1994.",
+  "debe_desaparecer": [
+   "tres veinte, ocho, veintidós, noventa y uno, cincuenta y cuatro",
+   "maria.verdugo.1994"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "La placa del vehículo es HVY-213 y mi pasaporte número AC944203. Ambos a nombre de Mariana Delgado.",
+  "debe_desaparecer": [
+   "HVY-213",
+   "AC944203",
+   "Mariana Delgado"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "El correo electrónico: a, n, d, r, e, s, guion bajo, r, punto, jefe, arroba, kmail.com.",
+  "debe_desaparecer": [
+   "a, n, d, r, e, s, guion bajo, r, punto, jefe, arroba, kmail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "Para verificar, mi fecha de nacimiento es 29/07/1995 y el número de pasaporte que tengo es BC7204830.",
+  "debe_desaparecer": [
+   "29/07/1995",
+   "BC7204830"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "Soy Sara Ospina, nací el 18 de mayo del 2000. Mi usuario: saritah_2000.",
+  "debe_desaparecer": [
+   "Sara Ospina",
+   "18 de mayo del 2000",
+   "saritah_2000"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "Mi dirección registrada es Calle 74D # 42-12 Barrio La Nancy y la cédula veinticuatro millones ciento doce mil noventa.",
+  "debe_desaparecer": [
+   "Calle 74D # 42-12 Barrio La Nancy",
+   "veinticuatro millones ciento doce mil noventa"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "Mi nombre es Erika con K, apellido Morales, cédula 1043849965, correo: eri.mora.k@hotmail.com.",
+  "debe_desaparecer": [
+   "Erika",
+   "Morales",
+   "1043849965",
+   "eri.mora.k@hotmail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "El usuario es andreslu100, mi número de celular es tres catorce tres veintisiete noventa dos dieciséis, y mi cédula sesenta y ocho, treinta, cuarenta, uno, treinta y seis.",
+  "debe_desaparecer": [
+   "andreslu100",
+   "tres catorce tres veintisiete noventa dos dieciséis",
+   "sesenta y ocho, treinta, cuarenta, uno, treinta y seis"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "Mi nombre es Julián Peña, cédula uno dos cero nueve cero tres cinco cuatro. Mi correo: jpenag11@ucmail.com.",
+  "debe_desaparecer": [
+   "Julián Peña",
+   "uno dos cero nueve cero tres cinco cuatro",
+   "jpenag11@ucmail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "La cuenta está bajo el nombre de Carolina Gómez, cédula 40982347, dirección Avenida 54B sur # 21-33 apartamento 302.",
+  "debe_desaparecer": [
+   "Carolina Gómez",
+   "40982347",
+   "Avenida 54B sur # 21-33 apartamento 302"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "Mi usuario es pipe_lopez09, mi cédula es 90038922 y el correo es lopezpo@kmail.com.",
+  "debe_desaparecer": [
+   "pipe_lopez09",
+   "90038922",
+   "lopezpo@kmail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "Daniela Torres, cédula ochenta cuatro seis siete cinco tres dos uno y teléfono tres once sesenta cuarenta cinco cuatro.",
+  "debe_desaparecer": [
+   "Daniela Torres",
+   "ochenta cuatro seis siete cinco tres dos uno",
+   "tres once sesenta cuarenta cinco cuatro"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "Por favor validar la cuenta 33452291, a nombre de: Pedro J. Samudio. Documentos enviados por correo: pedroj.samudio@k.com",
+  "debe_desaparecer": [
+   "33452291",
+   "Pedro J. Samudio",
+   "pedroj.samudio@k.com"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "El usuario: mvaleria24, correo: maria.valeria.24@hotmail.com. Nombre completo: María Valeria Silva.",
+  "debe_desaparecer": [
+   "mvaleria24",
+   "maria.valeria.24@hotmail.com",
+   "María Valeria Silva"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ },
+ {
+  "texto": "Nombre: Óscar Ríos, cédula veinte millones cinco seis siete cuatro tres dos. Fecha nacimiento: 12-03-1991.",
+  "debe_desaparecer": [
+   "Óscar Ríos",
+   "veinte millones cinco seis siete cuatro tres dos",
+   "12-03-1991"
+  ],
+  "debe_quedar": [],
+  "tema": "notas de voz transcritas: números dictados, nombres deletreados letra por letra"
+ }
+]

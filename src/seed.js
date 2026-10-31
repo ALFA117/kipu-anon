@@ -36,8 +36,23 @@ export function seedRegistry({ chats, tables }, stored = {}) {
   }
 
   // 2. clientes
-  for (const c of clientes) {
+  // un cliente migrado de Págalo llega con id nuevo (PG-…) y la misma cédula: es la misma persona y
+  // conserva el seudónimo de su fila CL- (las filas CL- se siembran primero)
+  const byDoc = new Map();
+  for (const c of [...clientes].sort((a, b) => /^CL-/.test(b.cliente_id) - /^CL-/.test(a.cliente_id))) {
+    const doc = c.num_doc ? digits(c.num_doc) : '';
+    const prev = doc && byDoc.get(doc);
+    if (prev) {
+      prev.altClientIds.push(c.cliente_id);
+      if (c.correo) prev.emails.add(c.correo.toLowerCase());
+      if (c.celular) prev.phones.add(digits(c.celular));
+      if (c.direccion) prev.addresses.add(c.direccion);
+      if (c.fecha_nacimiento) prev.births.add(c.fecha_nacimiento);
+      continue;
+    }
     const e = reg.add(new Entity(`cl:${c.cliente_id}`, 'cliente'));
+    e.altClientIds = [];
+    if (doc) byDoc.set(doc, e);
     reg.setName(e, c.nombre_completo);
     e.clientId = c.cliente_id;
     if (c.num_doc) e.cedulas.add(digits(c.num_doc));
