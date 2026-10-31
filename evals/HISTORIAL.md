@@ -16,3 +16,5 @@ La nota estricta imita la rúbrica (fuga 45 · utilidad 35 · consistencia 20) c
 | 10 | 31/10, 04:01 p.m. | local | 0c14c5b+cambios | **97.1** | 45 | 34.7 | 17.4 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/23 | 206/206 | post-incidente: fecha no es cuenta |
 | 11 | 31/10, 04:06 p.m. | local | 0c14c5b+cambios | **99.7** | 45 | 34.7 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | post-incidente: evaluador no cuenta migrados como homónimos |
 | 12 | 31/10, 04:26 p.m. | local | 5906344+cambios | **99.7** | 45 | 34.7 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | cargo + apellido (el agente Zapata) |
+| 13 | 31/10, 04:42 p.m. | local | 86c30f5+cambios | **99.7** | 45 | 34.7 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | nombres comunes, tablas markdown, usuarios, Lina M. |
+| 14 | 31/10, 04:51 p.m. | local | 86c30f5+cambios | **99.7** | 45 | 34.7 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | inicial final ligada al registro |

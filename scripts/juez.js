@@ -94,7 +94,7 @@ for (const r of all.chats.records) for (const a of r.attachments) {
 for (const d of all.docs) {
   for (const [k, v] of Object.entries(d.metadata || {})) {
     if (!/author|autor|revisado|owner|preparado/i.test(k)) continue;
-    if (/@|^\p{Lu}\p{L}+\s+\p{Lu}/u.test(v) && !/gerencia|equipo|soporte|team|legal|área|area|marketing|security|seguridad|kipu/i.test(v)) T('oculta', `metadata_${k}`, 'regular', d.id, 'metadata', v.replace(/^@/, ''), absentIn(d.id, null, v.replace(/^@/, '')));
+    if (/@|^\p{Lu}\p{L}+\s+\p{Lu}/u.test(v) && !/gerencia|equipo|soporte|team|legal|área|area|marketing|security|seguridad|kipu|integraci[oó]n|p[aá]galo|comit[eé]|direcci[oó]n|gerencia/i.test(v)) T('oculta', `metadata_${k}`, 'regular', d.id, 'metadata', v.replace(/^@/, ''), absentIn(d.id, null, v.replace(/^@/, '')));
   }
   for (const m of (d.body || '').matchAll(/<!--([\s\S]*?)-->/g)) for (const p of people) if (contiene(m[1], p.name.split(' ').slice(0, 2).join(' '))) T('oculta', 'comentario_html', 'difícil', d.id, 'body', p.name.split(' ').slice(0, 2).join(' '), absentIn(d.id, 'body', p.name.split(' ').slice(0, 2).join(' ')));
   for (const p of people) {
@@ -158,7 +158,13 @@ for (const c of clientes) {
 const byShort = new Map();
 for (const p of people) { const t = p.name.split(/\s+/); const k = norm(`${t[0]} ${t[t.length >= 3 ? t.length - 2 : 1]}`); if (!byShort.has(k)) byShort.set(k, []); byShort.get(k).push(p); }
 const uidByMail = new Map(users.filter(u => u.profile?.email).map(u => [u.profile.email.toLowerCase(), u.id]));
-for (const [k, ps] of byShort) {
+for (const [k, ps0] of byShort) {
+  // la misma cédula es la misma persona (cliente migrado con id nuevo, PG-…): debe compartir seudónimo
+  const ps = [...new Map(ps0.map(p => [String(p.ced || p.id).replace(/\D/g, '') || p.id, p])).values()];
+  if (ps0.length > ps.length) {
+    const same = ps0.filter(p => ps0.some(q => q !== p && String(q.ced).replace(/\D/g, '') === String(p.ced).replace(/\D/g, '')));
+    T('homonimos', 'migrado_mismo_seudonimo', 'regular', null, null, k, () => new Set(same.map(p => ents.find(e => e.records.includes(`clientes:${p.id}`))?.pseudonyms?.name)).size === 1);
+  }
   if (ps.length < 2) continue;
   const ent = p => ents.find(e => e.originals.includes(p.ced) || e.originals.includes(p.mail));
   T('homonimos', 'dos_personas_dos_seudonimos', 'regular', null, null, k, () => { const n = ps.map(p => ent(p)?.pseudonyms?.name); return n.every(Boolean) && new Set(n.map(norm)).size === n.length; });

@@ -3,6 +3,7 @@
 import { normMap, norm, digits, escapeRx, styleOf, render, stripAccents } from './text.js';
 import { formatLike } from './registry.js';
 import { KEEP, SECTOR, CITIES, FEMALE, MALE, SURNAMES } from './catalog.js';
+import { COMMON_FIRST, COMMON_SUR } from './names-common.js';
 
 const STREET = '(?:calle|cll|cl|carrerra|carrera|cra|kra|kr|cr|avenida calle|avenida carrera|avenida|av|ak|ac|diagonal|diag|dg|transversal|transv|tv|trans|circular|cq)';
 const UNIT = String.raw`(?:\s*(?:apto|apt|apartamento|piso|of|oficina|casa|int|interior|torre|bloque|local|manzana|mz|lote)\.?\s*(?:[a-z]?\d+[a-z]?|[a-z])(?![a-z\d]))*`;
@@ -38,8 +39,8 @@ export class Anonymizer {
     const barrios = [...this.barrioCity.keys()].filter(b => !CITIES.some(c => norm(c) === b)).sort((a, b) => b.length - a.length);
     this.rxBarrio = barrios.length ? new RegExp(`(?<=(?:^|[^a-z])(?:en|barrio|sector|del|de)\\s(?:el\\s|la\\s)?)(${barrios.map(escapeRx).join('|')})(?![a-z0-9])`, 'g') : null;
     // nombres conocidos para detectar terceros no registrados
-    this.knownFirst = new Set([...reg.firstNames, ...FEMALE.map(norm), ...MALE.map(norm), ...EXTRA_FIRST]);
-    this.knownSur = new Set([...reg.surnameSet, ...SURNAMES.map(norm), ...EXTRA_SUR]);
+    this.knownFirst = new Set([...reg.firstNames, ...FEMALE.map(norm), ...MALE.map(norm), ...EXTRA_FIRST, ...COMMON_FIRST]);
+    this.knownSur = new Set([...reg.surnameSet, ...SURNAMES.map(norm), ...EXTRA_SUR, ...COMMON_SUR]);
     this.buildLocalIndex();
   }
 
@@ -214,13 +215,21 @@ export class Anonymizer {
     }
 
     // 2c-bis. usuario suelto que arranca con un nombre de pila y trae número, punto o guion bajo: beatrizsalas8, oscar_romo
-    for (const m of text.matchAll(/(?<![\p{L}\p{N}._%+@\/-])([a-z]{4,}[a-z0-9]*(?:[._][a-z0-9]+)*)(?![\p{L}\p{N}_@]|\.[a-z])/gu)) {
+    // también inicial(es) + apellido: sgomez19, c.valencia2023, jemartinez
+    for (const m of text.matchAll(/(?<![\p{L}\p{N}._%+@\/-])([a-z][a-z0-9]*(?:[._-][a-z0-9]+)*)(?![\p{L}\p{N}_@]|\.[a-z]|-\p{L})/gu)) {
       const tok = m[1];
-      if (!/[\d_.]/.test(tok) || this.localIndex.get(tok)) continue;
-      const t = tok.replace(/[\d._]/g, '');
+      if (tok.length < 5 || this.localIndex.get(tok)) continue;
+      const t = tok.replace(/[\d._-]/g, '');
+      const marked = /[\d_.\-]/.test(tok);
       let first = 0;
-      for (let k = 4; k < t.length && !first; k++) if (this.knownFirst.has(t.slice(0, k)) && !STAFF_WORDS.has(t.slice(0, k))) first = k;
-      if (!first || t.length - first < 2 && !/\d/.test(tok)) continue;
+      for (let k = 4; k <= t.length && !first; k++) {
+        const f = t.slice(0, k);
+        if (this.knownFirst.has(f) && (!STAFF_WORDS.has(f) || t.length > k + 2)) first = k;
+      }
+      let ok = marked && first && (t.length - first >= 2 || /\d/.test(tok));
+      // inicial(es) + apellido de 5+ letras ("sgomez19", "jemartinez"); el apellido solo no basta
+      if (!ok && marked) for (let k = 1; k <= 2 && !ok; k++) ok = t.length - k >= 5 && this.knownSur.has(t.slice(k)) && !this.knownSur.has(t) && !this.knownFirst.has(t);
+      if (!ok) continue;
       push(m.index, m.index + tok.length, 5, () => {
         const e = this.ctxPerson(ctx) || reg.newValueEntity('usuario', tok);
         const base = reg.pseudoHandle(e, tok.includes('.') ? 'a.b' : tok.includes('_') ? 'a_b' : 'ab');
@@ -613,11 +622,11 @@ export class Anonymizer {
       // nombre de pila conocido + dos palabras con mayúscula = nombre y dos apellidos, aunque no estén en la lista
       // (solo dentro de la misma línea: en una firma, la línea siguiente es el cargo, no un apellido)
       const seg = (m[1].match(new RegExp(`^(?:\\S+\\s+){${end + 1}}\\S+`)) || [''])[0];
-      if (se === end && toks.length >= end + 2 && !seg.includes('\n') && !STAFF_WORDS.has(nt[0]) && !KEEP.some(k => norm(m[1]).includes(norm(k)))) se = end + 2;
+      if (se === end && toks.length >= end + 2 && !seg.includes('\n') && (!STAFF_WORDS.has(nt[0]) || end >= 2) && !KEEP.some(k => norm(m[1]).includes(norm(k)))) se = end + 2;
       // nombre(s) de pila + un apellido fuera de catálogo en la misma línea ("Sandra Milena Quiroz", "Camilo Reyes")
       const seg1 = (m[1].match(new RegExp(`^(?:\\S+\\s+){${end}}\\S+`)) || [''])[0];
       if (se === end && toks.length > end && !seg1.includes('\n') && nt[end].length >= 3 && !NOT_SURNAME.has(nt[end])
-        && !CITY_N.has(nt[end]) && !STAFF_WORDS.has(nt[0]) && !KEEP.some(k => norm(k).split(' ').includes(nt[end]) || norm(m[1]).startsWith(norm(k)))) se = end + 1;
+        && !CITY_N.has(nt[end]) && (!STAFF_WORDS.has(nt[0]) || end >= 2) && !KEEP.some(k => norm(k).split(' ').includes(nt[end]) || norm(m[1]).startsWith(norm(k)))) se = end + 1;
       if (se === end) continue;
       const full = toks.slice(0, se).join(' ');
       if (this.forms.has(norm(full))) continue; // ya lo cubre el registro
@@ -650,6 +659,48 @@ export class Anonymizer {
         const w = v.split(' ');
         return `${w.slice(0, e.firstCount).join(' ')} ${w[e.firstCount][0]}. ${w.slice(e.firstCount + 1).join(' ') || w[e.firstCount]}`.trim();
       }, false);
+    }
+
+    // 10-inicial-final. nombre de pila + inicial del apellido: "Lina M.", "Oscar C." (informes que abrevian)
+    for (const m of text.matchAll(/(?<![\p{L}\p{N}_@.])(\p{Lu}\p{Ll}{2,})[ \t]+(\p{Lu})\.(?![ \t]*\p{Lu}\p{Ll})(?!\p{L})/gu)) {
+      const f = norm(m[1]);
+      if (!this.knownFirst.has(f) || STAFF_WORDS.has(f) || NOT_SURNAME.has(f)) continue;
+      push(m.index, m.index + m[0].length, 4, () => {
+        // la persona del registro con ese nombre y esa inicial, si es una sola; si no, un tercero
+        const same = (this.firstIndex.get(f) || []).filter(x => norm(x.surnames[0] || '')[0] === norm(m[2]));
+        const e = same.length === 1 ? same[0] : this.ctxPerson(ctx)?.first.some(x => norm(x) === f) ? this.ctxPerson(ctx) : reg.newTercero(`${m[1]} ${m[2]}`);
+        const p = reg.pseudo(e);
+        const v = `${p.first[0]} ${p.surnames[0][0]}.`;
+        this.touch(e, recId, m[0], 'name', v);
+        return v;
+      }, false);
+    }
+
+    // 10-tabla. tablas markdown: la columna dice qué es cada celda ("| Cédula |", "| Usuario |", "| Nombre |")
+    for (const tb of text.matchAll(/^\|(.+)\|[ \t]*\r?\n\|[ \t:|-]+\|[ \t]*\r?\n((?:\|.*\|[ \t]*(?:\r?\n|$))+)/gm)) {
+      const heads = tb[1].split('|').map(h => norm(h.replace(/\*/g, '')).trim());
+      const kinds = heads.map(h => /nombre|cliente|titular|deudor|codeudor|responsable|agente|asesor/.test(h) && !/id|codigo|cod\b/.test(h) ? 'name'
+        : /cedula|documento|\bcc\b|identificacion|\bdni\b/.test(h) ? 'cedula' : /usuario|user|login/.test(h) ? 'user'
+        : /correo|email|mail/.test(h) ? 'email' : /celular|telefono|movil|phone/.test(h) ? 'phone' : /direccion|address/.test(h) ? 'address' : null);
+      if (!kinds.some(Boolean)) continue;
+      let pos = tb.index + tb[0].indexOf(tb[2]);
+      for (const row of tb[2].split(/(?<=\n)/)) {
+        const cells = row.replace(/\r?\n$/, '').split('|').slice(1, -1);
+        let off = pos + 1;
+        cells.forEach((c, i) => {
+          const val = c.trim(), kind = kinds[i];
+          const cs = off + c.indexOf(val);
+          off += c.length + 1;
+          if (!kind || !val || /^(?:CL|PG|TX|PQR|KP)-/.test(val) || /^[-–—]$|^n\/?a$/i.test(val)) return;
+          if (kind === 'name' && !/^\p{L}+(?:[ '-]+\p{L}+\.?)*$/u.test(val)) return;
+          if (kind === 'name' && (KEEP.some(k => norm(k) === norm(val)) || !val.split(/\s+/).some(w => this.knownFirst.has(norm(w)) || this.knownSur.has(norm(w))))) return;
+          if ((kind === 'cedula' || kind === 'phone') && digits(val).length < 6) return;
+          // un nombre de pila solo en la tabla ("| Gerardo |") lo resuelve el paso de colegas, no un tercero nuevo
+          if (kind === 'name' && !/\s/.test(val)) return;
+          this.fieldValue(push, ctx, recId, cs, val, kind);
+        });
+        pos += row.length;
+      }
     }
 
     // 10-campos. registros pegados como texto: JSON ("nombre": "…"), XML (<email>…</email>), "clave: valor"

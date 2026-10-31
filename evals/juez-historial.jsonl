@@ -19,3 +19,8 @@
 {"hora":"31/10, 03:36 p.m.","src":"raw/full","pasan":1768,"total":1768,"porcentaje":100,"faciles":"708 / 708","regulares":"742 / 742","dificiles":"318 / 318","por_que_fallan":{},"nota":""}
 {"hora":"31/10, 04:06 p.m.","src":"raw/full","pasan":1768,"total":1768,"porcentaje":100,"faciles":"708 / 708","regulares":"742 / 742","dificiles":"318 / 318","por_que_fallan":{},"nota":""}
 {"hora":"31/10, 04:22 p.m.","src":"raw/full","pasan":1768,"total":1768,"porcentaje":100,"faciles":"708 / 708","regulares":"742 / 742","dificiles":"318 / 318","por_que_fallan":{},"nota":""}
+{"hora":"31/10, 04:27 p.m.","src":"raw/v2","pasan":2408,"total":2421,"porcentaje":99.5,"faciles":"901 / 901","regulares":"1026 / 1039","dificiles":"481 / 481","por_que_fallan":{"oculta":1,"homonimos":12},"nota":"juez sobre fuentes post-incidente"}
+{"hora":"31/10, 04:28 p.m.","src":"raw/v2","pasan":2337,"total":2337,"porcentaje":100,"faciles":"901 / 901","regulares":"1014 / 1014","dificiles":"422 / 422","por_que_fallan":{},"nota":"juez post-incidente: migrados y autores institucionales"}
+{"hora":"31/10, 04:35 p.m.","src":"raw/full","pasan":1768,"total":1768,"porcentaje":100,"faciles":"708 / 708","regulares":"742 / 742","dificiles":"318 / 318","por_que_fallan":{},"nota":""}
+{"hora":"31/10, 04:36 p.m.","src":"raw/v2","pasan":2337,"total":2337,"porcentaje":100,"faciles":"901 / 901","regulares":"1014 / 1014","dificiles":"422 / 422","por_que_fallan":{},"nota":"nombres comunes, tablas markdown, usuarios"}
+{"hora":"31/10, 04:51 p.m.","src":"raw/full","pasan":1768,"total":1768,"porcentaje":100,"faciles":"708 / 708","regulares":"742 / 742","dificiles":"318 / 318","por_que_fallan":{},"nota":""}

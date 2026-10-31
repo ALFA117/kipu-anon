@@ -14,6 +14,17 @@ import sys
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
+TEMAS_4 = [
+    "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones",
+    "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno",
+    "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones",
+    "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares",
+    "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones",
+    "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado",
+    "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas",
+    "clientes que escriben en spanglish o inglés con datos personales mezclados",
+]
+
 TEMAS_3 = [
     "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos",
     "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular",
@@ -83,7 +94,7 @@ def main():
     n = int(opt("--n", "120"))
     out = opt("--salida", "evals/adversario-casos.json")
     key = os.environ.get("OPENROUTER_API_KEY") or sys.exit("falta OPENROUTER_API_KEY")
-    temas = TEMAS_3 if "--ronda3" in sys.argv else TEMAS_2 if "--ronda2" in sys.argv else TEMAS
+    temas = TEMAS_4 if "--ronda4" in sys.argv else TEMAS_3 if "--ronda3" in sys.argv else TEMAS_2 if "--ronda2" in sys.argv else TEMAS
     model = opt("--model", "openai/gpt-4o-mini")
     per = max(4, n // len(temas))
     with ThreadPoolExecutor(8) as ex:

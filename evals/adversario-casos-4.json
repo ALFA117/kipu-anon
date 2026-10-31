@@ -1,0 +1,1854 @@
+[
+ {
+  "texto": "Hello, I need a copy of the Portfolio Purchase Agreement for debtor: Lina Marcela Ruiz Gómez, ID 1029876543, located at Carrera 7 #45-18, Bogotá, as per notice sent July 3rd.",
+  "debe_desaparecer": [
+   "Lina Marcela Ruiz Gómez",
+   "1029876543",
+   "Carrera 7 #45-18"
+  ],
+  "debe_quedar": [
+   "Bogotá"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Could you clarify if the assignment notice for Juan Andres Londoño Ríos (CC 1095678901) at Calle 123B Sur #56-21, Medellín was already sent?",
+  "debe_desaparecer": [
+   "Juan Andres Londoño Ríos",
+   "1095678901",
+   "Calle 123B Sur #56-21"
+  ],
+  "debe_quedar": [
+   "Medellín"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Hi Kipi, I received the Portfolio Purchase Agreement but the address of debtor María del Pilar Niño (ID 1012345678) appears as Av. Siempre Viva 99, should it not be updated?",
+  "debe_desaparecer": [
+   "María del Pilar Niño",
+   "1012345678",
+   "Av. Siempre Viva 99"
+  ],
+  "debe_quedar": [],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "The contract lists Camilo Suarez Peña (C.C. 1032456789, Cra 8 #34-22, Cali) but he claims he never signed. Can you confirm?",
+  "debe_desaparecer": [
+   "Camilo Suarez Peña",
+   "1032456789",
+   "Cra 8 #34-22"
+  ],
+  "debe_quedar": [
+   "Cali"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Our agreement references a Notice of Assignment for Gina Paola Vargas López, ID 1054321987, address Calle 10A #25-30, Barranquilla. Was it properly served?",
+  "debe_desaparecer": [
+   "Gina Paola Vargas López",
+   "1054321987",
+   "Calle 10A #25-30"
+  ],
+  "debe_quedar": [
+   "Barranquilla"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Please update the contact for debtor Sebastián Rico Urrego (C.C. 1076843210). Phone in contract: 3114567890, current address: Calle 19 #65-42, Bogotá.",
+  "debe_desaparecer": [
+   "Sebastián Rico Urrego",
+   "1076843210",
+   "3114567890",
+   "Calle 19 #65-42"
+  ],
+  "debe_quedar": [
+   "Bogotá"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Notice of assignment sent to Alejandro Hoyos Silva, Passport PE1234567, Carrera 32 #11B-77, Bucaramanga, bounced back. How should we proceed?",
+  "debe_desaparecer": [
+   "Alejandro Hoyos Silva",
+   "PE1234567",
+   "Carrera 32 #11B-77"
+  ],
+  "debe_quedar": [
+   "Bucaramanga"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "The Portfolio Purchase Agreement includes Karen Natalia Bohórquez, cedula 1109876543, address: Calle 45 N° 7-13, Cartagena. Please confirm debt amount.",
+  "debe_desaparecer": [
+   "Karen Natalia Bohórquez",
+   "1109876543",
+   "Calle 45 N° 7-13"
+  ],
+  "debe_quedar": [
+   "Cartagena"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "I need English versions of all legal notices for Fabían Enrique Mena Torres (ID 1122334455, Cra 81 #52-18, Pereira) as required by our audit.",
+  "debe_desaparecer": [
+   "Fabían Enrique Mena Torres",
+   "1122334455",
+   "Cra 81 #52-18"
+  ],
+  "debe_quedar": [
+   "Pereira"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Our client, Laura Gómez Jiménez (C.C. 1065487903) at Calle 40 #12-54, Manizales, is requesting a copy of the assignment notification.",
+  "debe_desaparecer": [
+   "Laura Gómez Jiménez",
+   "1065487903",
+   "Calle 40 #12-54"
+  ],
+  "debe_quedar": [
+   "Manizales"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Check if the Notice of Assignment addressed to Tomás Cárdenas Orjuela, passport AE6543210, phone 3004561234, address Carrera 21 #78-34, Armenia, was correct.",
+  "debe_desaparecer": [
+   "Tomás Cárdenas Orjuela",
+   "AE6543210",
+   "3004561234",
+   "Carrera 21 #78-34"
+  ],
+  "debe_quedar": [
+   "Armenia"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Legal team flagged the contract of Andrés Felipe Pulido (ID 1081234567, Calle 60 #23-20, Pasto) for missing signature on assignment notice.",
+  "debe_desaparecer": [
+   "Andrés Felipe Pulido",
+   "1081234567",
+   "Calle 60 #23-20"
+  ],
+  "debe_quedar": [
+   "Pasto"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "The debtor listed in the agreement is Paula Andrea Quintero Vargas, C.C. 1045789032, resident: Carrera 15 #67-11, Neiva. Update her email if available.",
+  "debe_desaparecer": [
+   "Paula Andrea Quintero Vargas",
+   "1045789032",
+   "Carrera 15 #67-11"
+  ],
+  "debe_quedar": [
+   "Neiva"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Could you resend the Portfolio Purchase Agreement for Samuel Lozano Montoya (ID 1133224455, Calle 88 #45-90, Villavicencio)? File is missing from records.",
+  "debe_desaparecer": [
+   "Samuel Lozano Montoya",
+   "1133224455",
+   "Calle 88 #45-90"
+  ],
+  "debe_quedar": [
+   "Villavicencio"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "There’s a discrepancy in the address for debtor Raúl Esteban Caicedo Pérez, C.C. 1193445566. Contract says Av. El Poblado 123, but client claims Av. El Poblado 132, Medellín.",
+  "debe_desaparecer": [
+   "Raúl Esteban Caicedo Pérez",
+   "1193445566",
+   "Av. El Poblado 123",
+   "Av. El Poblado 132"
+  ],
+  "debe_quedar": [
+   "Medellín"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "For legal due diligence, we need the assignment notice for María José Salamanca (C.C. 1002345678), address: Calle 12A #34-89, Sincelejo.",
+  "debe_desaparecer": [
+   "María José Salamanca",
+   "1002345678",
+   "Calle 12A #34-89"
+  ],
+  "debe_quedar": [
+   "Sincelejo"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Did the notification for Pedro Manuel Barreto Silva, cedula 1144556677, Cra 100 #20-30, Popayán, reach the correct recipient?",
+  "debe_desaparecer": [
+   "Pedro Manuel Barreto Silva",
+   "1144556677",
+   "Cra 100 #20-30"
+  ],
+  "debe_quedar": [
+   "Popayán"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Can we get a Portfolio Purchase Agreement template that fits Monica Herrera Suarez (C.C. 1011222333, Calle 23 #56-78, Cúcuta)?",
+  "debe_desaparecer": [
+   "Monica Herrera Suarez",
+   "1011222333",
+   "Calle 23 #56-78"
+  ],
+  "debe_quedar": [
+   "Cúcuta"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Contract section 4.5 references the address of Esteban Torres Lizarazo (ID 1118889997) as CL 47 #15-13, Santa Marta, but our file says CL 47 #15-30.",
+  "debe_desaparecer": [
+   "Esteban Torres Lizarazo",
+   "1118889997",
+   "CL 47 #15-13",
+   "CL 47 #15-30"
+  ],
+  "debe_quedar": [
+   "Santa Marta"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Our system does not recognize the cédula 1059786342, linked to Luz Mary Pereira González at Calle 99A #3-21, Tunja. Please verify data.",
+  "debe_desaparecer": [
+   "1059786342",
+   "Luz Mary Pereira González",
+   "Calle 99A #3-21"
+  ],
+  "debe_quedar": [
+   "Tunja"
+  ],
+  "tema": "contratos y avisos legales en inglés (portfolio purchase agreement, notice of assignment) con nombres de deudores, cédulas y direcciones"
+ },
+ {
+  "texto": "Hola equipo de Kipu Pay, para la integración de Sistemas Financieros S.A.S con Inversiones Bolívar requerimos el organigrama completo. En el archivo adjunto está la lista: Director TI: Claudia L. Martínez (claudia.martinez@sistemas.com), reporta a Juan Saavedra. Analista Integración: Rafael Gómez (rafaelg@sistemas.com), reporta a Claudia. ¿Podrían ayudarnos validando si faltan cargos clave?",
+  "debe_desaparecer": [
+   "Claudia L. Martínez",
+   "claudia.martinez@sistemas.com",
+   "Juan Saavedra",
+   "Rafael Gómez",
+   "rafaelg@sistemas.com"
+  ],
+  "debe_quedar": [
+   "Kipu Pay",
+   "Sistemas Financieros S.A.S",
+   "Inversiones Bolívar"
+  ],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Buenos días, adjunto la estructura propuesta para la unión de Kipu Pay y CrediFácil: Gerente de Proyecto Integración: Felipe Restrepo (felipe.restrepo@kipu.com.co), líder del equipo de implementación: Mariana G. Acuña (mariana.acuna@credifacil.com). Cada uno con sus equipos. Favor confirmar si los correos están bien.",
+  "debe_desaparecer": [
+   "Felipe Restrepo",
+   "felipe.restrepo@kipu.com.co",
+   "Mariana G. Acuña",
+   "mariana.acuna@credifacil.com"
+  ],
+  "debe_quedar": [
+   "Kipu Pay",
+   "CrediFácil"
+  ],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Les comparto los nombres de los responsables para el tablero de seguimiento: Líder de desarrollo: Sandra Posada - sandra.posada@kipu.com, reporta a Pablo Botero. Gerente Operativo: Camilo Torres (camilo.torres@pagos360.net), reporta a Andrés Ochoa. ¿Pueden agregarlos al sistema de tickets?",
+  "debe_desaparecer": [
+   "Sandra Posada",
+   "sandra.posada@kipu.com",
+   "Pablo Botero",
+   "Camilo Torres",
+   "camilo.torres@pagos360.net",
+   "Andrés Ochoa"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Quedamos atentos a la actualización del diagrama. En última reunión dijeron que Ana S. Ramírez (ana.ramirez@kipu.com) lidera QA y responde a Liliana Franco (l.franco@entidades.co). Por favor confirmar esta cadena.",
+  "debe_desaparecer": [
+   "Ana S. Ramírez",
+   "ana.ramirez@kipu.com",
+   "Liliana Franco",
+   "l.franco@entidades.co"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Por error aparecen dos veces: Jefe de Seguridad Informática: Miguel Angel León miguel.leon@kipu.com.co (reporta a Gerardo Rivas). Porfa corrijan el duplicado en el diagrama.",
+  "debe_desaparecer": [
+   "Miguel Angel León",
+   "miguel.leon@kipu.com.co",
+   "Gerardo Rivas"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "El correo de la Coordinadora de soporte, Julieta E. Beltrán, está errado. Debe ser julieta.beltran@kipu.com y reporta directo a Antonio Herrera. ¿Pueden actualizar?",
+  "debe_desaparecer": [
+   "Julieta E. Beltrán",
+   "julieta.beltran@kipu.com",
+   "Antonio Herrera"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "¿Podrían enviarme la lista de extensiones internas? Por ejemplo, Laura Niño (laura.nino@superpagos.com) está como soporte nivel 2, reporta a Leandro Vasquez.",
+  "debe_desaparecer": [
+   "Laura Niño",
+   "laura.nino@superpagos.com",
+   "Leandro Vasquez"
+  ],
+  "debe_quedar": [
+   "superpagos"
+  ],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "En el documento falta el nombre del responsable de infraestructura de Kipu: Sergio B. Gaitán (sergio.gaitan@kipu.com) y su par en IntiPagos: Marcos V. Pinzón (marcos.pinzon@intipagos.co). ¿Tienen sus datos de contacto?",
+  "debe_desaparecer": [
+   "Sergio B. Gaitán",
+   "sergio.gaitan@kipu.com",
+   "Marcos V. Pinzón",
+   "marcos.pinzon@intipagos.co"
+  ],
+  "debe_quedar": [
+   "Kipu",
+   "IntiPagos"
+  ],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Para la fase de pruebas, la líder asignada es Diana P. Méndez, correo: dpmendez@kipu.com.co, reporta a Ing. Mario Tovar.",
+  "debe_desaparecer": [
+   "Diana P. Méndez",
+   "dpmendez@kipu.com.co",
+   "Mario Tovar"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "El cargo de Director de Riesgo de Kipu Pay, asignado a Javier Arango (javier.arango@kipu.com), debe aparecer en el organigrama de la alianza con PagosMaestros. Confirman que reporta a la junta directiva.",
+  "debe_desaparecer": [
+   "Javier Arango",
+   "javier.arango@kipu.com"
+  ],
+  "debe_quedar": [
+   "Kipu Pay",
+   "PagosMaestros"
+  ],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Buenos días, adjunto la matriz de cargos. Bajo la gerencia de proyecto, está Ángela Rojas (arojas@creditoplus.com) y como soporte técnico principal: Orlando L. Cifuentes (ocifuentes@kipu.com).",
+  "debe_desaparecer": [
+   "Ángela Rojas",
+   "arojas@creditoplus.com",
+   "Orlando L. Cifuentes",
+   "ocifuentes@kipu.com"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Listo el organigrama, pero falta el correo de la líder de pruebas de integración: Patricia D. Lozano. Según registros internos, su correo es patricia.lozano@kipu.com.co, y depende de Samuel Nieto.",
+  "debe_desaparecer": [
+   "Patricia D. Lozano",
+   "patricia.lozano@kipu.com.co",
+   "Samuel Nieto"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Adjunto la tabla solicitada: Project Manager: Andrea Zárate az@kipu.com.co. QA Lead: Jhonny Ruiz (jruiz@pagos360.net). Ambos están bajo dirección de operaciones conjunta.",
+  "debe_desaparecer": [
+   "Andrea Zárate",
+   "az@kipu.com.co",
+   "Jhonny Ruiz",
+   "jruiz@pagos360.net"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "En la lista de empleados con acceso aparece: Luisa Fernanda Holguín (luisa.holguin@kipu.com.co), soporte nivel 1, y Edwin Herrera (edwin.herrera@kipu.com.co), líder de soporte. ¿Debo incluirlos en el registro?",
+  "debe_desaparecer": [
+   "Luisa Fernanda Holguín",
+   "luisa.holguin@kipu.com.co",
+   "Edwin Herrera",
+   "edwin.herrera@kipu.com.co"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "En el organigrama enviado falta el suplente de la líder de integración Laura L. Gutiérrez (laura.gutierrez@kipu.com). Su reemplazo es Andrés Felipe Castaño (andres.castano@kipu.com). Ambos reportan a Mónica Laverde.",
+  "debe_desaparecer": [
+   "Laura L. Gutiérrez",
+   "laura.gutierrez@kipu.com",
+   "Andrés Felipe Castaño",
+   "andres.castano@kipu.com",
+   "Mónica Laverde"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Por favor enviar la hoja de vida de Alexander Chávez (alex.chavez@kipu.com.co), nuevo jefe de soporte, quien reportará directamente a Evelio Parra.",
+  "debe_desaparecer": [
+   "Alexander Chávez",
+   "alex.chavez@kipu.com.co",
+   "Evelio Parra"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Necesitamos el histórico de cambios en el área de integración. Últimos responsables: Jorge E. Peralta (jperalta@pagosavanza.com) y Juliana Ramírez (juliana.ramirez@kipu.com).",
+  "debe_desaparecer": [
+   "Jorge E. Peralta",
+   "jperalta@pagosavanza.com",
+   "Juliana Ramírez",
+   "juliana.ramirez@kipu.com"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "La ingeniera a cargo de la mesa de ayuda, Gabriela N. Valenzuela (gabriela.valenzuela@kipu.com), debe ser incluida en todos los requerimientos de integración.",
+  "debe_desaparecer": [
+   "Gabriela N. Valenzuela",
+   "gabriela.valenzuela@kipu.com"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Aparecen dos responsables en el mismo nivel: Jorge L. Santamaría (jorge.santamaria@kipu.com) y Paola Andrea Figueroa (p.figuroa@kipu.com). ¿Cuál debe quedar como jefe?",
+  "debe_desaparecer": [
+   "Jorge L. Santamaría",
+   "jorge.santamaria@kipu.com",
+   "Paola Andrea Figueroa",
+   "p.figuroa@kipu.com"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Favor confirmar si la lista es correcta: Jefe IT: Edwar P. Meneses (emeneses@pagos360.net), soporte técnico: Viviana Osorio (viviana.osorio@kipu.com), ambos bajo Carlos T. Ríos.",
+  "debe_desaparecer": [
+   "Edwar P. Meneses",
+   "emeneses@pagos360.net",
+   "Viviana Osorio",
+   "viviana.osorio@kipu.com",
+   "Carlos T. Ríos"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "¿Pueden validar que Juan Camilo Gómez (jcamilogomez@kipu.com.co) esté asignado como jefe del área técnica de integración? Su reporte directo es a Carolina Suárez.",
+  "debe_desaparecer": [
+   "Juan Camilo Gómez",
+   "jcamilogomez@kipu.com.co",
+   "Carolina Suárez"
+  ],
+  "debe_quedar": [],
+  "tema": "organigramas de integración entre dos empresas: cargos, nombres, correos corporativos y a quién reporta cada uno"
+ },
+ {
+  "texto": "Hola! Adjunto tabla con la conciliación de migración del cliente JUAN ESTEBAN RIOS. Noté que su saldo no coincide:\n| Cliente           | ID Antiguo | ID Nuevo | Saldo Migración | Observaciones           |\n|-------------------|------------|----------|-----------------|------------------------|\n| JUAN ESTEBAN RIOS | 1054236789 | CL-48291 | $4.890.234      | Diferencia $120.000    |\nPor favor verificar en Bancolombia.",
+  "debe_desaparecer": [
+   "JUAN ESTEBAN RIOS",
+   "1054236789"
+  ],
+  "debe_quedar": [
+   "Bancolombia",
+   "$4.890.234",
+   "$120.000"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Estimado soporte, vemos inconsistencia en la migración del usuario maria_vargas. El correo registrado es mvargas@dominio.com, pero el saldo inicial no se actualizó. Tabla:\n| Usuario        | ID Viejo   | ID Nuevo  | Saldo Anterior | Saldo Actual | Obs                     |\n|---------------|------------|-----------|---------------|-------------|-------------------------|\n| maria_vargas  | 2034889147 | CL-57910  | $0            | $560.000    | No tiene tarjetas VISA  |",
+  "debe_desaparecer": [
+   "maria_vargas",
+   "2034889147",
+   "mvargas@dominio.com"
+  ],
+  "debe_quedar": [
+   "VISA",
+   "$560.000"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Al revisar la migración de la cuenta asociada a la cédula 79564301, nombre registrado: PEDRO LOPEZ ACEVEDO, vemos transacciones duplicadas en la tabla:\n| Cédula   | Nombre                 | ID Nuevo | Saldo Post-Migración | Observaciones       |\n|----------|------------------------|----------|---------------------|--------------------|\n| 79564301 | PEDRO LOPEZ ACEVEDO    | CL-46810 | $1.230.900          | Doble abono        |",
+  "debe_desaparecer": [
+   "79564301",
+   "PEDRO LOPEZ ACEVEDO"
+  ],
+  "debe_quedar": [
+   "$1.230.900"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Presentamos diferencia al migrar el usuario daniel.q.sandoval. El teléfono 3209987410 aparece desactualizado:\n| Usuario              | Celular     | ID Viejo   | ID Nuevo   | Saldo Migrado | Comentarios        |\n|----------------------|-------------|------------|------------|---------------|--------------------|\n| daniel.q.sandoval    | 3209987410  | 1134567890 | CL-80056   | $89.700       | Faltan movimientos |",
+  "debe_desaparecer": [
+   "daniel.q.sandoval",
+   "3209987410",
+   "1134567890"
+  ],
+  "debe_quedar": [
+   "$89.700"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Soporte, el cliente con placa FTT-191 y pasaporte BS513201 presenta saldo erróneo tras migración:\n| Placa   | Pasaporte  | ID Antiguo | ID Kipu    | Saldo Final | Nota                             |\n|---------|------------|------------|------------|-------------|----------------------------------|\n| FTT-191 | BS513201   | 1000220440 | CL-22214   | $450.000    | No coincide con Banco de Bogotá  |",
+  "debe_desaparecer": [
+   "BS513201",
+   "1000220440"
+  ],
+  "debe_quedar": [
+   "Banco de Bogotá",
+   "FTT-191",
+   "$450.000"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "En la migración masiva, para el cliente Sandra Gutiérrez Peña (usuario sandra.gutierrezp), el correo sandragp@hotmail.com fue migrado pero el saldo quedó en $0 erroneamente:\n| Nombre Completo         | ID Nuevo | Email                  | Valor Migrado | Observaciones              |\n|------------------------|----------|------------------------|---------------|---------------------------|\n| Sandra Gutiérrez Peña  | CL-75243 | sandragp@hotmail.com   | $0            | Deuda pendiente de $50.00 |",
+  "debe_desaparecer": [
+   "Sandra Gutiérrez Peña",
+   "sandra.gutierrezp",
+   "sandragp@hotmail.com"
+  ],
+  "debe_quedar": [
+   "$0",
+   "$50.00"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "El siguiente cliente no fue migrado debido a error de dirección: ANDRES MENDOZA, dir: Calle 123 #45-67 int 405:\n| Cliente         | Dirección                    | ID Ant    | ID Kipu   | Saldo | Obs                |\n|-----------------|-----------------------------|-----------|-----------|-------|---------------------|\n| ANDRES MENDOZA  | Calle 123 #45-67 int 405    | 109877665 | CL-44401  | $0    | Domicilio inválido  |",
+  "debe_desaparecer": [
+   "ANDRES MENDOZA",
+   "Calle 123 #45-67 int 405",
+   "109877665"
+  ],
+  "debe_quedar": [
+   "$0"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Cliente: paola.sierra, cédula 76543213, registró error de saldo negativo luego de migración:\n| Usuario        | Cédula     | ID Kipu   | Saldo | Observaciones           |\n|---------------|------------|-----------|-------|------------------------|\n| paola.sierra  | 76543213   | CL-98123  | -$200 | Abono reversado manual |",
+  "debe_desaparecer": [
+   "paola.sierra",
+   "76543213"
+  ],
+  "debe_quedar": [
+   "-$200"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Caso de migración para ERIKA ANGARITA (correo: erika.ang@gmail.com). El saldo migrado fue menor al real según tabla:\n| Nombre           | Correo                 | ID Prev.  | ID Actual    | Saldo Migrado | Diferencia |\n|------------------|-----------------------|-----------|-------------|--------------|------------|\n| ERIKA ANGARITA   | erika.ang@gmail.com   | 105468292 | CL-55678    | $122.340     | $1.500     |",
+  "debe_desaparecer": [
+   "ERIKA ANGARITA",
+   "erika.ang@gmail.com",
+   "105468292"
+  ],
+  "debe_quedar": [
+   "$122.340",
+   "$1.500"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Al usuario rodrigo.torresa (cel 3007712345) le quedó saldo congelado tras la migración. Solicita liberación:\n| Usuario              | Celular    | ID Kipu   | Saldo Migrado | Estado        |\n|----------------------|------------|-----------|---------------|--------------|\n| rodrigo.torresa      | 3007712345 | CL-80001  | $800.000      | Congelado     |",
+  "debe_desaparecer": [
+   "rodrigo.torresa",
+   "3007712345"
+  ],
+  "debe_quedar": [
+   "$800.000"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Cliente JOSÉ MAURICIO FONSECA no aparece en la migración. Anexo info:\n| Nombre completo           | ID Viejo   | ID Kipu   | Saldo | Observaciones           |\n|--------------------------|------------|-----------|-------|------------------------|\n| JOSÉ MAURICIO FONSECA    | 1003083679 |           | $0    | No migrado             |",
+  "debe_desaparecer": [
+   "JOSÉ MAURICIO FONSECA",
+   "1003083679"
+  ],
+  "debe_quedar": [
+   "$0"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Reporte migrado de la cuenta asociada a lucia_garcia, cédula 90463518:\n| Usuario      | ID Antiguo  | ID Actual  | Saldo | Obs.                           |\n|--------------|-------------|------------|-------|--------------------------------|\n| lucia_garcia | 90463518    | CL-84400   | $12   | Faltan movimientos de PayU     |",
+  "debe_desaparecer": [
+   "lucia_garcia",
+   "90463518"
+  ],
+  "debe_quedar": [
+   "PayU",
+   "$12"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "El siguiente cliente reportó email erróneo tras migración: carolina.suescun@correo.com\n| Email                           | ID Ant.   | ID Nuevo  | Saldo    | Observaciones          |\n|---------------------------------|-----------|-----------|----------|-----------------------|\n| carolina.suescun@correo.com     | 115099102 | CL-90009  | $1500    | No recibe notificaciones|",
+  "debe_desaparecer": [
+   "carolina.suescun@correo.com",
+   "115099102"
+  ],
+  "debe_quedar": [
+   "$1500"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "En la tabla de migración, usuario sebastian_silva, cédula 45201715, saldo está en cero, pero en Neki tenía $470.000:\n| Usuario           | Cédula     | ID Nuevo   | Saldo Migrado  | Observación       |\n|-------------------|------------|------------|----------------|------------------|\n| sebastian_silva   | 45201715   | CL-56120   | $0             | Diferencia Neki  |",
+  "debe_desaparecer": [
+   "sebastian_silva",
+   "45201715"
+  ],
+  "debe_quedar": [
+   "Neki",
+   "$470.000",
+   "$0"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "El cliente registrado como LILIANA PULIDO HERRERA (ID: 998877655) presenta saldo duplicado:\n| Nombre completo         | ID Antiguo  | ID Kipu   | Saldo      | Obs                          |\n|------------------------|-------------|-----------|------------|------------------------------|\n| LILIANA PULIDO HERRERA | 998877655   | CL-14005  | $5.140.000 | Abono doble en migración     |",
+  "debe_desaparecer": [
+   "LILIANA PULIDO HERRERA",
+   "998877655"
+  ],
+  "debe_quedar": [
+   "$5.140.000"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Santiago Gómez Ortíz, usuario sgomez19, solicita aclaración por saldo pendiente tras migración:\n| Nombre                   | Usuario   | ID Nuevo   | Saldo Antes | Saldo Nuevo | Observaciones                 |\n|--------------------------|-----------|------------|-------------|-------------|------------------------------|\n| Santiago Gómez Ortíz     | sgomez19  | CL-22091   | $250.000    | $0          | Transferencia Visa fallida    |",
+  "debe_desaparecer": [
+   "Santiago Gómez Ortíz",
+   "sgomez19"
+  ],
+  "debe_quedar": [
+   "Visa",
+   "$250.000",
+   "$0"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "En revisión de migración, la cuenta afiliada a mauricio-pineda, cédula 1053784632, quedó sin datos de saldo pero tiene movimientos recientes:\n| Usuario           | Cédula       | ID Actual  | Saldo       | Observaciones           |\n|-------------------|--------------|------------|-------------|------------------------|\n| mauricio-pineda   | 1053784632   | CL-31902   | $0          | Movimientos sin reflejo|",
+  "debe_desaparecer": [
+   "mauricio-pineda",
+   "1053784632"
+  ],
+  "debe_quedar": [
+   "$0"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Cliente con nombre diana carolina arevalo, correo: dcar.arevalo@gmail.com, no visualiza saldo total migrado:\n| Nombre completo            | Correo                     | ID Kipu   | Saldo Migrado | Obs           |\n|----------------------------|----------------------------|-----------|---------------|---------------|\n| diana carolina arevalo     | dcar.arevalo@gmail.com     | CL-69003  | $5.000        | Verificar saldo|",
+  "debe_desaparecer": [
+   "diana carolina arevalo",
+   "dcar.arevalo@gmail.com"
+  ],
+  "debe_quedar": [
+   "$5.000"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Caso de cliente natalia93, pasaporte PG2233445, saldo no migrado:\n| Usuario     | Pasaporte    | ID Migración | Saldo      | Observaciones           |\n|-------------|--------------|--------------|------------|------------------------|\n| natalia93   | PG2233445    | CL-10852     | $0         | Movimientos no reflejan |",
+  "debe_desaparecer": [
+   "natalia93",
+   "PG2233445"
+  ],
+  "debe_quedar": [
+   "$0"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Cliente: felipe.moralesp, cédula: 1012468106, error en saldo tras migración con débito automático Davivienda:\n| Usuario          | Cédula       | Banco     | ID Kipu | Saldo Migrado | Observaciones          |\n|------------------|-------------|-----------|---------|---------------|-----------------------|\n| felipe.moralesp  | 1012468106  | Davivienda| CL-88120| $1.100.000    | Débito duplicado      |",
+  "debe_desaparecer": [
+   "felipe.moralesp",
+   "1012468106"
+  ],
+  "debe_quedar": [
+   "Davivienda",
+   "$1.100.000"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Cliente con dirección Cra 45 #12-89, nombre: OSCAR GARNICA, saldo post-migración incorrecto:\n| Nombre           | Dirección         | ID Viejo   | ID Kipu    | Saldo    | Obs                       |\n|------------------|------------------|------------|------------|----------|----------------------------|\n| OSCAR GARNICA    | Cra 45 #12-89    | 1012354987 | CL-49876   | $9.100   | Suma no coincide migración |",
+  "debe_desaparecer": [
+   "OSCAR GARNICA",
+   "Cra 45 #12-89",
+   "1012354987"
+  ],
+  "debe_quedar": [
+   "$9.100"
+  ],
+  "tema": "conciliaciones de migración con tablas markdown de clientes, ids viejos y nuevos, saldos y observaciones"
+ },
+ {
+  "texto": "Hola, ¿pueden confirmarme si el tutor de mi inducción mañana a las 08:00 es Carolina Sepúlveda? Me dijeron que la contactar al 3025559842.",
+  "debe_desaparecer": [
+   "Carolina Sepúlveda",
+   "3025559842"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "No logré comunicarme con mi tutor del turno de hoy, Juan D. Peña. Su número termina en 78 pero el resto no lo sé.",
+  "debe_desaparecer": [
+   "Juan D. Peña"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "El agente nuevo, Ricardo Gomez, del turno de las 2pm, insiste en que su tutor, Lina, no responde en el 3147774411.",
+  "debe_desaparecer": [
+   "Ricardo Gomez",
+   "Lina",
+   "3147774411"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "¿Pueden indicarme si el celular 3508129900 asignado a Catalina Cifuentes está activo para la inducción de la próxima semana?",
+  "debe_desaparecer": [
+   "3508129900",
+   "Catalina Cifuentes"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "Mi usuario es ag.julianr y mi tutor para el plan de inducción es David Ariza, quien me escribió desde el correo david.a.kipu@gmail.com.",
+  "debe_desaparecer": [
+   "ag.julianr",
+   "David Ariza",
+   "david.a.kipu@gmail.com"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "Tengo programado ingresar a Kipu Pay el lunes en el turno de 10am con la instructora Ana B. Morales, pero no tengo ni su celular ni correo.",
+  "debe_desaparecer": [
+   "Ana B. Morales"
+  ],
+  "debe_quedar": [
+   "Kipu Pay"
+  ],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "En la cédula que adjuntó Andrés Cubillos hay una inconsistencia con el número: 1023456789. Revisar para el ingreso de su inducción.",
+  "debe_desaparecer": [
+   "Andrés Cubillos",
+   "1023456789"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "Natalia Rodríguez me indicó que su agente asignada es Julia Téllez, celular 3126660040, pero el archivo del plan está a nombre de Luz Pinzón.",
+  "debe_desaparecer": [
+   "Natalia Rodríguez",
+   "Julia Téllez",
+   "3126660040",
+   "Luz Pinzón"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "No puedo descargar el PDF de inducción enviado a juan.fernando@kipu.co por Andrea Vera. ¿Podrían reenviarlo?",
+  "debe_desaparecer": [
+   "juan.fernando@kipu.co",
+   "Andrea Vera"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "Mi número y el de mi tutor quedaron cruzados en la planilla: Yo soy Carlos Beltrán (3208887788), él es Sergio Vega (3217778855).",
+  "debe_desaparecer": [
+   "Carlos Beltrán",
+   "3208887788",
+   "Sergio Vega",
+   "3217778855"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "El instructor Luis Gregorio Ortiz me pidió presentarme en Calle 45 #27-14 a las 7am pero no me responde en el chat.",
+  "debe_desaparecer": [
+   "Luis Gregorio Ortiz",
+   "Calle 45 #27-14"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "En la inducción de Sara Neira se reportó que su tutor es Marta Lucia Reyes, pero en el correo aparece otro nombre, Isabella Mora.",
+  "debe_desaparecer": [
+   "Sara Neira",
+   "Marta Lucia Reyes",
+   "Isabella Mora"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "El celular 3156622344 no corresponde a ningún tutor registrado para el grupo de ingreso de Manuel Caicedo.",
+  "debe_desaparecer": [
+   "3156622344",
+   "Manuel Caicedo"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "Mi fecha de nacimiento en la base está mal, sale 1994-07-05; debería ser 1995-08-21. Tutor: Esteban Ríos.",
+  "debe_desaparecer": [
+   "1994-07-05",
+   "1995-08-21",
+   "Esteban Ríos"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "El agente Andrés Felipe Páez pregunta si puede cambiar el turno de 6pm a 8am y si sigue siendo Karen Real su tutora.",
+  "debe_desaparecer": [
+   "Andrés Felipe Páez",
+   "Karen Real"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "En la lista de agentes nuevos, aparecen juntos los teléfonos de Samuel Daza (3178996888) y Milena Marchena (3189988777).",
+  "debe_desaparecer": [
+   "Samuel Daza",
+   "3178996888",
+   "Milena Marchena",
+   "3189988777"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "El usuario ag.oscarperez no aparece vinculado al tutor asignado, Valentina Cárdenas, ni al grupo de inducción.",
+  "debe_desaparecer": [
+   "ag.oscarperez",
+   "Valentina Cárdenas"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "Tengo dos asesores nuevos, Harold Gómez y Paula Díaz, ambos con turnos de 12pm, pero uno tiene el celular 3112341234 y el otro no.",
+  "debe_desaparecer": [
+   "Harold Gómez",
+   "Paula Díaz",
+   "3112341234"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "El PDF que envió Mariana Jaramillo a cristian.uris@outlook.com tiene el nombre de Paulina Flórez pero no corresponde al agente.",
+  "debe_desaparecer": [
+   "Mariana Jaramillo",
+   "cristian.uris@outlook.com",
+   "Paulina Flórez"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "¿Podrían confirmar si la tutora Carolina Osorio sigue a cargo del grupo liderado por Daniel Cuervo (usuario ag.dcuervog)?",
+  "debe_desaparecer": [
+   "Carolina Osorio",
+   "Daniel Cuervo",
+   "ag.dcuervog"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "El equipo de soporte sugiere asignar a Laura Franco (celular 3205564432) como tutora del ingreso de Óscar Moreno.",
+  "debe_desaparecer": [
+   "Laura Franco",
+   "3205564432",
+   "Óscar Moreno"
+  ],
+  "debe_quedar": [],
+  "tema": "planes de inducción de agentes nuevos con nombres de tutores, turnos y celulares"
+ },
+ {
+  "texto": "Buenos días, en el acta del comité del 16 de mayo se revisó la solicitud de crédito de Juan Camilo Pérez Vergara, identificado con cédula 1083928476. La suma aprobada fue de $7,500,000 y se exigió como codeudor a su hermano, Andrés Pérez Vergara.",
+  "debe_desaparecer": [
+   "Juan Camilo Pérez Vergara",
+   "1083928476",
+   "Andrés Pérez Vergara"
+  ],
+  "debe_quedar": [
+   "$7,500,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "En la sesión 110 se negó el crédito solicitado por Martha Paola Ruiz Tovar debido a inconsistencias en su historial. La cédula reportada fue 1023457890, monto solicitado $3,200,000. El codeudor propuesto: David Quintero.",
+  "debe_desaparecer": [
+   "Martha Paola Ruiz Tovar",
+   "1023457890",
+   "David Quintero"
+  ],
+  "debe_quedar": [
+   "$3,200,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Ayer recibimos consulta de la solicitud con id CL-99501. Para el cliente Miguel Torres, correo mtorres@gmail.com, la decisión fue aprobación por $5,000,000 con codeudor asignado: Sandra L. Rodríguez.",
+  "debe_desaparecer": [
+   "Miguel Torres",
+   "mtorres@gmail.com",
+   "Sandra L. Rodríguez"
+  ],
+  "debe_quedar": [
+   "$5,000,000",
+   "CL-99501"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "En la reunión de comité, caso radicado PQR-2026-0451, se revisó el perfil de Jaime Andrés Niño Morales, cédula 1015672314. El monto solicitado fue $6,800,000 y fue aprobado con codeudor María Fernanda Niño.",
+  "debe_desaparecer": [
+   "Jaime Andrés Niño Morales",
+   "1015672314",
+   "María Fernanda Niño"
+  ],
+  "debe_quedar": [
+   "$6,800,000",
+   "PQR-2026-0451"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Se negó la solicitud de crédito realizada por LUZ MARINA GALVIS PINTO, identificación 987654321, por $2,100,000. El codeudor presentado, Camilo Galvis, no cumplió requisitos.",
+  "debe_desaparecer": [
+   "LUZ MARINA GALVIS PINTO",
+   "987654321",
+   "Camilo Galvis"
+  ],
+  "debe_quedar": [
+   "$2,100,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Con referencia al acta del 8 de junio, el usuario jccardenas90 fue aprobado por $4,500,000. Cédula 1102394867, codeudora asignada: Paula Andrea Gómez.",
+  "debe_desaparecer": [
+   "jccardenas90",
+   "1102394867",
+   "Paula Andrea Gómez"
+  ],
+  "debe_quedar": [
+   "$4,500,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Cliente: Sebastián Ruiz, cédula 1045781239, móvil 3156789543. Solicitud aprobada por $7,900,000 con codeudor Daniela Montoya.",
+  "debe_desaparecer": [
+   "Sebastián Ruiz",
+   "1045781239",
+   "3156789543",
+   "Daniela Montoya"
+  ],
+  "debe_quedar": [
+   "$7,900,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Solicitudes radicadas el 20 de mayo: María Fernanda Román, cédula 1024881515, $2,800,000. Codeudora: Laura Serrano. Decisión: Negada.",
+  "debe_desaparecer": [
+   "María Fernanda Román",
+   "1024881515",
+   "Laura Serrano"
+  ],
+  "debe_quedar": [
+   "$2,800,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "La solicitud de crédito de Óscar Rodríguez Gómez (CC 1032254851) fue aprobada, monto: $4,000,000. Codeudor: Jorge Gómez.",
+  "debe_desaparecer": [
+   "Óscar Rodríguez Gómez",
+   "1032254851",
+   "Jorge Gómez"
+  ],
+  "debe_quedar": [
+   "$4,000,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Informe para acta: Cliente Diana Zúñiga Ramírez, correo diana.zuniga@correo.com, solicitó $3,900,000. Se exigió codeudor a nombre de Ricardo Zúñiga.",
+  "debe_desaparecer": [
+   "Diana Zúñiga Ramírez",
+   "diana.zuniga@correo.com",
+   "Ricardo Zúñiga"
+  ],
+  "debe_quedar": [
+   "$3,900,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Se revisó el caso de Felipe Acosta Nieto, cédula 1053269842. Aprobación por $6,000,000, con codeudor: Paola Andrea Acosta.",
+  "debe_desaparecer": [
+   "Felipe Acosta Nieto",
+   "1053269842",
+   "Paola Andrea Acosta"
+  ],
+  "debe_quedar": [
+   "$6,000,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Comité revisó radicado TX-000123. Cliente: Carlos L. Gutiérrez. Celular: 3124567890. Decisión: Aprobado, $5,200,000, codeudor propuesto: Javier Gutiérrez Marín.",
+  "debe_desaparecer": [
+   "Carlos L. Gutiérrez",
+   "3124567890",
+   "Javier Gutiérrez Marín"
+  ],
+  "debe_quedar": [
+   "$5,200,000",
+   "TX-000123"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "En la sesión se negó el préstamo solicitado por Alejandra Peña. Cédula 1098765432. Monto: $2,500,000. Codeudor: Wilson Peña.",
+  "debe_desaparecer": [
+   "Alejandra Peña",
+   "1098765432",
+   "Wilson Peña"
+  ],
+  "debe_quedar": [
+   "$2,500,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Sobre el cliente Jorge Iván Carrillo, cédula 1012456987, la decisión fue aprobación de $8,100,000. Se registró a Karina Carrillo como codeudora.",
+  "debe_desaparecer": [
+   "Jorge Iván Carrillo",
+   "1012456987",
+   "Karina Carrillo"
+  ],
+  "debe_quedar": [
+   "$8,100,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Caso de crédito para Luz Adriana Bonilla, quien usó el usuario luzabonilla87, fue aprobado por $6,500,000 con codeudor: Samuel Bonilla.",
+  "debe_desaparecer": [
+   "Luz Adriana Bonilla",
+   "luzabonilla87",
+   "Samuel Bonilla"
+  ],
+  "debe_quedar": [
+   "$6,500,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Revisión especial del acta: cliente Hernán Gómez. Cédula 1102345678. Monto solicitado: $9,000,000. Codeudor asignado: Manuela Gómez.",
+  "debe_desaparecer": [
+   "Hernán Gómez",
+   "1102345678",
+   "Manuela Gómez"
+  ],
+  "debe_quedar": [
+   "$9,000,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Acta comité: cliente Andrea Suárez Méndez, correo andrea.suarez@hotmail.com, solicitó $3,300,000. Codeudor propuesto: Pedro Méndez.",
+  "debe_desaparecer": [
+   "Andrea Suárez Méndez",
+   "andrea.suarez@hotmail.com",
+   "Pedro Méndez"
+  ],
+  "debe_quedar": [
+   "$3,300,000"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Para la solicitud CL-54322: Cliente Camila Restrepo, identificación 1078945612, monto $5,750,000, codeudor Rafael Restrepo.",
+  "debe_desaparecer": [
+   "Camila Restrepo",
+   "1078945612",
+   "Rafael Restrepo"
+  ],
+  "debe_quedar": [
+   "$5,750,000",
+   "CL-54322"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Se negó el crédito a Julio E. Martínez, usuario jemartinez, por inconsistencias en información del codeudor Mariana Martínez.",
+  "debe_desaparecer": [
+   "Julio E. Martínez",
+   "jemartinez",
+   "Mariana Martínez"
+  ],
+  "debe_quedar": [],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "Solicitud de crédito ID CL-12730, cliente: Sara Caicedo. Celular 3176543210. Aprobada por $4,600,000. Codeudor: Lina Caicedo.",
+  "debe_desaparecer": [
+   "Sara Caicedo",
+   "3176543210",
+   "Lina Caicedo"
+  ],
+  "debe_quedar": [
+   "$4,600,000",
+   "CL-12730"
+  ],
+  "tema": "actas de comité de crédito con casos de clientes, montos, codeudores y decisiones"
+ },
+ {
+  "texto": "El cliente Julián Rodríguez de Medellín, con radicado PQR-2026-0451, reporta que su transferencia enviada el 3 de mayo fue debitada dos veces de la cuenta y no ha recibido respuesta del equipo de soporte después de cuatro días.",
+  "debe_desaparecer": [
+   "Julián Rodríguez"
+  ],
+  "debe_quedar": [
+   "Medellín",
+   "PQR-2026-0451"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "Sandra Gutierrez escribió desde Barranquilla bajo radicado PQR-2026-0497 indicando que el sistema no reconoció su cédula terminada en 1879 al intentar actualizar sus datos personales en la plataforma.",
+  "debe_desaparecer": [
+   "Sandra Gutierrez",
+   "1879"
+  ],
+  "debe_quedar": [
+   "Barranquilla",
+   "PQR-2026-0497"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "Radicado PQR-2026-0512: el usuario Carlos Peña (Bogotá) comentó que su número de celular 3114486925 fue bloqueado tras intentar hacer un pago a Davivienda y solicita desbloqueo urgente.",
+  "debe_desaparecer": [
+   "Carlos Peña",
+   "3114486925"
+  ],
+  "debe_quedar": [
+   "Bogotá",
+   "Davivienda",
+   "PQR-2026-0512"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "Con radicado PQR-2026-0543, el cliente Lina M. de Cali informa que la dirección registrada (Cra 45 # 123-65, Apto 402) fue ingresada sin su autorización tras abrir su cuenta el 2 de junio.",
+  "debe_desaparecer": [
+   "Lina M.",
+   "Cra 45 # 123-65, Apto 402"
+  ],
+  "debe_quedar": [
+   "Cali",
+   "PQR-2026-0543"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "Oscar C. desde Cartagena, con la solicitud PQR-2026-0550, se queja de que el reporte mensual de movimientos llegó a su correo oldoscarc@correo.com en vez del nuevo que ingresó hace un mes.",
+  "debe_desaparecer": [
+   "Oscar C.",
+   "oldoscarc@correo.com"
+  ],
+  "debe_quedar": [
+   "Cartagena",
+   "PQR-2026-0550"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "En el radicado PQR-2026-0572, la señora Luz Angela Vélez (Medellín) menciona que su número de usuario luzita.1985 fue vulnerado por terceros y solicita mayor seguridad en la autenticación.",
+  "debe_desaparecer": [
+   "Luz Angela Vélez",
+   "luzita.1985"
+  ],
+  "debe_quedar": [
+   "Medellín",
+   "PQR-2026-0572"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "El 15 de junio, con radicado PQR-2026-0581, Alejandro Narváez expresó desde Pereira que su cuenta número 10023354321 fue congelada tras una transacción fallida de $980.000.",
+  "debe_desaparecer": [
+   "Alejandro Narváez",
+   "10023354321"
+  ],
+  "debe_quedar": [
+   "Pereira",
+   "PQR-2026-0581",
+   "$980.000"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "Radicado PQR-2026-0593: la usuaria Marcela Londoño (Bucaramanga) indica que no reconocen el retiro que aparece a su nombre con pasaporte AA1234567.",
+  "debe_desaparecer": [
+   "Marcela Londoño",
+   "AA1234567"
+  ],
+  "debe_quedar": [
+   "Bucaramanga",
+   "PQR-2026-0593"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "El cliente Felipe Restrepo de Manizales, con radicado PQR-2026-0610, reporta que recibió un mensaje con código de verificación a su celular 3105874693 que no solicitó.",
+  "debe_desaparecer": [
+   "Felipe Restrepo",
+   "3105874693"
+  ],
+  "debe_quedar": [
+   "Manizales",
+   "PQR-2026-0610"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "En la PQR-2026-0627, Diana Hernández de Ibagué comenta que nunca solicitó el cambio de contraseña notificado a su correo dhdez_1981@hotmail.com.",
+  "debe_desaparecer": [
+   "Diana Hernández",
+   "dhdez_1981@hotmail.com"
+  ],
+  "debe_quedar": [
+   "Ibagué",
+   "PQR-2026-0627"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "Radicado PQR-2026-0642: Andrés Yepes, usuario en Palmira, informa que exigen nuevamente la foto de la cédula 1098765432 pese a haberla subido el 7 de mayo.",
+  "debe_desaparecer": [
+   "Andrés Yepes",
+   "1098765432"
+  ],
+  "debe_quedar": [
+   "Palmira",
+   "PQR-2026-0642"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "La cliente Silvia Ríos, con radicado PQR-2026-0658 desde Sincelejo, reporta débito por $350.000 en su cuenta terminada en 4421 sin que ella haya autorizado la transacción.",
+  "debe_desaparecer": [
+   "Silvia Ríos",
+   "4421"
+  ],
+  "debe_quedar": [
+   "Sincelejo",
+   "PQR-2026-0658",
+   "$350.000"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "Radicado PQR-2026-0681: el usuario Juan Echeverri (Neiva) notifica que la dirección fiscal en la factura muestra Calle 80 No. 14B-25, dato que no corresponde a su residencia.",
+  "debe_desaparecer": [
+   "Juan Echeverri",
+   "Calle 80 No. 14B-25"
+  ],
+  "debe_quedar": [
+   "Neiva",
+   "PQR-2026-0681"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "El caso PQR-2026-0696 corresponde a Martha López de Popayán, quien solicita eliminar la cuenta asociada a marthalop22@kipupay.co por motivos personales.",
+  "debe_desaparecer": [
+   "Martha López",
+   "marthalop22@kipupay.co"
+  ],
+  "debe_quedar": [
+   "Popayán",
+   "PQR-2026-0696"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "Radicado PQR-2026-0710: el cliente José David Cardona (Cúcuta) no logró identificar un abono de $1.700.000 enviado desde Bancolombia el 9 de junio.",
+  "debe_desaparecer": [
+   "José David Cardona"
+  ],
+  "debe_quedar": [
+   "Cúcuta",
+   "PQR-2026-0710",
+   "Bancolombia",
+   "$1.700.000"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "En PQR-2026-0723, Paola Fajardo, residente en Valledupar, comenta que su historial bancario fue consultado desde la IP 181.45.123.99 sin su autorización.",
+  "debe_desaparecer": [
+   "Paola Fajardo",
+   "181.45.123.99"
+  ],
+  "debe_quedar": [
+   "Valledupar",
+   "PQR-2026-0723"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "Radicado PQR-2026-0739: el usuario Esteban Gómez, domiciliado en Pasto, reporta que su celular de contacto 3006958741 fue usado para solicitar un crédito no autorizado.",
+  "debe_desaparecer": [
+   "Esteban Gómez",
+   "3006958741"
+  ],
+  "debe_quedar": [
+   "Pasto",
+   "PQR-2026-0739"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "La usuaria Verónica Castaño, bajo el radicado PQR-2026-0751 desde Montería, expresa inconformidad porque su usuario verocast78 fue bloqueado luego de intentar ingresar desde un café internet.",
+  "debe_desaparecer": [
+   "Verónica Castaño",
+   "verocast78"
+  ],
+  "debe_quedar": [
+   "Montería",
+   "PQR-2026-0751"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "Con radicado PQR-2026-0764, el cliente Mario Restrepo (Santa Marta) indica que al realizar una recarga a su cuenta de Nequi el recibo mostró el número de cuenta 3216549870 incompleto.",
+  "debe_desaparecer": [
+   "Mario Restrepo",
+   "3216549870"
+  ],
+  "debe_quedar": [
+   "Santa Marta",
+   "PQR-2026-0764",
+   "Nequi"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "Radicado PQR-2026-0782: Catalina Arias, de Armenia, advierte que su documento 74425819 aparece vinculado a dos cuentas distintas sin explicación.",
+  "debe_desaparecer": [
+   "Catalina Arias",
+   "74425819"
+  ],
+  "debe_quedar": [
+   "Armenia",
+   "PQR-2026-0782"
+  ],
+  "tema": "informes mensuales de PQR con ejemplos de quejas citando al cliente por nombre, ciudad y radicado"
+ },
+ {
+  "texto": "¡Hola equipo! Soy Camilo Porras, me dicen 'El Profe', vengo de Ualá y estoy listo para ayudarles con sus procesos en Kipu Pay. Mi correo anterior era cporras@uala.com, pero ahora pueden encontrarme acá. ¡Saludos!",
+  "debe_desaparecer": [
+   "Camilo Porras",
+   "cporras@uala.com"
+  ],
+  "debe_quedar": [
+   "Ualá",
+   "Kipu Pay"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Buenas tardes, soy Lina Contreras, pero todos me llaman 'Linix'. Trabajaba en Rappi y estoy feliz de unirme a Kipu Pay. Si necesitan algo, mi número sigue igual: 3185567485.",
+  "debe_desaparecer": [
+   "Lina Contreras",
+   "3185567485"
+  ],
+  "debe_quedar": [
+   "Rappi",
+   "Kipu Pay"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "¡Qué más equipo! Aquí Santiago Cabrera, alias 'SantiC', vengo de Mercado Pago. Les dejo mi usuario anterior: santi_cabrera222.",
+  "debe_desaparecer": [
+   "Santiago Cabrera",
+   "santi_cabrera222"
+  ],
+  "debe_quedar": [
+   "Mercado Pago"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Hola a todos. Mi nombre es María del Pilar Cano, para ustedes 'Pili', ex-Daviplata. Pueden escribirme por Slack cuando necesiten ayuda.",
+  "debe_desaparecer": [
+   "María del Pilar Cano"
+  ],
+  "debe_quedar": [
+   "Daviplata"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Saludos, soy Jhonathan Torres, 'JT', antes estaba en Nequi. Porfa agréguenme a los canales de PQRS. Mi número anterior 3129000077 ya no está activo.",
+  "debe_desaparecer": [
+   "Jhonathan Torres",
+   "3129000077"
+  ],
+  "debe_quedar": [
+   "Nequi"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Hola Kipu team, soy Claudia Osorio pero me llaman 'Clau', era parte de Bancolombia. Mi cédula termina en 3862 por si la necesitan en onboarding.",
+  "debe_deasaparecer": [
+   "Claudia Osorio",
+   "3862"
+  ],
+  "debe_quedar": [
+   "Bancolombia"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas",
+  "debe_desaparecer": []
+ },
+ {
+  "texto": "¡Buenos días! Soy Ricardo Bernal, 'Rick', vengo de BBVA Colombia. Mi usuario de IG sigue siendo rickbernal1993, por si quieren seguirme.",
+  "debe_desaparecer": [
+   "Ricardo Bernal",
+   "rickbernal1993"
+  ],
+  "debe_quedar": [
+   "BBVA Colombia"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Equipo, me presento: Diana Paola Ruiz, apodo 'Dpru', transferida desde Nubank Brasil. Les dejo mi correo personal diana.ruiz@gmail.com.",
+  "debe_desaparecer": [
+   "Diana Paola Ruiz",
+   "diana.ruiz@gmail.com"
+  ],
+  "debe_quedar": [
+   "Nubank Brasil"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Hey, soy Eider Velásquez, me conocen como 'Eivi'. Trabajaba en PayU Latam. Cualquier consulta, mi WhatsApp era 3219876543.",
+  "debe_desaparecer": [
+   "Eider Velásquez",
+   "3219876543"
+  ],
+  "debe_quedar": [
+   "PayU Latam"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "¡Hola a todos! Soy Natalia Meneses, alias 'NatyM', ex-Grupo Aval. Si ven emails de nmeneses@aval.com aún, soy yo.",
+  "debe_desaparecer": [
+   "Natalia Meneses",
+   "nmeneses@aval.com"
+  ],
+  "debe_quedar": [
+   "Grupo Aval"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Saludos equipo Kipu, mi nombre es Sebastián Ospina (me dicen 'Sebas'), vengo de Falabella. Mi dirección anterior era Cra 14 #78-21 Bogotá.",
+  "debe_desaparecer": [
+   "Sebastián Ospina",
+   "Cra 14 #78-21 Bogotá"
+  ],
+  "debe_quedar": [
+   "Falabella",
+   "Bogotá"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Buen día, soy Alejandra Forero, 'AleFe', antes en Banco de Bogotá. Mi usuario bancario terminaba en 1192.",
+  "debe_desaparecer": [
+   "Alejandra Forero",
+   "1192"
+  ],
+  "debe_quedar": [
+   "Banco de Bogotá"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Hola, aquí Juan Felipe Niño, apodado 'JF'. Desde Scotiabank Colpatria me uno al equipo. Mi pasaporte anterior era AV390274.",
+  "debe_desaparecer": [
+   "Juan Felipe Niño",
+   "AV390274"
+  ],
+  "debe_quedar": [
+   "Scotiabank Colpatria"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "¡Qué tal! Soy Laura Quintero, alias 'Lauris', fui soporte en Davivienda. Mi cuenta de correo era lauraq24@davivienda.com.",
+  "debe_desaparecer": [
+   "Laura Quintero",
+   "lauraq24@davivienda.com"
+  ],
+  "debe_quedar": [
+   "Davivienda"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Hola todos, me llamo Felipe Méndez, 'PipeM', ex-Cuando Pasa. Mi número migratorio es 9502041, por si toca para el acceso.",
+  "debe_desaparecer": [
+   "Felipe Méndez",
+   "9502041"
+  ],
+  "debe_quedar": [
+   "Cuando Pasa"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Saludos, soy Andrea González, me dicen 'Gonza'. Vengo desde Itaú. Mi fecha de nacimiento es 14-05-1989.",
+  "debe_desaparecer": [
+   "Andrea González",
+   "14-05-1989"
+  ],
+  "debe_quedar": [
+   "Itaú"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Hey equipo, aquí Edgardo Santos, 'Ed', ex-Interbank Perú. Mi usuario Slack anterior: edslack2020.",
+  "debe_desaparecer": [
+   "Edgardo Santos",
+   "edslack2020"
+  ],
+  "debe_quedar": [
+   "Interbank Perú"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "¡Buenas! Soy Valentina Marín, me dicen 'ValeMar', me mudé de Banco GNB Sudameris. Les paso mi WhatsApp: 3008002551.",
+  "debe_desaparecer": [
+   "Valentina Marín",
+   "3008002551"
+  ],
+  "debe_quedar": [
+   "Banco GNB Sudameris"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Hola grupo, soy Julián Castillo, alias 'Juca', desde Banco Popular. Mi placa de carro registrada es JVI-312.",
+  "debe_desaparecer": [
+   "Julián Castillo",
+   "JVI-312"
+  ],
+  "debe_quedar": [
+   "Banco Popular"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Saludos, mi nombre es Paola Andrea Hoyos, me dicen 'PAH', llegué desde Credibanco. Mi usuario Telegram es paolahoyos123.",
+  "debe_desaparecer": [
+   "Paola Andrea Hoyos",
+   "paolahoyos123"
+  ],
+  "debe_quedar": [
+   "Credibanco"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "¡Buen día! Aquí Daniel Romero, 'DaniR', de Servibanca. Mi dirección era Calle 96 #19-15 Medellín.",
+  "debe_desaparecer": [
+   "Daniel Romero",
+   "Calle 96 #19-15 Medellín"
+  ],
+  "debe_quedar": [
+   "Servibanca",
+   "Medellín"
+  ],
+  "tema": "mensajes de Slack de agentes que vienen de otra empresa y se presentan, con apodos y firmas"
+ },
+ {
+  "texto": "Hi Kipu team, I can't access my account. My email is juancamilo.gomez1992@gmail.com and cell is +573114567890. Can you call me at any hora? Thanks.",
+  "debe_desaparecer": [
+   "juancamilo.gomez1992@gmail.com",
+   "+573114567890"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Hola, yesterday I tried to send $150.000 to mi hermana, username: sandra123, pero el mensaje me llegó al correo sandra.lopezz_84@hotmail.com. Is this normal?",
+  "debe_desaparecer": [
+   "sandra123",
+   "sandra.lopezz_84@hotmail.com"
+  ],
+  "debe_quedar": [
+   "$150.000"
+  ],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "I received una alerta en mi phone number, ends with 7895, cuando withdraw de mi cuenta: 0672109845, please verificar.",
+  "debe_desaparecer": [
+   "7895",
+   "0672109845"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Hey, Kipu, my passport is CL789014 and I need update my direccion to Calle 93B #18-24, Bogotá ASAP. Can you help?",
+  "debe_desaparecer": [
+   "CL789014",
+   "Calle 93B #18-24"
+  ],
+  "debe_quedar": [
+   "Bogotá"
+  ],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Lost mi access, old usuario was maria.urrego, mi cédula 1054789654. Help please.",
+  "debe_desaparecer": [
+   "maria.urrego",
+   "1054789654"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "I changed my phone to 316-8181818. Now can't enter with old mail, juana_velasquez@kiwi.com. Pueden resetear?",
+  "debe_desaparecer": [
+   "316-8181818",
+   "juana_velasquez@kiwi.com"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Necesito cancelar mi tarjeta asociada a mi name Kevin Acosta, CC 1012345678, it's urgent.",
+  "debe_desaparecer": [
+   "Kevin Acosta",
+   "1012345678"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Hi, I tried to link Bancolombia with account 01345678901 and got error. My username: camila.bqz",
+  "debe_desaparecer": [
+   "01345678901",
+   "camila.bqz"
+  ],
+  "debe_quedar": [
+   "Bancolombia"
+  ],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Necesito soporte, mi correo para Kipu: j.c.deavila89@yahoo.com, ciudad Barranquilla. Fecha nacimiento: 1989-04-15.",
+  "debe_desaparecer": [
+   "j.c.deavila89@yahoo.com",
+   "1989-04-15"
+  ],
+  "debe_quedar": [
+   "Barranquilla"
+  ],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "My name is Leonardo Ríos, cedula 80019876, forgot mi user y clave. Using Davivienda con ustedes.",
+  "debe_desaparecer": [
+   "Leonardo Ríos",
+   "80019876"
+  ],
+  "debe_quedar": [
+   "Davivienda"
+  ],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Can you delete my profile? It's princess.maria_22, passport number YK278456.",
+  "debe_desaparecer": [
+   "princess.maria_22",
+   "YK278456"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Tengo problemas con Kipu, mail enlazado: joseperez2022@hotmail.com y phone 3005671234, please contact.",
+  "debe_desaparecer": [
+   "joseperez2022@hotmail.com",
+   "3005671234"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "I need un extracto sent to 11av. Calle 5 #15-70 apto 410, Medellín, nombre usuario: andres.manrique.",
+  "debe_desaparecer": [
+   "11av. Calle 5 #15-70 apto 410",
+   "andres.manrique"
+  ],
+  "debe_quedar": [
+   "Medellín"
+  ],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Hola. My número de cédula is 1047654321 but me equivoqué al escribir el apellido, should be Salazar not Salazer.",
+  "debe_desaparecer": [
+   "1047654321",
+   "Salazar",
+   "Salazer"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Please unlock mi cuenta: laura_g23 por motivo viaje, passport: AA189234.",
+  "debe_desaparecer": [
+   "laura_g23",
+   "AA189234"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Just got married, mi new surname is Gómez. User: pao_sierra93. Old email: p.sierra@talent.com.",
+  "debe_desaparecer": [
+   "Gómez",
+   "pao_sierra93",
+   "p.sierra@talent.com"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Hi Kipu, I have two accounts: luisangel1234 and l.angel@correo.net, can I merge?",
+  "debe_desaparecer": [
+   "luisangel1234",
+   "l.angel@correo.net"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Hola guys, my plate is JKN287, need cambio titular para cédula 991234567.",
+  "debe_desaparecer": [
+   "JKN287",
+   "991234567"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Urgente, bloqueen acceso a mi cuenta: felipe_2024, porque perdí celular 3129876543.",
+  "debe_desaparecer": [
+   "felipe_2024",
+   "3129876543"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ },
+ {
+  "texto": "Contact me via WhatsApp at (57) 320 666 22 11, my account is c.valencia2023, tengo issues with transfer.",
+  "debe_desaparecer": [
+   "(57) 320 666 22 11",
+   "c.valencia2023"
+  ],
+  "debe_quedar": [],
+  "tema": "clientes que escriben en spanglish o inglés con datos personales mezclados"
+ }
+]
