@@ -142,30 +142,88 @@ function parsePdf(buf) {
   return { info, body: lines.join('\n') + '\n' };
 }
 
+// utf-8 si decodifica limpio; si no, latin-1 (exportes de sistemas viejos)
+export function decodeText(buf) {
+  const s = buf.toString('utf8').replace(/^﻿/, '');
+  return s.includes('�') ? buf.toString('latin1') : s;
+}
+
+// lector zip mínimo (docx, xlsx, odt): devuelve { nombre: Buffer }
+function unzip(buf) {
+  const out = {};
+  let e = buf.lastIndexOf(Buffer.from([0x50, 0x4b, 0x05, 0x06]));
+  if (e < 0) return out;
+  let p = buf.readUInt32LE(e + 16);
+  const n = buf.readUInt16LE(e + 10);
+  for (let i = 0; i < n && buf.readUInt32LE(p) === 0x02014b50; i++) {
+    const method = buf.readUInt16LE(p + 10), csize = buf.readUInt32LE(p + 20);
+    const nl = buf.readUInt16LE(p + 28), xl = buf.readUInt16LE(p + 30), cl = buf.readUInt16LE(p + 32);
+    const off = buf.readUInt32LE(p + 42);
+    const name = buf.slice(p + 46, p + 46 + nl).toString('utf8');
+    const lh = off + 30 + buf.readUInt16LE(off + 26) + buf.readUInt16LE(off + 28);
+    const data = buf.slice(lh, lh + csize);
+    try { out[name] = method === 8 ? zlib.inflateRawSync(data) : data; } catch { /* entrada dañada */ }
+    p += 46 + nl + xl + cl;
+  }
+  return out;
+}
+
+const xmlText = x => decodeEnt(x.replace(/<\/w:p>|<\/text:p>|<\/a:p>|<w:br\/>|<w:tab\/>/g, m => (m.includes('tab') ? '\t' : '\n')).replace(/<[^>]+>/g, '')).replace(/\n{3,}/g, '\n\n').trim();
+
+// documentos de Office/LibreOffice: texto + metadatos de docProps/core.xml (autor, título…)
+function parseOffice(buf) {
+  const z = unzip(buf);
+  const parts = Object.keys(z).filter(k => /^(word\/(document|header\d*|footer\d*|footnotes|comments)\.xml|content\.xml|ppt\/slides\/slide\d+\.xml|xl\/sharedStrings\.xml)$/.test(k)).sort();
+  const body = parts.map(k => xmlText(z[k].toString('utf8'))).filter(Boolean).join('\n\n');
+  const meta = {};
+  for (const k of ['docProps/core.xml', 'meta.xml', 'docProps/app.xml']) {
+    if (!z[k]) continue;
+    for (const m of z[k].toString('utf8').matchAll(/<(?:dc|cp|meta|ep)?:?(\w+)[^>]*>([^<]+)<\//g)) if (m[2].trim()) meta[m[1]] = decodeEnt(m[2].trim());
+  }
+  return { body, meta };
+}
+
 export function parseDocs(dir) {
   const index = readJson(path.join(dir, 'docs/index.json'));
   return index.map(d => {
     const p = path.join(dir, 'docs', d.filename);
-    const buf = fs.readFileSync(p);
+    const buf = fs.existsSync(p) ? fs.readFileSync(p) : Buffer.alloc(0);
+    try { return parseDoc(d, buf); } catch {
+      // formato roto o desconocido: nunca se pierde el registro, se anonimiza su texto plano
+      return { id: d.id, format: d.format, filename: d.filename, title: d.filename, body: decodeText(buf).replace(/[\x00-\x08\x0e-\x1f]/g, ' '), metadata: {} };
+    }
+  });
+}
+
+function parseDoc(d, buf) {
     let body = '', metadata = {}, title = '';
-    if (d.format === 'pdf') {
+    const fmt = String(d.format || path.extname(d.filename).slice(1)).toLowerCase();
+    if (buf.slice(0, 2).toString() === 'PK' && fmt !== 'pdf') {
+      const r = parseOffice(buf);
+      body = r.body;
+      metadata = r.meta;
+      title = r.meta.title || body.split('\n')[0] || d.filename;
+    } else if (fmt === 'json') {
+      body = decodeText(buf);
+      title = d.filename;
+    } else if (fmt === 'pdf') {
       const r = parsePdf(buf);
       body = r.body;
       metadata = r.info;
       title = r.info.title || r.body.split('\n')[0] || d.filename;
-    } else if (d.format === 'html') {
-      const html = buf.toString('utf8');
+    } else if (fmt === 'html' || fmt === 'htm' || fmt === 'xml' && /<html/i.test(buf.slice(0, 500).toString())) {
+      const html = decodeText(buf);
       const r = htmlMeta(html);
       metadata = r.meta;
       title = r.title || '';
       body = htmlToMarkdown(html);
     } else {
-      body = buf.toString('utf8');
+      body = decodeText(buf);
+      if (fmt === 'rtf') body = body.replace(/\\'([0-9a-f]{2})/gi, (_, h) => Buffer.from([parseInt(h, 16)]).toString('latin1')).replace(/\\[a-z]+-?\d* ?|[{}]/gi, '');
       metadata = frontMatter(body);
       title = metadata.title || (body.match(/^#\s+(.+)$/m) || [])[1] || d.filename;
     }
     return { id: d.id, format: d.format, filename: d.filename, title, body, metadata };
-  });
 }
 
 // ---------- tables ----------
@@ -212,6 +270,13 @@ function parseXmlRows(text, tag) {
   return out;
 }
 
+// sin atributo id: la fila es la etiqueta con hijos que más se repite
+function repeatedTag(text) {
+  const c = {};
+  for (const m of text.matchAll(/<(\w+)\b[^>/]*>\s*<\w/g)) c[m[1]] = (c[m[1]] || 0) + 1;
+  return Object.entries(c).sort((a, b) => b[1] - a[1])[0]?.[0];
+}
+
 export const TABLE_KEYS = { clientes: 'cliente_id', transacciones: 'tx_id', pqrs: 'radicado', empleados: 'id' };
 
 export function parseTables(dir) {
@@ -224,11 +289,16 @@ export function parseTables(dir) {
   for (const t of index) {
     const buf = fs.readFileSync(path.join(dir, 'tables', t.name));
     const name = t.name.replace(/\.\w+$/, '');
-    const text = buf.toString(/latin/i.test(t.charset || '') ? 'latin1' : 'utf8');
+    const text = /latin|8859|1252/i.test(t.charset || '') ? buf.toString('latin1') : decodeText(buf);
+    const fmt = String(t.format || path.extname(t.name).slice(1)).toLowerCase();
     let rows;
-    if (t.format === 'csv') rows = parseCsv(text, t.separator || ',');
-    else {
-      const tag = name === 'pqrs' ? 'pqr' : name === 'empleados' ? 'empleado' : (text.match(/<(\w+)\b[^>]*\b(?:id|radicado)="/) || [])[1];
+    if (fmt === 'csv' || fmt === 'tsv') rows = parseCsv(text, t.separator || (fmt === 'tsv' ? '\t' : (text.split('\n')[0].match(/[;,\t|]/g) || [','])
+      .sort((a, b, l = text.split('\n')[0]) => l.split(b).length - l.split(a).length)[0]));
+    else if (fmt === 'json' || fmt === 'jsonl') {
+      const j = fmt === 'jsonl' ? text.trim().split(/\r?\n/).map(l => JSON.parse(l)) : JSON.parse(text);
+      rows = (Array.isArray(j) ? j : Object.values(j).find(Array.isArray) || []).map(r => Object.fromEntries(Object.entries(r).map(([k, v]) => [k, typeof v === 'object' && v ? JSON.stringify(v) : v])));
+    } else {
+      const tag = name === 'pqrs' ? 'pqr' : name === 'empleados' ? 'empleado' : (text.match(/<(\w+)\b[^>]*\b(?:id|radicado)="/) || [])[1] || repeatedTag(text);
       rows = parseXmlRows(text, tag);
       raw[name + '_comments'] = [...text.matchAll(/<!--([\s\S]*?)-->/g)].map(m => m[1]);
     }
