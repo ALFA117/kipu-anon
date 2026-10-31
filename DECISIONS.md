@@ -20,13 +20,18 @@ El motor tiene que ser determinista: la misma persona debe recibir el mismo seud
 ## 3. Costo
 
 - **Tokens de LLM del pipeline:** 0. El núcleo es por reglas y el registro de identidades.
-- **Auditor con IA:** unos 170 mil tokens de entrada y 60 mil de salida con `openai/gpt-4o-mini` por pasada completa (2.231 registros, unos 2 minutos, menos de US$0,10). Corre fuera del servicio, antes de cada corrida.
-- **Tiempo:** la ingesta tarda unos 2–4 s y el pipeline 1,1–1,7 s para 8.297 registros. `/anonymize` responde en milisegundos con el estado en memoria y en unos 3 s en una instancia fría de Vercel.
+- **Auditor con IA:** unos 170 mil tokens de entrada y 60 mil de salida con `openai/gpt-4o-mini` por pasada completa (2.231 registros, unos 2 minutos, menos de US$0,10). Corre fuera del servicio, antes de cada corrida. En la tarde también se corrió con `openai/gpt-4.1` (unos 170 mil + 24 mil tokens, menos de un minuto).
+- **Adversario con IA:** 4 rondas, unos 630 casos inventados con `gpt-4o-mini` y `gpt-4.1`. Todo lo de IA del día costó menos de US$1.
+- **Tiempo:** la ingesta tarda unos 2–4 s y el pipeline 1,1–1,7 s para 8.297 registros. Después del incidente (10.856 registros), un `/run` completo en Vercel tarda unos 5,5 s. `/anonymize` responde en milisegundos con el estado en memoria y en unos 3 s en una instancia fría de Vercel.
 - **Infraestructura:** Vercel Hobby (gratis).
 
 ## Consistencia entre corridas
 
 `ψ` depende solo de la llave estable de la persona (`cliente_id`, id de empleado, uid o nombre normalizado de un tercero) y de una sal. Los seudónimos de la corrida anterior se guardan en `data/pseudonyms.json` con las llaves hasheadas, para no publicar nombres reales, y se reservan antes de asignar los nuevos. El mapa solo crece: una persona que no aparece en una corrida conserva su seudónimo para cuando vuelva. Así una persona vieja conserva su seudónimo cuando las fuentes crecen. Un seudónimo nunca repite un nombre o apellido de la persona real.
+
+## El incidente (Kipu Pay compró Págalo)
+
+A las 15:45 las fuentes crecieron a 2.999 mensajes, 34 documentos y 7.823 filas. Los clientes migrados llegan a `clientes.csv` con un id nuevo (`PG-…`) y la misma cédula que su fila `CL-`: es la misma persona, así que se liga por cédula y conserva el seudónimo de la fila vieja; el `PG-` también sirve para resolver menciones en el texto. Una persona nueva que se llama igual que una vieja, con otra cédula, es otra persona. Antes de proponer la corrida se comparó contra el `entities.json` de la última corrida antes del cambio: las 193 personas conservan exactamente su seudónimo.
 
 ## Homónimos
 
