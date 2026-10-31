@@ -22,7 +22,7 @@ const hasWord = (hay, needle) => {
 };
 const genderOf = first => {
   const n = norm(first);
-  if (FEMALE.some(f => norm(f) === n) || FEMALE_EXTRA.has(n)) return 'F';
+  if (FEMALE.some(f => norm(f) === n) || FEMALE_EXTRA.has(n) || ['katherine', 'kelly', 'julieth', 'lizeth', 'yeimy', 'jennifer', 'evelyn', 'madeleine', 'heidy'].includes(n)) return 'F';
   if (MALE.some(f => norm(f) === n)) return 'M';
   return n.endsWith('a') ? 'F' : 'M';
 };
@@ -89,7 +89,9 @@ export function hardChecks(srcDir, outDir) {
   const inAll = [...inText.values()].join('\n'), outJoined = outBig;
   for (const k of KEEP) {
     if (k.length < 4) continue;
-    const rx = new RegExp(`(?<![\\p{L}])${k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\p{L}])`, 'gu');
+    // tras otra palabra con mayúscula es parte de un nombre propio ("Mariana Carulla", "Villa Olímpica"):
+    // como apellido debe cambiar, así que no cuenta como marca perdida
+    const rx = new RegExp(`(?<![\\p{L}])(?<!\\p{Lu}\\p{Ll}+ )${k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\p{L}])`, 'gu');
     const a = (inAll.match(rx) || []).length, b = (outJoined.match(rx) || []).length;
     keepIn += a; keepOut += Math.min(a, b);
   }

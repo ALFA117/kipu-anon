@@ -18,3 +18,6 @@ La nota estricta imita la rúbrica (fuga 45 · utilidad 35 · consistencia 20) c
 | 12 | 31/10, 04:26 p.m. | local | 5906344+cambios | **99.7** | 45 | 34.7 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | cargo + apellido (el agente Zapata) |
 | 13 | 31/10, 04:42 p.m. | local | 86c30f5+cambios | **99.7** | 45 | 34.7 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | nombres comunes, tablas markdown, usuarios, Lina M. |
 | 14 | 31/10, 04:51 p.m. | local | 86c30f5+cambios | **99.7** | 45 | 34.7 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | inicial final ligada al registro |
+| 15 | 31/10, 05:07 p.m. | local | 3eadd52+cambios | **99.8** | 45 | 34.8 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | habla X de Kipu Pay; género del evaluador |
+| 16 | 31/10, 05:19 p.m. | local | 3eadd52+cambios | **99.8** | 45 | 34.8 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | pulido: tablas ID/pasaporte, (57), usuarios, habla X de Kipu Pay |
+| 17 | 31/10, 05:25 p.m. | local | 3eadd52+cambios | **99.9** | 45 | 34.9 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | evaluador: apellido que es marca no cuenta como marca perdida |

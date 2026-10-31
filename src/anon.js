@@ -11,7 +11,7 @@ const RX_ADDRESS = new RegExp(`\\b${STREET}\\.?\\s*\\d+\\s?[a-z]?(?:\\s?bis)?(?:
   + `|\\bav(?:enida|\\.)?\\s+(?:el\\s+|la\\s+)?\\p{Lu}\\p{L}+(?:\\s\\p{Lu}\\p{L}+)?\\s*(?:#|no\\.?)?\\s*\\d+\\s?[a-z]?\\s*-\\s*\\d+${UNIT}`, 'giu');
 const RX_EMAIL = /[a-z0-9][a-z0-9._%+-]*@[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,}/gi;
 const RX_EMAIL_SPOKEN = /\b([a-z0-9][a-z0-9._-]*(?:\s+punto\s+[a-z0-9]+)*)\s+(?:arroba|\(at\)|\[at\])\s+([a-z0-9-]+)((?:\s+(?:punto|dot|\.)\s+[a-z]{2,})+)/gi;
-const RX_NUM = /(?<![\p{L}\p{N}\-\/_])(?:\+?57[ -]?)?(?:\d{1,3}(?:[.\s]\d{3}){2,3}|\d{3}[ -]\d{3}[ -]\d{4}|\d{3}[ -]\d{7}|\d{6,12})(?![\p{L}\p{N}\-\/_]|[.,]\d)/gu;
+const RX_NUM = /(?<![\p{L}\p{N}\-\/_])(?:\(\+?57\)[ -]?3\d{2}[ -]?\d{3}[ -]?\d{2}[ -]?\d{2}|(?:\+?57[ -]?)?3\d{2}[ -]\d{3}[ -]\d{2}[ -]\d{2}|(?:\+?57[ -]?)?(?:\d{1,3}(?:[.\s]\d{3}){2,3}|\d{3}[ -]\d{3}[ -]\d{4}|\d{3}[ -]\d{7}|\d{6,12}))(?![\p{L}\p{N}\-\/_]|[.,]\d)/gu;
 const RX_DATE = /\b(\d{4})-(\d{2})-(\d{2})\b|\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/g;
 const RX_PLATE = /\b([A-Z]{3})[ -]?(\d{3})\b|\b([A-Z]{3}\d{2}[A-Z])\b/g;
 const RX_PASSPORT = /\b([A-Z]{1,2}\d{6,8})\b/g;
@@ -230,6 +230,30 @@ export class Anonymizer {
       // inicial(es) + apellido de 5+ letras ("sgomez19", "jemartinez"); el apellido solo no basta
       if (!ok && marked) for (let k = 1; k <= 2 && !ok; k++) ok = t.length - k >= 5 && this.knownSur.has(t.slice(k)) && !this.knownSur.has(t) && !this.knownFirst.has(t);
       if (!ok) continue;
+      push(m.index, m.index + tok.length, 5, () => {
+        const e = this.ctxPerson(ctx) || reg.newValueEntity('usuario', tok);
+        const base = reg.pseudoHandle(e, tok.includes('.') ? 'a.b' : tok.includes('_') ? 'a_b' : 'ab');
+        const tail = (tok.match(/\d+$/) || [''])[0];
+        this.touch(e, recId, tok);
+        return base + (tail ? fakeFrom(e.key + tok, tail.padStart(2, '1')).slice(0, tail.length) : '');
+      }, false);
+    }
+
+    // 2c-ter. usuario con número al final o con punto/guion bajo que contiene un nombre o apellido, o que sigue a una
+    // red social o perfil: rickbernal1993, princess.maria_22, edslack2020 ("usuario Slack anterior: …")
+    for (const m of text.matchAll(/(?<![\p{L}\p{N}._%+@\/-])([a-z][a-z._]{3,}[a-z](?:_?\d{2,4})?)(?![\p{L}\p{N}_@]|\.[a-z]|-)/gu)) {
+      const tok = m[1];
+      if (!/\d$|[a-z][._][a-z]/.test(tok) || this.localIndex.get(tok)) continue;
+      // un nombre de archivo no es un usuario: lo maneja su propio paso
+      if (ctx.filename || /\.(?:pdf|jpe?g|png|gif|docx?|xlsx?|csv|html?|md|txt|zip|xml|json)$/.test(tok) || /\.[a-z]{2,4}$/.test(text.slice(m.index, m.index + tok.length + 6).match(/^\S+/)[0])) continue;
+      const t = tok.replace(/[\d._]/g, '');
+      let name = false;
+      for (let i = 0; i + 4 <= t.length && !name; i++) for (let k = i + 4; k <= t.length && !name; k++) {
+        const s = t.slice(i, k);
+        name = (this.knownFirst.has(s) && !STAFF_WORDS.has(s)) || (s.length >= 5 && this.knownSur.has(s));
+      }
+      const cue = /(usuario|user|instagram|\big\b|tiktok|slack|perfil|profile|handle|cuenta|account|it'?s|es)\W{0,3}(?:\w+\W{1,3}){0,3}$/i.test(text.slice(Math.max(0, m.index - 40), m.index));
+      if (!(name && /\d$|[._]/.test(tok)) && !(cue && /\d$/.test(tok))) continue;
       push(m.index, m.index + tok.length, 5, () => {
         const e = this.ctxPerson(ctx) || reg.newValueEntity('usuario', tok);
         const base = reg.pseudoHandle(e, tok.includes('.') ? 'a.b' : tok.includes('_') ? 'a_b' : 'ab');
@@ -681,7 +705,9 @@ export class Anonymizer {
       const heads = tb[1].split('|').map(h => norm(h.replace(/\*/g, '')).trim());
       const kinds = heads.map(h => /nombre|cliente|titular|deudor|codeudor|responsable|agente|asesor/.test(h) && !/id|codigo|cod\b/.test(h) ? 'name'
         : /cedula|documento|\bcc\b|identificacion|\bdni\b/.test(h) ? 'cedula' : /usuario|user|login/.test(h) ? 'user'
-        : /correo|email|mail/.test(h) ? 'email' : /celular|telefono|movil|phone/.test(h) ? 'phone' : /direccion|address/.test(h) ? 'address' : null);
+        : /correo|email|mail/.test(h) ? 'email' : /celular|telefono|movil|phone/.test(h) ? 'phone' : /direccion|address/.test(h) ? 'address'
+        // "ID Antiguo", "ID Viejo", "Pasaporte": un número de 6 a 12 dígitos es un documento; un ID de Kipu (CL-) no
+        : /\bid\b|pasaporte|passport/.test(h) ? 'docid' : null);
       if (!kinds.some(Boolean)) continue;
       let pos = tb.index + tb[0].indexOf(tb[2]);
       for (const row of tb[2].split(/(?<=\n)/)) {
@@ -695,6 +721,11 @@ export class Anonymizer {
           if (kind === 'name' && !/^\p{L}+(?:[ '-]+\p{L}+\.?)*$/u.test(val)) return;
           if (kind === 'name' && (KEEP.some(k => norm(k) === norm(val)) || !val.split(/\s+/).some(w => this.knownFirst.has(norm(w)) || this.knownSur.has(norm(w))))) return;
           if ((kind === 'cedula' || kind === 'phone') && digits(val).length < 6) return;
+          if (kind === 'docid') {
+            if (/^\d[\d.]{5,14}$/.test(val) && digits(val).length >= 6 && digits(val).length <= 12) this.fieldValue(push, ctx, recId, cs, val, 'cedula');
+            else if (/^[A-Z]{1,3}\d{5,9}$/.test(val)) this.fieldValue(push, ctx, recId, cs, val, 'passport');
+            return;
+          }
           // un nombre de pila solo en la tabla ("| Gerardo |") lo resuelve el paso de colegas, no un tercero nuevo
           if (kind === 'name' && !/\s/.test(val)) return;
           this.fieldValue(push, ctx, recId, cs, val, kind);
@@ -751,6 +782,15 @@ export class Anonymizer {
     const honorRx = new RegExp(`(?<![\\p{L}])(?:[Ss]eñor|[Ss]eñora|[Ss]r\\.|[Ss]ra\\.|[Dd]on|[Dd]oña|[Dd]r\\.|[Dd]ra\\.|[Dd]octor|[Dd]octora|Mr\\.|Mrs\\.|Ms\\.)\\s+(${W}(?:[ \\t]+(?:${P}[ \\t]+)?${W}){0,4})(?![\\p{L}])`, 'gu');
     const signRx = new RegExp(`(?:^|\\n|[.!]\\s+)(?:—|--|–|[Aa]tentamente,?|[Cc]ordialmente,?|[Ss]aludos,?|[Uu]n abrazo,?|[Bb]endiciones,?)\\s*(${W}(?:[ \\t]+${W}){0,3})\\s*$`, 'gu');
     const onName = (full, start, single) => {
+      // "habla Yuliana de Kipu Pay": el nombre termina antes de la empresa, marca o lugar (y su partícula)
+      const nf = norm(full);
+      for (const k of KEEP) {
+        const nk = norm(k);
+        const at = nf.indexOf(' ' + nk);
+        if (nk.length < 4 || at < 0 || (nf[at + 1 + nk.length] || ' ') !== ' ') continue;
+        const cut = full.slice(0, at).replace(/[ \t]+(?:de|del|de la|de los|y|DE|DEL)$/, '');
+        if (cut.length < full.length) { full = cut; }
+      }
       const toks = full.split(/\s+/).filter(t => !/^(de|del|la|los|y)$/i.test(t));
       if (!toks.length || norm(toks[0]) === 'kipi') return; // tras "soy/me llamo" siempre es persona (salvo el bot)
       if (KEEP.some(k => norm(k) === norm(full) || norm(full).startsWith(norm(k) + ' '))) return;
@@ -780,7 +820,7 @@ export class Anonymizer {
     const moreRx = new RegExp(`(?<![\\p{L}])(?:[Ee]scribo como|[Ee]n nombre de|[Aa]quí)\\s+(${NAME})(?![\\p{L}])`, 'gu');
     for (const m of text.matchAll(moreRx)) onName(m[1], m.index + m[0].length - m[1].length, false);
     // nombre en minúsculas tras una pista fuerte: "hola me llamo pedro ramírez", "soy carlos m."
-    for (const m of text.matchAll(/(?<![\p{L}])(?:me llamo|mi nombre es|soy|a nombre de)\s+([a-záéíóúñü]+(?:\s+[a-záéíóúñü]+\.?){1,3})/gu)) {
+    for (const m of text.matchAll(/(?<![\p{L}])(?:me llamo|mi nombre es|soy|a nombre de|con nombre|nombre:)\s+([a-záéíóúñü]+(?:\s+[a-záéíóúñü]+\.?){1,3})/gu)) {
       const words = m[1].split(/\s+/).map(w => (/^[a-z]\.$/.test(w) ? w : w.replace(/[.,;:]+$/, '')));
       if (!this.knownFirst.has(norm(words[0]))) continue;
       let k = 1;
@@ -897,13 +937,15 @@ export class Anonymizer {
       const e = kind === 'email' ? (reg.byEmail.get(val.toLowerCase()) || this.ownerForUnknown(ctx, 'email', val))
         : kind === 'cedula' ? (reg.byCedula.get(d) || this.ownerForUnknown(ctx, 'cedula', d))
         : kind === 'phone' ? (reg.byPhone.get(d.slice(-10)) || this.ownerForUnknown(ctx, 'phone', d.slice(-10)))
-        : this.localIndex.get(val.toLowerCase())?.e || this.ctxPerson(ctx) || reg.newValueEntity(kind, val);
+        : kind === 'passport' ? (reg.byPassport.get(val) || this.ownerForUnknown(ctx, 'passport', val))
+        : this.localIndex.get(val.toLowerCase())?.e || this.ctxPerson(ctx) || reg.newValueEntity(kind === 'user' ? 'usuario' : kind, val);
       const p = reg.pseudo(e);
       let v;
       if (kind === 'email') v = /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(val) ? reg.pseudoEmail(e, val) : reg.pseudoEmail(e, val.replace(/[@#]+/g, '@').replace(/^([^@]*)$/, '$1@mail.com'));
       else if (kind === 'cedula') v = formatLike(e.cedulas.has(d) && [...e.cedulas][0] === d ? p.cedula : fakeFrom(e.key + d, d), val);
       else if (kind === 'phone') v = formatLike(e.phones.has(d.slice(-10)) ? p.phone : '3' + fakeFrom(e.key + d, d.slice(-10)).slice(1), val);
       else if (kind === 'address') v = p.address;
+      else if (kind === 'passport') { reg.byPassport.set(val, e); v = fakePassportFrom(val); }
       else {
         const base = reg.pseudoHandle(e, val.includes('.') ? 'a.b' : val.includes('_') ? 'a_b' : 'ab');
         const tail = (val.match(/\d+$/) || [''])[0];

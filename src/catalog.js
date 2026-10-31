@@ -37,7 +37,7 @@ export const SURNAMES = [
 
 // Nombres femeninos que no terminan en "a" y masculinos que sí, para inferir género.
 export const FEMALE_EXTRA = new Set([
-  'isabel', 'raquel', 'carmen', 'ines', 'pilar', 'luz', 'mercedes', 'dolores', 'beatriz', 'ruth', 'esther',
+  'isabel', 'katherine', 'kelly', 'julieth', 'jennifer', 'evelyn', 'heidy', 'yeimy', 'raquel', 'carmen', 'ines', 'pilar', 'luz', 'mercedes', 'dolores', 'beatriz', 'ruth', 'esther',
   'yasmin', 'miriam', 'lourdes', 'marisol', 'consuelo', 'rocio', 'belen', 'abigail', 'jazmin', 'ingrid',
   'astrid', 'karen', 'lizeth', 'yuliet', 'nicole', 'ivonne', 'edith', 'gladys', 'doris', 'maribel', 'soledad',
   'flor', 'ruby', 'shirley', 'mabel', 'nathaly', 'leidy', 'sharon', 'salome', 'celeste', 'nohemi', 'yamile',
