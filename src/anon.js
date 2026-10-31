@@ -631,11 +631,17 @@ export class Anonymizer {
         }
         if (!e) continue;
         const orig = text.slice(map[m.index], map[m.index + tok.length - 1] + 1);
-        if (!/^\p{Lu}/u.test(orig)) continue; // solo nombres propios
+        // solo nombres propios; en minúscula solo tras saludo o despedida ("gracias fernanda") o como firma del autor al final
+        if (!/^\p{Lu}/u.test(orig)) {
+          const pre = n.slice(Math.max(0, m.index - 16), m.index);
+          const greet = /(gracias|gacias|grax|gracia|grasias|hola|chao|adios|bye|hey|buenas|buenos dias|saludos|att|atte|un abrazo|que tal|listo|perfecto)[!,.\s]*$/.test(pre);
+          const sign = ee => ee === ctx.author && !/[a-z0-9]/.test(n.slice(m.index + tok.length));
+          if (!greet && !sign(e)) continue;
+        }
         const ee = e;
         push(m.index, m.index + tok.length, 5, () => {
           const v = this.renderName(ee, orig);
-          this.touch(ee, recId, orig, 'name', titleOf(v));
+          this.touch(ee, recId, /^\p{Lu}/u.test(orig) ? orig : null, 'name', titleOf(v)); // la forma en minúscula no se declara: el validador la busca tal cual
           return v;
         });
       }

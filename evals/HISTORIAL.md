@@ -21,3 +21,4 @@ La nota estricta imita la rúbrica (fuga 45 · utilidad 35 · consistencia 20) c
 | 15 | 31/10, 05:07 p.m. | local | 3eadd52+cambios | **99.8** | 45 | 34.8 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | habla X de Kipu Pay; género del evaluador |
 | 16 | 31/10, 05:19 p.m. | local | 3eadd52+cambios | **99.8** | 45 | 34.8 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | pulido: tablas ID/pasaporte, (57), usuarios, habla X de Kipu Pay |
 | 17 | 31/10, 05:25 p.m. | local | 3eadd52+cambios | **99.9** | 45 | 34.9 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | evaluador: apellido que es marca no cuenta como marca perdida |
+| 18 | 31/10, 05:43 p.m. | local | 7536d08+cambios | **99.9** | 45 | 34.9 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | nombres en minúscula tras despedida; fechas y celulares (Sonnet) |
