@@ -4,8 +4,10 @@ import { normMap, norm, digits, escapeRx, styleOf, render, stripAccents } from '
 import { formatLike } from './registry.js';
 import { KEEP, SECTOR, CITIES, FEMALE, MALE, SURNAMES } from './catalog.js';
 
-const STREET = '(?:calle|cll|cl|carrera|cra|kra|kr|cr|avenida|av|diagonal|dg|transversal|tv|trans)';
-const RX_ADDRESS = new RegExp(`\\b${STREET}\\.?\\s*\\d+\\s?[a-z]?(?:\\s?bis)?(?:\\s?[a-z])?(?:\\s?sur)?\\s*(?:#|no\\.?|n°)\\s*\\d+\\s?[a-z]?\\s*-\\s*\\d+(?:\\s*(?:sur|este))?(?:\\s*(?:apto|apartamento|of|oficina|casa|int|interior|torre|bloque|local)\\.?\\s*\\d+[a-z]?)*`, 'gi');
+const STREET = '(?:calle|cll|cl|carrerra|carrera|cra|kra|kr|cr|avenida calle|avenida carrera|avenida|av|ak|ac|diagonal|diag|dg|transversal|transv|tv|trans|circular|cq)';
+const UNIT = String.raw`(?:\s*(?:apto|apt|apartamento|piso|of|oficina|casa|int|interior|torre|bloque|local|manzana|mz|lote)\.?\s*(?:[a-z]?\d+[a-z]?|[a-z])(?![a-z\d]))*`;
+const RX_ADDRESS = new RegExp(`\\b${STREET}\\.?\\s*\\d+\\s?[a-z]?(?:\\s?bis)?(?:\\s?[a-z])?(?:\\s?sur)?\\s*(?:#|no\\.?|n°)\\s*\\d+\\s?[a-z]?\\s*-\\s*\\d+(?:\\s*(?:sur|este))?${UNIT}`
+  + `|\\bav(?:enida|\\.)?\\s+(?:el\\s+|la\\s+)?\\p{Lu}\\p{L}+(?:\\s\\p{Lu}\\p{L}+)?\\s*(?:#|no\\.?)?\\s*\\d+\\s?[a-z]?\\s*-\\s*\\d+${UNIT}`, 'giu');
 const RX_EMAIL = /[a-z0-9][a-z0-9._%+-]*@[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,}/gi;
 const RX_EMAIL_SPOKEN = /\b([a-z0-9][a-z0-9._-]*(?:\s+punto\s+[a-z0-9]+)*)\s+(?:arroba|\(at\)|\[at\])\s+([a-z0-9-]+)((?:\s+(?:punto|dot|\.)\s+[a-z]{2,})+)/gi;
 const RX_NUM = /(?<![\p{L}\p{N}\-\/_])(?:\+?57[ -]?)?(?:\d{1,3}(?:[.\s]\d{3}){2,3}|\d{3}[ -]\d{3}[ -]\d{4}|\d{3}[ -]\d{7}|\d{6,12})(?![\p{L}\p{N}\-\/_]|[.,]\d)/gu;
@@ -14,7 +16,7 @@ const RX_PLATE = /\b([A-Z]{3})[ -]?(\d{3})\b|\b([A-Z]{3}\d{2}[A-Z])\b/g;
 const RX_PASSPORT = /\b([A-Z]{1,2}\d{6,8})\b/g;
 const RX_MENTION = /<@([A-Z0-9]+)(?:\|[^>]*)?>/g;
 const RX_DOC_CUE = /((?<![a-z])c\.?\s?c\.?(?![a-z])|c[ée]dula|documento|identificaci[oó]n|\bnit\b|\bcc\b|\bid\b|\bc\.?e\.?\b|n[uú]mero de cliente|titular)[^\n\d]{0,25}$/i;
-const RX_YEAR_CUE = /(vincul|entr[ée]|ingres[ée]|abr[ií]|cliente desde|con ustedes|me afili|desde)[^\n.]{0,30}$/i;
+const RX_YEAR_CUE = /(vincul|entr[ée]|ingres[ée]|abr[ií](?!l)|cliente desde|con ustedes|me afili|desde)[^\n.]{0,30}$/i;
 
 export class Anonymizer {
   constructor(reg) {
@@ -211,18 +213,43 @@ export class Anonymizer {
       }, false);
     }
 
-    // 2d. usuario tras una pista: "mi usuario es juan123", "user id is user789", "login: l.torres"
-    for (const m of text.matchAll(/\b(?:usuario|user(?:name|\s?id)?|login|alias|nick(?:name)?|handle|[Mm]i cuenta)\b(?:\s+(?:de\s+\p{Lu}\p{Ll}+|es|is|:|=))*\s*[:=]?\s*@?([A-Za-z][\w.\-]{2,}[A-Za-z0-9])(?![\w@])/giu)) {
+    // 2c-bis. usuario suelto que arranca con un nombre de pila y trae número, punto o guion bajo: beatrizsalas8, oscar_romo
+    for (const m of text.matchAll(/(?<![\p{L}\p{N}._%+@\/-])([a-z]{4,}[a-z0-9]*(?:[._][a-z0-9]+)*)(?![\p{L}\p{N}_@]|\.[a-z])/gu)) {
       const tok = m[1];
-      if (/^(es|is|de|el|la|y|o|incorrect[oa]?|correct[oa]?|bloquead[oa]|nuevo|registrad[oa]|and|or|the)$/i.test(tok)) continue;
-      // sin dígitos, puntos ni guiones bajos solo cuenta si empieza con un nombre o apellido conocido (carlosram, clararuiz)
-      if (!/[\d_.]/.test(tok)) {
+      if (!/[\d_.]/.test(tok) || this.localIndex.get(tok)) continue;
+      const t = tok.replace(/[\d._]/g, '');
+      let first = 0;
+      for (let k = 4; k < t.length && !first; k++) if (this.knownFirst.has(t.slice(0, k)) && !STAFF_WORDS.has(t.slice(0, k))) first = k;
+      if (!first || t.length - first < 2 && !/\d/.test(tok)) continue;
+      push(m.index, m.index + tok.length, 5, () => {
+        const e = this.ctxPerson(ctx) || reg.newValueEntity('usuario', tok);
+        const base = reg.pseudoHandle(e, tok.includes('.') ? 'a.b' : tok.includes('_') ? 'a_b' : 'ab');
+        const tail = (tok.match(/\d+$/) || [''])[0];
+        this.touch(e, recId, tok);
+        return base + (tail ? fakeFrom(e.key + tok, tail.padStart(2, '1')).slice(0, tail.length) : '');
+      }, false);
+    }
+
+    // 2d. usuario tras una pista: "mi usuario es juan123", "user id is user789", "login: l.torres"
+    const TOK = String.raw`['"‘’]?@?([\p{L}][\p{L}\d_.\-]{2,}[\p{L}\d])(?![\p{L}\d_@])`;
+    for (const m0 of text.matchAll(new RegExp(String.raw`\b(?:usuarios?|user(?:name|s|\s?id)?|login|alias|nick(?:name)?|handle|[Mm]i cuenta|cuenta)\b(?:\s+(?:(?:de|desde|en|para)\s+\p{Lu}\p{L}+|es|era|fue|is|was|para ingresar|de acceso|anterior|viejo|nuevo|:|=))*\s*[:=]?\s*` + TOK, 'giu'))) {
+      // listas: "usuarios: carlosg23 y c.guerrero", "el usuario l.patricia y también lpatricia23"
+      const found = [{ tok: m0[1], start: m0.index + m0[0].lastIndexOf(m0[1]) }];
+      let pos = m0.index + m0[0].length;
+      for (let mm; (mm = text.slice(pos).match(new RegExp(String.raw`^(?:\s*,\s*|\s+(?:y|o|and|or)\s+(?:tambi[eé]n\s+|el\s+)?)` + TOK, 'u'))) && /[\d_.\-]/.test(mm[1]);) {
+        found.push({ tok: mm[1], start: pos + mm[0].lastIndexOf(mm[1]) });
+        pos += mm[0].length;
+      }
+      for (const { tok, start } of found) {
+      if (/^(?:CL|TX|PQR|KP|INC)-/i.test(tok)) continue;
+      if (/^(es|is|de|el|la|y|o|era|fue|incorrect[oa]?|correct[oa]?|bloquead[oa]|nuevo|registrad[oa]|and|or|the|para|desde|asignad[oa]|llamad[oa]|diferente|distinto)$/i.test(tok)) continue;
+      // sin dígitos, puntos ni guiones solo cuenta si empieza con un nombre o apellido conocido (carlosram, clararuiz)
+      if (!/[\d_.\-]/.test(tok)) {
         const t = norm(tok);
         let hit = false;
         for (let k = 4; k <= t.length && !hit; k++) hit = this.knownFirst.has(t.slice(0, k)) || this.knownSur.has(t.slice(0, k));
         if (!hit) continue;
       }
-      const start = m.index + m[0].lastIndexOf(tok);
       push(start, start + tok.length, 6, () => {
         const known = this.localIndex.get(tok.toLowerCase());
         const e = known?.e || this.ctxPerson(ctx) || reg.newValueEntity('usuario', tok);
@@ -232,6 +259,7 @@ export class Anonymizer {
         this.touch(e, recId, tok);
         return v;
       }, false);
+      }
     }
 
     // 2e. cédula tras pista con separadores raros: "987.654.321-0", "123-456-789", "12.345.67.89", "123456-78"
@@ -357,6 +385,8 @@ export class Anonymizer {
       if (!e) {
         if (/^3\d{9}$/.test(d10)) { type = 'phone'; }
         else if (d.length >= 6 && d.length <= 10 && RX_DOC_CUE.test(before)) { type = 'cedula'; }
+        // segundo número de una lista de cédulas: "cédula: 1122993344 y 1122993345"
+        else if (d.length >= 6 && d.length <= 10 && /(c[ée]dulas?|documentos?|\bcc\b)[^\n]{0,40}?\d[\d.\- ]{4,}\d\s*(?:,|y|o|\/)\s*$/i.test(text.slice(Math.max(0, m.index - 70), m.index))) { type = 'cedula'; }
         else continue;
       }
       const known = e, tt = type;
@@ -581,6 +611,10 @@ export class Anonymizer {
       // (solo dentro de la misma línea: en una firma, la línea siguiente es el cargo, no un apellido)
       const seg = (m[1].match(new RegExp(`^(?:\\S+\\s+){${end + 1}}\\S+`)) || [''])[0];
       if (se === end && toks.length >= end + 2 && !seg.includes('\n') && !STAFF_WORDS.has(nt[0]) && !KEEP.some(k => norm(m[1]).includes(norm(k)))) se = end + 2;
+      // nombre(s) de pila + un apellido fuera de catálogo en la misma línea ("Sandra Milena Quiroz", "Camilo Reyes")
+      const seg1 = (m[1].match(new RegExp(`^(?:\\S+\\s+){${end}}\\S+`)) || [''])[0];
+      if (se === end && toks.length > end && !seg1.includes('\n') && nt[end].length >= 3 && !NOT_SURNAME.has(nt[end])
+        && !CITY_N.has(nt[end]) && !STAFF_WORDS.has(nt[0]) && !KEEP.some(k => norm(k).split(' ').includes(nt[end]) || norm(m[1]).startsWith(norm(k)))) se = end + 1;
       if (se === end) continue;
       const full = toks.slice(0, se).join(' ');
       if (this.forms.has(norm(full))) continue; // ya lo cubre el registro
@@ -593,6 +627,62 @@ export class Anonymizer {
         this.touch(e, recId, full, 'name', titleOf(v));
         return v;
       }, false);
+    }
+
+    // 10-inicial. nombre de pila + inicial + apellido: "Diego F. Ríos", "Claudia M. Rodríguez", "Daniel H. Maldonado"
+    for (const m0 of text.matchAll(/(?<![\p{L}\p{N}_@.])((?:\p{Lu}\p{Ll}+[ \t]+){1,3})\p{Lu}\.[ \t]*(\p{Lu}\p{Ll}{2,}(?:[ \t]+\p{Lu}\p{Ll}{2,})?)(?![\p{L}\p{N}_@])/gu)) {
+      // se saltan saludos y tratamientos antes del nombre de pila ("Hola Diego F. Ríos")
+      const pre = m0[1].trim().split(/[ \t]+/);
+      const j = pre.findIndex(w => this.knownFirst.has(norm(w)));
+      if (j < 0 || NOT_SURNAME.has(norm(m0[2].split(/\s+/)[0])) || CITY_N.has(norm(m0[2].split(/\s+/)[0]))) continue;
+      const skip = m0[0].indexOf(pre[j]);
+      const m = { index: m0.index + skip, 0: m0[0].slice(skip), 1: pre.slice(j).join(' '), 2: m0[2] };
+      const full = m[0];
+      if (this.forms.has(norm(full))) continue;
+      push(m.index, m.index + full.length, 4, () => {
+        const e = reg.newTercero(`${m[1]} ${m[2]}`);
+        e.firstCount = m[1].split(/\s+/).length;
+        const v = this.renderName(e, `${m[1]} ${m[2]}`);
+        this.touch(e, recId, full, 'name', titleOf(v));
+        const w = v.split(' ');
+        return `${w.slice(0, e.firstCount).join(' ')} ${w[e.firstCount][0]}. ${w.slice(e.firstCount + 1).join(' ') || w[e.firstCount]}`.trim();
+      }, false);
+    }
+
+    // 10-campos. registros pegados como texto: JSON ("nombre": "…"), XML (<email>…</email>), "clave: valor"
+    // y líneas delimitadas (usuario;cédula;correo;celular). Cada campo personal se reemplaza entero.
+    const FIELD = { nombre: 'name', name: 'name', nombre_completo: 'name', full_name: 'name', titular: 'name', cliente: 'name', apellidos: 'name', nombres: 'name',
+      documento: 'cedula', cedula: 'cedula', doc: 'cedula', num_doc: 'cedula', dni: 'cedula', identificacion: 'cedula',
+      email: 'email', correo: 'email', mail: 'email', telefono: 'phone', celular: 'phone', phone: 'phone', movil: 'phone', tel: 'phone',
+      direccion: 'address', address: 'address', usuario: 'user', user: 'user', username: 'user', login: 'user' };
+    const fieldRx = /(["']?)\b([A-Za-zÁÉÍÓÚáéíóúñ_]{3,16})\1\s*[:=]\s*"([^"\n]{2,80})"|<([A-Za-z_]{3,16})>([^<\n]{2,80})<\/\4>/g;
+    for (const m of text.matchAll(fieldRx)) {
+      const key = norm(m[2] || m[4]).replace(/\s/g, '_'), val = m[3] ?? m[5];
+      const kind = FIELD[key];
+      if (!kind || /^(?:CL|TX|PQR|KP)-/.test(val) || KEEP.some(k => norm(k) === norm(val))) continue;
+      const start = m.index + m[0].lastIndexOf(val);
+      // "Av. Boyacá #45-67, Bogotá": la ciudad se conserva, solo cambia la dirección
+      const city = kind === 'address' ? (val.match(/,\s*[\p{L} .]+$/u) || [''])[0] : '';
+      this.fieldValue(push, ctx, recId, start, val.slice(0, val.length - city.length), kind);
+    }
+    for (const line of text.matchAll(/[^\n]*[;|\t][^\n]*/g)) {
+      const parts = line[0].split(/([;|\t])/);
+      if (parts.filter((_, i) => i % 2 === 0).length < 3) continue;
+      if (!parts.some(p => /@|(?<!\d)3\d{9}(?!\d)/.test(p))) continue;
+      let off = line.index;
+      for (let i = 0; i < parts.length; i++) {
+        const raw = parts[i];
+        if (i % 2 === 0) {
+          // la primera y la última celda pueden traer texto alrededor: se toma la palabra pegada al separador
+          const cell = i === 0 ? (raw.match(/[\p{L}\d._@+-]+(?:[ ][\p{Lu}][\p{L}]+){0,3}$/u) || [''])[0] : i === parts.length - 1 ? (raw.match(/^[\p{L}\d._@+-]+/u) || [''])[0] : raw.trim();
+          const cs = off + (i === 0 ? raw.length - cell.length : raw.indexOf(cell));
+          const d = digits(cell);
+          if (/^\d[\d.\s-]{5,14}\d$/.test(cell) && d.length >= 6 && d.length <= 12 && !/^3\d{9}$/.test(d)) this.fieldValue(push, ctx, recId, cs, cell, 'cedula');
+          else if (/^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)+$|^[a-z]+\d+$/i.test(cell) && !cell.includes('@')) this.fieldValue(push, ctx, recId, cs, cell, 'user');
+          else if (/^\p{Lu}\p{Ll}+(?: \p{Lu}\p{Ll}+){1,3}$/u.test(cell) && this.knownFirst.has(norm(cell.split(' ')[0]))) this.fieldValue(push, ctx, recId, cs, cell, 'name');
+        }
+        off += raw.length;
+      }
     }
 
     // 10-pista. "soy / me llamo / mi nombre es / a nombre de / habla / Sr. / Sra." + 2 a 4 palabras con mayúscula:
@@ -711,6 +801,7 @@ export class Anonymizer {
         const before = text.slice(Math.max(0, m.index - 45), m.index);
         if (!RX_YEAR_CUE.test(before)) continue;
         if (/(19|20)\d\d-\d/.test(text.slice(m.index, m.index + 6))) continue;
+        if (/\d{1,2} de [a-záéíóú]+ de $/i.test(before)) continue; // fecha completa: "4 de abril de 2024"
         push(m.index, m.index + 4, 3, () => 'hace unos años', false);
       }
     }
@@ -737,6 +828,38 @@ export class Anonymizer {
   }
 
   /** Dueño de un dato que no está en ningún maestro: la persona del contexto, o una entidad propia. */
+  /** Campo personal de un registro pegado como texto (JSON, XML, CSV): se reemplaza el valor completo. */
+  fieldValue(push, ctx, recId, start, val, kind) {
+    const reg = this.reg;
+    push(start, start + val.length, 9, () => {
+      if (kind === 'name') {
+        const cands = this.forms.get(norm(val));
+        const e = cands?.length ? this.pick(cands.map(c => c.e), ctx, start, this.curText) : reg.newTercero(val);
+        const v = this.renderName(e, val);
+        this.touch(e, recId, val, 'name', titleOf(v));
+        return v;
+      }
+      const d = digits(val);
+      const e = kind === 'email' ? (reg.byEmail.get(val.toLowerCase()) || this.ownerForUnknown(ctx, 'email', val))
+        : kind === 'cedula' ? (reg.byCedula.get(d) || this.ownerForUnknown(ctx, 'cedula', d))
+        : kind === 'phone' ? (reg.byPhone.get(d.slice(-10)) || this.ownerForUnknown(ctx, 'phone', d.slice(-10)))
+        : this.localIndex.get(val.toLowerCase())?.e || this.ctxPerson(ctx) || reg.newValueEntity(kind, val);
+      const p = reg.pseudo(e);
+      let v;
+      if (kind === 'email') v = /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(val) ? reg.pseudoEmail(e, val) : reg.pseudoEmail(e, val.replace(/[@#]+/g, '@').replace(/^([^@]*)$/, '$1@mail.com'));
+      else if (kind === 'cedula') v = formatLike(e.cedulas.has(d) && [...e.cedulas][0] === d ? p.cedula : fakeFrom(e.key + d, d), val);
+      else if (kind === 'phone') v = formatLike(e.phones.has(d.slice(-10)) ? p.phone : '3' + fakeFrom(e.key + d, d.slice(-10)).slice(1), val);
+      else if (kind === 'address') v = p.address;
+      else {
+        const base = reg.pseudoHandle(e, val.includes('.') ? 'a.b' : val.includes('_') ? 'a_b' : 'ab');
+        const tail = (val.match(/\d+$/) || [''])[0];
+        v = base + (tail ? fakeFrom(e.key + val, tail.padStart(2, '1')).slice(0, tail.length) : '');
+      }
+      this.touch(e, recId, val, kind === 'user' ? null : kind, v);
+      return v;
+    }, false);
+  }
+
   ownerForUnknown(ctx, type, value) {
     const known = { email: this.reg.byEmail, phone: this.reg.byPhone, cedula: this.reg.byCedula }[type]?.get(type === 'email' ? value.toLowerCase() : digits(value));
     if (known) return known;
@@ -805,7 +928,14 @@ function fakePlateFrom(seed) {
 }
 
 // palabras que también son nombres de pila pero en texto interno suelen ser otra cosa
+// palabras con mayúscula que siguen a un nombre de pila sin ser apellido
+const NOT_SURNAME = new Set(['kipu', 'pay', 'kipi', 'pagalo', 'cliente', 'clienta', 'agente', 'soporte', 'equipo', 'gerente', 'analista', 'coordinador', 'coordinadora', 'director', 'directora',
+  'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre',
+  'hola', 'gracias', 'buenas', 'buenos', 'saludos', 'atentamente', 'cordialmente', 'por', 'para', 'con', 'que', 'pero', 'como', 'cuando', 'donde', 'este', 'esta', 'the', 'and', 'from', 'team',
+  'cedula', 'correo', 'celular', 'usuario', 'cuenta', 'tarjeta', 'credito', 'pse', 'nequi', 'daviplata', 'colombia', 'sur', 'norte', 'centro', 'oriente', 'occidente', 'ok', 'si', 'no', 'ya']);
+const CITY_N = new Set(CITIES.flatMap(c => norm(c).split(' ')));
+
 const STAFF_WORDS = new Set(['maria', 'rosa', 'luz', 'flor', 'pilar', 'mercedes', 'victoria', 'angel', 'cruz', 'paz', 'reyes', 'santos', 'socorro', 'esperanza', 'amparo', 'consuelo', 'dolores', 'milagros', 'gracia', 'nieves', 'rocio', 'soledad', 'blanca', 'aurora', 'kipi']);
 
-const EXTRA_FIRST = ['maria', 'jose', 'juan', 'luis', 'carlos', 'jorge', 'andres', 'camila', 'laura', 'ana', 'sebastian', 'santiago', 'valentina', 'daniela', 'alejandro', 'felipe', 'pedro', 'pablo', 'diana', 'paola', 'natalia', 'carolina', 'juliana', 'esteban', 'mateo', 'samuel', 'nicolas', 'david', 'miguel', 'angela', 'monica', 'sandra', 'claudia', 'martha', 'gloria', 'lucia', 'isabel', 'ines', 'manuela', 'mariana', 'sara', 'sofia', 'lina', 'catalina', 'andrea', 'adriana', 'liliana', 'patricia', 'carmen', 'rosa', 'beatriz', 'teresa', 'margarita', 'julian', 'cristian', 'oscar', 'ricardo', 'fernando', 'hernan', 'jaime', 'mauricio', 'diego', 'javier', 'victor', 'raul', 'ruben', 'hector', 'eduardo', 'gabriel', 'ivan', 'brayan', 'kevin', 'yesenia', 'yuliana', 'yamid', 'nohora', 'kelly', 'jhon', 'wilson', 'edwin', 'fabian', 'milton', 'farid', 'norberto', 'emilia', 'emilio', 'jeronimo', 'bibiana', 'ivonne', 'adela', 'lizeth', 'amalia', 'juana', 'clara', 'celeste', 'fernanda', 'pamela', 'adrian', 'dora', 'benjamin', 'mario', 'martin', 'tomas', 'mercedes'];
+const EXTRA_FIRST = ['paulina', 'erik', 'william', 'jhonatan', 'jonathan', 'john', 'brian', 'maicol', 'michael', 'yeison', 'jeison', 'stiven', 'steven', 'edison', 'fredy', 'freddy', 'harold', 'yesid', 'yurany', 'leidy', 'jessica', 'yesica', 'jenny', 'yohana', 'luisa', 'erika', 'erica', 'karen', 'katherine', 'estefania', 'stephanie', 'yenny', 'dayana', 'luz', 'nancy', 'daniel', 'hernando', 'ramiro', 'ernesto', 'francisco', 'roberto', 'maria', 'jose', 'juan', 'luis', 'carlos', 'jorge', 'andres', 'camila', 'laura', 'ana', 'sebastian', 'santiago', 'valentina', 'daniela', 'alejandro', 'felipe', 'pedro', 'pablo', 'diana', 'paola', 'natalia', 'carolina', 'juliana', 'esteban', 'mateo', 'samuel', 'nicolas', 'david', 'miguel', 'angela', 'monica', 'sandra', 'claudia', 'martha', 'gloria', 'lucia', 'isabel', 'ines', 'manuela', 'mariana', 'sara', 'sofia', 'lina', 'catalina', 'andrea', 'adriana', 'liliana', 'patricia', 'carmen', 'rosa', 'beatriz', 'teresa', 'margarita', 'julian', 'cristian', 'oscar', 'ricardo', 'fernando', 'hernan', 'jaime', 'mauricio', 'diego', 'javier', 'victor', 'raul', 'ruben', 'hector', 'eduardo', 'gabriel', 'ivan', 'brayan', 'kevin', 'yesenia', 'yuliana', 'yamid', 'nohora', 'kelly', 'jhon', 'wilson', 'edwin', 'fabian', 'milton', 'farid', 'norberto', 'emilia', 'emilio', 'jeronimo', 'bibiana', 'ivonne', 'adela', 'lizeth', 'amalia', 'juana', 'clara', 'celeste', 'fernanda', 'pamela', 'adrian', 'dora', 'benjamin', 'mario', 'martin', 'tomas', 'mercedes'];
 const EXTRA_SUR = ['gomez', 'rodriguez', 'martinez', 'garcia', 'lopez', 'gonzalez', 'hernandez', 'perez', 'sanchez', 'ramirez', 'torres', 'diaz', 'moreno', 'munoz', 'rojas', 'alvarez', 'romero', 'ruiz', 'castro', 'ortiz', 'gutierrez', 'restrepo', 'mejia', 'castano', 'ospina', 'henao', 'giraldo', 'zapata', 'arango', 'velasquez', 'hoyos', 'montoya', 'cardona', 'osorio', 'betancur', 'correa', 'quintero', 'posada', 'salazar', 'vargas', 'jimenez', 'londono', 'aristizabal', 'marulanda', 'ordonez', 'santander', 'bolivar', 'castilla', 'robledo', 'galan', 'carulla', 'jaramillo', 'botero', 'calle', 'duque', 'echeverri', 'uribe', 'velez', 'serna', 'arias', 'agudelo'];

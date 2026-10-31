@@ -4,7 +4,7 @@ Le pide a un modelo que invente mensajes de soporte de una fintech colombiana co
 escondidos de formas difíciles, y que devuelva para cada uno la lista exacta de datos que deben
 desaparecer y la de palabras que deben quedarse. Los casos son inventados: no contienen datos reales.
 
-uso: python -I auditor/adversario.py [--n 120] [--salida evals/adversario-casos.json]
+uso: python -I auditor/adversario.py [--n 120] [--salida evals/adversario-casos.json] [--ronda2|--ronda3] [--model openai/gpt-4o-mini]
 Necesita OPENROUTER_API_KEY.
 """
 import json
@@ -13,6 +13,17 @@ import re
 import sys
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
+
+TEMAS_3 = [
+    "clientes que vienen de otra fintech (Págalo) recién comprada: migración de cuentas, ids viejos y nuevos, datos repetidos",
+    "exportes de otro sistema: líneas tipo log o CSV pegadas en el chat con nombre;cédula;correo;celular",
+    "actas y correos de la integración entre dos empresas con nombres de empleados de ambas, cargos y firmas",
+    "clientes que cambian de correo, celular o dirección y dan el viejo y el nuevo en el mismo mensaje",
+    "dos personas con el mismo nombre en el mismo hilo, distinguidas por cédula o ciudad",
+    "plantillas de cartas y notificaciones con campos llenos (Estimado/a NOMBRE, CC, dirección, saldo)",
+    "JSON o XML pegado en un mensaje con campos nombre, documento, email, telefono, direccion",
+    "notas de voz transcritas: números dictados, nombres deletreados letra por letra",
+]
 
 TEMAS_2 = [
     "conversaciones de varios mensajes entre agente y cliente donde el agente repite datos del cliente",
@@ -52,8 +63,8 @@ Devuelve SOLO JSON: {{"casos": [{{"texto": "...", "debe_desaparecer": ["fragment
 - No marques como dato personal: Kipu, Kipi (el bot), montos, fechas de transacción, radicados (PQR-2026-0451), ids (CL-12345, TX-000123)."""
 
 
-def call(key, prompt):
-    body = json.dumps({"model": "openai/gpt-4o-mini", "messages": [{"role": "user", "content": prompt}],
+def call(key, prompt, model="openai/gpt-4o-mini"):
+    body = json.dumps({"model": model, "messages": [{"role": "user", "content": prompt}],
                        "temperature": 0.9, "response_format": {"type": "json_object"}}).encode()
     req = urllib.request.Request("https://openrouter.ai/api/v1/chat/completions", data=body,
                                  headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json", "X-Title": "kipu-anon adversario"})
@@ -72,10 +83,11 @@ def main():
     n = int(opt("--n", "120"))
     out = opt("--salida", "evals/adversario-casos.json")
     key = os.environ.get("OPENROUTER_API_KEY") or sys.exit("falta OPENROUTER_API_KEY")
-    temas = TEMAS_2 if "--ronda2" in sys.argv else TEMAS
+    temas = TEMAS_3 if "--ronda3" in sys.argv else TEMAS_2 if "--ronda2" in sys.argv else TEMAS
+    model = opt("--model", "openai/gpt-4o-mini")
     per = max(4, n // len(temas))
     with ThreadPoolExecutor(8) as ex:
-        res = list(ex.map(lambda t: [dict(c, tema=t) for c in call(key, PROMPT.format(k=per, tema=t))], temas))
+        res = list(ex.map(lambda t: [dict(c, tema=t) for c in call(key, PROMPT.format(k=per, tema=t), model)], temas))
     casos = [c for lote in res for c in lote if c.get("texto")]
     # solo fragmentos que de verdad están en el texto
     for c in casos:

@@ -76,7 +76,7 @@ export const KEEP = [
   'Movii', 'Rappi', 'RappiPay', 'Lulo Bank', 'Nu', 'Nubank', 'PSE', 'Efecty', 'Baloto', 'Superfinanciera', 'Superintendencia Financiera',
   'DataCrédito', 'Datacrédito', 'TransUnion', 'CIFIN', 'DIAN', 'Registraduría', 'Policía Nacional', 'Fiscalía', 'Carulla', 'Éxito',
   'Olímpica', 'Jumbo', 'Falabella', 'Alkosto', 'Homecenter', 'D1', 'Ara', 'Unicentro', 'Andino', 'Santafé', 'Plaza Botero',
-  'Juan Valdez', 'Parque Lleras', 'Parque 93', 'Zona T', 'Andrés Carne de Res', 'Crepes & Waffles', 'Frisby', 'El Corral',
+  'Juan Valdez', 'Jorge Isaacs', 'Gabriel García Márquez', 'García Márquez', 'Fernando Botero', 'Parque Lleras', 'Parque 93', 'Zona T', 'Andrés Carne de Res', 'Crepes & Waffles', 'Frisby', 'El Corral',
   'Veloz', 'Servientrega', 'Coordinadora', 'Interrapidísimo', 'Uber', 'DiDi', 'Avianca', 'Visa', 'Mastercard', 'Claro', 'Movistar',
   'Tigo', 'WhatsApp', 'Slack', 'Google', 'Gmail', 'Shakira', 'Gabriel García Márquez', 'Fernando Botero', 'Juanes', 'Karol G',
   'Maluma', 'J Balvin', 'Nairo Quintana', 'Sofía Vergara', 'Carlos Vives', 'James Rodríguez', 'Egan Bernal', 'Radamel Falcao', 'Iván Duque', 'Álvaro Uribe', 'Francia Márquez', 'Claudia López', 'Feid', 'Fonseca', 'Gustavo Petro', 'Los Andes', 'Universidad de los Andes', 'Javeriana', 'Universidad Nacional', 'Estación Restrepo',
