@@ -654,7 +654,7 @@ export class Anonymizer {
     }
 
     // 10a. terceros por parentesco con solo nombre de pila: "mi hermano Daniel", "mi socia Laura"
-    for (const m of text.matchAll(/\b(?:[Mm]i|[Ss]u|[Tt]u|[Nn]uestro|[Nn]uestra)\s+(?:herman[oa]|espos[oa]|mam[áa]|pap[áa]|madre|padre|hij[oa]|prim[oa]|t[íi][oa]|amig[oa]|soci[oa]|novi[oa]|cuñad[oa]|suegr[oa]|compañer[oa]|jef[ea]|vecin[oa]|sobrin[oa]|abuel[oa]|pareja|marido|mujer|arrendador[a]?|empleador[a]?|cliente|codeudor[a]?|fiador[a]?|beneficiari[oa]|referencia|apoderad[oa]|representante)[,:]?\s+(\p{Lu}\p{Ll}{2,}(?:\s+\p{Lu}\p{Ll}{2,}){0,2})/gu)) {
+    for (const m of text.matchAll(/\b(?:[Mm]i|[Ss]u|[Tt]u|[Nn]uestro|[Nn]uestra)\s+(?:herman[oa]|espos[oa]|mam[áa]|pap[áa]|madre|padre|hij[oa]|prim[oa]|t[íi][oa]|amig[oa]|soci[oa]|novi[oa]|cuñad[oa]|suegr[oa]|compañer[oa]|jef[ea]|vecin[oa]|sobrin[oa]|abuel[oa]|pareja|marido|mujer|arrendador[a]?|empleador[a]?|cliente|codeudor[a]?|fiador[a]?|beneficiari[oa]|referencia|apoderad[oa]|representante)[,:]?\s+(?:(?:es|era|será|sería|se llama|is)\s+)?(\p{Lu}\p{Ll}{2,}(?:\s+\p{Lu}\p{Ll}{2,}){0,2})/gu)) {
       const name = m[1];
       // tras un parentesco cualquier palabra con mayúscula es un nombre, salvo marcas, lugares o el bot
       if (norm(name.split(/\s+/)[0]) === 'kipi' || KEEP.some(k => norm(name).startsWith(norm(k)))) continue;

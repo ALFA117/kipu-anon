@@ -77,6 +77,7 @@ Todas corren en local y **no gastan corridas oficiales**. Las que leen las fuent
 | `node scripts/cruce.js raw/full output <otra-salida>` | Compara dos versiones registro por registro: qué detecta cada una que la otra no. Sirve para ver que un cambio no rompa nada. |
 | `python -I auditor/adversario.py --n 150 [--ronda2]` y `node scripts/adversario-run.js <casos.json>` | Genera casos difíciles con IA y mide qué se escapa. |
 | `npm run watch` | Vigila el API de fuentes y avisa cuando crece (el incidente). |
+| `node scripts/simular-incidente.js [entities.json de referencia]` | Simula el incidente con datos inventados (canal, documentos y filas nuevas; personas nuevas, una homónima, un tercero y un cliente viejo con correo nuevo) y revisa estabilidad, fuga, unicidad y validador. |
 | `npm run post-incident` | Ensayo local con las fuentes nuevas: compara, corre el evaluador y revisa que los seudónimos viejos no cambien. |
 
 ## Qué cambió en la tarde
