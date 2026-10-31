@@ -789,7 +789,8 @@ export class Anonymizer {
         const at = nf.indexOf(' ' + nk);
         if (nk.length < 4 || at < 0 || (nf[at + 1 + nk.length] || ' ') !== ' ') continue;
         const cut = full.slice(0, at).replace(/[ \t]+(?:de|del|de la|de los|y|DE|DEL)$/, '');
-        if (cut.length < full.length) { full = cut; }
+        // lo que queda antes de la empresa es la persona, aunque sea un solo nombre de pila
+        if (cut.length < full.length) { full = cut; if (!/\s/.test(cut) && this.knownFirst.has(norm(cut))) single = single || true; }
       }
       const toks = full.split(/\s+/).filter(t => !/^(de|del|la|los|y)$/i.test(t));
       if (!toks.length || norm(toks[0]) === 'kipi') return; // tras "soy/me llamo" siempre es persona (salvo el bot)
