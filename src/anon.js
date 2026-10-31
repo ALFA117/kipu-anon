@@ -11,7 +11,7 @@ const RX_ADDRESS = new RegExp(`\\b${STREET}\\.?\\s*\\d+\\s?[a-z]?(?:\\s?bis)?(?:
   + `|\\bav(?:enida|\\.)?\\s+(?:el\\s+|la\\s+)?\\p{Lu}\\p{L}+(?:\\s\\p{Lu}\\p{L}+)?\\s*(?:#|no\\.?)?\\s*\\d+\\s?[a-z]?\\s*-\\s*\\d+${UNIT}`, 'giu');
 const RX_EMAIL = /[a-z0-9][a-z0-9._%+-]*@[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,}/gi;
 const RX_EMAIL_SPOKEN = /\b([a-z0-9][a-z0-9._-]*(?:\s+punto\s+[a-z0-9]+)*)\s+(?:arroba|\(at\)|\[at\])\s+([a-z0-9-]+)((?:\s+(?:punto|dot|\.)\s+[a-z]{2,})+)/gi;
-const RX_NUM = /(?<![\p{L}\p{N}\-\/_])(?:\(\+?57\)[ -]?3\d{2}[ -]?\d{3}[ -]?\d{2}[ -]?\d{2}|(?:\+?57[ -]?)?3\d{2}[ -]\d{3}[ -]\d{2}[ -]\d{2}|(?:\+?57[ -]?)?(?:\d{1,3}(?:[.\s]\d{3}){2,3}|\d{3}[ -]\d{3}[ -]\d{4}|\d{3}[ -]\d{7}|\d{6,12}))(?![\p{L}\p{N}\-\/_]|[.,]\d)/gu;
+const RX_NUM = /(?<![\p{L}\p{N}\-\/_])(?:3\d{2}([.\/])\d{3}\1\d{4}|\(\+?57\)[ -]?3\d{2}[ -]?\d{3}[ -]?\d{2}[ -]?\d{2}|(?:\+?57[ -]?)?3\d{2}[ -]\d{3}[ -]\d{2}[ -]\d{2}|(?:\+?57[ -]?)?(?:\d{1,3}(?:[.\s]\d{3}){2,3}|\d{3}[ -]\d{3}[ -]\d{4}|\d{3}[ -]\d{7}|\d{6,12}))(?![\p{L}\p{N}\-\/_]|[.,]\d)/gu;
 const RX_DATE = /\b(\d{4})-(\d{2})-(\d{2})\b|\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/g;
 const RX_PLATE = /\b([A-Z]{3})[ -]?(\d{3})\b|\b([A-Z]{3}\d{2}[A-Z])\b/g;
 const RX_PASSPORT = /\b([A-Z]{1,2}\d{6,8})\b/g;
@@ -469,6 +469,13 @@ export class Anonymizer {
       const mo = MESES.indexOf(m[2].toLowerCase().replace('setiembre', 'septiembre')) + 1;
       dates.push({ m, iso: `${m[3]}-${String(mo).padStart(2, '0')}-${String(+m[1]).padStart(2, '0')}`, fmt: 'long' });
     }
+    // día-Mes-año con el mes en letras: "22-Nov-1985", "18-Junio-1985", "03/Marzo/1957" (solo años de nacimiento)
+    const MON = { ene: 1, jan: 1, feb: 2, mar: 3, abr: 4, apr: 4, may: 5, jun: 6, jul: 7, ago: 8, aug: 8, sep: 9, set: 9, oct: 10, nov: 11, dic: 12, dec: 12 };
+    for (const m of text.matchAll(/\b(\d{1,2})([-\/ ])(\p{L}{3,10})\2((?:19|20)\d\d)\b/gu)) {
+      const mo = MON[norm(m[3]).slice(0, 3)];
+      if (!mo || +m[1] > 31 || +m[4] > 2008) continue;
+      dates.push({ m, iso: `${m[4]}-${String(mo).padStart(2, '0')}-${String(+m[1]).padStart(2, '0')}`, fmt: 'mon' });
+    }
     for (const { m, iso, fmt } of dates) {
       let e = reg.byBirth.get(iso);
       if (!e && !(+iso.slice(0, 4) <= 2008 && +iso.slice(0, 4) >= 1930)) continue;
@@ -483,6 +490,15 @@ export class Anonymizer {
         if (fmt === 'iso') return v;
         if (fmt === 'dmy') return `${String(+da).padStart(m[4].length, '0')}/${String(+mo).padStart(m[5].length, '0')}/${y}`;
         if (fmt === 'mdy') return `${String(+mo).padStart(m[4].length, '0')}/${String(+da).padStart(m[5].length, '0')}/${y}`;
+        if (fmt === 'mon') {
+          // mismo estilo: abreviado o completo, inglés o español, con la misma capitalización
+          const w = m[3], en = /^(jan|apr|aug|dec|may)/i.test(w) || /^[a-z]{3}$/i.test(w) && !MESES.some(x => x.startsWith(norm(w)));
+          const EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+          let name = en ? EN[+mo - 1] : MESES[+mo - 1];
+          if (w.length <= 4) name = name.slice(0, 3);
+          name = w === w.toUpperCase() ? name.toUpperCase() : /^\p{Lu}/u.test(w) ? name[0].toUpperCase() + name.slice(1) : name.toLowerCase();
+          return `${String(+da).padStart(m[1].length, '0')}${m[2]}${name}${m[2]}${y}`;
+        }
         return `${+da} de ${MESES[+mo - 1]} de ${y}`;
       }, false);
     }
