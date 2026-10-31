@@ -430,7 +430,7 @@ html,body{overflow-x:clip}
       <div class="demo"><svg class="flecha-curva" viewBox="0 0 120 70" aria-hidden="true"><path d="M8 18 C 40 -6, 80 -6, 104 40" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 7"/><path d="M96 36 L105 42 L108 31" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div class="panel">
           <h3>Tu mensaje <small>se procesa y no se guarda</small></h3>
-          <textarea id="entrada" aria-label="Mensaje a anonimizar">Hola, me llamo Manuela Castaño. Me cobraron una cuota que ya pagué. Mi cédula es 1.107.360.039 y mi correo es mcastano arroba gmail punto com. Soy fotógrafa y vivo en Granada.</textarea>
+          <textarea id="entrada" aria-label="Mensaje a anonimizar">Hola, me llamo Manuela Castaño. Me cobraron una cuota que ya pagué. Mi cédula es 1.107.360.039 y mi correo es manu.castano arroba gmail punto com. Soy fotógrafa y vivo en Granada.</textarea>
         </div>
         <div class="panel" aria-live="polite">
           <h3>Así queda <small id="tiempo-panel"></small></h3>
@@ -439,8 +439,8 @@ html,body{overflow-x:clip}
       </div>
       <div class="fila-demo">
         <button class="btn btn-p" id="anonimizar" type="button">Anonimizar</button>
-        <button class="ej" data-t="Encontré una cuenta a nombre de CAMILA RESTREPO TORRES. Te paso con una persona del equipo.">Nombre en mayúsculas</button>
-        <button class="ej" data-t="el carro lo maneja mi esposo, placa GTD596, y mi pasaporte es AR752831">Placa y pasaporte</button>
+        <button class="ej" data-t="Encontré una cuenta a nombre de CAMILA URREGO VILLALBA. Te paso con una persona del equipo.">Nombre en mayúsculas</button>
+        <button class="ej" data-t="el carro lo maneja mi esposo, placa XQW318, y mi pasaporte es PE904173">Placa y pasaporte</button>
         <button class="ej" data-t="Pagué con Nequi en Carulla y fui a Plaza Botero a ver a Shakira.">Marcas y famosos</button>
         <span id="tiempo"></span>
       </div>
@@ -527,7 +527,7 @@ html,body{overflow-x:clip}
   const guion = [
     { q: "cli", t: "Hola, me llamo {Manuela Castaño|Irene Estrada}. Me cobraron una cuota que ya pagué." },
     { q: "age", t: "Hola {Manuela|Irene}, ¿me confirmas tu cédula?" },
-    { q: "cli", t: "Claro, es {1.107.360.039|1.668.562.693} y mi correo {mcastano@gmail.com|iestrada@gmail.com}. Pagué por PSE desde Bancolombia." }
+    { q: "cli", t: "Claro, es {1.107.360.039|1.668.562.693} y mi correo {manu.castano@gmail.com|iestrada@gmail.com}. Pagué por PSE desde Bancolombia." }
   ];
   const quien = { cli: "Cliente", age: "Agente" };
   const SIGNOS = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@.";
