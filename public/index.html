@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>kipu-anon · datos útiles, personas a salvo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="360 370 530 535"%3E%0A%3Cdefs%3E%0A%3ClinearGradient id="kv" x1="0" y1="0" x2="1" y2="1"%3E%3Cstop offset="0" stop-color="%232EF5A6"/%3E%3Cstop offset="1" stop-color="%2314D483"/%3E%3C/linearGradient%3E%0A%3ClinearGradient id="kp" x1="640" y1="650" x2="840" y2="860" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0" stop-color="%23032015"/%3E%3Cstop offset=".55" stop-color="%230E9C5E"/%3E%3Cstop offset="1" stop-color="%231BE08A"/%3E%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Cpath d="M700 690 L800 805" stroke="url%28%23kp%29" stroke-width="150" stroke-linecap="round"/%3E%0A%0A%3CclipPath id="kc"%3E%3Crect x="470" y="300" width="500" height="587"/%3E%3C/clipPath%3E%3Cpath d="M420 860 L790 475" stroke="url%28%23kv%29" stroke-width="160" stroke-linecap="round" clip-path="url%28%23kc%29"/%3E%3Crect x="377" y="387" width="218" height="500" rx="88" fill="url%28%23kv%29"/%3E%0A%3Cpath d="M447 612 v-22 a51 51 0 0 1 102 0 v22" fill="none" stroke="%23050806" stroke-width="27"/%3E%0A%3Crect x="410" y="612" width="177" height="138" rx="30" fill="%23050806"/%3E%0A%3Ccircle cx="498" cy="664" r="18" fill="%232EF5A6"/%3E%3Cpath d="M490 672 h16 l7 44 h-30z" fill="%232EF5A6"/%3E%0A%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -330,6 +331,15 @@ html,body{overflow-x:clip}
 .paso:hover h3,.paso.encima h3{color:#7BE0A8;translate:4px 0}
 @keyframes resplandor{0%,100%{text-shadow:0 0 8px #6EE7B7,0 0 24px rgba(52,211,153,.95),0 0 56px rgba(52,211,153,.7),0 0 110px rgba(52,211,153,.45)}50%{text-shadow:0 0 14px #A7F3D0,0 0 36px rgba(110,231,183,1),0 0 84px rgba(52,211,153,.85),0 0 160px rgba(52,211,153,.6)}}
 @media (prefers-reduced-motion: reduce){.paso:hover::before,.paso.encima::before{animation:none;text-shadow:0 0 30px rgba(52,211,153,.8);scale:none}}
+
+/* logo: K con candado */
+.marca .logo{width:30px;height:30px;flex:none;overflow:visible;transition:rotate .5s cubic-bezier(.34,1.56,.64,1),scale .5s cubic-bezier(.34,1.56,.64,1),filter .4s}
+.marca .logo .arco{transform-box:fill-box;transform-origin:50% 100%;animation:cierra .9s cubic-bezier(.34,1.56,.64,1) .3s both}
+.marca:hover .logo{rotate:-8deg;scale:1.1;filter:drop-shadow(0 0 10px rgba(46,245,166,.6))}
+.marca:hover .logo .arco{animation:abre .7s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes cierra{0%{translate:0 -38%}60%{translate:0 6%}100%{translate:0 0}}
+@keyframes abre{0%{translate:0 0}40%{translate:0 -28%}100%{translate:0 0}}
+@media (prefers-reduced-motion: reduce){.marca .logo .arco{animation:none!important}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/motion@11.11.17/dist/motion.js"></script>
 </head>
@@ -337,7 +347,18 @@ html,body{overflow-x:clip}
 <div class="luz a"></div><div class="luz b"></div><div class="luz c"></div>
 <header>
   <div class="wrap bar">
-    <a class="marca" href="#"><i></i>kipu-anon</a>
+    <a class="marca" href="#"><svg class="logo" aria-hidden="true" viewBox="360 370 530 535">
+<defs>
+<linearGradient id="logoG1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2EF5A6"/><stop offset="1" stop-color="#14D483"/></linearGradient>
+<linearGradient id="logoG2" x1="640" y1="650" x2="840" y2="860" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#032015"/><stop offset=".55" stop-color="#0E9C5E"/><stop offset="1" stop-color="#1BE08A"/></linearGradient>
+</defs>
+<path d="M700 690 L800 805" stroke="url(#logoG2)" stroke-width="150" stroke-linecap="round"/>
+
+<clipPath id="logoC1"><rect x="470" y="300" width="500" height="587"/></clipPath><path d="M420 860 L790 475" stroke="url(#logoG1)" stroke-width="160" stroke-linecap="round" clip-path="url(#logoC1)"/><rect x="377" y="387" width="218" height="500" rx="88" fill="url(#logoG1)"/>
+<path class="arco" d="M447 612 v-22 a51 51 0 0 1 102 0 v22" fill="none" stroke="#050806" stroke-width="27"/>
+<rect x="410" y="612" width="177" height="138" rx="30" fill="#050806"/>
+<circle cx="498" cy="664" r="18" fill="#2EF5A6"/><path d="M490 672 h16 l7 44 h-30z" fill="#2EF5A6"/>
+</svg>kipu-anon</a>
     <nav><a href="#problema">El problema</a><a href="#prueba">Pruébalo</a><a href="#como">Cómo funciona</a><a href="https://github.com/ALFA117/kipu-anon">Código</a></nav>
     <span class="estado" id="estado"><b></b><span>conectando…</span></span>
   </div>
