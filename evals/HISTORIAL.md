@@ -15,3 +15,4 @@ La nota estricta imita la rúbrica (fuga 45 · utilidad 35 · consistencia 20) c
 | 9 | 31/10, 03:57 p.m. | local | 0c14c5b+cambios | **97.1** | 45 | 34.7 | 17.4 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/23 | 206/206 | post-incidente: clientes PG- ligados por cédula |
 | 10 | 31/10, 04:01 p.m. | local | 0c14c5b+cambios | **97.1** | 45 | 34.7 | 17.4 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/23 | 206/206 | post-incidente: fecha no es cuenta |
 | 11 | 31/10, 04:06 p.m. | local | 0c14c5b+cambios | **99.7** | 45 | 34.7 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | post-incidente: evaluador no cuenta migrados como homónimos |
+| 12 | 31/10, 04:26 p.m. | local | 5906344+cambios | **99.7** | 45 | 34.7 | 20 | 0/3711 | 5/5 | 13/13 | 39/39 | 11/11 | 206/206 | cargo + apellido (el agente Zapata) |

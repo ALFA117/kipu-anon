@@ -573,8 +573,9 @@ export class Anonymizer {
         let e = null;
         if (hits.length) e = this.pick(hits, ctx, map[m.index], text);
         else {
-          const before = n.slice(Math.max(0, m.index - 12), m.index);
-          if (/(senor|senora|sr\.?|sra\.?|don|dona|doctor|doctora|dr\.?|dra\.?)\s$/.test(before)) {
+          const before = n.slice(Math.max(0, m.index - 16), m.index);
+          // tratamiento o cargo + apellido: "señor Mejía", "el agente Zapata", "la asesora Ruiz"
+          if (/\b(senor|senora|sr\.?|sra\.?|don|dona|doctor|doctora|dr\.?|dra\.?|ing\.?|ingenier[oa]|lic\.?|licenciad[oa]|agente|asesor|asesora|analista|gerente|coordinador|coordinadora|colega|companer[oa]|profesor|profesora|cliente|clienta)\s$/.test(before)) {
             const sh = [...ctxPeople].filter(x => x.surnames.some(s => norm(s) === tok));
             if (sh.length) e = this.pick(sh, ctx, map[m.index], text);
           }
