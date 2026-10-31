@@ -2,479 +2,759 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>kipu-anon · Comparte tus datos, protege a tu gente</title>
-<meta name="description" content="Comparte tus datos sin exponer a tus clientes: kipu-anon cambia a cada persona por una inventada y deja todo lo demás igual.">
-<link rel="canonical" href="https://kipu-anon.vercel.app/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="kipu-anon · Comparte tus datos, protege a tu gente">
-<meta property="og:description" content="Anonimización determinista con demo en vivo: 8.297 registros, 0 fugas en el barrido propio, 0 tokens de LLM.">
-<meta property="og:url" content="https://kipu-anon.vercel.app/">
-<meta name="twitter:card" content="summary">
-<meta name="theme-color" content="#05070a">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2305070a'/%3E%3Cpath d='M8 11l6 5-6 5' stroke='%2322C55E' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='16' y='19' width='9' height='3' rx='1.5' fill='%2322C55E'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>kipu-anon · datos útiles, personas a salvo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* ---------- tokens (design-system/kipu-anon/MASTER.md: Dark Mode OLED · code dark + run green) ---------- */
-  :root {
-    --bg: #05070a; --bg-2: #0b1017; --card: #0f1620; --card-2: #131c28; --border: #223042; --border-soft: #182230;
-    --fg: #f1f5f9; --fg-2: #c3cfdb; --muted: #8a99a8; --accent: #22c55e; --accent-2: #4fb3ff; --on-accent: #04130a;
-    --real: #ff6b6b; --warn: #fbbf24; --ring: #ffffff;
-    --r-sm: 6px; --r-md: 10px; --r-lg: 16px;
-    --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
-    --shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 20px 50px -20px rgba(0,0,0,.7);
-    --glow: 0 0 24px rgba(34,197,94,.25);
-    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
-    --sans: Inter, "Segoe UI", system-ui, sans-serif;
-    --t-display: clamp(40px, 7.4vw, 84px); --t-h2: clamp(24px, 3.2vw, 34px); --t-body: 16px; --t-small: 13px; --t-eyebrow: 12px;
-    color-scheme: dark;
-  }
-  @media (prefers-color-scheme: light) {
-    :root { --bg: #f6f8fa; --bg-2: #eef2f6; --card: #ffffff; --card-2: #f3f6f9; --border: #d5dde6; --border-soft: #e4e9ef;
-      --fg: #0b1220; --fg-2: #2a3646; --muted: #556373; --accent: #15803d; --accent-2: #0b6cbf; --on-accent: #ffffff; --real: #c62828; --ring: #0b1220;
-      --shadow: 0 10px 30px -18px rgba(15,23,42,.35); --glow: none; color-scheme: light; }
-  }
+:root{
+  --bosque:#12372A; --hoja:#2E7D52; --menta:#CFEBD9; --menta-2:#E4F3E9; --papel:#F3F7F2;
+  --frambuesa:#B42350; --frambuesa-2:#FBE3EA; --tinta-suave:#4C6358; --linea:#D5E3D9; --blanco:#FFFFFF;
+  --display:"Bricolage Grotesque",system-ui,sans-serif; --texto:"Figtree",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--papel);color:var(--bosque);font-family:var(--texto);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--hoja);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { background: var(--bg); scroll-behavior: smooth; }
-  body { isolation: isolate; background: transparent; color: var(--fg); font: var(--t-body)/1.6 var(--sans); min-height: 100dvh; -webkit-font-smoothing: antialiased; }
-  a { color: var(--accent-2); text-underline-offset: 3px; }
-  :focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; border-radius: 4px; }
-  .skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: var(--on-accent); padding: 10px 14px; border-radius: var(--r-sm); font: 600 14px var(--mono); z-index: 10; }
-  .skip:focus { left: 8px; }
-  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 max(16px, env(safe-area-inset-left)); }
-  .mono { font-family: var(--mono); }
-  .eyebrow { font: 500 var(--t-eyebrow)/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
-  .eyebrow i { color: var(--muted); font-style: normal; }
+/* encabezado */
+header{position:sticky;top:0;z-index:5;background:rgba(243,247,242,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.bar{display:flex;align-items:center;gap:28px;height:64px}
+.marca{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:10px}
+.marca i{width:22px;height:22px;border-radius:7px;background:var(--hoja);position:relative;display:inline-block}
+.marca i::after{content:"";position:absolute;inset:6px 4px 6px 10px;border-radius:3px;background:var(--menta)}
+nav{display:flex;gap:22px;margin-left:auto;font-size:15px;font-weight:500}
+nav a{padding:10px 0;text-decoration:none;color:var(--tinta-suave)} nav a:hover{color:var(--bosque)}
+.estado{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--tinta-suave)}
+.estado b{width:9px;height:9px;border-radius:50%;background:#B9C7BE}
+.estado.ok b{background:var(--hoja);box-shadow:0 0 0 4px var(--menta)}
 
-  /* ---------- fondo ---------- */
-  #bg { position: fixed; inset: 0; z-index: -10; pointer-events: none; width: 100%; height: 100%; }
-  .veil { position: fixed; inset: 0; z-index: -9; pointer-events: none;
-    background: radial-gradient(1000px 600px at 75% 10%, transparent 0, var(--bg) 75%), linear-gradient(to bottom, transparent 0, var(--bg) 92%); opacity: .82; }
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:72px 0 64px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(44px,6.4vw,82px);line-height:.98;letter-spacing:-.035em;margin:0 0 22px}
+h1 .linea2{display:block;color:var(--hoja)}
+.bajada{font-size:20px;line-height:1.55;color:var(--tinta-suave);max-width:33ch;margin:0 0 30px}
+.acciones{display:flex;gap:12px;flex-wrap:wrap}
+.btn{min-height:48px;font:600 16px var(--texto);border-radius:999px;padding:14px 24px;border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-p{background:var(--bosque);color:var(--papel)} .btn-p:hover{background:var(--hoja)}
+.btn-s{background:transparent;color:var(--bosque);box-shadow:inset 0 0 0 1.5px var(--bosque)} .btn-s:hover{background:var(--menta-2)}
 
-  /* ---------- nav ---------- */
-  nav { position: sticky; top: 0; z-index: 5; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    background: color-mix(in srgb, var(--bg) 72%, transparent); border-bottom: 1px solid var(--border-soft); padding-top: env(safe-area-inset-top); }
-  nav .wrap { display: flex; align-items: center; gap: var(--s4); min-height: 56px; }
-  .brand { font: 800 16px var(--mono); color: var(--fg); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
-  .brand .cur { display: inline-block; width: 9px; height: 17px; background: var(--accent); animation: blink 1.1s steps(1) infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
-  .status { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; font: 12px var(--mono); color: var(--muted); }
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
-  .dot.ok { background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); }
-  .dot.bad { background: var(--real); }
-  .navlinks { display: flex; gap: var(--s2); }
-  .navlinks a { font: 500 13px var(--mono); color: var(--fg-2); text-decoration: none; padding: 12px 10px; border-radius: var(--r-sm); min-height: 44px; display: inline-flex; align-items: center; }
-  .navlinks a:hover { color: var(--fg); background: var(--card); }
+/* conversación del hero */
+.chat{background:var(--blanco);border-radius:28px;padding:22px 22px 18px;box-shadow:0 30px 60px -30px rgba(18,55,42,.35),0 0 0 1px var(--linea)}
+.chat-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:14px;color:var(--tinta-suave)}
+.chat-top strong{color:var(--bosque);font-weight:600}
+.burbuja{max-width:88%;padding:12px 16px;border-radius:20px;margin:10px 0;font-size:16px;line-height:1.5}
+.cli{background:var(--menta-2);border-bottom-left-radius:6px}
+.age{background:var(--bosque);color:var(--papel);margin-left:auto;border-bottom-right-radius:6px}
+.quien{display:block;font-size:12.5px;font-weight:600;opacity:.7;margin-bottom:2px}
+.d{position:relative;display:inline-grid;vertical-align:baseline}
+.d > span{grid-area:1/1;white-space:nowrap;transition:opacity .45s ease,transform .45s ease,clip-path .55s ease}
+.d .real{color:var(--frambuesa);background:var(--frambuesa-2);border-radius:5px;padding:0 4px;clip-path:inset(0 0 0 0)}
+.age .d .real{background:rgba(251,227,234,.16);color:#FFC2D2}
+.d .falso{color:var(--hoja);background:var(--menta);border-radius:5px;padding:0 4px;font-weight:600;opacity:0;transform:translateY(6px)}
+.age .d .falso{color:var(--bosque)}
+.chat.listo .d .real{clip-path:inset(0 100% 0 0);opacity:0;position:absolute;left:0;top:0}
+.chat.listo .d .falso{opacity:1;transform:none}
+.chat-pie{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:13.5px;color:var(--tinta-suave)}
+.leyenda{display:flex;gap:14px}
+.leyenda span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.leyenda .r::before{background:var(--frambuesa)} .leyenda .f::before{background:var(--hoja)}
+.repetir{background:none;border:0;font:600 13.5px var(--texto);color:var(--hoja);cursor:pointer;padding:10px 4px;min-height:44px}
 
-  /* ---------- hero ---------- */
-  .hero { padding: var(--s9) 0 var(--s7); display: grid; grid-template-columns: 1.15fr .85fr; gap: var(--s7); align-items: center; }
-  .hero h1 { font: 800 var(--t-display)/.98 var(--mono); letter-spacing: -.04em; margin: var(--s4) 0 var(--s5); }
-  .hero h1 .strike { position: relative; display: inline-block; white-space: nowrap; color: var(--muted); }
-  .hero h1 .strike::after { content: ""; position: absolute; left: -2%; right: -2%; top: 52%; height: .12em; background: var(--real); transform-origin: left; transform: scaleX(var(--k, 1)); }
-  .hero h1 em { font-style: normal; color: var(--accent); text-shadow: var(--glow); }
-  .lead { color: var(--fg-2); font-size: 18px; max-width: 56ch; }
-  .cta { display: flex; gap: var(--s3); flex-wrap: wrap; margin-top: var(--s6); }
+/* cifras */
+.cifras{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--bosque);border-bottom:1px solid var(--linea)}
+.cifra{padding:22px 20px 24px 0}
+.cifra + .cifra{padding-left:20px;border-left:1px solid var(--linea)}
+.cifra b{display:block;font-family:var(--display);font-weight:700;font-size:40px;letter-spacing:-.03em;line-height:1.1}
+.cifra span{font-size:15px;color:var(--tinta-suave)}
+.nota{font-size:14px;color:var(--tinta-suave);margin:12px 0 0}
 
-  .btn { --b: var(--card); font: 600 14px var(--mono); display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: var(--r-md);
-    border: 1px solid var(--border); background: var(--b); color: var(--fg); text-decoration: none; cursor: pointer; transition: border-color .2s, background .2s, color .2s; will-change: transform; }
-  .btn:hover { border-color: var(--muted); }
-  .btn.pri { --b: var(--accent); color: var(--on-accent); border-color: var(--accent); box-shadow: var(--glow); }
-  .btn.pri:hover { filter: brightness(1.08); }
-  .btn[disabled] { opacity: .65; cursor: progress; }
-  .btn svg { width: 18px; height: 18px; flex: none; }
-  .spin { width: 16px; height: 16px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: rot .7s linear infinite; }
-  @keyframes rot { to { transform: rotate(360deg); } }
+section{padding:88px 0 0}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-.03em;margin:0 0 16px;max-width:20ch}
+.intro{font-size:19px;color:var(--tinta-suave);max-width:58ch;margin:0 0 36px}
 
-  /* terminal del hero: hace una llamada real a /anonymize */
-  .term { background: color-mix(in srgb, var(--card) 88%, transparent); border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; }
-  .term .bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--border-soft); font: 12px var(--mono); color: var(--muted); }
-  .term .bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
-  .term .bar span { margin-left: 8px; }
-  .term pre { margin: 0; padding: var(--s5) var(--s4); font: 14px/1.75 var(--mono); white-space: pre-wrap; word-break: break-word; color: var(--fg-2); min-height: 230px; }
-  .term .k { color: var(--accent-2); } .term .r { color: var(--real); } .term .g { color: var(--accent); } .term .c { color: var(--muted); }
-  .term .tag { display: inline-block; margin-top: 6px; font-size: 11px; color: var(--muted); border: 1px dashed var(--border); border-radius: 999px; padding: 2px 8px; }
+/* comparación */
+table.comp{width:100%;border-collapse:collapse;font-size:16px;background:var(--blanco);border-radius:22px;overflow:hidden;box-shadow:0 0 0 1px var(--linea)}
+.comp th,.comp td{text-align:left;padding:18px 20px;vertical-align:top;border-bottom:1px solid var(--linea)}
+.comp thead th{font-family:var(--display);font-weight:700;font-size:18px;background:var(--menta-2)}
+.comp tbody tr:last-child td{border-bottom:0}
+.comp td:first-child{font-weight:600;width:22%}
+.comp .nos{background:var(--bosque);color:var(--papel)}
+.comp thead .nos{background:var(--hoja);color:var(--blanco)}
+.ok,.no{font-weight:600}.no{color:var(--frambuesa)}.comp .nos .ok{color:var(--menta)}
 
-  /* ---------- métricas ---------- */
-  .stats { display: grid; grid-template-columns: repeat(6, 1fr); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; background: var(--border-soft); gap: 1px; }
-  .stat { background: color-mix(in srgb, var(--card) 92%, transparent); padding: var(--s5) var(--s4); }
-  .stat b { display: block; font: 800 28px/1.1 var(--mono); color: var(--fg); }
-  .stat b.g { color: var(--accent); }
-  .stat span { display: block; margin-top: 6px; font: 12px/1.4 var(--mono); color: var(--muted); }
-  .stats4 { grid-template-columns: repeat(4, 1fr); }
-  .devp { color: var(--fg-2); font-size: 15px; margin: var(--s2) 0 var(--s3); }
-  .note { margin-top: var(--s3); font: 12px var(--mono); color: var(--muted); }
+/* demo */
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{background:var(--blanco);border-radius:22px;box-shadow:0 0 0 1px var(--linea);display:flex;flex-direction:column;min-height:300px}
+.panel h3{font-family:var(--display);font-size:17px;font-weight:700;margin:0;padding:16px 20px;border-bottom:1px solid var(--linea);display:flex;justify-content:space-between;align-items:baseline}
+.panel h3 small{font-family:var(--texto);font-weight:500;font-size:13.5px;color:var(--tinta-suave)}
+textarea{flex:1;border:0;resize:vertical;padding:18px 20px;font:16px/1.6 var(--texto);color:var(--bosque);background:transparent;min-height:220px}
+textarea:focus{outline:none}
+.panel:focus-within{box-shadow:0 0 0 2px var(--hoja)}
+#salida{padding:18px 20px;flex:1;white-space:pre-wrap;line-height:1.75}
+#salida .vacio{color:var(--tinta-suave)}
+mark.f{background:var(--menta);color:var(--hoja);font-weight:600;border-radius:4px;padding:0 3px}
+.fila-demo{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+.ej{min-height:44px;background:var(--blanco);border:0;box-shadow:inset 0 0 0 1px var(--linea);border-radius:999px;padding:9px 16px;font:500 14.5px var(--texto);color:var(--bosque);cursor:pointer}
+.ej:hover{box-shadow:inset 0 0 0 1.5px var(--hoja)}
+#tiempo{font-size:14px;color:var(--tinta-suave);margin-left:auto}
+.fichas{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.ficha{background:var(--menta-2);border-radius:14px;padding:10px 14px;font-size:14.5px}
+.ficha s{color:var(--frambuesa)} .ficha strong{color:var(--hoja)}
 
-  section { padding: var(--s9) 0 0; }
-  h2 { font: 700 var(--t-h2)/1.15 var(--mono); letter-spacing: -.02em; margin: var(--s2) 0 var(--s5); }
+/* pasos */
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:p;border-top:1.5px solid var(--bosque)}
+.paso{padding:28px 28px 8px 0;counter-increment:p}
+.paso + .paso{padding-left:28px;border-left:1px solid var(--linea)}
+.paso::before{content:counter(p);font-family:var(--display);font-weight:800;font-size:64px;line-height:1;color:var(--menta);display:block;margin-bottom:10px;-webkit-text-stroke:1.5px var(--hoja)}
+.paso h3{font-family:var(--display);font-size:22px;font-weight:700;margin:0 0 8px;letter-spacing:-.01em}
+.paso p{margin:0;color:var(--tinta-suave)}
 
-  /* ---------- demo ---------- */
-  .demo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s4); }
-  .pane { background: color-mix(in srgb, var(--card) 94%, transparent); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; display: flex; flex-direction: column; min-height: 300px; }
-  .pane header { display: flex; justify-content: space-between; align-items: center; gap: var(--s2); padding: 12px 16px; border-bottom: 1px solid var(--border-soft); font: 12px var(--mono); color: var(--muted); }
-  .pane header label, .pane header strong { color: var(--fg); font-weight: 600; }
-  textarea { flex: 1; width: 100%; min-height: 230px; resize: vertical; background: transparent; color: var(--fg); border: 0; padding: var(--s4); font: 15px/1.7 var(--mono); }
-  textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 0; }
-  .out { flex: 1; padding: var(--s4); font: 15px/1.7 var(--mono); white-space: pre-wrap; word-break: break-word; }
-  .out mark { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); border-bottom: 1px solid var(--accent); border-radius: 3px; padding: 0 2px; }
-  .empty, .err { color: var(--muted); display: grid; gap: var(--s3); align-content: center; justify-items: start; height: 100%; min-height: 200px; }
-  .err { color: var(--real); }
-  .err .btn { color: var(--fg); }
-  .sk { display: grid; gap: 10px; }
-  .sk i { height: 14px; border-radius: 4px; background: linear-gradient(90deg, var(--card-2), var(--border-soft), var(--card-2)); background-size: 200% 100%; animation: sh 1.2s infinite linear; }
-  .sk i:nth-child(2) { width: 86%; } .sk i:nth-child(3) { width: 64%; } .sk i:nth-child(4) { width: 78%; }
-  @keyframes sh { to { background-position: -200% 0; } }
-  .controls { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; margin-top: var(--s4); }
-  .chips { display: flex; flex-wrap: wrap; gap: var(--s2); }
-  .chip { font: 500 13px var(--mono); min-height: 44px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; border: 1px dashed var(--border); background: transparent; color: var(--fg-2); cursor: pointer; transition: color .2s, border-color .2s; }
-  .chip:hover { color: var(--fg); border-color: var(--muted); }
-  .ents { margin-top: var(--s4); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; background: color-mix(in srgb, var(--card) 94%, transparent); }
-  .ents table { width: 100%; border-collapse: collapse; font: 13px var(--mono); }
-  .ents th { text-align: left; color: var(--muted); font-weight: 500; padding: 10px 14px; border-bottom: 1px solid var(--border-soft); }
-  .ents td { padding: 10px 14px; border-bottom: 1px solid var(--border-soft); vertical-align: top; word-break: break-word; }
-  .ents tr:last-child td { border-bottom: 0; }
-  .ents td.o { color: var(--real); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--real) 50%, transparent); }
-  .ents td.p { color: var(--accent); }
-  .ents td.e { color: var(--muted); }
+/* garantías + api */
+.cierre{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+.lista{list-style:none;margin:0;padding:0}
+.lista li{padding:14px 0 14px 34px;border-bottom:1px solid var(--linea);position:relative}
+.lista li::before{content:"";position:absolute;left:0;top:19px;width:20px;height:20px;border-radius:50%;background:var(--menta) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%232E7D52' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.api{background:var(--bosque);color:var(--papel);border-radius:26px;padding:26px 28px}
+.api h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 6px}
+.api p{margin:0 0 16px;color:#B8CFC2;font-size:15.5px}
+.api dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:15px}
+.api dt{font-weight:700;color:var(--menta)} .api dd{margin:0}
+.api code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:14px;background:rgba(207,235,217,.12);padding:1px 6px;border-radius:5px}
+.api a{display:inline-block;margin-top:18px;color:var(--menta);font-weight:600}
 
-  /* ---------- pipeline ---------- */
-  .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s4); }
-  .step { position: relative; background: color-mix(in srgb, var(--card) 92%, transparent); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--s5); }
-  .step .n { font: 700 12px var(--mono); color: var(--accent-2); }
-  .step h3 { font: 700 17px var(--mono); margin: var(--s2) 0; }
-  .step p { color: var(--fg-2); font-size: 15px; }
-  .step code { font: 12px var(--mono); color: var(--warn); }
-  .step:nth-child(4) { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+footer{margin-top:96px;padding:28px 0 40px;border-top:1px solid var(--linea);font-size:14.5px;color:var(--tinta-suave)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
-  .split { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--s4); }
-  .card { background: color-mix(in srgb, var(--card) 92%, transparent); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--s5); }
-  .checks { list-style: none; display: grid; gap: var(--s3); margin-top: var(--s3); }
-  .checks li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; color: var(--fg-2); }
-  .checks svg { width: 18px; height: 18px; color: var(--accent); margin-top: 3px; }
-  .formula { margin-top: var(--s5); font: 13px/1.8 var(--mono); background: var(--bg-2); border-left: 2px solid var(--accent-2); padding: var(--s3) var(--s4); overflow-x: auto; white-space: pre; border-radius: 0 var(--r-sm) var(--r-sm) 0; }
-  .ep { display: grid; grid-template-columns: 56px 1fr; gap: 10px 12px; font: 14px var(--mono); margin-top: var(--s3); }
-  .ep .m { color: var(--accent-2); font-weight: 700; }
-  .ep small { display: block; color: var(--muted); font: 12px var(--sans); }
+@media (max-width:900px){
+  nav{display:none}
+  .hero,.demo,.cierre{grid-template-columns:1fr}
+  .hero{padding-top:44px;gap:36px}
+  .cifras{grid-template-columns:repeat(2,1fr)}
+  .cifra:nth-child(3){padding-left:0;border-left:0}
+  .cifra:nth-child(n+3){border-top:1px solid var(--linea)}
+  .pasos{grid-template-columns:1fr}
+  .paso + .paso{padding-left:0;border-left:0;border-top:1px solid var(--linea)}
+  .comp{font-size:14.5px}.comp th,.comp td{padding:12px}
+}
 
-  footer { margin-top: var(--s9); border-top: 1px solid var(--border-soft); padding: var(--s5) 0 calc(var(--s6) + env(safe-area-inset-bottom)); display: flex; justify-content: space-between; gap: var(--s3); flex-wrap: wrap; font: 12px var(--mono); color: var(--muted); }
+/* ===== animación ===== */
+h1 .w{display:inline-block;will-change:transform}
+#mensajes{min-height:318px}
+@media (max-width:900px){#mensajes{min-height:360px}}
+.tecleando{display:inline-flex;gap:4px;padding:14px 16px;background:var(--menta-2);border-radius:20px;border-bottom-left-radius:6px;margin:10px 0}
+.tecleando i{width:7px;height:7px;border-radius:50%;background:var(--hoja);opacity:.35;animation:bote 1s infinite}
+.tecleando i:nth-child(2){animation-delay:.15s}.tecleando i:nth-child(3){animation-delay:.3s}
+@keyframes bote{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-4px);opacity:1}}
+.dx{border-radius:5px;padding:0 4px;transition:background-color .35s ease,color .35s ease;white-space:nowrap}
+.dx.r{color:var(--frambuesa);background:var(--frambuesa-2)}
+.age .dx.r{background:rgba(251,227,234,.16);color:#FFC2D2}
+.dx.f{color:var(--hoja);background:var(--menta);font-weight:600}
+.age .dx.f{color:var(--bosque)}
+.dx.mezcla{color:var(--bosque);background:#FFF4CC}
+.age .dx.mezcla{color:var(--bosque)}
 
-  @media (max-width: 960px) {
-    .hero { grid-template-columns: 1fr; padding-top: var(--s8); }
-    .stats, .stats4 { grid-template-columns: repeat(2, 1fr); }
-    .demo, .split { grid-template-columns: 1fr; }
-    .flow { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 560px) {
-    .navlinks { display: none; }
-    .hero { padding-top: var(--s7); }
-    .lead { font-size: 16px; }
-    .stats { grid-template-columns: repeat(2, 1fr); }
-    .flow { grid-template-columns: 1fr; }
-    .btn { width: 100%; justify-content: center; }
-    .term pre { font-size: 13px; }
-    .stat b { font-size: 24px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .brand .cur, .spin, .sk i { animation: none; }
-    html { scroll-behavior: auto; }
-  }
+.cinta{overflow:hidden;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);background:var(--blanco);margin-top:8px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.cinta-pista{display:flex;gap:44px;width:max-content;padding:16px 0;animation:desfile 48s linear infinite}
+.cinta:hover .cinta-pista{animation-play-state:paused}
+.par{display:flex;align-items:center;gap:12px;font-size:16px;white-space:nowrap}
+.par s{color:var(--frambuesa);text-decoration-thickness:2px}
+.par b{color:var(--hoja);background:var(--menta);padding:2px 8px;border-radius:6px;font-weight:600}
+.par svg{flex:none}
+@keyframes desfile{to{transform:translateX(-50%)}}
+
+.comp tbody tr{will-change:transform}
+.comp .nos{position:relative;clip-path:inset(0)}
+.comp td.nos::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(207,235,217,.25),transparent);transform:translateX(-100%);pointer-events:none}
+.comp.brillo td.nos::after{animation:barrido 1.4s ease .3s 1}
+@keyframes barrido{to{transform:translateX(100%)}}
+
+.pasos{position:relative}
+.pasos .progreso{position:absolute;top:-1.5px;left:0;height:3px;width:100%;background:var(--hoja);transform-origin:left;transform:scaleX(var(--p,1))}
+.paso::before{transition:color .6s ease}
+.paso.vivo::before{color:var(--hoja)}
+
+.lista li::before{transform:scale(var(--k,1))}
+.btn:active,.ej:active{transform:scale(.97)}
+.btn,.ej{transition:background-color .2s ease,box-shadow .2s ease,transform .12s ease}
+header{transition:box-shadow .3s ease}
+header.sombra{box-shadow:0 10px 30px -14px rgba(0,0,0,.7)}
+
+@media (prefers-reduced-motion:reduce){
+  .cinta-pista{animation:none;flex-wrap:wrap;width:auto;justify-content:center;row-gap:12px}
+  .tecleando i{animation:none}
+}
+
+/* ===== versión oscura ===== */
+:root{--papel:#06140E;--blanco:#0C2219;--bosque:#E6F4EC;--hoja:#34D399;--menta:rgba(52,211,153,.16);--menta-2:#0F2A1F;
+  --tinta-suave:#9DB8AA;--linea:#1C3D30;--frambuesa:#FB7185;--frambuesa-2:rgba(251,113,133,.14);--mono:"JetBrains Mono",ui-monospace,monospace}
+html{color-scheme:dark}
+body{background:radial-gradient(1200px 600px at 75% -10%,rgba(52,211,153,.10),transparent 60%),var(--papel)}
+header{background:rgba(6,20,14,.78)}
+.btn-p{background:var(--hoja);color:#04110B} .btn-p:hover{background:#6EE7B7}
+.btn-s{box-shadow:inset 0 0 0 1.5px #2C5A47} .btn-s:hover{background:#0F2A1F}
+.chat{background:rgba(12,34,25,.82);backdrop-filter:blur(10px);box-shadow:0 40px 90px -40px rgba(0,0,0,.8),0 0 0 1px #1F4637,0 0 60px -20px rgba(52,211,153,.35)}
+.chat-top{font-family:var(--mono);font-size:12.5px}
+.cli{background:#12342A}
+.age{background:#1A4536;color:var(--bosque)}
+.age .dx.r{background:rgba(251,113,133,.16);color:#FDA4AF}
+.age .dx.f{color:#6EE7B7}
+.dx.mezcla,.age .dx.mezcla{background:rgba(253,230,138,.14);color:#FDE68A}
+.tecleando{background:#12342A}
+.cinta{background:rgba(12,34,25,.7)}
+.par{font-family:var(--mono);font-size:14.5px}
+.comp{box-shadow:0 0 0 1px var(--linea)}
+.comp thead th{background:#0F2A1F}
+.comp .nos{background:#0E3324;color:var(--bosque)}
+.comp thead .nos{background:var(--hoja);color:#04110B}
+.comp .nos .ok{color:#6EE7B7}
+.comp td.nos::after{background:linear-gradient(90deg,transparent,rgba(110,231,183,.22),transparent)}
+.panel{background:rgba(12,34,25,.85)}
+.api{background:#0E3324;color:var(--bosque);box-shadow:0 0 0 1px #1F4637}
+.api p{color:var(--tinta-suave)}
+.api dt{color:#6EE7B7}
+.api code{font-family:var(--mono)}
+.api a{color:#6EE7B7}
+.marca i::after{background:#04110B}
+.lista li::before{background:var(--menta) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%2334D399' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.paso::before{color:transparent;-webkit-text-stroke:1.5px #2C6B52}
+.paso.vivo::before{color:var(--hoja);-webkit-text-stroke:1.5px var(--hoja);text-shadow:0 0 24px rgba(52,211,153,.45)}
+.pasos .progreso{box-shadow:0 0 14px rgba(52,211,153,.7)}
+.cifras{border-top-color:#2C6B52}
+.cifra b{color:var(--bosque)}
+h1 .linea2{color:var(--hoja);text-shadow:0 0 40px rgba(52,211,153,.25)}
+.hero-zona{position:relative;isolation:isolate}
+#malla{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.estado span{font-family:var(--mono);font-size:12.5px}
+
+/* ===== menos cuadrada ===== */
+html,body{overflow-x:clip}
+.comparar.comp{box-shadow:none;background:none;border-radius:0;overflow:visible;clip-path:none}
+.luz{position:fixed;z-index:-2;border-radius:50%;filter:blur(80px);pointer-events:none;opacity:.55}
+.luz.a{width:520px;height:520px;background:#0E5A3E;top:30vh;left:-180px}
+.luz.b{width:440px;height:440px;background:#123F5A;top:120vh;right:-160px;opacity:.35}
+.luz.c{width:380px;height:380px;background:#0E5A3E;top:230vh;left:30vw;opacity:.4}
+
+.hero{padding-bottom:40px}
+.chat{transform-style:preserve-3d;transition:transform .25s ease-out;will-change:transform}
+.escena{perspective:1100px}
+
+.cinta{transform:rotate(-2.2deg) scale(1.04);margin:36px -2vw 0;border:0;background:linear-gradient(90deg,#0C2E21,#103A2A,#0C2E21);box-shadow:0 18px 40px -20px rgba(0,0,0,.8);mask-image:none}
+
+.cifras{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;border:0;margin-top:56px}
+.cifra,.cifra + .cifra{flex:1 1 200px;padding:22px 24px;border:0;background:rgba(15,42,31,.75);border-radius:26px;box-shadow:0 0 0 1px #1C3D30}
+.cifra:nth-child(2){transform:translateY(22px)}.cifra:nth-child(3){transform:translateY(-10px)}.cifra:nth-child(4){transform:translateY(14px)}
+.nota{margin-top:34px}
+
+.comparar{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:22px;align-items:start;margin-top:10px}
+.opcion{background:rgba(15,42,31,.6);border-radius:28px;padding:26px 26px 22px;box-shadow:0 0 0 1px #1C3D30}
+.opcion h3{font-family:var(--display);font-size:22px;margin:0 0 14px;letter-spacing:-.01em}
+.opcion ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.opcion li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:15.5px;color:var(--tinta-suave)}
+.opcion li b{font-weight:700}
+.opcion .si{color:#6EE7B7}.opcion .nn{color:var(--frambuesa)}
+.opcion.malo{opacity:.82}
+.opcion.malo:nth-child(1){margin-top:44px}.opcion.malo:nth-child(2){margin-top:12px}
+.opcion.bueno{background:linear-gradient(160deg,#105C40,#0B2E21 70%);padding:34px 32px 30px;border-radius:34px;box-shadow:0 0 0 1px #2C7A5A,0 40px 80px -30px rgba(52,211,153,.35);transform:rotate(-1.2deg)}
+.opcion.bueno h3{font-size:28px;color:#ECFDF5}
+.opcion.bueno li{color:#D1FAE5;font-size:16.5px}
+.sello{display:inline-block;background:var(--hoja);color:#04110B;font-weight:700;font-size:13px;border-radius:999px;padding:4px 12px;margin-bottom:12px}
+
+.demo{position:relative;gap:0;grid-template-columns:1fr 1fr}
+.demo .panel{border-radius:30px}
+.demo .panel:first-child{transform:rotate(-1deg);margin-right:-18px;z-index:1}
+.demo .panel:last-child{transform:translateY(46px) rotate(1deg);margin-left:-18px;z-index:2;box-shadow:0 0 0 1px #2C7A5A,0 30px 70px -30px rgba(52,211,153,.4)}
+.flecha-curva{position:absolute;left:50%;top:-26px;transform:translateX(-50%);z-index:3;width:120px;height:70px;pointer-events:none}
+.fila-demo{margin-top:66px}
+
+.pasos{display:block;border:0;position:relative;height:auto;padding:10px 0 0}
+.pasos .progreso{display:none}
+.camino{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.paso,.paso + .paso{width:min(420px,46%);padding:0;border:0;position:relative}
+.paso:nth-of-type(1){margin-left:0}
+.paso:nth-of-type(2){margin:40px 0 0 auto}
+.paso:nth-of-type(3){margin:40px 0 0 14%}
+.paso::before{font-size:84px}
+
+.lista{display:flex;flex-wrap:wrap;gap:12px}
+.lista li{border:0;background:rgba(15,42,31,.75);box-shadow:0 0 0 1px #1C3D30;border-radius:999px;padding:12px 20px 12px 46px}
+.lista li::before{left:14px;top:50%;margin-top:-10px}
+.lista li:nth-child(even){transform:translateY(8px)}
+.api{border-radius:36px;transform:rotate(1deg)}
+.cierre{align-items:center}
+
+@media (max-width:900px){
+  .comparar{grid-template-columns:1fr}
+  .opcion.malo:nth-child(1),.opcion.malo:nth-child(2){margin-top:0}
+  .demo{grid-template-columns:1fr}
+  .demo .panel:first-child,.demo .panel:last-child{transform:none;margin:0}
+  .demo .panel:last-child{margin-top:14px}
+  .flecha-curva{display:none}
+  .fila-demo{margin-top:20px}
+  .paso,.paso + .paso{width:100%;margin:28px 0 0!important}
+  .camino{display:none}
+  .cifra:nth-child(n){transform:none}
+  .cinta{transform:rotate(-2deg)}
+}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* cifras animadas */
+.cifra{position:relative;overflow:hidden;opacity:0;translate:0 34px;scale:.96;transition:opacity .7s cubic-bezier(.22,1,.36,1),translate .8s cubic-bezier(.22,1,.36,1),scale .8s cubic-bezier(.22,1,.36,1),box-shadow .4s}
+.cifra.vista{opacity:1;translate:0 0;scale:1}
+.cifra b{font-variant-numeric:tabular-nums}
+.cifra::after{content:"";position:absolute;left:24px;right:24px;bottom:12px;height:3px;border-radius:3px;background:linear-gradient(90deg,#2E7D52,#7BE0A8);transform-origin:left;transform:scaleX(var(--p,0))}
+.cifra.listo b{animation:latido .6s cubic-bezier(.34,1.56,.64,1)}
+.cifra.listo{box-shadow:0 0 0 1px #2E7D52,0 0 34px -6px rgba(123,224,168,.45)}
+.cifra:hover{translate:0 -6px}
+@keyframes latido{0%{transform:scale(1)}40%{transform:scale(1.14);color:#7BE0A8}100%{transform:scale(1)}}
+@media (prefers-reduced-motion: reduce){.cifra{opacity:1;translate:none;scale:none;transition:none}.cifra::after{transform:scaleX(1)}.cifra.listo b{animation:none}}
+
+/* garantías: animación al pasar el cursor */
+.lista li{overflow:hidden;cursor:default;transition:translate .4s cubic-bezier(.34,1.56,.64,1),scale .4s cubic-bezier(.34,1.56,.64,1),box-shadow .35s,background-color .35s,color .35s,filter .35s !important}
+.lista li::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(123,224,168,.22) 50%,transparent 70%);translate:-120% 0;pointer-events:none}
+.lista li::before{transition:transform .45s cubic-bezier(.34,1.56,.64,1),rotate .6s cubic-bezier(.34,1.56,.64,1),scale .4s cubic-bezier(.34,1.56,.64,1),box-shadow .35s}
+.lista li:hover,.lista li.encima{translate:6px -4px;scale:1.03;background-color:rgba(22,64,46,.9);box-shadow:0 0 0 1.5px #34D399,0 14px 34px -12px rgba(52,211,153,.55);color:#F2FFF7}
+.lista li:hover::after,.lista li.encima::after{translate:120% 0;transition:translate .8s cubic-bezier(.22,1,.36,1)}
+.lista li:hover::before,.lista li.encima::before{rotate:360deg;scale:1.25;box-shadow:0 0 0 6px rgba(52,211,153,.18)}
+.lista.activa li:not(.encima){filter:brightness(.6) saturate(.7)}
+@media (prefers-reduced-motion: reduce){.lista li,.lista li::before,.lista li::after{transition:none !important}.lista li:hover{translate:none;scale:none}}
+
+/* pasos: el número resplandece al pasar el cursor */
+.paso::before{transform-origin:left bottom;transition:color .6s ease,scale .45s cubic-bezier(.34,1.56,.64,1),text-shadow .4s,filter .4s}
+.paso h3{transition:color .35s,translate .35s cubic-bezier(.34,1.56,.64,1)}
+.paso:hover::before,.paso.encima::before{color:#D1FAE5;-webkit-text-stroke:2px #6EE7B7;scale:1.2;animation:resplandor 1.6s ease-in-out infinite}
+.paso:hover h3,.paso.encima h3{color:#7BE0A8;translate:4px 0}
+@keyframes resplandor{0%,100%{text-shadow:0 0 8px #6EE7B7,0 0 24px rgba(52,211,153,.95),0 0 56px rgba(52,211,153,.7),0 0 110px rgba(52,211,153,.45)}50%{text-shadow:0 0 14px #A7F3D0,0 0 36px rgba(110,231,183,1),0 0 84px rgba(52,211,153,.85),0 0 160px rgba(52,211,153,.6)}}
+@media (prefers-reduced-motion: reduce){.paso:hover::before,.paso.encima::before{animation:none;text-shadow:0 0 30px rgba(52,211,153,.8);scale:none}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/motion@11.11.17/dist/motion.js"></script>
 </head>
 <body>
-<a class="skip" href="#main">Saltar al contenido</a>
-<canvas id="bg" aria-hidden="true"></canvas>
-<div class="veil" aria-hidden="true"></div>
-
-<nav aria-label="Principal">
-  <div class="wrap">
-    <a class="brand" href="/">kipu-anon<span class="cur" aria-hidden="true"></span></a>
-    <div class="navlinks">
-      <a href="#problema">el problema</a>
-      <a href="#como">cómo funciona</a>
-      <a href="#demo">pruébalo</a>
-      <a href="https://github.com/ALFA117/kipu-anon" target="_blank" rel="noopener">github</a>
-    </div>
-    <span class="status" role="status"><span class="dot" id="dot"></span><span id="st">comprobando…</span></span>
+<div class="luz a"></div><div class="luz b"></div><div class="luz c"></div>
+<header>
+  <div class="wrap bar">
+    <a class="marca" href="#"><i></i>kipu-anon</a>
+    <nav><a href="#problema">El problema</a><a href="#prueba">Pruébalo</a><a href="#como">Cómo funciona</a><a href="https://github.com/ALFA117/kipu-anon">Código</a></nav>
+    <span class="estado" id="estado"><b></b><span>conectando…</span></span>
   </div>
-</nav>
+</header>
 
-<main id="main">
+<main>
+  <div class="hero-zona"><canvas id="malla" aria-hidden="true"></canvas>
+  <div class="wrap hero">
+    <div>
+      <h1 id="titulo"><span class="l1">Comparte los datos.</span> <span class="linea2">No a las personas.</span></h1>
+      <p class="bajada">kipu-anon le pone a cada cliente un disfraz que no se quita: otro nombre, otra cédula, otro correo. La conversación sigue sirviendo para entrenar y nadie sabe quién es quién.</p>
+      <div class="acciones">
+        <a class="btn btn-p" href="#prueba">Probar con un mensaje</a>
+        <a class="btn btn-s" href="#como">Ver cómo funciona</a>
+      </div>
+    </div>
+
+    <div class="escena"><div class="chat" id="chat" aria-label="Ejemplo de conversación de soporte anonimizada">
+      <div class="chat-top"><strong>Soporte · cobros</strong><span>hoy, 9:42</span></div>
+      <div id="mensajes" aria-live="off"></div>
+      <div class="chat-pie">
+        <div class="leyenda"><span class="r">dato real</span><span class="f">seudónimo</span></div>
+        <button class="repetir" id="repetir" type="button">Ver de nuevo</button>
+      </div>
+    </div></div>
+  </div>
+
+
+  </div>
+  <div class="cinta" aria-label="Ejemplos de datos reales y sus disfraces (datos inventados)">
+    <div class="cinta-pista"><span class="par"><s>Valentina Ríos</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Lucía Herrera</b></span><span class="par"><s>1.032.448.910</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>1.574.203.866</b></span><span class="par"><s>jperez arroba gmail punto com</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>mgarcia arroba gmail punto com</b></span><span class="par"><s>placa KMT-482</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>placa RDV-915</b></span><span class="par"><s>CAMILA TORRES</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>JIMENA LARA</b></span><span class="par"><s>+57 311 482 9031</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>+57 320 715 4462</b></span><span class="par"><s>Calle 45 # 12-34</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Cra 18 # 77-09</b></span><span class="par"><s>soy enfermera</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>soy profesional de la salud</b></span><span class="par"><s>pasaporte AB204417</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>pasaporte KT881930</b></span><span class="par"><s>cédula terminada en 2961</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>cédula terminada en 7408</b></span><span aria-hidden="true" style="display:contents"><span class="par"><s>Valentina Ríos</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Lucía Herrera</b></span><span class="par"><s>1.032.448.910</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>1.574.203.866</b></span><span class="par"><s>jperez arroba gmail punto com</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>mgarcia arroba gmail punto com</b></span><span class="par"><s>placa KMT-482</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>placa RDV-915</b></span><span class="par"><s>CAMILA TORRES</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>JIMENA LARA</b></span><span class="par"><s>+57 311 482 9031</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>+57 320 715 4462</b></span><span class="par"><s>Calle 45 # 12-34</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Cra 18 # 77-09</b></span><span class="par"><s>soy enfermera</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>soy profesional de la salud</b></span><span class="par"><s>pasaporte AB204417</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>pasaporte KT881930</b></span><span class="par"><s>cédula terminada en 2961</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>cédula terminada en 7408</b></span></span></div>
+  </div>
+
   <div class="wrap">
-    <div class="hero">
+    <div class="cifras">
+      <div class="cifra"><b data-n="8297" data-f="miles">8.297</b><span>mensajes, documentos y filas procesados</span></div>
+      <div class="cifra"><b data-n="1765" data-f="miles">1.765</b><span>pruebas automáticas pasadas con los datos de ejemplo</span></div>
+      <div class="cifra"><b data-n="2" data-s=" s">2 s</b><span>para anonimizar todo el corpus</span></div>
+      <div class="cifra"><b data-n="0" data-p="$">$0</b><span>de costo: sin IA de pago</span></div>
+    </div>
+    <p class="nota">Medido con los datos del reto: una fintech colombiana ficticia, Kipu Pay, en el hackathon Frontier CDMX 2026.</p>
+  </div>
+
+  <section id="problema">
+    <div class="wrap">
+      <h2>Tachar no basta. Borrar tampoco.</h2>
+      <p class="intro">Las conversaciones con clientes valen mucho para entrenar modelos de atención, pero están llenas de nombres, cédulas y correos, a veces escondidos: en MAYÚSCULAS, en un archivo adjunto o escritos como "ana arroba gmail punto com".</p>
+      <div class="comparar comp">
+        <div class="opcion malo"><h3>Tachar lo obvio</h3><ul>
+          <li><b class="nn">Sí</b><span>se escapan datos escondidos en adjuntos y mayúsculas</span></li>
+          <li><b>Más o menos</b><span>sirve para entrenar</span></li>
+          <li><b class="nn">No</b><span>sabe quién es quién</span></li></ul></div>
+        <div class="opcion malo"><h3>Borrar todo</h3><ul>
+          <li><b class="si">No</b><span>se escapa nadie</span></li>
+          <li><b class="nn">No</b><span>sirve: queda un texto lleno de huecos</span></li>
+          <li><b class="nn">No</b><span>sabe quién es quién</span></li></ul></div>
+        <div class="opcion bueno"><span class="sello">kipu-anon</span><h3>Disfrazar</h3><ul>
+          <li><b class="si">✓</b><span>No se escapa nadie: busca en texto, adjuntos y metadatos.</span></li>
+          <li><b class="si">✓</b><span>La conversación queda completa para entrenar.</span></li>
+          <li><b class="si">✓</b><span>Cada persona tiene el mismo disfraz en chats, documentos y tablas.</span></li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prueba">
+    <div class="wrap">
+      <h2>Escribe un mensaje y míralo cambiar.</h2>
+      <p class="intro">Usa datos inventados. Cada nombre, cédula, correo o placa sale con un reemplazo creíble, y si mandas a la misma persona dos veces, recibe el mismo disfraz.</p>
+      <div class="demo"><svg class="flecha-curva" viewBox="0 0 120 70" aria-hidden="true"><path d="M8 18 C 40 -6, 80 -6, 104 40" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 7"/><path d="M96 36 L105 42 L108 31" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="panel">
+          <h3>Tu mensaje <small>se procesa y no se guarda</small></h3>
+          <textarea id="entrada" aria-label="Mensaje a anonimizar">Hola, me llamo Manuela Castaño. Me cobraron una cuota que ya pagué. Mi cédula es 1.107.360.039 y mi correo es mcastano arroba gmail punto com. Soy fotógrafa y vivo en Granada.</textarea>
+        </div>
+        <div class="panel" aria-live="polite">
+          <h3>Así queda <small id="tiempo-panel"></small></h3>
+          <div id="salida"><span class="vacio">Presiona Anonimizar o elige un ejemplo.</span></div>
+        </div>
+      </div>
+      <div class="fila-demo">
+        <button class="btn btn-p" id="anonimizar" type="button">Anonimizar</button>
+        <button class="ej" data-t="Encontré una cuenta a nombre de CAMILA RESTREPO TORRES. Te paso con una persona del equipo.">Nombre en mayúsculas</button>
+        <button class="ej" data-t="el carro lo maneja mi esposo, placa GTD596, y mi pasaporte es AR752831">Placa y pasaporte</button>
+        <button class="ej" data-t="Pagué con Nequi en Carulla y fui a Plaza Botero a ver a Shakira.">Marcas y famosos</button>
+        <span id="tiempo"></span>
+      </div>
+      <div class="fichas" id="fichas"></div>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="wrap">
+      <h2>Tres pasos, siempre en el mismo orden.</h2>
+      <p class="intro">Sin IA generativa: reglas y una fórmula. Por eso da siempre el mismo resultado, es rápido y no inventa ni borra datos del negocio.</p>
+      <div class="pasos"><span class="progreso" aria-hidden="true"></span><svg class="camino" aria-hidden="true"><path id="ruta" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 0"/></svg>
+        <div class="paso"><h3>Encontrar</h3><p>Busca nombres, cédulas, celulares, correos, placas y direcciones, aunque estén en mayúsculas, deletreados o dentro de un archivo.</p></div>
+        <div class="paso"><h3>Reconocer a cada quien</h3><p>Une todo lo de una persona por su cédula, correo o número de cliente. Dos personas con el mismo nombre no se mezclan.</p></div>
+        <div class="paso"><h3>Disfrazar</h3><p>Le da un reemplazo creíble y fijo: mismo género, cédula válida, correo con el mismo formato. Bancos, ciudades y montos no se tocan.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap cierre">
       <div>
-        <p class="eyebrow" data-in>privacidad de datos <i>· para empresas que quieren entrenar IA</i></p>
-        <h1 data-in>Comparte tus datos.<br><em>Protege a tu gente.</em></h1>
-        <p class="lead" data-in>Las conversaciones con clientes valen mucho para entrenar inteligencia artificial, pero están llenas de nombres, cédulas, correos y teléfonos. kipu-anon cambia a cada persona por una persona inventada y deja todo lo demás igual. Así puedes compartir los datos sin exponer a nadie.</p>
-        <div class="cta" data-in>
-          <a class="btn pri" href="#demo" data-press>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            Pruébalo con tu texto
-          </a>
-          <a class="btn" href="#como" data-press>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
-            Ver cómo funciona
-          </a>
-        </div>
+        <h2>Útil para entrenar. Inútil para espiar.</h2>
+        <ul class="lista">
+          <li>La misma persona tiene el mismo disfraz en chats, documentos y tablas.</li>
+          <li>Dos personas que se llaman igual reciben disfraces distintos.</li>
+          <li>Cuando llegan datos nuevos, las personas de antes conservan su disfraz.</li>
+          <li>"Soy contadora en Granada desde 2024" pasa a "profesional de finanzas en Cali desde hace unos años".</li>
+          <li>Ningún dato inventado coincide con uno real.</li>
+        </ul>
       </div>
-      <div class="term" data-in aria-label="Ejemplo: un mensaje antes y después">
-        <div class="bar"><i></i><i></i><i></i><span>POST /v1/anonymize</span></div>
-        <pre id="hterm"><span class="c"># un mensaje real de soporte</span>
-<span class="k">antes</span>    <span class="r">Hola, me llamo Manuela Castaño.</span>
-<span class="k">después</span>  <span class="c">…</span></pre>
+      <div class="api">
+        <h3>Para desarrolladores</h3>
+        <p>Un servicio web: regenera el corpus completo y anonimiza mensajes nuevos con los mismos seudónimos.</p>
+        <dl>
+          <dt>GET</dt><dd><code>/v1/health</code> estado del servicio</dd>
+          <dt>POST</dt><dd><code>/v1/run</code> procesa todas las fuentes</dd>
+          <dt>GET</dt><dd><code>/v1/output/{archivo}</code> descarga el resultado</dd>
+          <dt>POST</dt><dd><code>/v1/anonymize</code> anonimiza mensajes nuevos</dd>
+        </dl>
+        <a href="https://github.com/ALFA117/kipu-anon">Ver el código en GitHub</a>
       </div>
     </div>
-
-    <div class="stats stats4" data-in>
-      <div class="stat"><b>8.297</b><span>mensajes, documentos y filas procesados</span></div>
-      <div class="stat"><b class="g">1.765</b><span>pruebas automáticas pasadas con los datos de ejemplo</span></div>
-      <div class="stat"><b>~2 s</b><span>para procesar todo</span></div>
-      <div class="stat"><b class="g">$0</b><span>por corrida: el motor no usa IA de pago</span></div>
-    </div>
-    <p class="note">Probado con los datos de ejemplo de una fintech colombiana (Kipu Pay) en el hackathon Frontier CDMX/26. Además lo atacamos con 300 mensajes inventados por una IA para engañarlo: hoy pasa limpios 250 de ellos y seguimos cerrando el resto.</p>
-
-    <section id="problema" aria-labelledby="prob-t">
-      <p class="eyebrow">el problema</p>
-      <h2 id="prob-t">Los datos ayudan. Las personas no deberían pagar el precio.</h2>
-      <div class="flow">
-        <article class="step" data-in><span class="n">¿qué pasa hoy?</span><h3>Los datos tienen dueño</h3><p>Una empresa tiene miles de chats con clientes. Ahí aparece “me llamo Ana, mi cédula es…”. Si los comparte así, cualquiera puede saber quién es quién.</p></article>
-        <article class="step" data-in><span class="n">¿por qué no basta tachar?</span><h3>Los datos se esconden</h3><p>Nombres en MAYÚSCULAS, correos escritos “ana arroba gmail punto com”, nombres dentro de archivos o pistas como “soy la única fotógrafa del barrio”.</p></article>
-        <article class="step" data-in><span class="n">¿y si borro todo?</span><h3>Se pierde el valor</h3><p>Un chat lleno de [BORRADO] ya no sirve para entrenar. Hay que proteger a la persona sin destruir la conversación.</p></article>
-      </div>
-    </section>
-
-    <section id="demo" aria-labelledby="demo-t">
-      <p class="eyebrow">pruébalo</p>
-      <h2 id="demo-t">Escribe un mensaje con datos inventados y mira qué pasa.</h2>
-      <div class="demo">
-        <div class="pane">
-          <header><label for="in">tu mensaje</label><span>con datos personales</span></header>
-          <textarea id="in" spellcheck="false">Hola, me llamo Valentina Ospitia Rangel. Me están cobrando una cuota que ya pagué. Mi cédula es 1.044.287.913 y mi correo valen.ospitia arroba gmail punto com. Pagué por PSE desde Bancolombia; soy fotógrafa y vivo en Granada.</textarea>
-        </div>
-        <div class="pane">
-          <header><strong>cómo queda</strong><span id="lat">—</span></header>
-          <div class="out" id="out" aria-live="polite"><div class="empty">Presiona <b>Anonimizar</b> o elige un ejemplo.</div></div>
-        </div>
-      </div>
-      <div class="controls">
-        <button class="btn pri" id="go" data-press>Anonimizar</button>
-        <div class="chips" role="group" aria-label="Ejemplos">
-          <button class="chip" data-t="EXTRACTO DE CUENTA · TITULAR: MARIA FERNANDA RUIZ GOMEZ · CC 52.418.903 · Cel 310 555 0199" data-press>un extracto bancario</button>
-          <button class="chip" data-t="Te adjunto el certificado_laboral_jorge_pinto.pdf. La placa del carro es KTZ482 y mi pasaporte AR752831." data-press>archivo, placa y pasaporte</button>
-          <button class="chip" data-t="Shakira compró en Carulla con Nequi y la Superfinanciera abrió un caso en Plaza Botero." data-press>marcas y famosos (no se tocan)</button>
-        </div>
-      </div>
-      <div class="ents" id="ents" hidden>
-        <table><thead><tr><th scope="col">dato real</th><th scope="col">se cambió por</th><th scope="col">persona</th></tr></thead><tbody id="tb"></tbody></table>
-      </div>
-    </section>
-
-    <section id="como" aria-labelledby="como-t">
-      <p class="eyebrow">cómo funciona</p>
-      <h2 id="como-t">Tres ideas sencillas.</h2>
-      <div class="flow">
-        <article class="step" data-in><span class="n">01</span><h3>Conocer a cada persona</h3><p>Arma una ficha por persona con todas las formas en que aparece: nombre, cédula con o sin puntos, correo y celular. Si dos personas se llaman igual, las separa por su cédula.</p></article>
-        <article class="step" data-in><span class="n">02</span><h3>Cambiarla por alguien inventado</h3><p>Cada persona recibe un nombre, una cédula y un correo inventados pero creíbles. Siempre los mismos: si Ana aparece en 10 chats, en los 10 será “Olga”.</p></article>
-        <article class="step" data-in><span class="n">03</span><h3>No tocar nada más</h3><p>Montos, fechas, bancos, ciudades y la conversación quedan igual. Lo que delata sin decir el nombre (oficio + barrio + año) se vuelve más general.</p></article>
-      </div>
-    </section>
-
-    <section id="garantias" aria-labelledby="gar-t">
-      <p class="eyebrow">qué garantiza</p>
-      <h2 id="gar-t">Útil para entrenar. Inútil para espiar.</h2>
-      <div class="split">
-        <div class="card" data-in>
-          <ul class="checks">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>La misma persona tiene el mismo nombre inventado en chats, documentos y tablas.</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Dos personas que se llaman igual no se mezclan.</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Si llegan datos nuevos, las personas de antes conservan su nombre inventado.</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Bancos, tiendas, ciudades y famosos no se cambian: no son personas privadas.</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Ningún dato inventado coincide con el de una persona real.</li>
-          </ul>
-        </div>
-        <div class="card" data-in>
-          <p class="eyebrow">para desarrolladores</p>
-          <p class="devp">Es un servicio web: se conecta a la fuente de datos, la procesa completa y también anonimiza mensajes nuevos al momento.</p>
-          <div class="ep">
-            <span class="m">GET</span><span><a href="/v1/health">/v1/health</a><small>¿está funcionando?</small></span>
-            <span class="m">POST</span><span>/v1/run<small>procesa todos los datos</small></span>
-            <span class="m">GET</span><span>/v1/output/{archivo}<small>descarga el resultado</small></span>
-            <span class="m">POST</span><span>/v1/anonymize<small>anonimiza mensajes nuevos</small></span>
-          </div>
-          <p class="devp"><a href="https://github.com/ALFA117/kipu-anon" target="_blank" rel="noopener">Código abierto en GitHub →</a></p>
-        </div>
-      </div>
-    </section>
-  </div>
+  </section>
 </main>
 
-<footer class="wrap">
-  <span>kipu-anon v1.1 · Node.js + auditor con IA en Python · Vercel</span>
-  <span>Hecho por Edgar López y Elizabeth Cruz · Frontier CDMX/26</span>
-</footer>
+<footer><div class="wrap"><span>kipu-anon, hecho por Edgar López y Elizabeth Cruz en Frontier CDMX 2026.</span><span>Datos de ejemplo ficticios.</span></div></footer>
 
 <script>
-/* ---------- fondo: malla icosaédrica proyectada a mano (receta 6 adaptada, sin Three.js) ----------
-   Partículas rojas (datos reales) entran por la izquierda, cruzan la malla y salen verdes (seudónimos). */
-(() => {
-  const cv = document.getElementById('bg');
-  const ctx = cv.getContext('2d');
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const mobile = matchMedia('(max-width: 640px)').matches;
-  const light = matchMedia('(prefers-color-scheme: light)').matches;
-  const col = light ? { mesh: '21,128,61', real: '198,40,40', ok: '21,128,61', a: .28 } : { mesh: '34,197,94', real: '255,107,107', ok: '34,197,94', a: .5 };
-  let W, H, dpr;
-  const resize = () => { dpr = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
-  resize(); addEventListener('resize', resize);
-  // icosaedro subdividido una vez
-  const t = (1 + Math.sqrt(5)) / 2;
-  let V = [[-1,t,0],[1,t,0],[-1,-t,0],[1,-t,0],[0,-1,t],[0,1,t],[0,-1,-t],[0,1,-t],[t,0,-1],[t,0,1],[-t,0,-1],[-t,0,1]].map(v => { const l = Math.hypot(...v); return v.map(x => x / l); });
-  let F = [[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]];
-  if (!mobile) {
-    const cache = {}, mid = (a, b) => { const k = a < b ? a + '_' + b : b + '_' + a; if (cache[k] != null) return cache[k]; const m = V[a].map((x, i) => (x + V[b][i]) / 2); const l = Math.hypot(...m); V.push(m.map(x => x / l)); return (cache[k] = V.length - 1); };
-    F = F.flatMap(([a, b, c]) => { const ab = mid(a, b), bc = mid(b, c), ca = mid(c, a); return [[a, ab, ca], [b, bc, ab], [c, ca, bc], [ab, bc, ca]]; });
+(function(){
+  const API = location.protocol === "file:" ? "https://kipu-anon.vercel.app" : "";
+  const $ = id => document.getElementById(id);
+  // animación del hero: una sola vez al cargar, repetible con el botón
+  const chat = $("chat");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const M = window.Motion;
+  const vivo = !reduce && M && M.animate;
+  const espera = ms => new Promise(r => setTimeout(r, ms));
+  // anima con Motion y garantiza el estado final aunque el navegador no pinte (pestaña oculta)
+  function play(el, kf, opt = {}){
+    if (!el) return;
+    const fin = {}; for (const k in kf) fin[k] = Array.isArray(kf[k]) ? kf[k][kf[k].length - 1] : kf[k];
+    if (vivo) { try { M.animate(el, kf, opt); } catch(e){} }
+    const t = ((opt.delay || 0) + (opt.duration || .5)) * 1000 + 350;
+    setTimeout(() => { for (const k in fin) el.style[k] = fin[k]; }, vivo ? t : 0);
   }
-  const E = new Set(); F.forEach(([a, b, c]) => [[a, b], [b, c], [c, a]].forEach(([x, y]) => E.add(x < y ? x + '-' + y : y + '-' + x)));
-  const edges = [...E].map(s => s.split('-').map(Number));
-  const N = mobile ? 70 : 150;
-  const P = Array.from({ length: N }, () => ({ x: Math.random(), y: Math.random(), z: Math.random(), s: .0006 + Math.random() * .0016 }));
-  let px = 0, py = 0, tx = 0, ty = 0, sy = 0;
-  if (!mobile) addEventListener('pointermove', e => { tx = e.clientX / innerWidth - .5; ty = e.clientY / innerHeight - .5; }, { passive: true });
-  addEventListener('scroll', () => { sy = scrollY; }, { passive: true });
-  let raf = 0, time = 0;
-  function frame() {
-    time += reduce ? 0 : 1;
-    px += (tx - px) * .05; py += (ty - py) * .05;
-    ctx.clearRect(0, 0, W, H);
-    const cx = W * (mobile ? .5 : .7) + px * 30, cy = H * .42 - sy * .12 + py * 20;
-    const R = Math.min(W, H) * (mobile ? .32 : .3) * (1 + Math.sin(time * .012) * .03);
-    const ry = time * .0025 + px * .6, rx = .35 + py * .4;
-    const cyr = Math.cos(ry), syr = Math.sin(ry), cxr = Math.cos(rx), sxr = Math.sin(rx);
-    const pr = V.map(([x, y, z]) => { const x1 = x * cyr + z * syr, z1 = -x * syr + z * cyr; const y1 = y * cxr - z1 * sxr, z2 = y * sxr + z1 * cxr; const k = 2.6 / (2.6 + z2); return [cx + x1 * R * k, cy + y1 * R * k, z2]; });
-    // capa lejana: partículas (parallax de scroll distinto al de la malla)
-    for (const p of P) {
-      if (!reduce) { p.x += p.s; if (p.x > 1.05) { p.x = -.05; p.y = Math.random(); } }
-      const X = p.x * W + px * 12 * p.z, Y = p.y * H - sy * (.04 + p.z * .08) % H;
-      const yy = ((Y % H) + H) % H;
-      const passed = X > cx;
-      const near = Math.abs(X - cx) < R * 1.05 && Math.abs(yy - cy) < R;
-      ctx.fillStyle = `rgba(${passed ? col.ok : col.real},${(near ? .9 : .45) * (.4 + p.z * .6)})`;
-      const s = 1 + p.z * 1.6;
-      ctx.fillRect(X, yy, s, s);
-    }
-    // capa cercana: malla
-    ctx.lineWidth = 1;
-    for (const [a, b] of edges) {
-      const za = (pr[a][2] + pr[b][2]) / 2;
-      ctx.strokeStyle = `rgba(${col.mesh},${col.a * (.35 + (1 - za) * .35)})`;
-      ctx.beginPath(); ctx.moveTo(pr[a][0], pr[a][1]); ctx.lineTo(pr[b][0], pr[b][1]); ctx.stroke();
-    }
-    for (const [x, y, z] of pr) { ctx.fillStyle = `rgba(${col.mesh},${.25 + (1 - z) * .35})`; ctx.fillRect(x - 1, y - 1, 2, 2); }
-    if (!reduce && !document.hidden) raf = requestAnimationFrame(frame);
+  const alVer = (el, fn, amount = .35) => {
+    if (!el) return;
+    if (vivo && M.inView) M.inView(el, () => { fn(); }, { amount });
+    else fn();
+  };
+
+  // 1. título palabra por palabra
+  const h = $("titulo");
+  h.querySelectorAll(".l1, .linea2").forEach(sp => {
+    sp.innerHTML = sp.textContent.split(" ").map(w => '<span class="w">' + w + '</span>').join(" ");
+  });
+  if (vivo) h.querySelectorAll(".w").forEach((w, i) => {
+    w.style.opacity = 0; w.style.transform = "translateY(40%)";
+    play(w, { opacity: [0, 1], transform: ["translateY(40%)", "translateY(0%)"] }, { duration: .6, delay: .08 * i, ease: [.22, 1, .36, 1] });
+  });
+
+  // 2. chat: llegan los mensajes y cada dato se descifra hasta su disfraz
+  const guion = [
+    { q: "cli", t: "Hola, me llamo {Manuela Castaño|Irene Estrada}. Me cobraron una cuota que ya pagué." },
+    { q: "age", t: "Hola {Manuela|Irene}, ¿me confirmas tu cédula?" },
+    { q: "cli", t: "Claro, es {1.107.360.039|1.668.562.693} y mi correo {mcastano@gmail.com|iestrada@gmail.com}. Pagué por PSE desde Bancolombia." }
+  ];
+  const quien = { cli: "Cliente", age: "Agente" };
+  const SIGNOS = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@.";
+  function descifrar(el, final, ms = 700){
+    return new Promise(res => {
+      if (reduce) { el.textContent = final; return res(); }
+      const ini = el.textContent, n = Math.max(ini.length, final.length), t0 = Date.now();
+      el.classList.add("mezcla");
+      const iv = setInterval(() => {
+        const p = Math.min(1, (Date.now() - t0) / ms);
+        const fijos = Math.floor(p * final.length);
+        let out = final.slice(0, fijos);
+        for (let i = fijos; i < Math.round(final.length + (n - final.length) * (1 - p)); i++) {
+          const c = (final[i] || ini[i] || " ");
+          out += (c === " " || c === "." || c === "@") ? c : SIGNOS[Math.floor(Math.random() * SIGNOS.length)];
+        }
+        el.textContent = out;
+        if (p >= 1) { clearInterval(iv); el.textContent = final; el.classList.remove("mezcla"); res(); }
+      }, 40);
+    });
   }
-  frame();
-  document.addEventListener('visibilitychange', () => { if (!document.hidden && !reduce) { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); } });
-})();
-</script>
-
-<script type="module">
-/* ---------- datos y demo ---------- */
-const $ = id => document.getElementById(id);
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-let motion = null;
-try { motion = await import('https://cdn.jsdelivr.net/npm/motion@13.4.6/+esm'); } catch { /* la página funciona sin Motion */ }
-
-fetch('/v1/health').then(r => r.json()).then(h => { $('dot').className = 'dot ok'; $('st').textContent = `en línea · v${h.version}`; })
-  .catch(() => { $('dot').className = 'dot bad'; $('st').textContent = 'sin conexión'; });
-
-async function anonymize(text) {
-  const r = await fetch('/v1/anonymize', { method: 'POST', headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ source: 'chats', records: [{ id: 'demo-' + Date.now(), thread_id: 'demo:' + Date.now(), author: '', ts: String(Date.now() / 1000), text, attachments: [] }] }) });
-  if (!r.ok) throw new Error(`el servicio respondió ${r.status}`);
-  return r.json();
-}
-
-// terminal del hero: ejemplo fijo (la página no llama al servicio hasta que alguien presiona un botón)
-(() => {
-  const target = document.getElementById('hterm');
-  target.innerHTML = `<span class="c"># un mensaje de soporte, antes y después</span>
-<span class="k">antes</span>    <span class="r">Hola, me llamo Manuela Castaño.</span>
-<span class="k">después</span>  <span class="g" id="hout"></span>
-
-<span class="c"># pruébalo con tu propio texto más abajo</span>`;
-  const out = 'Hola, me llamo Olga Garzón.';
-  const el = document.getElementById('hout');
-  if (reduce) { el.textContent = out; return; }
-  const glyphs = '01#$%&*@<>/';
-  let i = 0;
-  const tick = () => { i++; el.textContent = out.split('').map((c, k) => (k < i ? c : c === ' ' ? ' ' : glyphs[(k * 7 + i) % glyphs.length])).join(''); if (i <= out.length) setTimeout(tick, 28); };
-  setTimeout(tick, 500);
-})();
-
-function skeleton() { $('out').innerHTML = '<div class="sk" aria-label="anonimizando"><i></i><i></i><i></i><i></i></div>'; }
-
-async function run() {
-  const text = $('in').value.trim();
-  if (!text) { $('out').innerHTML = '<div class="empty">Escribe un mensaje con nombres, cédulas o correos y presiona <b>Anonimizar</b>.</div>'; $('ents').hidden = true; return; }
-  const go = $('go');
-  go.disabled = true; go.innerHTML = '<span class="spin" aria-hidden="true"></span> Anonimizando';
-  skeleton();
-  const t0 = performance.now();
-  try {
-    const d = await anonymize(text);
-    $('lat').textContent = `${Math.round(performance.now() - t0)} ms`;
-    const out = d.records?.[0]?.text ?? '';
-    const ents = (d.entities || []).filter(e => !e.kept);
-    const vals = [...new Set(ents.flatMap(e => Object.values(e.pseudonyms || {})))].filter(v => v && v.length > 2).sort((a, b) => b.length - a.length);
-    let html = esc(out);
-    for (const v of vals) html = html.split(esc(v)).join(`\u0001${esc(v)}\u0002`);
-    html = html.replace(/\u0001+/g, '<mark>').replace(/\u0002+/g, '</mark>');
-    $('out').innerHTML = html || '<div class="empty">Sin texto.</div>';
-    const rows = [];
-    for (const e of ents) {
-      const ps = e.pseudonyms || {};
-      for (const o of e.originals.filter(o => text.includes(o))) {
-        const kind = /@|arroba/.test(o) ? 'email' : /^\d[\d.\s-]+$/.test(o) ? (ps.cedula && o.replace(/\D/g, '').length !== 10 ? 'cedula' : (ps.phone ? 'phone' : 'cedula')) : /^[A-Z]{2,3}\d/.test(o) ? (ps.plate ? 'plate' : 'passport') : 'name';
-        rows.push(`<tr><td class="o">${esc(o)}</td><td class="p">${esc(ps[kind] || ps.name || Object.values(ps)[0] || '')}</td><td class="e">${esc(e.entity_id)}</td></tr>`);
+  const caja = $("mensajes");
+  let corrida = 0;
+  async function escena(){
+    const mia = ++corrida;
+    caja.innerHTML = "";
+    const datos = [];
+    for (const m of guion) {
+      if (mia !== corrida) return;
+      if (m.q === "cli" && !reduce) {
+        const tk = document.createElement("div"); tk.className = "tecleando"; tk.innerHTML = "<i></i><i></i><i></i>";
+        caja.appendChild(tk); await espera(650); tk.remove();
       }
+      const b = document.createElement("div");
+      b.className = "burbuja " + m.q;
+      b.innerHTML = '<span class="quien">' + quien[m.q] + '</span>' +
+        m.t.replace(/\{([^|}]+)\|([^}]+)\}/g, (_, a, z) => '<span class="dx r" data-f="' + z + '">' + a + '</span>');
+      caja.appendChild(b);
+      play(b, { opacity: [0, 1], transform: ["translateY(12px) scale(.98)", "translateY(0) scale(1)"] }, { duration: .4, ease: [.22, 1, .36, 1] });
+      b.querySelectorAll(".dx").forEach(d => datos.push(d));
+      await espera(reduce ? 0 : 500);
     }
-    const kept = (d.entities || []).filter(e => e.kept).map(e => `<tr><td>${esc(e.originals[0])}</td><td class="e">se deja igual: no es una persona</td><td class="e">—</td></tr>`);
-    $('tb').innerHTML = rows.concat(kept).join('') || '<tr><td colspan="3" class="e">No encontré datos personales en este texto.</td></tr>';
-    $('ents').hidden = false;
-    if (motion && !reduce) {
-      motion.animate('#out', { opacity: [0, 1], y: [6, 0] }, { duration: .25 });
-      motion.animate('#tb tr', { opacity: [0, 1], x: [-8, 0] }, { duration: .25, delay: i => i * .04 });
+    await espera(reduce ? 0 : 500);
+    for (const d of datos) {
+      if (mia !== corrida) return;
+      d.classList.remove("r");
+      await descifrar(d, d.dataset.f, 650);
+      d.classList.add("f");
+      play(d, { transform: ["scale(1.12)", "scale(1)"] }, { type: "spring", bounce: .5, duration: .4 });
+      await espera(reduce ? 0 : 180);
     }
-  } catch (err) {
-    $('lat').textContent = 'error';
-    $('out').innerHTML = `<div class="err" role="alert"><span>No pude anonimizar: ${esc(err.message)}. Revisa tu conexión; el servicio puede estar arrancando.</span><button class="btn" id="retry">Reintentar</button></div>`;
-    $('retry').onclick = run;
-  } finally { go.disabled = false; go.textContent = 'Anonimizar'; }
-}
-$('go').addEventListener('click', run);
-document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => { $('in').value = c.dataset.t; run(); }));
+  }
+  let bucle = null;
+  const iniciar = () => { escena(); clearInterval(bucle); if (!reduce) bucle = setInterval(escena, 14000); };
+  if (vivo && M.inView) M.inView(chat, () => { iniciar(); return () => clearInterval(bucle); }, { amount: .4 });
+  else escena();
+  $("repetir").onclick = iniciar;
 
-/* ---------- Motion: entrada del hero, línea tachada, scroll y presión ---------- */
-if (motion && !reduce) {
-  const { animate, inView } = motion;
-  const hero = document.querySelectorAll('.hero [data-in]');
-  hero.forEach((el, i) => animate(el, { opacity: [0.35, 1], y: [14, 0] }, { duration: .4, delay: .08 + i * .06, ease: [.16, 1, .3, 1] }));
-  document.querySelectorAll('main section [data-in], .stats').forEach(el => {
-    const r = el.getBoundingClientRect();
-    if (r.top < innerHeight) return; // lo visible al cargar no se oculta; sin JS todo se ve
-    el.style.opacity = '0';
-    inView(el, () => { animate(el, { opacity: [0, 1], y: [16, 0] }, { duration: .35, ease: [.16, 1, .3, 1] }); }, { amount: .2 });
+  // 4. cifras: entran escalonadas, cuentan desde 0 y la barra se llena; se repite cada vez que entran en pantalla
+  const cajas = [...document.querySelectorAll(".cifra")];
+  const contar = (caja, i) => {
+    const b = caja.querySelector("b[data-n]"); if (!b) return;
+    const n = +b.dataset.n, pre = b.dataset.p || "", suf = b.dataset.s || "";
+    const fmt = v => pre + (b.dataset.f === "miles" ? Math.round(v).toLocaleString("es-CO") : Math.round(v)) + suf;
+    clearInterval(caja._iv); caja.classList.remove("listo"); caja.style.setProperty("--p", 0);
+    if (reduce) { b.textContent = fmt(n); caja.style.setProperty("--p", 1); return; }
+    b.textContent = n === 0 ? pre + "9" + suf : fmt(0);
+    const t0 = Date.now() + 250 + i * 180, dur = n === 0 ? 1100 : 1700;
+    caja._iv = setInterval(() => {
+      const p = Math.max(0, Math.min(1, (Date.now() - t0) / dur)), e = 1 - Math.pow(1 - p, 4);
+      // el cero "rueda" como tragamonedas y se detiene en 0
+      b.textContent = n === 0 ? (p < 1 ? pre + Math.floor(Math.random() * 10) + suf : fmt(0)) : (n < 10 && p < 1 ? pre + (n * e).toFixed(1).replace(".", ",") + suf : fmt(n * e));
+      caja.style.setProperty("--p", e);
+      if (p >= 1) { clearInterval(caja._iv); caja.classList.add("listo"); }
+    }, 40);
+  };
+  if ("IntersectionObserver" in window && !reduce) {
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      const caja = en.target, i = cajas.indexOf(caja);
+      if (en.isIntersecting) { caja.style.transitionDelay = (i * .12) + "s"; caja.classList.add("vista"); contar(caja, i); }
+      else if (en.boundingClientRect.top > 0) { caja.style.transitionDelay = "0s"; caja.classList.remove("vista", "listo"); clearInterval(caja._iv); }
+    }), { threshold: .35 });
+    cajas.forEach(c => io.observe(c));
+  } else cajas.forEach((c, i) => { c.classList.add("vista"); contar(c, i); });
+
+  // 5. tabla: filas escalonadas y barrido en la columna de kipu-anon
+  const tabla = document.querySelector(".comp");
+  alVer(tabla, () => {
+    tabla.querySelectorAll("tbody tr").forEach((tr, i) => play(tr, { opacity: [0, 1], transform: ["translateX(-16px)", "translateX(0)"] }, { duration: .5, delay: .12 * i, ease: [.22, 1, .36, 1] }));
+    tabla.classList.add("brillo");
   });
-  document.querySelectorAll('[data-press]').forEach(el => {
-    el.addEventListener('pointerdown', () => animate(el, { scale: .97 }, { type: 'spring', stiffness: 600, damping: 30 }));
-    const up = () => animate(el, { scale: 1 }, { type: 'spring', stiffness: 500, damping: 22 });
-    el.addEventListener('pointerup', up); el.addEventListener('pointerleave', up);
-    el.addEventListener('pointerenter', () => { if (matchMedia('(hover: hover)').matches) animate(el, { scale: 1.02 }, { type: 'spring', stiffness: 400, damping: 25 }); });
+
+  // 7. pasos: la línea avanza y cada número se enciende
+  const pasos = document.querySelector(".pasos");
+  alVer(pasos, () => {
+    const barra = pasos.querySelector(".progreso");
+    play(barra, { transform: ["scaleX(0)", "scaleX(1)"] }, { duration: 1.6, ease: [.65, 0, .35, 1] });
+    pasos.querySelectorAll(".paso").forEach((p, i) => {
+      setTimeout(() => p.classList.add("vivo"), reduce ? 0 : 300 + i * 500);
+      play(p, { opacity: [0, 1], transform: ["translateY(18px)", "translateY(0)"] }, { duration: .55, delay: .25 + i * .5, ease: [.22, 1, .36, 1] });
+    });
   });
-}
+
+  // 8. garantías: palomitas una tras otra
+  const lista = document.querySelector(".lista");
+  alVer(lista, () => {
+    lista.querySelectorAll("li").forEach((li, i) => {
+      play(li, { opacity: [0, 1], transform: ["translateX(-10px)", "translateX(0)"] }, { duration: .45, delay: .1 * i });
+      if (vivo) { li.style.setProperty("--k", 0); setTimeout(() => li.style.setProperty("--k", 1), 100 * i + 250); li.style.transition = "none"; }
+    });
+  });
+  // garantías: animación al pasar el cursor (también funciona en pantallas táctiles con mouse)
+  document.querySelectorAll(".lista li").forEach(li => {
+    const ul = li.parentElement;
+    li.addEventListener("pointerenter", () => { li.classList.add("encima"); ul.classList.add("activa"); });
+    li.addEventListener("pointerleave", () => { li.classList.remove("encima"); if (!ul.querySelector(".encima")) ul.classList.remove("activa"); });
+  });
+  document.querySelectorAll(".paso").forEach(p => {
+    p.addEventListener("pointerenter", () => p.classList.add("encima"));
+    p.addEventListener("pointerleave", () => p.classList.remove("encima"));
+  });
+  // la palomita usa transición CSS para el pop
+  document.querySelectorAll(".lista li").forEach(li => li.style.cssText += ";");
+  const css = document.createElement("style"); css.textContent = ".lista li::before{transition:transform .45s cubic-bezier(.34,1.56,.64,1)}"; document.head.appendChild(css);
+
+
+  // fondo del inicio: malla que gira y partículas que entran rojas y salen verdes al cruzar el filtro
+  (function(){
+    const cv = $("malla"), ctx = cv.getContext("2d");
+    let W, H, dpr, pts = [], parts = [], ang = 0, activo = true;
+    const N = 72, R = () => Math.min(W, H) * .42;
+    for (let i = 0; i < N; i++) { const y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(1 - y*y), t = i * 2.399963; pts.push([Math.cos(t)*r, y, Math.sin(t)*r]); }
+    const pares = []; for (let i = 0; i < N; i++) for (let j = i+1; j < N; j++) { const a = pts[i], b = pts[j]; const d = Math.hypot(a[0]-b[0], a[1]-b[1], a[2]-b[2]); if (d < .42) pares.push([i, j]); }
+    function talla(){ dpr = Math.min(2, devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+    function nueva(x){ return { x: x ?? -20 - Math.random()*W*.3, y: H*.12 + Math.random()*H*.76, v: .6 + Math.random()*1.1, r: 1.2 + Math.random()*1.6 }; }
+    talla(); addEventListener("resize", talla);
+    const cuantas = innerWidth < 700 ? 22 : 46;
+    for (let i = 0; i < cuantas; i++) parts.push(nueva(Math.random()*W));
+    function cuadro(){
+      ctx.clearRect(0, 0, W, H);
+      const cx = W * (innerWidth < 900 ? .5 : .74), cy = H * .5, rr = R();
+      const ca = Math.cos(ang), sa = Math.sin(ang), cb = Math.cos(.35), sb = Math.sin(.35);
+      const P = pts.map(([x,y,z]) => { const X = x*ca + z*sa, Z = -x*sa + z*ca; const Y = y*cb - Z*sb, Z2 = y*sb + Z*cb; const k = 2.6/(2.6 + Z2); return [cx + X*rr*k, cy + Y*rr*k, Z2]; });
+      for (const [i, j] of pares) { const a = P[i], b = P[j]; const prof = (2 - (a[2]+b[2])/2) / 3; ctx.strokeStyle = "rgba(52,211,153," + (.06 + prof*.16).toFixed(3) + ")"; ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); }
+      for (const p of P) { ctx.fillStyle = "rgba(110,231,183," + (.25 + (1 - p[2])*.3).toFixed(3) + ")"; ctx.beginPath(); ctx.arc(p[0], p[1], 1.6, 0, 6.283); ctx.fill(); }
+      // línea de filtro
+      const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "rgba(52,211,153,0)"); g.addColorStop(.5, "rgba(52,211,153,.35)"); g.addColorStop(1, "rgba(52,211,153,0)");
+      ctx.fillStyle = g; ctx.fillRect(cx - .75, 0, 1.5, H);
+      for (const q of parts) {
+        const antes = q.x < cx;
+        ctx.fillStyle = antes ? "rgba(251,113,133,.85)" : "rgba(52,211,153,.9)";
+        ctx.shadowColor = ctx.fillStyle; ctx.shadowBlur = Math.abs(q.x - cx) < 14 ? 16 : 6;
+        ctx.beginPath(); ctx.arc(q.x, q.y, Math.abs(q.x - cx) < 14 ? q.r*1.9 : q.r, 0, 6.283); ctx.fill();
+        ctx.shadowBlur = 0;
+        if (activo && !reduce) { q.x += q.v; if (q.x > W + 20) Object.assign(q, nueva()); }
+      }
+      if (activo && !reduce) ang += .0022;
+    }
+    function ciclo(){ if (activo) cuadro(); if (!reduce) requestAnimationFrame(ciclo); }
+    document.addEventListener("visibilitychange", () => { activo = !document.hidden; });
+    if ("IntersectionObserver" in window) new IntersectionObserver(e => { activo = e[0].isIntersecting && !document.hidden; }).observe(cv);
+    cuadro(); if (!reduce) requestAnimationFrame(ciclo);
+  })();
+
+
+  // chat con perspectiva: se inclina siguiendo el puntero
+  if (!reduce && matchMedia("(pointer:fine)").matches) {
+    const zona = document.querySelector(".hero");
+    zona.addEventListener("pointermove", e => {
+      const r = chat.getBoundingClientRect(), x = (e.clientX - (r.left + r.width/2)) / innerWidth, y = (e.clientY - (r.top + r.height/2)) / innerHeight;
+      chat.style.transform = "rotateY(" + (x*14).toFixed(2) + "deg) rotateX(" + (-y*10).toFixed(2) + "deg)";
+    });
+    zona.addEventListener("pointerleave", () => { chat.style.transform = "rotateY(-6deg) rotateX(3deg)"; });
+    chat.style.transform = "rotateY(-6deg) rotateX(3deg)";
+  }
+
+  // ruta curva que une los pasos en zigzag y se dibuja al llegar
+  function trazarRuta(){
+    const caja = pasos.getBoundingClientRect(), ps = [...pasos.querySelectorAll(".paso")].map(p => p.getBoundingClientRect());
+    const ruta = document.getElementById("ruta"); if (!ruta || innerWidth < 900) return;
+    const pt = r => [r.left - caja.left + 34, r.top - caja.top + 38];
+    const [a, b, c] = ps.map(pt);
+    ruta.setAttribute("d", `M${a[0]+50} ${a[1]-10} C ${a[0]+420} ${a[1]-60}, ${b[0]-60} ${b[1]-170}, ${b[0]-18} ${b[1]-6} C ${b[0]-90} ${b[1]+60}, ${c[0]+420} ${c[1]-160}, ${c[0]+50} ${c[1]-8}`);
+    const L = ruta.getTotalLength(); ruta.style.strokeDasharray = L; ruta.style.strokeDashoffset = ruta.dataset.hecho ? 0 : L;
+    return L;
+  }
+  trazarRuta(); addEventListener("resize", trazarRuta);
+  alVer(pasos, () => { const ruta = document.getElementById("ruta"); if (!ruta) return; ruta.dataset.hecho = 1;
+    if (reduce) { ruta.style.strokeDashoffset = 0; return; }
+    ruta.style.transition = "stroke-dashoffset 1.8s cubic-bezier(.65,0,.35,1)"; requestAnimationFrame(() => ruta.style.strokeDashoffset = 0);
+    setTimeout(() => ruta.style.strokeDashoffset = 0, 2000); });
+
+  // tarjetas de comparación: entran y la de kipu-anon se eleva
+  const comp = document.querySelector(".comparar");
+  alVer(comp, () => {
+    comp.querySelectorAll(".opcion").forEach((o, i) => {
+      const fin = o.classList.contains("bueno") ? "rotate(-1.2deg) translateY(0)" : "translateY(0)";
+      play(o, { opacity: [0, 1], transform: [o.classList.contains("bueno") ? "rotate(2deg) translateY(50px) scale(.94)" : "translateY(30px)", fin] },
+        { duration: .7, delay: .15 * i, type: o.classList.contains("bueno") ? "spring" : undefined, bounce: .35, ease: [.22, 1, .36, 1] });
+    });
+  });
+
+  // luces de fondo con el scroll
+  if (!reduce) { const luces = [...document.querySelectorAll(".luz")];
+    addEventListener("scroll", () => { const y = scrollY; luces.forEach((l, i) => l.style.transform = "translateY(" + (-y * (.08 + i*.05)).toFixed(1) + "px)"); }, { passive: true }); }
+
+  // encabezado con sombra al bajar
+  const hd = document.querySelector("header");
+  addEventListener("scroll", () => hd.classList.toggle("sombra", scrollY > 8), { passive: true });
+
+  fetch(API + "/v1/health").then(r => r.ok ? r.json() : Promise.reject()).then(() => {
+    $("estado").classList.add("ok"); $("estado").lastElementChild.textContent = "servicio en línea";
+  }).catch(() => { $("estado").lastElementChild.textContent = "servicio no disponible"; });
+
+  const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+  let n = 0;
+  async function anonimizar(){
+    const texto = $("entrada").value.trim();
+    if (!texto){ $("salida").innerHTML = '<span class="vacio">Escribe un mensaje primero.</span>'; return; }
+    $("tiempo").textContent = "Anonimizando…";
+    const t0 = performance.now();
+    try {
+      const r = await fetch(API + "/v1/anonymize", {method:"POST", headers:{"content-type":"application/json"},
+        body: JSON.stringify({source:"chats", records:[{id:"demo-"+(++n), thread_id:"demo:1", author:"", ts:String(Date.now()/1000), text:texto, attachments:[]}]})});
+      if (!r.ok) throw new Error("El servicio respondió " + r.status + ". Intenta de nuevo en unos segundos.");
+      const d = await r.json();
+      const out = d.records[0].text;
+      const nuevos = [];
+      (d.entities||[]).forEach(e => Object.values(e.pseudonyms||{}).forEach(v => { if (v && out.includes(v)) nuevos.push(v); }));
+      let html = esc(out);
+      [...new Set(nuevos)].sort((a,b)=>b.length-a.length).forEach(v => { html = html.split(esc(v)).join('<mark class="f">'+esc(v)+'</mark>'); });
+      $("salida").innerHTML = html;
+      const marcas = [...document.querySelectorAll("#salida mark.f")];
+      marcas.forEach((mk, i) => {
+        const fin = mk.textContent;
+        setTimeout(() => descifrar(mk, fin, 550).then(() => play(mk, { transform: ["scale(1.1)", "scale(1)"] }, { type: "spring", bounce: .5, duration: .35 })), reduce ? 0 : i * 140);
+      });
+      // solo mostramos lo que la persona escribió: nunca otros datos del corpus
+      const enTexto = o => texto.toLowerCase().includes(String(o).toLowerCase());
+      $("fichas").innerHTML = (d.entities||[]).filter(e => !e.kept && (e.originals||[]).some(enTexto)).map(e =>
+        '<div class="ficha">' + (e.originals||[]).filter(enTexto).slice(0,3).map(o => '<s>'+esc(o)+'</s>').join(", ") +
+        ' pasa a <strong>' + esc((e.pseudonyms||{}).name || Object.values(e.pseudonyms||{})[0] || "") + '</strong></div>').join("");
+      $("tiempo").textContent = "Listo en " + Math.round(performance.now()-t0) + " ms";
+    } catch(e){ $("salida").innerHTML = '<span class="vacio">'+esc(e.message || "No se pudo conectar con el servicio.")+'</span>'; $("tiempo").textContent = ""; }
+  }
+  $("anonimizar").onclick = anonimizar;
+  document.querySelectorAll(".ej").forEach(b => b.onclick = () => { $("entrada").value = b.dataset.t; anonimizar(); });
+})();
 </script>
 </body>
 </html>
