@@ -70,7 +70,14 @@ async function ensureState() {
         const r = runPipeline({ srcDir: SRC, outDir: OUT, storedFile: STORED });
         state = { reg: r.reg, an: r.an, threads: r.threads };
       } else if (process.env.FUENTES_API && process.env.FUENTES_TOKEN) {
-        await regenerate(process.env.FUENTES_API, process.env.FUENTES_TOKEN, null);
+        try {
+          await regenerate(process.env.FUENTES_API, process.env.FUENTES_TOKEN, null);
+        } catch (err) {
+          // el API de fuentes del reto ya no responde: /anonymize sigue funcionando con el registro sembrado
+          console.log(`fuentes no disponibles (${err?.message || err}); sigo con el registro vacío`);
+          const r = runPipeline({ srcDir: EMPTY, outDir: null, storedFile: STORED });
+          state = { reg: r.reg, an: r.an, threads: r.threads };
+        }
       } else {
         const r = runPipeline({ srcDir: EMPTY, outDir: null, storedFile: STORED });
         state = { reg: r.reg, an: r.an, threads: r.threads };

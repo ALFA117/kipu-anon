@@ -439,7 +439,7 @@ section > .wrap > .intro{text-align:center;margin-left:auto;margin-right:auto;te
       <div class="demo"><svg class="flecha-curva" viewBox="0 0 120 70" aria-hidden="true"><path d="M8 18 C 40 -6, 80 -6, 104 40" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 7"/><path d="M96 36 L105 42 L108 31" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div class="panel">
           <h3>Tu mensaje <small>se procesa y no se guarda</small></h3>
-          <textarea id="entrada" aria-label="Mensaje a anonimizar">Hola, me llamo Manuela Castaño. Me cobraron una cuota que ya pagué. Mi cédula es 1.107.360.039 y mi correo es manu.castano arroba gmail punto com. Soy fotógrafa y vivo en Granada.</textarea>
+          <textarea id="entrada" aria-label="Mensaje a anonimizar">Hola, me llamo Lucía Bermúdez. Me cobraron una cuota que ya pagué. Mi cédula es 1.094.552.318 y mi correo es lucia.bermudez arroba gmail punto com. Soy fotógrafa y vivo en Granada.</textarea>
         </div>
         <div class="panel" aria-live="polite">
           <h3>Así queda <small id="tiempo-panel"></small></h3>
@@ -534,9 +534,9 @@ section > .wrap > .intro{text-align:center;margin-left:auto;margin-right:auto;te
 
   // 2. chat: llegan los mensajes y cada dato se descifra hasta su disfraz
   const guion = [
-    { q: "cli", t: "Hola, me llamo {Manuela Castaño|Irene Estrada}. Me cobraron una cuota que ya pagué." },
-    { q: "age", t: "Hola {Manuela|Irene}, ¿me confirmas tu cédula?" },
-    { q: "cli", t: "Claro, es {1.107.360.039|1.668.562.693} y mi correo {manu.castano@gmail.com|iestrada@gmail.com}. Pagué por PSE desde Bancolombia." }
+    { q: "cli", t: "Hola, me llamo {Lucía Bermúdez|Irene Estrada}. Me cobraron una cuota que ya pagué." },
+    { q: "age", t: "Hola {Lucía|Irene}, ¿me confirmas tu cédula?" },
+    { q: "cli", t: "Claro, es {1.094.552.318|1.668.562.693} y mi correo {lucia.bermudez@gmail.com|iestrada@gmail.com}. Pagué por PSE desde Bancolombia." }
   ];
   const quien = { cli: "Cliente", age: "Agente" };
   const SIGNOS = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@.";
@@ -733,8 +733,9 @@ section > .wrap > .intro{text-align:center;margin-left:auto;margin-right:auto;te
   const comp = document.querySelector(".comparar");
   alVer(comp, () => {
     comp.querySelectorAll(".opcion").forEach((o, i) => {
-      const fin = o.classList.contains("bueno") ? "rotate(-1.2deg) translateY(0)" : "translateY(0)";
-      play(o, { opacity: [0, 1], transform: [o.classList.contains("bueno") ? "rotate(2deg) translateY(50px) scale(.94)" : "translateY(30px)", fin] },
+      // mismas funciones y unidades en ambos extremos: si no, el resorte genera keyframes inválidos
+      const fin = o.classList.contains("bueno") ? "rotate(-1.2deg) translateY(0px) scale(1)" : "translateY(0px)";
+      play(o, { opacity: [0, 1], transform: [o.classList.contains("bueno") ? "rotate(2deg) translateY(50px) scale(0.94)" : "translateY(30px)", fin] },
         { duration: .7, delay: .15 * i, type: o.classList.contains("bueno") ? "spring" : undefined, bounce: .35, ease: [.22, 1, .36, 1] });
     });
   });
