@@ -4,401 +4,362 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>kipu-anon · datos útiles, personas a salvo</title>
+<meta name="description" content="kipu-anon seudonimiza conversaciones de soporte: a cada cliente le da un disfraz estable (otro nombre, otra cédula, otro correo) que se mantiene en chats, documentos y tablas. Proyecto del hackathon Frontier CDMX/26.">
+<meta name="theme-color" content="#F5F4EE">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="360 370 530 535"%3E%0A%3Cdefs%3E%0A%3ClinearGradient id="kv" x1="0" y1="0" x2="1" y2="1"%3E%3Cstop offset="0" stop-color="%232EF5A6"/%3E%3Cstop offset="1" stop-color="%2314D483"/%3E%3C/linearGradient%3E%0A%3ClinearGradient id="kp" x1="640" y1="650" x2="840" y2="860" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0" stop-color="%23032015"/%3E%3Cstop offset=".55" stop-color="%230E9C5E"/%3E%3Cstop offset="1" stop-color="%231BE08A"/%3E%3C/linearGradient%3E%0A%3C/defs%3E%0A%3Cpath d="M700 690 L800 805" stroke="url%28%23kp%29" stroke-width="150" stroke-linecap="round"/%3E%0A%0A%3CclipPath id="kc"%3E%3Crect x="470" y="300" width="500" height="587"/%3E%3C/clipPath%3E%3Cpath d="M420 860 L790 475" stroke="url%28%23kv%29" stroke-width="160" stroke-linecap="round" clip-path="url%28%23kc%29"/%3E%3Crect x="377" y="387" width="218" height="500" rx="88" fill="url%28%23kv%29"/%3E%0A%3Cpath d="M447 612 v-22 a51 51 0 0 1 102 0 v22" fill="none" stroke="%23050806" stroke-width="27"/%3E%0A%3Crect x="410" y="612" width="177" height="138" rx="30" fill="%23050806"/%3E%0A%3Ccircle cx="498" cy="664" r="18" fill="%232EF5A6"/%3E%3Cpath d="M490 672 h16 l7 44 h-30z" fill="%232EF5A6"/%3E%0A%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* ===== tokens ===== */
 :root{
-  --bosque:#12372A; --hoja:#2E7D52; --menta:#CFEBD9; --menta-2:#E4F3E9; --papel:#F3F7F2;
-  --frambuesa:#B42350; --frambuesa-2:#FBE3EA; --tinta-suave:#4C6358; --linea:#D5E3D9; --blanco:#FFFFFF;
-  --display:"Bricolage Grotesque",system-ui,sans-serif; --texto:"Figtree",system-ui,sans-serif;
+  /* papel y tinta */
+  --paper:#F5F4EE; --surface:#FFFFFF; --surface-2:#EEEDE5;
+  --ink:#0B2219; --ink-2:#2F463B; --muted:#56685E;
+  --line:#D9DCD2; --line-2:#C5CABD;
+  /* acento verde (marca) */
+  --accent:#0E6A45; --accent-ink:#FFFFFF; --accent-hover:#0A5536;
+  --mint:#DCF2E5; --mint-ink:#0B5737; --brand:#2EF5A6;
+  /* dato real (solo para marcar lo que se reemplaza) */
+  --real:#9E2340; --real-bg:#F7E3E7;
+  /* banda oscura */
+  --forest:#0A1A13; --forest-2:#0F241A; --forest-3:#153125; --forest-line:#24402F;
+  --on-forest:#E9F2EC; --on-forest-2:#A3BBAD;
+  /* tipografía */
+  --f-display:"Newsreader",Georgia,"Times New Roman",serif;
+  --f-sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,SFMono-Regular,Consolas,monospace;
+  /* forma */
+  --r-sm:6px; --r:10px; --r-lg:14px;
+  --shadow:0 1px 0 rgba(11,34,25,.04),0 1px 2px rgba(11,34,25,.06);
+  --shadow-hard:4px 4px 0 rgba(11,34,25,.07);
+  --ease:cubic-bezier(.22,1,.36,1);
+  color-scheme:light;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--papel);color:var(--bosque);font-family:var(--texto);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--f-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--hoja);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+img,svg{display:block}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mono{font-family:var(--f-mono);font-feature-settings:"zero" 0}
 
-/* encabezado */
-header{position:sticky;top:0;z-index:5;background:rgba(243,247,242,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
-.bar{display:flex;align-items:center;gap:28px;height:64px}
-.marca{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:10px}
-.marca i{width:22px;height:22px;border-radius:7px;background:var(--hoja);position:relative;display:inline-block}
-.marca i::after{content:"";position:absolute;inset:6px 4px 6px 10px;border-radius:3px;background:var(--menta)}
-nav{display:flex;gap:22px;margin-left:auto;font-size:15px;font-weight:500}
-nav a{padding:10px 0;text-decoration:none;color:var(--tinta-suave)} nav a:hover{color:var(--bosque)}
-.estado{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--tinta-suave)}
-.estado b{width:9px;height:9px;border-radius:50%;background:#B9C7BE}
-.estado.ok b{background:var(--hoja);box-shadow:0 0 0 4px var(--menta)}
+/* utilidades de texto */
+.eyebrow{font:500 13px/1.4 var(--f-mono);letter-spacing:.02em;color:var(--muted);display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.eyebrow::before{content:"";flex:none;align-self:center;width:18px;height:1px;background:currentColor;opacity:.6}
+h1,h2,h3{margin:0;font-weight:500;color:inherit}
+.display{font-family:var(--f-display);font-weight:500;letter-spacing:-.022em;line-height:1.02}
+h2.display{font-size:clamp(34px,4.4vw,52px);line-height:1.06;max-width:18ch}
+h2 em,h1 em{font-style:italic;font-weight:400}
+.lede{font-size:19px;line-height:1.6;color:var(--ink-2);max-width:56ch;margin:20px 0 0}
 
-/* hero */
-.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:72px 0 64px}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(44px,6.4vw,82px);line-height:.98;letter-spacing:-.035em;margin:0 0 22px}
-h1 .linea2{display:block;color:var(--hoja)}
-.bajada{font-size:20px;line-height:1.55;color:var(--tinta-suave);max-width:33ch;margin:0 0 30px}
-.acciones{display:flex;gap:12px;flex-wrap:wrap}
-.btn{min-height:48px;font:600 16px var(--texto);border-radius:999px;padding:14px 24px;border:0;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
-.btn-p{background:var(--bosque);color:var(--papel)} .btn-p:hover{background:var(--hoja)}
-.btn-s{background:transparent;color:var(--bosque);box-shadow:inset 0 0 0 1.5px var(--bosque)} .btn-s:hover{background:var(--menta-2)}
+/* ===== botones ===== */
+.btn{--h:48px;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:var(--h);padding:0 20px;border-radius:var(--r);font:500 16px/1 var(--f-sans);text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background-color .18s ease,border-color .18s ease,color .18s ease,transform .12s ease;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-p{background:var(--ink);color:var(--paper)} .btn-p:hover{background:var(--accent)}
+.btn-s{background:transparent;color:var(--ink);border-color:var(--line-2)} .btn-s:hover{border-color:var(--ink);background:var(--surface)}
+.btn[aria-busy="true"]{pointer-events:none;opacity:.8}
+.btn .giro{display:none;width:16px;height:16px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:giro .7s linear infinite}
+.btn[aria-busy="true"] .giro{display:inline-block}
+.btn[aria-busy="true"] .flecha{display:none}
+@keyframes giro{to{transform:rotate(360deg)}}
 
-/* conversación del hero */
-.chat{background:var(--blanco);border-radius:28px;padding:22px 22px 18px;box-shadow:0 30px 60px -30px rgba(18,55,42,.35),0 0 0 1px var(--linea)}
-.chat-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:14px;color:var(--tinta-suave)}
-.chat-top strong{color:var(--bosque);font-weight:600}
-.burbuja{max-width:88%;padding:12px 16px;border-radius:20px;margin:10px 0;font-size:16px;line-height:1.5}
-.cli{background:var(--menta-2);border-bottom-left-radius:6px}
-.age{background:var(--bosque);color:var(--papel);margin-left:auto;border-bottom-right-radius:6px}
-.quien{display:block;font-size:12.5px;font-weight:600;opacity:.7;margin-bottom:2px}
-.d{position:relative;display:inline-grid;vertical-align:baseline}
-.d > span{grid-area:1/1;white-space:nowrap;transition:opacity .45s ease,transform .45s ease,clip-path .55s ease}
-.d .real{color:var(--frambuesa);background:var(--frambuesa-2);border-radius:5px;padding:0 4px;clip-path:inset(0 0 0 0)}
-.age .d .real{background:rgba(251,227,234,.16);color:#FFC2D2}
-.d .falso{color:var(--hoja);background:var(--menta);border-radius:5px;padding:0 4px;font-weight:600;opacity:0;transform:translateY(6px)}
-.age .d .falso{color:var(--bosque)}
-.chat.listo .d .real{clip-path:inset(0 100% 0 0);opacity:0;position:absolute;left:0;top:0}
-.chat.listo .d .falso{opacity:1;transform:none}
-.chat-pie{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:13.5px;color:var(--tinta-suave)}
-.leyenda{display:flex;gap:14px}
-.leyenda span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
-.leyenda .r::before{background:var(--frambuesa)} .leyenda .f::before{background:var(--hoja)}
-.repetir{background:none;border:0;font:600 13.5px var(--texto);color:var(--hoja);cursor:pointer;padding:10px 4px;min-height:44px}
+/* ===== encabezado ===== */
+header{position:sticky;top:0;z-index:20;background:rgba(245,244,238,.94);border-bottom:1px solid transparent;transition:border-color .2s ease}
+header.borde{border-bottom-color:var(--line)}
+.bar{display:flex;align-items:center;gap:32px;height:68px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font:600 18px/1 var(--f-sans);letter-spacing:-.01em;min-height:44px}
+.marca .logo{width:28px;height:28px;flex:none;overflow:visible}
+.marca .logo .arco{transform-box:fill-box;transform-origin:50% 100%;animation:cierra .8s var(--ease) .2s both}
+@keyframes cierra{0%{translate:0 -30%}100%{translate:0 0}}
+nav.menu{display:flex;gap:4px;margin-left:auto}
+nav.menu a{font-size:15px;color:var(--ink-2);text-decoration:none;padding:0 12px;min-height:44px;display:inline-flex;align-items:center;border-radius:var(--r-sm)}
+nav.menu a:hover{color:var(--ink);background:var(--surface-2)}
+.estado{display:inline-flex;align-items:center;gap:8px;font:400 13px/1 var(--f-mono);color:var(--muted);padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);white-space:nowrap}
+.estado b{width:7px;height:7px;border-radius:50%;background:#A9B3AC}
+.estado.ok b{background:#13A86A}
+.estado.mal b{background:var(--real)}
+
+/* ===== hero ===== */
+.hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:72px;align-items:center;padding-top:88px;padding-bottom:80px}
+.hero h1{font-family:var(--f-display);font-weight:500;font-size:clamp(46px,6.2vw,84px);line-height:.98;letter-spacing:-.03em}
+.hero h1 em{color:var(--accent);display:block}
+.hero .lede{max-width:40ch;font-size:20px}
+.acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.credito{margin-top:28px;font:400 13px/1.5 var(--f-mono);color:var(--muted)}
+
+/* registro (conversación del hero) */
+.registro{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-lg);box-shadow:var(--shadow-hard);overflow:hidden}
+.reg-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);font:400 13px/1.3 var(--f-mono);color:var(--muted)}
+.reg-top strong{color:var(--ink);font-weight:500}
+.reg-top .pts{display:flex;gap:6px}.reg-top .pts i{width:8px;height:8px;border-radius:50%;background:var(--line-2)}
+#mensajes{padding:8px 20px 4px;min-height:296px}
+.msg{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.msg:last-child{border-bottom:0}
+.msg .quien{font:500 12px/1.9 var(--f-mono);color:var(--muted);text-transform:none}
+.msg p{margin:0;font-size:16px;line-height:1.6}
+.msg.age .quien{color:var(--accent)}
+.tecleando{display:flex;gap:4px;padding:22px 0 18px 84px}
+.tecleando i{width:5px;height:5px;border-radius:50%;background:var(--muted);opacity:.35;animation:bote 1s infinite}
+.tecleando i:nth-child(2){animation-delay:.15s}.tecleando i:nth-child(3){animation-delay:.3s}
+@keyframes bote{0%,60%,100%{opacity:.25}30%{opacity:1}}
+.dx{border-radius:4px;padding:1px 4px;white-space:nowrap;transition:background-color .3s ease,color .3s ease;font-variant-numeric:tabular-nums}
+.dx.r{color:var(--real);background:var(--real-bg);text-decoration:line-through;text-decoration-thickness:1px}
+.dx.f{color:var(--mint-ink);background:var(--mint);font-weight:500}
+.dx.mezcla{color:var(--ink-2);background:var(--surface-2);font-family:var(--f-mono);font-size:.92em}
+.reg-pie{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 12px 8px 20px;border-top:1px solid var(--line);background:var(--paper)}
+.leyenda{display:flex;gap:16px;font:400 12.5px/1.3 var(--f-mono);color:var(--muted)}
+.leyenda span{display:inline-flex;align-items:center;gap:6px}
+.leyenda span::before{content:"";width:10px;height:10px;border-radius:2px}
+.leyenda .r::before{background:var(--real-bg);box-shadow:inset 0 0 0 1px var(--real)}
+.leyenda .f::before{background:var(--mint);box-shadow:inset 0 0 0 1px var(--mint-ink)}
+.repetir{display:inline-flex;align-items:center;gap:6px;background:none;border:0;border-radius:var(--r-sm);font:500 13.5px/1 var(--f-sans);color:var(--ink-2);cursor:pointer;min-height:44px;padding:0 10px}
+.repetir:hover{color:var(--ink);background:var(--surface-2)}
+.repetir svg{width:15px;height:15px}
 
 /* cifras */
-.cifras{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--bosque);border-bottom:1px solid var(--linea)}
-.cifra{padding:22px 20px 24px 0}
-.cifra + .cifra{padding-left:20px;border-left:1px solid var(--linea)}
-.cifra b{display:block;font-family:var(--display);font-weight:700;font-size:40px;letter-spacing:-.03em;line-height:1.1}
-.cifra span{font-size:15px;color:var(--tinta-suave)}
-.nota{font-size:14px;color:var(--tinta-suave);margin:12px 0 0}
+.cifras{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.cifra{padding:24px 24px 26px 0}
+.cifra + .cifra{padding-left:24px;border-left:1px solid var(--line)}
+.cifra b{display:block;font:400 clamp(30px,3.2vw,40px)/1.1 var(--f-mono);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.cifra span{display:block;margin-top:8px;font-size:15px;line-height:1.45;color:var(--muted);max-width:24ch}
+.nota{font:400 13px/1.5 var(--f-mono);color:var(--muted);margin:14px 0 0}
 
-section{padding:88px 0 0}
-h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-.03em;margin:0 0 16px;max-width:20ch}
-.intro{font-size:19px;color:var(--tinta-suave);max-width:58ch;margin:0 0 36px}
+/* ===== secciones ===== */
+section{padding:128px 0 0}
+.cabeza{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end;margin-bottom:56px}
+.cabeza .lede{margin:0}
 
 /* comparación */
-table.comp{width:100%;border-collapse:collapse;font-size:16px;background:var(--blanco);border-radius:22px;overflow:hidden;box-shadow:0 0 0 1px var(--linea)}
-.comp th,.comp td{text-align:left;padding:18px 20px;vertical-align:top;border-bottom:1px solid var(--linea)}
-.comp thead th{font-family:var(--display);font-weight:700;font-size:18px;background:var(--menta-2)}
-.comp tbody tr:last-child td{border-bottom:0}
-.comp td:first-child{font-weight:600;width:22%}
-.comp .nos{background:var(--bosque);color:var(--papel)}
-.comp thead .nos{background:var(--hoja);color:var(--blanco)}
-.ok,.no{font-weight:600}.no{color:var(--frambuesa)}.comp .nos .ok{color:var(--menta)}
+.comparar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line-2);border-radius:var(--r-lg);background:var(--surface);overflow:hidden}
+.opcion{padding:28px 28px 32px}
+.opcion + .opcion{border-left:1px solid var(--line)}
+.opcion .tag{font:500 12.5px/1 var(--f-mono);color:var(--muted)}
+.opcion h3{font-family:var(--f-display);font-size:28px;line-height:1.15;letter-spacing:-.015em;margin:12px 0 22px}
+.opcion ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.opcion li{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:15.5px;line-height:1.5;color:var(--ink-2)}
+.opcion li svg{width:18px;height:18px;margin-top:2px}
+.ic-no{color:var(--real)} .ic-si{color:var(--accent)} .ic-medio{color:#8A6A12}
+.opcion.bueno{background:var(--forest);color:var(--on-forest);border-left-color:var(--forest)}
+.opcion.bueno .tag{color:var(--brand)}
+.opcion.bueno li{color:var(--on-forest);border-top-color:var(--forest-line)}
+.opcion.bueno .ic-si{color:var(--brand)}
 
-/* demo */
-.demo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.panel{background:var(--blanco);border-radius:22px;box-shadow:0 0 0 1px var(--linea);display:flex;flex-direction:column;min-height:300px}
-.panel h3{font-family:var(--display);font-size:17px;font-weight:700;margin:0;padding:16px 20px;border-bottom:1px solid var(--linea);display:flex;justify-content:space-between;align-items:baseline}
-.panel h3 small{font-family:var(--texto);font-weight:500;font-size:13.5px;color:var(--tinta-suave)}
-textarea{flex:1;border:0;resize:vertical;padding:18px 20px;font:16px/1.6 var(--texto);color:var(--bosque);background:transparent;min-height:220px}
+/* ===== demo (banda oscura) ===== */
+.banda{background:var(--forest);color:var(--on-forest);padding:112px 0 120px;margin-top:128px}
+.banda .eyebrow{color:var(--on-forest-2)}
+.banda .lede{color:var(--on-forest-2)}
+.banda h2 em{color:var(--brand)}
+.consola{border:1px solid var(--forest-line);border-radius:var(--r-lg);background:var(--forest-2);overflow:hidden}
+.consola-top{display:flex;align-items:center;gap:12px;padding:10px 12px 10px 20px;border-bottom:1px solid var(--forest-line);flex-wrap:wrap}
+.consola-top .ruta{font:400 13px/1 var(--f-mono);color:var(--on-forest-2);margin-right:auto}
+.consola-top .ruta b{color:var(--brand);font-weight:500}
+.ejemplos{display:flex;flex-wrap:wrap;gap:6px}
+.ej{min-height:44px;padding:0 14px;border-radius:var(--r-sm);border:1px solid var(--forest-line);background:transparent;color:var(--on-forest);font:400 14px/1 var(--f-sans);cursor:pointer;transition:border-color .15s ease,background-color .15s ease}
+.ej:hover{border-color:#3E6A52;background:var(--forest-3)}
+.ej[aria-pressed="true"]{border-color:var(--brand);color:#fff}
+.paneles{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.pane{display:flex;flex-direction:column;min-height:300px}
+.pane + .pane{border-left:1px solid var(--forest-line)}
+.pane-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 20px 0;font:500 12.5px/1.4 var(--f-mono);color:var(--on-forest-2)}
+.pane-top small{font:inherit;font-weight:400;opacity:.85}
+textarea{flex:1;width:100%;min-height:232px;resize:vertical;border:0;background:transparent;color:var(--on-forest);font:400 17px/1.65 var(--f-sans);padding:14px 20px 20px}
 textarea:focus{outline:none}
-.panel:focus-within{box-shadow:0 0 0 2px var(--hoja)}
-#salida{padding:18px 20px;flex:1;white-space:pre-wrap;line-height:1.75}
-#salida .vacio{color:var(--tinta-suave)}
-mark.f{background:var(--menta);color:var(--hoja);font-weight:600;border-radius:4px;padding:0 3px}
-.fila-demo{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
-.ej{min-height:44px;background:var(--blanco);border:0;box-shadow:inset 0 0 0 1px var(--linea);border-radius:999px;padding:9px 16px;font:500 14.5px var(--texto);color:var(--bosque);cursor:pointer}
-.ej:hover{box-shadow:inset 0 0 0 1.5px var(--hoja)}
-#tiempo{font-size:14px;color:var(--tinta-suave);margin-left:auto}
-.fichas{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.ficha{background:var(--menta-2);border-radius:14px;padding:10px 14px;font-size:14.5px}
-.ficha s{color:var(--frambuesa)} .ficha strong{color:var(--hoja)}
+.pane:focus-within{box-shadow:inset 0 0 0 1px var(--brand)}
+#salida{flex:1;padding:14px 20px 20px;white-space:pre-wrap;word-break:break-word;font-size:17px;line-height:1.75}
+#salida .vacio{color:var(--on-forest-2)}
+#salida .error{display:flex;flex-direction:column;align-items:flex-start;gap:14px;color:#F6C9D2}
+#salida mark.f{background:rgba(46,245,166,.14);color:#B9FBDD;border-radius:3px;padding:0 3px;font-weight:500;box-shadow:inset 0 -1px 0 rgba(46,245,166,.5)}
+.skel{display:grid;gap:12px;padding-top:6px}
+.skel i{display:block;height:12px;border-radius:3px;background:linear-gradient(90deg,var(--forest-3),#1C3D2E,var(--forest-3));background-size:200% 100%;animation:brillo 1.2s linear infinite}
+.skel i:nth-child(2){width:86%}.skel i:nth-child(3){width:64%}
+@keyframes brillo{to{background-position:-200% 0}}
+.consola-pie{display:flex;align-items:center;gap:16px;padding:12px 12px 12px 20px;border-top:1px solid var(--forest-line);flex-wrap:wrap}
+.consola-pie .btn-p{background:var(--brand);color:#04140C} .consola-pie .btn-p:hover{background:#7DF8C6}
+#tiempo{font:400 13px/1.4 var(--f-mono);color:var(--on-forest-2);margin-left:auto}
+.consola-pie .aviso{font-size:14px;color:var(--on-forest-2);display:inline-flex;align-items:center;gap:8px}
+.consola-pie .aviso svg{width:16px;height:16px;flex:none}
+.cambios{margin-top:28px}
+.cambios h3{font:500 12.5px/1.4 var(--f-mono);color:var(--on-forest-2);margin:0 0 10px}
+.cambios ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--forest-line)}
+.cambios li{display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--forest-line);font:400 15px/1.4 var(--f-mono)}
+.cambios li s{color:#F4A7B6;text-decoration-thickness:1px;overflow-wrap:anywhere}
+.cambios li b{color:#B9FBDD;font-weight:500;overflow-wrap:anywhere}
+.cambios li svg{width:18px;height:18px;color:var(--on-forest-2)}
 
-/* pasos */
-.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:p;border-top:1.5px solid var(--bosque)}
-.paso{padding:28px 28px 8px 0;counter-increment:p}
-.paso + .paso{padding-left:28px;border-left:1px solid var(--linea)}
-.paso::before{content:counter(p);font-family:var(--display);font-weight:800;font-size:64px;line-height:1;color:var(--menta);display:block;margin-bottom:10px;-webkit-text-stroke:1.5px var(--hoja)}
-.paso h3{font-family:var(--display);font-size:22px;font-weight:700;margin:0 0 8px;letter-spacing:-.01em}
-.paso p{margin:0;color:var(--tinta-suave)}
+/* ===== método ===== */
+.pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.paso{padding:28px 32px 8px 0}
+.paso + .paso{padding-left:32px;border-left:1px solid var(--line)}
+.paso .num{display:flex;align-items:center;justify-content:space-between;font:500 13px/1 var(--f-mono);color:var(--muted);margin-bottom:40px}
+.paso .num svg{width:22px;height:22px;color:var(--accent)}
+.paso h3{font-family:var(--f-display);font-size:28px;line-height:1.15;letter-spacing:-.015em;margin:0 0 12px}
+.paso p{margin:0;color:var(--ink-2);font-size:16.5px}
 
-/* garantías + api */
-.cierre{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
-.lista{list-style:none;margin:0;padding:0}
-.lista li{padding:14px 0 14px 34px;border-bottom:1px solid var(--linea);position:relative}
-.lista li::before{content:"";position:absolute;left:0;top:19px;width:20px;height:20px;border-radius:50%;background:var(--menta) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%232E7D52' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
-.api{background:var(--bosque);color:var(--papel);border-radius:26px;padding:26px 28px}
-.api h3{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 6px}
-.api p{margin:0 0 16px;color:#B8CFC2;font-size:15.5px}
-.api dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:15px}
-.api dt{font-weight:700;color:var(--menta)} .api dd{margin:0}
-.api code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:14px;background:rgba(207,235,217,.12);padding:1px 6px;border-radius:5px}
-.api a{display:inline-block;margin-top:18px;color:var(--menta);font-weight:600}
+/* tabla de equivalencias */
+.libro{border:1px solid var(--line-2);border-radius:var(--r-lg);background:var(--surface);overflow:hidden;box-shadow:var(--shadow)}
+.libro-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 24px;border-bottom:1px solid var(--line);font:400 13px/1.4 var(--f-mono);color:var(--muted)}
+.libro-top strong{color:var(--ink);font-weight:500}
+.fila{display:grid;grid-template-columns:200px minmax(0,1fr) 28px minmax(0,1fr);gap:16px;align-items:center;padding:14px 24px;border-bottom:1px solid var(--line)}
+.fila:last-child{border-bottom:0}
+.fila.cab{background:var(--paper);font:500 12px/1.4 var(--f-mono);color:var(--muted);padding-top:10px;padding-bottom:10px}
+.fila .tipo{font-size:15px;color:var(--ink-2)}
+.fila s,.fila b{font:400 15px/1.4 var(--f-mono);overflow-wrap:anywhere}
+.fila s{color:var(--real);text-decoration-thickness:1px}
+.fila b{color:var(--mint-ink);font-weight:500}
+.fila svg{width:18px;height:18px;color:var(--muted)}
 
-footer{margin-top:96px;padding:28px 0 40px;border-top:1px solid var(--linea);font-size:14.5px;color:var(--tinta-suave)}
-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+/* ===== garantías + api ===== */
+.cierre{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:64px;align-items:start}
+.lista{list-style:none;margin:40px 0 0;padding:0;border-top:1px solid var(--ink)}
+.lista li{display:grid;grid-template-columns:24px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);font-size:16.5px;color:var(--ink-2)}
+.lista li svg{width:20px;height:20px;color:var(--accent);margin-top:2px}
+.api{border:1px solid var(--line-2);border-radius:var(--r-lg);background:var(--surface);box-shadow:var(--shadow-hard);overflow:hidden}
+.api-top{padding:24px 24px 20px;border-bottom:1px solid var(--line)}
+.api h3{font-family:var(--f-display);font-size:28px;letter-spacing:-.015em;margin:0 0 8px}
+.api p{margin:0;color:var(--ink-2);font-size:16px}
+.api .eyebrow{font-size:13px;color:var(--muted)}
+.ep{display:grid;grid-template-columns:56px minmax(0,1fr);gap:4px 12px;padding:14px 24px;border-bottom:1px solid var(--line);align-items:baseline}
+.ep .m{font:500 12px/1 var(--f-mono);padding:5px 0;text-align:center;border-radius:4px;border:1px solid var(--line-2);color:var(--ink-2)}
+.ep .m.post{border-color:var(--accent);color:var(--accent)}
+.ep code{font:400 14.5px/1.4 var(--f-mono);color:var(--ink);overflow-wrap:anywhere}
+.ep > span:not(.m){grid-column:2;font-size:14.5px;color:var(--muted)}
+.ep .vivo{display:inline-flex;align-items:center;gap:6px;font:400 12px/1 var(--f-mono);color:var(--accent);margin-left:8px;vertical-align:1px}
+.ep .vivo::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.ep .off{color:var(--muted)}
+.api-pie{padding:16px 24px 20px;font-size:14px;color:var(--muted);line-height:1.5}
+.api-pie a{display:inline-flex;align-items:center;gap:8px;margin-top:12px;color:var(--ink);font:500 15px/1 var(--f-sans);text-decoration:none;min-height:44px}
+.api-pie a:hover{color:var(--accent)}
+.api-pie a svg{width:18px;height:18px}
 
-@media (max-width:900px){
-  nav{display:none}
-  .hero,.demo,.cierre{grid-template-columns:1fr}
-  .hero{padding-top:44px;gap:36px}
+footer{margin-top:128px;border-top:1px solid var(--line);padding:32px 0 48px;font-size:14.5px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px 32px;flex-wrap:wrap}
+footer a{color:var(--ink-2)}
+
+/* entrada por scroll: solo si hay JS y movimiento permitido */
+.js .rev{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.js .rev.visto{opacity:1;transform:none}
+
+/* ===== responsive ===== */
+@media (max-width:1000px){
+  .hero{grid-template-columns:1fr;gap:48px;padding-top:56px;padding-bottom:64px}
+  .cabeza{grid-template-columns:1fr;gap:20px;margin-bottom:40px}
+  .cierre{grid-template-columns:1fr;gap:48px}
+}
+@media (max-width:860px){
+  nav.menu{display:none}
+  .estado{margin-left:auto}
   .cifras{grid-template-columns:repeat(2,1fr)}
   .cifra:nth-child(3){padding-left:0;border-left:0}
-  .cifra:nth-child(n+3){border-top:1px solid var(--linea)}
-  .pasos{grid-template-columns:1fr}
-  .paso + .paso{padding-left:0;border-left:0;border-top:1px solid var(--linea)}
-  .comp{font-size:14.5px}.comp th,.comp td{padding:12px}
-}
-
-/* ===== animación ===== */
-h1 .w{display:inline-block;will-change:transform}
-#mensajes{min-height:318px}
-@media (max-width:900px){#mensajes{min-height:360px}}
-.tecleando{display:inline-flex;gap:4px;padding:14px 16px;background:var(--menta-2);border-radius:20px;border-bottom-left-radius:6px;margin:10px 0}
-.tecleando i{width:7px;height:7px;border-radius:50%;background:var(--hoja);opacity:.35;animation:bote 1s infinite}
-.tecleando i:nth-child(2){animation-delay:.15s}.tecleando i:nth-child(3){animation-delay:.3s}
-@keyframes bote{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-4px);opacity:1}}
-.dx{border-radius:5px;padding:0 4px;transition:background-color .35s ease,color .35s ease;white-space:nowrap}
-.dx.r{color:var(--frambuesa);background:var(--frambuesa-2)}
-.age .dx.r{background:rgba(251,227,234,.16);color:#FFC2D2}
-.dx.f{color:var(--hoja);background:var(--menta);font-weight:600}
-.age .dx.f{color:var(--bosque)}
-.dx.mezcla{color:var(--bosque);background:#FFF4CC}
-.age .dx.mezcla{color:var(--bosque)}
-
-.cinta{overflow:hidden;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);background:var(--blanco);margin-top:8px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.cinta-pista{display:flex;gap:44px;width:max-content;padding:16px 0;animation:desfile 48s linear infinite}
-.cinta:hover .cinta-pista{animation-play-state:paused}
-.par{display:flex;align-items:center;gap:12px;font-size:16px;white-space:nowrap}
-.par s{color:var(--frambuesa);text-decoration-thickness:2px}
-.par b{color:var(--hoja);background:var(--menta);padding:2px 8px;border-radius:6px;font-weight:600}
-.par svg{flex:none}
-@keyframes desfile{to{transform:translateX(-50%)}}
-
-.comp tbody tr{will-change:transform}
-.comp .nos{position:relative;clip-path:inset(0)}
-.comp td.nos::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(207,235,217,.25),transparent);transform:translateX(-100%);pointer-events:none}
-.comp.brillo td.nos::after{animation:barrido 1.4s ease .3s 1}
-@keyframes barrido{to{transform:translateX(100%)}}
-
-.pasos{position:relative}
-.pasos .progreso{position:absolute;top:-1.5px;left:0;height:3px;width:100%;background:var(--hoja);transform-origin:left;transform:scaleX(var(--p,1))}
-.paso::before{transition:color .6s ease}
-.paso.vivo::before{color:var(--hoja)}
-
-.lista li::before{transform:scale(var(--k,1))}
-.btn:active,.ej:active{transform:scale(.97)}
-.btn,.ej{transition:background-color .2s ease,box-shadow .2s ease,transform .12s ease}
-header{transition:box-shadow .3s ease}
-header.sombra{box-shadow:0 10px 30px -14px rgba(0,0,0,.7)}
-
-@media (prefers-reduced-motion:reduce){
-  .cinta-pista{animation:none;flex-wrap:wrap;width:auto;justify-content:center;row-gap:12px}
-  .tecleando i{animation:none}
-}
-
-/* ===== versión oscura ===== */
-:root{--papel:#06140E;--blanco:#0C2219;--bosque:#E6F4EC;--hoja:#34D399;--menta:rgba(52,211,153,.16);--menta-2:#0F2A1F;
-  --tinta-suave:#9DB8AA;--linea:#1C3D30;--frambuesa:#FB7185;--frambuesa-2:rgba(251,113,133,.14);--mono:"JetBrains Mono",ui-monospace,monospace}
-html{color-scheme:dark}
-body{background:radial-gradient(1200px 600px at 75% -10%,rgba(52,211,153,.10),transparent 60%),var(--papel)}
-header{background:rgba(6,20,14,.78)}
-.btn-p{background:var(--hoja);color:#04110B} .btn-p:hover{background:#6EE7B7}
-.btn-s{box-shadow:inset 0 0 0 1.5px #2C5A47} .btn-s:hover{background:#0F2A1F}
-.chat{background:rgba(12,34,25,.82);backdrop-filter:blur(10px);box-shadow:0 40px 90px -40px rgba(0,0,0,.8),0 0 0 1px #1F4637,0 0 60px -20px rgba(52,211,153,.35)}
-.chat-top{font-family:var(--mono);font-size:12.5px}
-.cli{background:#12342A}
-.age{background:#1A4536;color:var(--bosque)}
-.age .dx.r{background:rgba(251,113,133,.16);color:#FDA4AF}
-.age .dx.f{color:#6EE7B7}
-.dx.mezcla,.age .dx.mezcla{background:rgba(253,230,138,.14);color:#FDE68A}
-.tecleando{background:#12342A}
-.cinta{background:rgba(12,34,25,.7)}
-.par{font-family:var(--mono);font-size:14.5px}
-.comp{box-shadow:0 0 0 1px var(--linea)}
-.comp thead th{background:#0F2A1F}
-.comp .nos{background:#0E3324;color:var(--bosque)}
-.comp thead .nos{background:var(--hoja);color:#04110B}
-.comp .nos .ok{color:#6EE7B7}
-.comp td.nos::after{background:linear-gradient(90deg,transparent,rgba(110,231,183,.22),transparent)}
-.panel{background:rgba(12,34,25,.85)}
-.api{background:#0E3324;color:var(--bosque);box-shadow:0 0 0 1px #1F4637}
-.api p{color:var(--tinta-suave)}
-.api dt{color:#6EE7B7}
-.api code{font-family:var(--mono)}
-.api a{color:#6EE7B7}
-.marca i::after{background:#04110B}
-.lista li::before{background:var(--menta) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%2334D399' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
-.paso::before{color:transparent;-webkit-text-stroke:1.5px #2C6B52}
-.paso.vivo::before{color:var(--hoja);-webkit-text-stroke:1.5px var(--hoja);text-shadow:0 0 24px rgba(52,211,153,.45)}
-.pasos .progreso{box-shadow:0 0 14px rgba(52,211,153,.7)}
-.cifras{border-top-color:#2C6B52}
-.cifra b{color:var(--bosque)}
-h1 .linea2{color:var(--hoja);text-shadow:0 0 40px rgba(52,211,153,.25)}
-.hero-zona{position:relative;isolation:isolate}
-#malla{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
-.estado span{font-family:var(--mono);font-size:12.5px}
-
-/* ===== menos cuadrada ===== */
-html,body{overflow-x:clip}
-.comparar.comp{box-shadow:none;background:none;border-radius:0;overflow:visible;clip-path:none}
-.luz{position:fixed;z-index:-2;border-radius:50%;filter:blur(80px);pointer-events:none;opacity:.55}
-.luz.a{width:520px;height:520px;background:#0E5A3E;top:30vh;left:-180px}
-.luz.b{width:440px;height:440px;background:#123F5A;top:120vh;right:-160px;opacity:.35}
-.luz.c{width:380px;height:380px;background:#0E5A3E;top:230vh;left:30vw;opacity:.4}
-
-.hero{padding-bottom:40px}
-.chat{transform-style:preserve-3d;transition:transform .25s ease-out;will-change:transform}
-.escena{perspective:1100px}
-
-.cinta{transform:rotate(-2.2deg) scale(1.04);margin:36px -2vw 0;border:0;background:linear-gradient(90deg,#0C2E21,#103A2A,#0C2E21);box-shadow:0 18px 40px -20px rgba(0,0,0,.8);mask-image:none}
-
-.cifras{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;border:0;margin-top:56px}
-.cifra,.cifra + .cifra{flex:1 1 200px;padding:22px 24px;border:0;background:rgba(15,42,31,.75);border-radius:26px;box-shadow:0 0 0 1px #1C3D30}
-.cifra:nth-child(2){transform:translateY(22px)}.cifra:nth-child(3){transform:translateY(-10px)}.cifra:nth-child(4){transform:translateY(14px)}
-.nota{margin-top:34px}
-
-.comparar{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:22px;align-items:start;margin-top:10px}
-.opcion{background:rgba(15,42,31,.6);border-radius:28px;padding:26px 26px 22px;box-shadow:0 0 0 1px #1C3D30}
-.opcion h3{font-family:var(--display);font-size:22px;margin:0 0 14px;letter-spacing:-.01em}
-.opcion ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.opcion li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-size:15.5px;color:var(--tinta-suave)}
-.opcion li b{font-weight:700}
-.opcion .si{color:#6EE7B7}.opcion .nn{color:var(--frambuesa)}
-.opcion.malo{opacity:.82}
-.opcion.malo:nth-child(1){margin-top:44px}.opcion.malo:nth-child(2){margin-top:12px}
-.opcion.bueno{background:linear-gradient(160deg,#105C40,#0B2E21 70%);padding:34px 32px 30px;border-radius:34px;box-shadow:0 0 0 1px #2C7A5A,0 40px 80px -30px rgba(52,211,153,.35);transform:rotate(-1.2deg)}
-.opcion.bueno h3{font-size:28px;color:#ECFDF5}
-.opcion.bueno li{color:#D1FAE5;font-size:16.5px}
-.sello{display:inline-block;background:var(--hoja);color:#04110B;font-weight:700;font-size:13px;border-radius:999px;padding:4px 12px;margin-bottom:12px}
-
-.demo{position:relative;gap:0;grid-template-columns:1fr 1fr}
-.demo .panel{border-radius:30px}
-.demo .panel:first-child{transform:rotate(-1deg);margin-right:-18px;z-index:1}
-.demo .panel:last-child{transform:translateY(46px) rotate(1deg);margin-left:-18px;z-index:2;box-shadow:0 0 0 1px #2C7A5A,0 30px 70px -30px rgba(52,211,153,.4)}
-.flecha-curva{position:absolute;left:50%;top:-26px;transform:translateX(-50%);z-index:3;width:120px;height:70px;pointer-events:none}
-.fila-demo{margin-top:66px}
-
-.pasos{display:block;border:0;position:relative;height:auto;padding:10px 0 0}
-.pasos .progreso{display:none}
-.camino{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-.paso,.paso + .paso{width:min(420px,46%);padding:0;border:0;position:relative}
-.paso:nth-of-type(1){margin-left:0}
-.paso:nth-of-type(2){margin:40px 0 0 auto}
-.paso:nth-of-type(3){margin:40px 0 0 14%}
-.paso::before{font-size:84px}
-
-.lista{display:flex;flex-wrap:wrap;gap:12px}
-.lista li{border:0;background:rgba(15,42,31,.75);box-shadow:0 0 0 1px #1C3D30;border-radius:999px;padding:12px 20px 12px 46px}
-.lista li::before{left:14px;top:50%;margin-top:-10px}
-.lista li:nth-child(even){transform:translateY(8px)}
-.api{border-radius:36px;transform:rotate(1deg)}
-.cierre{align-items:center}
-
-@media (max-width:900px){
+  .cifra:nth-child(n+3){border-top:1px solid var(--line)}
   .comparar{grid-template-columns:1fr}
-  .opcion.malo:nth-child(1),.opcion.malo:nth-child(2){margin-top:0}
-  .demo{grid-template-columns:1fr}
-  .demo .panel:first-child,.demo .panel:last-child{transform:none;margin:0}
-  .demo .panel:last-child{margin-top:14px}
-  .flecha-curva{display:none}
-  .fila-demo{margin-top:20px}
-  .paso,.paso + .paso{width:100%;margin:28px 0 0!important}
-  .camino{display:none}
-  .cifra:nth-child(n){transform:none}
-  .cinta{transform:rotate(-2deg)}
+  .opcion + .opcion{border-left:0;border-top:1px solid var(--line)}
+  .paneles{grid-template-columns:1fr}
+  .pane + .pane{border-left:0;border-top:1px solid var(--forest-line)}
+  .pasos{grid-template-columns:1fr}
+  .paso,.paso + .paso{padding:28px 0 28px;border-left:0}
+  .paso + .paso{border-top:1px solid var(--line)}
+  .paso .num{margin-bottom:20px}
+  .fila{grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);gap:4px 12px;padding:14px 20px}
+  .fila .tipo{grid-column:1/-1;font-size:13px;font-family:var(--f-mono);color:var(--muted)}
+  .fila.cab{display:none}
+  section{padding-top:96px}
+  .banda{margin-top:96px;padding:88px 0 96px}
+  footer{margin-top:96px}
 }
-
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-
-/* cifras animadas */
-.cifra{position:relative;overflow:hidden;opacity:0;translate:0 34px;scale:.96;transition:opacity .7s cubic-bezier(.22,1,.36,1),translate .8s cubic-bezier(.22,1,.36,1),scale .8s cubic-bezier(.22,1,.36,1),box-shadow .4s}
-.cifra.vista{opacity:1;translate:0 0;scale:1}
-.cifra b{font-variant-numeric:tabular-nums}
-.cifra::after{content:"";position:absolute;left:24px;right:24px;bottom:12px;height:3px;border-radius:3px;background:linear-gradient(90deg,#2E7D52,#7BE0A8);transform-origin:left;transform:scaleX(var(--p,0))}
-.cifra.listo b{animation:latido .6s cubic-bezier(.34,1.56,.64,1)}
-.cifra.listo{box-shadow:0 0 0 1px #2E7D52,0 0 34px -6px rgba(123,224,168,.45)}
-.cifra:hover{translate:0 -6px}
-@keyframes latido{0%{transform:scale(1)}40%{transform:scale(1.14);color:#7BE0A8}100%{transform:scale(1)}}
-@media (prefers-reduced-motion: reduce){.cifra{opacity:1;translate:none;scale:none;transition:none}.cifra::after{transform:scaleX(1)}.cifra.listo b{animation:none}}
-
-/* garantías: animación al pasar el cursor */
-.lista li{overflow:hidden;cursor:default;transition:translate .4s cubic-bezier(.34,1.56,.64,1),scale .4s cubic-bezier(.34,1.56,.64,1),box-shadow .35s,background-color .35s,color .35s,filter .35s !important}
-.lista li::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(123,224,168,.22) 50%,transparent 70%);translate:-120% 0;pointer-events:none}
-.lista li::before{transition:transform .45s cubic-bezier(.34,1.56,.64,1),rotate .6s cubic-bezier(.34,1.56,.64,1),scale .4s cubic-bezier(.34,1.56,.64,1),box-shadow .35s}
-.lista li:hover,.lista li.encima{translate:6px -4px;scale:1.03;background-color:rgba(22,64,46,.9);box-shadow:0 0 0 1.5px #34D399,0 14px 34px -12px rgba(52,211,153,.55);color:#F2FFF7}
-.lista li:hover::after,.lista li.encima::after{translate:120% 0;transition:translate .8s cubic-bezier(.22,1,.36,1)}
-.lista li:hover::before,.lista li.encima::before{rotate:360deg;scale:1.25;box-shadow:0 0 0 6px rgba(52,211,153,.18)}
-.lista.activa li:not(.encima){filter:brightness(.6) saturate(.7)}
-@media (prefers-reduced-motion: reduce){.lista li,.lista li::before,.lista li::after{transition:none !important}.lista li:hover{translate:none;scale:none}}
-
-/* pasos: el número resplandece al pasar el cursor */
-.paso::before{transform-origin:left bottom;transition:color .6s ease,scale .45s cubic-bezier(.34,1.56,.64,1),text-shadow .4s,filter .4s}
-.paso h3{transition:color .35s,translate .35s cubic-bezier(.34,1.56,.64,1)}
-.paso:hover::before,.paso.encima::before{color:#D1FAE5;-webkit-text-stroke:2px #6EE7B7;scale:1.2;animation:resplandor 1.6s ease-in-out infinite}
-.paso:hover h3,.paso.encima h3{color:#7BE0A8;translate:4px 0}
-@keyframes resplandor{0%,100%{text-shadow:0 0 8px #6EE7B7,0 0 24px rgba(52,211,153,.95),0 0 56px rgba(52,211,153,.7),0 0 110px rgba(52,211,153,.45)}50%{text-shadow:0 0 14px #A7F3D0,0 0 36px rgba(110,231,183,1),0 0 84px rgba(52,211,153,.85),0 0 160px rgba(52,211,153,.6)}}
-@media (prefers-reduced-motion: reduce){.paso:hover::before,.paso.encima::before{animation:none;text-shadow:0 0 30px rgba(52,211,153,.8);scale:none}}
-
-/* logo: K con candado */
-.marca .logo{width:30px;height:30px;flex:none;overflow:visible;transition:rotate .5s cubic-bezier(.34,1.56,.64,1),scale .5s cubic-bezier(.34,1.56,.64,1),filter .4s}
-.marca .logo .arco{transform-box:fill-box;transform-origin:50% 100%;animation:cierra .9s cubic-bezier(.34,1.56,.64,1) .3s both}
-.marca:hover .logo{rotate:-8deg;scale:1.1;filter:drop-shadow(0 0 10px rgba(46,245,166,.6))}
-.marca:hover .logo .arco{animation:abre .7s cubic-bezier(.34,1.56,.64,1) both}
-@keyframes cierra{0%{translate:0 -38%}60%{translate:0 6%}100%{translate:0 0}}
-@keyframes abre{0%{translate:0 0}40%{translate:0 -28%}100%{translate:0 0}}
-@media (prefers-reduced-motion: reduce){.marca .logo .arco{animation:none!important}}
-
-/* títulos y textos centrados */
-section > .wrap > h2,.cierre h2{text-align:center;margin-left:auto;margin-right:auto;text-wrap:balance}
-section > .wrap > .intro{text-align:center;margin-left:auto;margin-right:auto;text-wrap:pretty}
-.nota{text-align:center}
-.cierre > div:first-child{display:contents}
-.cierre h2{max-width:none;grid-column:1/-1;margin-bottom:8px}
-.cierre .lista{justify-content:center}
-.fila-demo{justify-content:center}
+@media (max-width:520px){
+  .wrap{padding:0 20px}
+  .bar{gap:12px;height:60px}
+  .estado span{display:none}
+  .estado{padding:10px}
+  .hero h1{font-size:clamp(40px,12vw,52px)}
+  .hero .lede{font-size:18px}
+  .acciones .btn{flex:1 1 100%}
+  .msg{grid-template-columns:1fr;gap:2px}
+  .tecleando{padding-left:0}
+  #mensajes{min-height:360px;padding:4px 16px}
+  .reg-top,.reg-pie{padding-left:16px}
+  .leyenda{gap:10px}
+  .cifra,.cifra + .cifra{padding:20px 12px 22px 0}
+  .cifra:nth-child(even){padding-left:16px}
+  .cifra span{font-size:14px}
+  .opcion{padding:24px 20px 26px}
+  .consola-top{padding:12px 16px}
+  .ej{flex:1 1 auto}
+  .pane-top,textarea,#salida{padding-left:16px;padding-right:16px}
+  .consola-pie{padding:12px 16px}
+  .consola-pie .btn{flex:1 1 100%}
+  #tiempo{margin-left:0}
+  .cambios li{grid-template-columns:1fr;gap:2px}
+  .cambios li svg{transform:rotate(90deg)}
+  .fila{grid-template-columns:minmax(0,1fr);gap:4px}
+  .fila svg{transform:rotate(90deg);width:16px;height:16px}
+  .api-top,.ep,.api-pie{padding-left:20px;padding-right:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .rev{opacity:1;transform:none}
+}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/motion@11.11.17/dist/motion.js"></script>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-<div class="luz a"></div><div class="luz b"></div><div class="luz c"></div>
-<header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-redo" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="m20 20-3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M9 17H7A5 5 0 0 1 7 7h2M15 7h2a5 5 0 0 1 0 10h-2M8 12h8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></symbol>
+  <symbol id="i-mask" viewBox="0 0 24 24"><path d="M3 7c3-1.5 6-2 9-2s6 .5 9 2c0 6-3.5 10-9 10S3 13 3 7Z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"/><path d="M8 10.5h2.5M13.5 10.5H16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.75"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.75"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header id="cabecera">
   <div class="wrap bar">
-    <a class="marca" href="#"><svg class="logo" aria-hidden="true" viewBox="360 370 530 535">
+    <a class="marca" href="#" aria-label="kipu-anon, inicio"><svg class="logo" aria-hidden="true" viewBox="360 370 530 535">
 <defs>
 <linearGradient id="logoG1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2EF5A6"/><stop offset="1" stop-color="#14D483"/></linearGradient>
 <linearGradient id="logoG2" x1="640" y1="650" x2="840" y2="860" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#032015"/><stop offset=".55" stop-color="#0E9C5E"/><stop offset="1" stop-color="#1BE08A"/></linearGradient>
 </defs>
 <path d="M700 690 L800 805" stroke="url(#logoG2)" stroke-width="150" stroke-linecap="round"/>
-
 <clipPath id="logoC1"><rect x="470" y="300" width="500" height="587"/></clipPath><path d="M420 860 L790 475" stroke="url(#logoG1)" stroke-width="160" stroke-linecap="round" clip-path="url(#logoC1)"/><rect x="377" y="387" width="218" height="500" rx="88" fill="url(#logoG1)"/>
 <path class="arco" d="M447 612 v-22 a51 51 0 0 1 102 0 v22" fill="none" stroke="#050806" stroke-width="27"/>
 <rect x="410" y="612" width="177" height="138" rx="30" fill="#050806"/>
 <circle cx="498" cy="664" r="18" fill="#2EF5A6"/><path d="M490 672 h16 l7 44 h-30z" fill="#2EF5A6"/>
 </svg>kipu-anon</a>
-    <nav><a href="#problema">El problema</a><a href="#prueba">Pruébalo</a><a href="#como">Cómo funciona</a><a href="https://github.com/ALFA117/kipu-anon">Código</a></nav>
-    <span class="estado" id="estado"><b></b><span>conectando…</span></span>
+    <nav class="menu" aria-label="Secciones"><a href="#problema">El problema</a><a href="#prueba">Pruébalo</a><a href="#como">Cómo funciona</a><a href="#api">API</a><a href="https://github.com/ALFA117/kipu-anon">Código</a></nav>
+    <span class="estado" id="estado" role="status"><b></b><span>conectando…</span></span>
   </div>
 </header>
 
 <main>
-  <div class="hero-zona"><canvas id="malla" aria-hidden="true"></canvas>
   <div class="wrap hero">
     <div>
-      <h1 id="titulo"><span class="l1">Comparte los datos.</span> <span class="linea2">No a las personas.</span></h1>
-      <p class="bajada">kipu-anon le pone a cada cliente un disfraz que no se quita: otro nombre, otra cédula, otro correo. La conversación sigue sirviendo para entrenar y nadie sabe quién es quién.</p>
+      <p class="eyebrow">Frontier CDMX/26 · Reto 1 · Seudonimización</p>
+      <h1 id="titulo">Comparte los datos. <em>No a las personas.</em></h1>
+      <p class="lede">kipu-anon le pone a cada cliente un disfraz que no se quita: otro nombre, otra cédula, otro correo. La conversación sigue sirviendo para entrenar y nadie sabe quién es quién.</p>
       <div class="acciones">
-        <a class="btn btn-p" href="#prueba">Probar con un mensaje</a>
+        <a class="btn btn-p" href="#prueba">Probar con un mensaje <svg class="flecha" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         <a class="btn btn-s" href="#como">Ver cómo funciona</a>
       </div>
+      <p class="credito">Reglas y una fórmula · sin IA generativa · código abierto</p>
     </div>
 
-    <div class="escena"><div class="chat" id="chat" aria-label="Ejemplo de conversación de soporte anonimizada">
-      <div class="chat-top"><strong>Soporte · cobros</strong><span>hoy, 9:42</span></div>
+    <figure class="registro" id="chat" aria-label="Ejemplo de conversación de soporte anonimizada" style="margin:0">
+      <div class="reg-top"><span class="pts" aria-hidden="true"><i></i><i></i><i></i></span><strong>soporte / cobros</strong><span>hoy, 9:42</span></div>
       <div id="mensajes" aria-live="off"></div>
-      <div class="chat-pie">
+      <figcaption class="reg-pie">
         <div class="leyenda"><span class="r">dato real</span><span class="f">seudónimo</span></div>
-        <button class="repetir" id="repetir" type="button">Ver de nuevo</button>
-      </div>
-    </div></div>
-  </div>
-
-
-  </div>
-  <div class="cinta" aria-label="Ejemplos de datos reales y sus disfraces (datos inventados)">
-    <div class="cinta-pista"><span class="par"><s>Valentina Ríos</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Lucía Herrera</b></span><span class="par"><s>1.032.448.910</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>1.574.203.866</b></span><span class="par"><s>jperez arroba gmail punto com</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>mgarcia arroba gmail punto com</b></span><span class="par"><s>placa KMT-482</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>placa RDV-915</b></span><span class="par"><s>CAMILA TORRES</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>JIMENA LARA</b></span><span class="par"><s>+57 311 482 9031</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>+57 320 715 4462</b></span><span class="par"><s>Calle 45 # 12-34</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Cra 18 # 77-09</b></span><span class="par"><s>soy enfermera</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>soy profesional de la salud</b></span><span class="par"><s>pasaporte AB204417</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>pasaporte KT881930</b></span><span class="par"><s>cédula terminada en 2961</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>cédula terminada en 7408</b></span><span aria-hidden="true" style="display:contents"><span class="par"><s>Valentina Ríos</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Lucía Herrera</b></span><span class="par"><s>1.032.448.910</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>1.574.203.866</b></span><span class="par"><s>jperez arroba gmail punto com</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>mgarcia arroba gmail punto com</b></span><span class="par"><s>placa KMT-482</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>placa RDV-915</b></span><span class="par"><s>CAMILA TORRES</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>JIMENA LARA</b></span><span class="par"><s>+57 311 482 9031</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>+57 320 715 4462</b></span><span class="par"><s>Calle 45 # 12-34</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Cra 18 # 77-09</b></span><span class="par"><s>soy enfermera</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>soy profesional de la salud</b></span><span class="par"><s>pasaporte AB204417</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>pasaporte KT881930</b></span><span class="par"><s>cédula terminada en 2961</s><svg width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><path d="M1 6h18M14 1l5 5-5 5" fill="none" stroke="#2E7D52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>cédula terminada en 7408</b></span></span></div>
+        <button class="repetir" id="repetir" type="button"><svg aria-hidden="true"><use href="#i-redo"/></svg>Ver de nuevo</button>
+      </figcaption>
+    </figure>
   </div>
 
   <div class="wrap">
@@ -413,84 +374,122 @@ section > .wrap > .intro{text-align:center;margin-left:auto;margin-right:auto;te
 
   <section id="problema">
     <div class="wrap">
-      <h2>Tachar no basta. Borrar tampoco.</h2>
-      <p class="intro">Las conversaciones con clientes valen mucho para entrenar modelos de atención, pero están llenas de nombres, cédulas y correos, a veces escondidos: en MAYÚSCULAS, en un archivo adjunto o escritos como "ana arroba gmail punto com".</p>
-      <div class="comparar comp">
-        <div class="opcion malo"><h3>Tachar lo obvio</h3><ul>
-          <li><b class="nn">Sí</b><span>se escapan datos escondidos en adjuntos y mayúsculas</span></li>
-          <li><b>Más o menos</b><span>sirve para entrenar</span></li>
-          <li><b class="nn">No</b><span>sabe quién es quién</span></li></ul></div>
-        <div class="opcion malo"><h3>Borrar todo</h3><ul>
-          <li><b class="si">No</b><span>se escapa nadie</span></li>
-          <li><b class="nn">No</b><span>sirve: queda un texto lleno de huecos</span></li>
-          <li><b class="nn">No</b><span>sabe quién es quién</span></li></ul></div>
-        <div class="opcion bueno"><span class="sello">kipu-anon</span><h3>Disfrazar</h3><ul>
-          <li><b class="si">✓</b><span>No se escapa nadie: busca en texto, adjuntos y metadatos.</span></li>
-          <li><b class="si">✓</b><span>La conversación queda completa para entrenar.</span></li>
-          <li><b class="si">✓</b><span>Cada persona tiene el mismo disfraz en chats, documentos y tablas.</span></li></ul></div>
+      <div class="cabeza rev">
+        <div><p class="eyebrow">01 · El problema</p><h2 class="display">Tachar no basta. <em>Borrar tampoco.</em></h2></div>
+        <p class="lede">Las conversaciones con clientes valen mucho para entrenar modelos de atención, pero están llenas de nombres, cédulas y correos, a veces escondidos: en mayúsculas, en un archivo adjunto o escritos como «ana arroba gmail punto com».</p>
+      </div>
+      <div class="comparar rev">
+        <div class="opcion"><span class="tag">Opción A</span><h3>Tachar lo obvio</h3><ul>
+          <li><svg class="ic-no" aria-label="Problema"><use href="#i-x"/></svg><span>Se escapan datos escondidos en adjuntos y mayúsculas.</span></li>
+          <li><svg class="ic-medio" aria-label="A medias"><use href="#i-minus"/></svg><span>Sirve más o menos para entrenar.</span></li>
+          <li><svg class="ic-no" aria-label="No"><use href="#i-x"/></svg><span>No sabe quién es quién.</span></li></ul></div>
+        <div class="opcion"><span class="tag">Opción B</span><h3>Borrar todo</h3><ul>
+          <li><svg class="ic-si" aria-label="Sí"><use href="#i-check"/></svg><span>No se escapa nadie.</span></li>
+          <li><svg class="ic-no" aria-label="No"><use href="#i-x"/></svg><span>No sirve: queda un texto lleno de huecos.</span></li>
+          <li><svg class="ic-no" aria-label="No"><use href="#i-x"/></svg><span>No sabe quién es quién.</span></li></ul></div>
+        <div class="opcion bueno"><span class="tag">kipu-anon</span><h3>Disfrazar</h3><ul>
+          <li><svg class="ic-si" aria-label="Sí"><use href="#i-check"/></svg><span>No se escapa nadie: busca en texto, adjuntos y metadatos.</span></li>
+          <li><svg class="ic-si" aria-label="Sí"><use href="#i-check"/></svg><span>La conversación queda completa para entrenar.</span></li>
+          <li><svg class="ic-si" aria-label="Sí"><use href="#i-check"/></svg><span>Cada persona tiene el mismo disfraz en chats, documentos y tablas.</span></li></ul></div>
       </div>
     </div>
   </section>
 
-  <section id="prueba">
+  <section id="prueba" class="banda">
     <div class="wrap">
-      <h2>Escribe un mensaje y míralo cambiar.</h2>
-      <p class="intro">Usa datos inventados. Cada nombre, cédula, correo o placa sale con un reemplazo creíble, y si mandas a la misma persona dos veces, recibe el mismo disfraz.</p>
-      <div class="demo"><svg class="flecha-curva" viewBox="0 0 120 70" aria-hidden="true"><path d="M8 18 C 40 -6, 80 -6, 104 40" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 7"/><path d="M96 36 L105 42 L108 31" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div class="panel">
-          <h3>Tu mensaje <small>se procesa y no se guarda</small></h3>
-          <textarea id="entrada" aria-label="Mensaje a anonimizar">Hola, me llamo Lucía Bermúdez. Me cobraron una cuota que ya pagué. Mi cédula es 1.094.552.318 y mi correo es lucia.bermudez arroba gmail punto com. Soy fotógrafa y vivo en Granada.</textarea>
+      <div class="cabeza">
+        <div><p class="eyebrow">02 · Pruébalo</p><h2 class="display">Escribe un mensaje <em>y míralo cambiar.</em></h2></div>
+        <p class="lede">Usa datos inventados. Cada nombre, cédula, correo o placa sale con un reemplazo creíble, y si mandas a la misma persona dos veces, recibe el mismo disfraz.</p>
+      </div>
+
+      <div class="consola">
+        <div class="consola-top">
+          <span class="ruta"><b>POST</b> /v1/anonymize</span>
+          <div class="ejemplos" role="group" aria-label="Ejemplos">
+            <button class="ej" type="button" aria-pressed="false" data-t="Encontré una cuenta a nombre de CAMILA URREGO VILLALBA. Te paso con una persona del equipo.">Nombre en mayúsculas</button>
+            <button class="ej" type="button" aria-pressed="false" data-t="el carro lo maneja mi esposo, placa XQW318, y mi pasaporte es PE904173">Placa y pasaporte</button>
+            <button class="ej" type="button" aria-pressed="false" data-t="Pagué con Nequi en Carulla y fui a Plaza Botero a ver a Shakira.">Marcas y famosos</button>
+          </div>
         </div>
-        <div class="panel" aria-live="polite">
-          <h3>Así queda <small id="tiempo-panel"></small></h3>
-          <div id="salida"><span class="vacio">Presiona Anonimizar o elige un ejemplo.</span></div>
+        <div class="paneles">
+          <div class="pane">
+            <label class="pane-top" for="entrada">Tu mensaje <small>se procesa y no se guarda</small></label>
+            <textarea id="entrada" spellcheck="false">Hola, me llamo Lucía Bermúdez. Me cobraron una cuota que ya pagué. Mi cédula es 1.094.552.318 y mi correo es lucia.bermudez arroba gmail punto com. Soy fotógrafa y vivo en Granada.</textarea>
+          </div>
+          <div class="pane" aria-live="polite">
+            <div class="pane-top">Así queda <small id="tiempo-panel">seudónimos resaltados</small></div>
+            <div id="salida"><span class="vacio">Presiona «Anonimizar» o elige un ejemplo.</span></div>
+          </div>
+        </div>
+        <div class="consola-pie">
+          <button class="btn btn-p" id="anonimizar" type="button"><span class="giro" aria-hidden="true"></span>Anonimizar <svg class="flecha" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <span class="aviso"><svg aria-hidden="true"><use href="#i-lock"/></svg>Bancos, ciudades y montos no se tocan.</span>
+          <span id="tiempo" class="mono"></span>
         </div>
       </div>
-      <div class="fila-demo">
-        <button class="btn btn-p" id="anonimizar" type="button">Anonimizar</button>
-        <button class="ej" data-t="Encontré una cuenta a nombre de CAMILA URREGO VILLALBA. Te paso con una persona del equipo.">Nombre en mayúsculas</button>
-        <button class="ej" data-t="el carro lo maneja mi esposo, placa XQW318, y mi pasaporte es PE904173">Placa y pasaporte</button>
-        <button class="ej" data-t="Pagué con Nequi en Carulla y fui a Plaza Botero a ver a Shakira.">Marcas y famosos</button>
-        <span id="tiempo"></span>
+
+      <div class="cambios" id="cambios-caja" hidden>
+        <h3>Reemplazos en este mensaje</h3>
+        <ol id="fichas"></ol>
       </div>
-      <div class="fichas" id="fichas"></div>
     </div>
   </section>
 
   <section id="como">
     <div class="wrap">
-      <h2>Tres pasos, siempre en el mismo orden.</h2>
-      <p class="intro">Sin IA generativa: reglas y una fórmula. Por eso da siempre el mismo resultado, es rápido y no inventa ni borra datos del negocio.</p>
-      <div class="pasos"><span class="progreso" aria-hidden="true"></span><svg class="camino" aria-hidden="true"><path id="ruta" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 0"/></svg>
-        <div class="paso"><h3>Encontrar</h3><p>Busca nombres, cédulas, celulares, correos, placas y direcciones, aunque estén en mayúsculas, deletreados o dentro de un archivo.</p></div>
-        <div class="paso"><h3>Reconocer a cada quien</h3><p>Une todo lo de una persona por su cédula, correo o número de cliente. Dos personas con el mismo nombre no se mezclan.</p></div>
-        <div class="paso"><h3>Disfrazar</h3><p>Le da un reemplazo creíble y fijo: mismo género, cédula válida, correo con el mismo formato. Bancos, ciudades y montos no se tocan.</p></div>
+      <div class="cabeza rev">
+        <div><p class="eyebrow">03 · Cómo funciona</p><h2 class="display">Tres pasos, <em>siempre en el mismo orden.</em></h2></div>
+        <p class="lede">Sin IA generativa: reglas y una fórmula. Por eso da siempre el mismo resultado, es rápido y no inventa ni borra datos del negocio.</p>
+      </div>
+      <div class="pasos rev">
+        <div class="paso"><div class="num">01 <svg aria-hidden="true"><use href="#i-search"/></svg></div><h3>Encontrar</h3><p>Busca nombres, cédulas, celulares, correos, placas y direcciones, aunque estén en mayúsculas, deletreados o dentro de un archivo.</p></div>
+        <div class="paso"><div class="num">02 <svg aria-hidden="true"><use href="#i-link"/></svg></div><h3>Reconocer a cada quien</h3><p>Une todo lo de una persona por su cédula, correo o número de cliente. Dos personas con el mismo nombre no se mezclan.</p></div>
+        <div class="paso"><div class="num">03 <svg aria-hidden="true"><use href="#i-mask"/></svg></div><h3>Disfrazar</h3><p>Le da un reemplazo creíble y fijo: mismo género, cédula válida, correo con el mismo formato. Bancos, ciudades y montos no se tocan.</p></div>
+      </div>
+
+      <div class="libro rev" style="margin-top:72px" role="table" aria-label="Ejemplos de datos y sus disfraces (datos inventados)">
+        <div class="libro-top"><strong>Tabla de equivalencias</strong><span>ejemplo · datos inventados</span></div>
+        <div class="fila cab" role="row"><span role="columnheader">Tipo de dato</span><span role="columnheader">Original</span><span aria-hidden="true"></span><span role="columnheader">Disfraz</span></div>
+        <div class="fila" role="row"><span class="tipo" role="cell">Nombre</span><s role="cell">Valentina Ríos</s><svg aria-hidden="true"><use href="#i-arrow"/></svg><b role="cell">Lucía Herrera</b></div>
+        <div class="fila" role="row"><span class="tipo" role="cell">Nombre en mayúsculas</span><s role="cell">CAMILA TORRES</s><svg aria-hidden="true"><use href="#i-arrow"/></svg><b role="cell">JIMENA LARA</b></div>
+        <div class="fila" role="row"><span class="tipo" role="cell">Cédula</span><s role="cell">1.032.448.910</s><svg aria-hidden="true"><use href="#i-arrow"/></svg><b role="cell">1.574.203.866</b></div>
+        <div class="fila" role="row"><span class="tipo" role="cell">Correo deletreado</span><s role="cell">jperez arroba gmail punto com</s><svg aria-hidden="true"><use href="#i-arrow"/></svg><b role="cell">mgarcia arroba gmail punto com</b></div>
+        <div class="fila" role="row"><span class="tipo" role="cell">Celular</span><s role="cell">+57 311 482 9031</s><svg aria-hidden="true"><use href="#i-arrow"/></svg><b role="cell">+57 320 715 4462</b></div>
+        <div class="fila" role="row"><span class="tipo" role="cell">Dirección</span><s role="cell">Calle 45 # 12-34</s><svg aria-hidden="true"><use href="#i-arrow"/></svg><b role="cell">Cra 18 # 77-09</b></div>
+        <div class="fila" role="row"><span class="tipo" role="cell">Placa</span><s role="cell">KMT-482</s><svg aria-hidden="true"><use href="#i-arrow"/></svg><b role="cell">RDV-915</b></div>
+        <div class="fila" role="row"><span class="tipo" role="cell">Pasaporte</span><s role="cell">AB204417</s><svg aria-hidden="true"><use href="#i-arrow"/></svg><b role="cell">KT881930</b></div>
+        <div class="fila" role="row"><span class="tipo" role="cell">Profesión (se generaliza)</span><s role="cell">soy enfermera</s><svg aria-hidden="true"><use href="#i-arrow"/></svg><b role="cell">soy profesional de la salud</b></div>
       </div>
     </div>
   </section>
 
-  <section>
+  <section id="api">
     <div class="wrap cierre">
-      <div>
-        <h2>Útil para entrenar. Inútil para espiar.</h2>
+      <div class="rev">
+        <p class="eyebrow">04 · Garantías</p>
+        <h2 class="display">Útil para entrenar. <em>Inútil para espiar.</em></h2>
         <ul class="lista">
-          <li>La misma persona tiene el mismo disfraz en chats, documentos y tablas.</li>
-          <li>Dos personas que se llaman igual reciben disfraces distintos.</li>
-          <li>Cuando llegan datos nuevos, las personas de antes conservan su disfraz.</li>
-          <li>"Soy contadora en Granada desde 2024" pasa a "profesional de finanzas en Cali desde hace unos años".</li>
-          <li>Ningún dato inventado coincide con uno real.</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>La misma persona tiene el mismo disfraz en chats, documentos y tablas.</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Dos personas que se llaman igual reciben disfraces distintos.</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Cuando llegan datos nuevos, las personas de antes conservan su disfraz.</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>«Soy contadora en Granada desde 2024» pasa a «profesional de finanzas en Cali desde hace unos años».</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Ningún dato inventado coincide con uno real.</li>
         </ul>
       </div>
-      <div class="api">
-        <h3>Para desarrolladores</h3>
-        <p>Un servicio web: regenera el corpus completo y anonimiza mensajes nuevos con los mismos seudónimos.</p>
-        <dl>
-          <dt>GET</dt><dd><code>/v1/health</code> estado del servicio</dd>
-          <dt>POST</dt><dd><code>/v1/run</code> procesa todas las fuentes</dd>
-          <dt>GET</dt><dd><code>/v1/output/{archivo}</code> descarga el resultado</dd>
-          <dt>POST</dt><dd><code>/v1/anonymize</code> anonimiza mensajes nuevos</dd>
-        </dl>
-        <a href="https://github.com/ALFA117/kipu-anon">Ver el código en GitHub</a>
+      <div class="api rev">
+        <div class="api-top">
+          <p class="eyebrow" style="margin-bottom:12px">Para desarrolladores</p>
+          <h3>Un servicio web</h3>
+          <p>Regenera el corpus completo y anonimiza mensajes nuevos con los mismos seudónimos.</p>
+        </div>
+        <div class="ep"><span class="m">GET</span><code>/v1/health<em class="vivo" style="font-style:normal">en línea</em></code><span>Estado del servicio.</span></div>
+        <div class="ep"><span class="m post">POST</span><code>/v1/anonymize<em class="vivo" style="font-style:normal">en línea</em></code><span>Anonimiza mensajes nuevos. Es el que usa la demo.</span></div>
+        <div class="ep"><span class="m post">POST</span><code>/v1/run</code><span>Procesa todas las fuentes del reto.</span></div>
+        <div class="ep"><span class="m">GET</span><code>/v1/output/{archivo}</code><span>Descarga el resultado.</span></div>
+        <div class="api-pie">
+          <code class="mono" style="font-size:13px">/v1/run</code> y <code class="mono" style="font-size:13px">/v1/output</code> leen las fuentes del hackathon, que ya cerraron; hoy el servicio responde <code class="mono" style="font-size:13px">/health</code> y <code class="mono" style="font-size:13px">/anonymize</code>.
+          <br><a href="https://github.com/ALFA117/kipu-anon"><svg aria-hidden="true"><use href="#i-github"/></svg>Ver el código en GitHub</a>
+        </div>
       </div>
     </div>
   </section>
@@ -502,45 +501,30 @@ section > .wrap > .intro{text-align:center;margin-left:auto;margin-right:auto;te
 (function(){
   const API = location.protocol === "file:" ? "https://kipu-anon.vercel.app" : "";
   const $ = id => document.getElementById(id);
-  // animación del hero: una sola vez al cargar, repetible con el botón
-  const chat = $("chat");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const M = window.Motion;
-  const vivo = !reduce && M && M.animate;
   const espera = ms => new Promise(r => setTimeout(r, ms));
-  // anima con Motion y garantiza el estado final aunque el navegador no pinte (pestaña oculta)
-  function play(el, kf, opt = {}){
-    if (!el) return;
-    const fin = {}; for (const k in kf) fin[k] = Array.isArray(kf[k]) ? kf[k][kf[k].length - 1] : kf[k];
-    if (vivo) { try { M.animate(el, kf, opt); } catch(e){} }
-    const t = ((opt.delay || 0) + (opt.duration || .5)) * 1000 + 350;
-    setTimeout(() => { for (const k in fin) el.style[k] = fin[k]; }, vivo ? t : 0);
-  }
-  const alVer = (el, fn, amount = .35) => {
-    if (!el) return;
-    if (vivo && M.inView) M.inView(el, () => { fn(); }, { amount });
-    else fn();
-  };
+  const anima = (el, kf, o) => { if (!reduce && el.animate) try { el.animate(kf, Object.assign({ easing: "cubic-bezier(.22,1,.36,1)", fill: "none" }, o)); } catch(e){} };
 
-  // 1. título palabra por palabra
-  const h = $("titulo");
-  h.querySelectorAll(".l1, .linea2").forEach(sp => {
-    sp.innerHTML = sp.textContent.split(" ").map(w => '<span class="w">' + w + '</span>').join(" ");
-  });
-  if (vivo) h.querySelectorAll(".w").forEach((w, i) => {
-    w.style.opacity = 0; w.style.transform = "translateY(40%)";
-    play(w, { opacity: [0, 1], transform: ["translateY(40%)", "translateY(0%)"] }, { duration: .6, delay: .08 * i, ease: [.22, 1, .36, 1] });
-  });
+  // encabezado con borde al bajar
+  const hd = $("cabecera");
+  addEventListener("scroll", () => hd.classList.toggle("borde", scrollY > 8), { passive: true });
 
-  // 2. chat: llegan los mensajes y cada dato se descifra hasta su disfraz
+  // entradas por scroll (el contenido ya es visible sin JS)
+  const revs = document.querySelectorAll(".rev");
+  if ("IntersectionObserver" in window && !reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visto"); io.unobserve(e.target); } }), { threshold: .12, rootMargin: "0px 0px -40px 0px" });
+    revs.forEach(r => io.observe(r));
+  } else revs.forEach(r => r.classList.add("visto"));
+
+  // conversación del hero: cada dato se descifra hasta su disfraz
   const guion = [
     { q: "cli", t: "Hola, me llamo {Lucía Bermúdez|Irene Estrada}. Me cobraron una cuota que ya pagué." },
     { q: "age", t: "Hola {Lucía|Irene}, ¿me confirmas tu cédula?" },
     { q: "cli", t: "Claro, es {1.094.552.318|1.668.562.693} y mi correo {lucia.bermudez@gmail.com|iestrada@gmail.com}. Pagué por PSE desde Bancolombia." }
   ];
-  const quien = { cli: "Cliente", age: "Agente" };
-  const SIGNOS = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@.";
-  function descifrar(el, final, ms = 700){
+  const quien = { cli: "cliente", age: "agente" };
+  const SIGNOS = "abcdefghijklmnopqrstuvwxyz0123456789";
+  function descifrar(el, final, ms = 600){
     return new Promise(res => {
       if (reduce) { el.textContent = final; return res(); }
       const ini = el.textContent, n = Math.max(ini.length, final.length), t0 = Date.now();
@@ -555,7 +539,7 @@ section > .wrap > .intro{text-align:center;margin-left:auto;margin-right:auto;te
         }
         el.textContent = out;
         if (p >= 1) { clearInterval(iv); el.textContent = final; el.classList.remove("mezcla"); res(); }
-      }, 40);
+      }, 45);
     });
   }
   const caja = $("mensajes");
@@ -568,196 +552,66 @@ section > .wrap > .intro{text-align:center;margin-left:auto;margin-right:auto;te
       if (mia !== corrida) return;
       if (m.q === "cli" && !reduce) {
         const tk = document.createElement("div"); tk.className = "tecleando"; tk.innerHTML = "<i></i><i></i><i></i>";
-        caja.appendChild(tk); await espera(650); tk.remove();
+        caja.appendChild(tk); await espera(550); tk.remove();
+        if (mia !== corrida) return;
       }
       const b = document.createElement("div");
-      b.className = "burbuja " + m.q;
-      b.innerHTML = '<span class="quien">' + quien[m.q] + '</span>' +
-        m.t.replace(/\{([^|}]+)\|([^}]+)\}/g, (_, a, z) => '<span class="dx r" data-f="' + z + '">' + a + '</span>');
+      b.className = "msg " + m.q;
+      b.innerHTML = '<span class="quien">' + quien[m.q] + '</span><p>' +
+        m.t.replace(/\{([^|}]+)\|([^}]+)\}/g, (_, a, z) => '<span class="dx r" data-f="' + z + '">' + a + '</span>') + '</p>';
       caja.appendChild(b);
-      play(b, { opacity: [0, 1], transform: ["translateY(12px) scale(.98)", "translateY(0) scale(1)"] }, { duration: .4, ease: [.22, 1, .36, 1] });
+      anima(b, [{ opacity: 0, transform: "translateY(6px)" }, { opacity: 1, transform: "none" }], { duration: 320 });
       b.querySelectorAll(".dx").forEach(d => datos.push(d));
-      await espera(reduce ? 0 : 500);
+      await espera(reduce ? 0 : 420);
     }
     await espera(reduce ? 0 : 500);
     for (const d of datos) {
       if (mia !== corrida) return;
       d.classList.remove("r");
-      await descifrar(d, d.dataset.f, 650);
+      await descifrar(d, d.dataset.f, 560);
       d.classList.add("f");
-      play(d, { transform: ["scale(1.12)", "scale(1)"] }, { type: "spring", bounce: .5, duration: .4 });
-      await espera(reduce ? 0 : 180);
+      await espera(reduce ? 0 : 140);
     }
   }
-  let bucle = null;
-  const iniciar = () => { escena(); clearInterval(bucle); if (!reduce) bucle = setInterval(escena, 14000); };
-  if (vivo && M.inView) M.inView(chat, () => { iniciar(); return () => clearInterval(bucle); }, { amount: .4 });
-  else escena();
-  $("repetir").onclick = iniciar;
+  const chat = $("chat");
+  if ("IntersectionObserver" in window && !reduce) {
+    let hecho = false;
+    new IntersectionObserver(es => { if (es[0].isIntersecting && !hecho) { hecho = true; escena(); } }, { threshold: .3 }).observe(chat);
+  } else escena();
+  $("repetir").onclick = escena;
 
-  // 4. cifras: entran escalonadas, cuentan desde 0 y la barra se llena; se repite cada vez que entran en pantalla
+  // cifras: cuentan una vez al entrar
   const cajas = [...document.querySelectorAll(".cifra")];
-  const contar = (caja, i) => {
-    const b = caja.querySelector("b[data-n]"); if (!b) return;
+  const contar = (c, i) => {
+    const b = c.querySelector("b[data-n]"); if (!b) return;
     const n = +b.dataset.n, pre = b.dataset.p || "", suf = b.dataset.s || "";
     const fmt = v => pre + (b.dataset.f === "miles" ? Math.round(v).toLocaleString("es-CO") : Math.round(v)) + suf;
-    clearInterval(caja._iv); caja.classList.remove("listo"); caja.style.setProperty("--p", 0);
-    if (reduce) { b.textContent = fmt(n); caja.style.setProperty("--p", 1); return; }
-    b.textContent = n === 0 ? pre + "9" + suf : fmt(0);
-    const t0 = Date.now() + 250 + i * 180, dur = n === 0 ? 1100 : 1700;
-    caja._iv = setInterval(() => {
-      const p = Math.max(0, Math.min(1, (Date.now() - t0) / dur)), e = 1 - Math.pow(1 - p, 4);
-      // el cero "rueda" como tragamonedas y se detiene en 0
-      b.textContent = n === 0 ? (p < 1 ? pre + Math.floor(Math.random() * 10) + suf : fmt(0)) : (n < 10 && p < 1 ? pre + (n * e).toFixed(1).replace(".", ",") + suf : fmt(n * e));
-      caja.style.setProperty("--p", e);
-      if (p >= 1) { clearInterval(caja._iv); caja.classList.add("listo"); }
-    }, 40);
+    if (reduce || n === 0) { b.textContent = fmt(n); return; }
+    const t0 = performance.now() + i * 120, dur = 1300;
+    const paso = t => { const p = Math.max(0, Math.min(1, (t - t0) / dur)), e = 1 - Math.pow(1 - p, 4); b.textContent = fmt(n * e); if (p < 1) requestAnimationFrame(paso); };
+    b.textContent = fmt(0); requestAnimationFrame(paso);
   };
   if ("IntersectionObserver" in window && !reduce) {
-    const io = new IntersectionObserver(es => es.forEach(en => {
-      const caja = en.target, i = cajas.indexOf(caja);
-      if (en.isIntersecting) { caja.style.transitionDelay = (i * .12) + "s"; caja.classList.add("vista"); contar(caja, i); }
-      else if (en.boundingClientRect.top > 0) { caja.style.transitionDelay = "0s"; caja.classList.remove("vista", "listo"); clearInterval(caja._iv); }
-    }), { threshold: .35 });
+    const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { contar(en.target, cajas.indexOf(en.target)); io.unobserve(en.target); } }), { threshold: .5 });
     cajas.forEach(c => io.observe(c));
-  } else cajas.forEach((c, i) => { c.classList.add("vista"); contar(c, i); });
-
-  // 5. tabla: filas escalonadas y barrido en la columna de kipu-anon
-  const tabla = document.querySelector(".comp");
-  alVer(tabla, () => {
-    tabla.querySelectorAll("tbody tr").forEach((tr, i) => play(tr, { opacity: [0, 1], transform: ["translateX(-16px)", "translateX(0)"] }, { duration: .5, delay: .12 * i, ease: [.22, 1, .36, 1] }));
-    tabla.classList.add("brillo");
-  });
-
-  // 7. pasos: la línea avanza y cada número se enciende
-  const pasos = document.querySelector(".pasos");
-  alVer(pasos, () => {
-    const barra = pasos.querySelector(".progreso");
-    play(barra, { transform: ["scaleX(0)", "scaleX(1)"] }, { duration: 1.6, ease: [.65, 0, .35, 1] });
-    pasos.querySelectorAll(".paso").forEach((p, i) => {
-      setTimeout(() => p.classList.add("vivo"), reduce ? 0 : 300 + i * 500);
-      play(p, { opacity: [0, 1], transform: ["translateY(18px)", "translateY(0)"] }, { duration: .55, delay: .25 + i * .5, ease: [.22, 1, .36, 1] });
-    });
-  });
-
-  // 8. garantías: palomitas una tras otra
-  const lista = document.querySelector(".lista");
-  alVer(lista, () => {
-    lista.querySelectorAll("li").forEach((li, i) => {
-      play(li, { opacity: [0, 1], transform: ["translateX(-10px)", "translateX(0)"] }, { duration: .45, delay: .1 * i });
-      if (vivo) { li.style.setProperty("--k", 0); setTimeout(() => li.style.setProperty("--k", 1), 100 * i + 250); li.style.transition = "none"; }
-    });
-  });
-  // garantías: animación al pasar el cursor (también funciona en pantallas táctiles con mouse)
-  document.querySelectorAll(".lista li").forEach(li => {
-    const ul = li.parentElement;
-    li.addEventListener("pointerenter", () => { li.classList.add("encima"); ul.classList.add("activa"); });
-    li.addEventListener("pointerleave", () => { li.classList.remove("encima"); if (!ul.querySelector(".encima")) ul.classList.remove("activa"); });
-  });
-  document.querySelectorAll(".paso").forEach(p => {
-    p.addEventListener("pointerenter", () => p.classList.add("encima"));
-    p.addEventListener("pointerleave", () => p.classList.remove("encima"));
-  });
-  // la palomita usa transición CSS para el pop
-  document.querySelectorAll(".lista li").forEach(li => li.style.cssText += ";");
-  const css = document.createElement("style"); css.textContent = ".lista li::before{transition:transform .45s cubic-bezier(.34,1.56,.64,1)}"; document.head.appendChild(css);
-
-
-  // fondo del inicio: malla que gira y partículas que entran rojas y salen verdes al cruzar el filtro
-  (function(){
-    const cv = $("malla"), ctx = cv.getContext("2d");
-    let W, H, dpr, pts = [], parts = [], ang = 0, activo = true;
-    const N = 72, R = () => Math.min(W, H) * .42;
-    for (let i = 0; i < N; i++) { const y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(1 - y*y), t = i * 2.399963; pts.push([Math.cos(t)*r, y, Math.sin(t)*r]); }
-    const pares = []; for (let i = 0; i < N; i++) for (let j = i+1; j < N; j++) { const a = pts[i], b = pts[j]; const d = Math.hypot(a[0]-b[0], a[1]-b[1], a[2]-b[2]); if (d < .42) pares.push([i, j]); }
-    function talla(){ dpr = Math.min(2, devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
-    function nueva(x){ return { x: x ?? -20 - Math.random()*W*.3, y: H*.12 + Math.random()*H*.76, v: .6 + Math.random()*1.1, r: 1.2 + Math.random()*1.6 }; }
-    talla(); addEventListener("resize", talla);
-    const cuantas = innerWidth < 700 ? 22 : 46;
-    for (let i = 0; i < cuantas; i++) parts.push(nueva(Math.random()*W));
-    function cuadro(){
-      ctx.clearRect(0, 0, W, H);
-      const cx = W * (innerWidth < 900 ? .5 : .74), cy = H * .5, rr = R();
-      const ca = Math.cos(ang), sa = Math.sin(ang), cb = Math.cos(.35), sb = Math.sin(.35);
-      const P = pts.map(([x,y,z]) => { const X = x*ca + z*sa, Z = -x*sa + z*ca; const Y = y*cb - Z*sb, Z2 = y*sb + Z*cb; const k = 2.6/(2.6 + Z2); return [cx + X*rr*k, cy + Y*rr*k, Z2]; });
-      for (const [i, j] of pares) { const a = P[i], b = P[j]; const prof = (2 - (a[2]+b[2])/2) / 3; ctx.strokeStyle = "rgba(52,211,153," + (.06 + prof*.16).toFixed(3) + ")"; ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); }
-      for (const p of P) { ctx.fillStyle = "rgba(110,231,183," + (.25 + (1 - p[2])*.3).toFixed(3) + ")"; ctx.beginPath(); ctx.arc(p[0], p[1], 1.6, 0, 6.283); ctx.fill(); }
-      // línea de filtro
-      const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "rgba(52,211,153,0)"); g.addColorStop(.5, "rgba(52,211,153,.35)"); g.addColorStop(1, "rgba(52,211,153,0)");
-      ctx.fillStyle = g; ctx.fillRect(cx - .75, 0, 1.5, H);
-      for (const q of parts) {
-        const antes = q.x < cx;
-        ctx.fillStyle = antes ? "rgba(251,113,133,.85)" : "rgba(52,211,153,.9)";
-        ctx.shadowColor = ctx.fillStyle; ctx.shadowBlur = Math.abs(q.x - cx) < 14 ? 16 : 6;
-        ctx.beginPath(); ctx.arc(q.x, q.y, Math.abs(q.x - cx) < 14 ? q.r*1.9 : q.r, 0, 6.283); ctx.fill();
-        ctx.shadowBlur = 0;
-        if (activo && !reduce) { q.x += q.v; if (q.x > W + 20) Object.assign(q, nueva()); }
-      }
-      if (activo && !reduce) ang += .0022;
-    }
-    function ciclo(){ if (activo) cuadro(); if (!reduce) requestAnimationFrame(ciclo); }
-    document.addEventListener("visibilitychange", () => { activo = !document.hidden; });
-    if ("IntersectionObserver" in window) new IntersectionObserver(e => { activo = e[0].isIntersecting && !document.hidden; }).observe(cv);
-    cuadro(); if (!reduce) requestAnimationFrame(ciclo);
-  })();
-
-
-  // chat con perspectiva: se inclina siguiendo el puntero
-  if (!reduce && matchMedia("(pointer:fine)").matches) {
-    const zona = document.querySelector(".hero");
-    zona.addEventListener("pointermove", e => {
-      const r = chat.getBoundingClientRect(), x = (e.clientX - (r.left + r.width/2)) / innerWidth, y = (e.clientY - (r.top + r.height/2)) / innerHeight;
-      chat.style.transform = "rotateY(" + (x*14).toFixed(2) + "deg) rotateX(" + (-y*10).toFixed(2) + "deg)";
-    });
-    zona.addEventListener("pointerleave", () => { chat.style.transform = "rotateY(-6deg) rotateX(3deg)"; });
-    chat.style.transform = "rotateY(-6deg) rotateX(3deg)";
   }
 
-  // ruta curva que une los pasos en zigzag y se dibuja al llegar
-  function trazarRuta(){
-    const caja = pasos.getBoundingClientRect(), ps = [...pasos.querySelectorAll(".paso")].map(p => p.getBoundingClientRect());
-    const ruta = document.getElementById("ruta"); if (!ruta || innerWidth < 900) return;
-    const pt = r => [r.left - caja.left + 34, r.top - caja.top + 38];
-    const [a, b, c] = ps.map(pt);
-    ruta.setAttribute("d", `M${a[0]+50} ${a[1]-10} C ${a[0]+420} ${a[1]-60}, ${b[0]-60} ${b[1]-170}, ${b[0]-18} ${b[1]-6} C ${b[0]-90} ${b[1]+60}, ${c[0]+420} ${c[1]-160}, ${c[0]+50} ${c[1]-8}`);
-    const L = ruta.getTotalLength(); ruta.style.strokeDasharray = L; ruta.style.strokeDashoffset = ruta.dataset.hecho ? 0 : L;
-    return L;
-  }
-  trazarRuta(); addEventListener("resize", trazarRuta);
-  alVer(pasos, () => { const ruta = document.getElementById("ruta"); if (!ruta) return; ruta.dataset.hecho = 1;
-    if (reduce) { ruta.style.strokeDashoffset = 0; return; }
-    ruta.style.transition = "stroke-dashoffset 1.8s cubic-bezier(.65,0,.35,1)"; requestAnimationFrame(() => ruta.style.strokeDashoffset = 0);
-    setTimeout(() => ruta.style.strokeDashoffset = 0, 2000); });
-
-  // tarjetas de comparación: entran y la de kipu-anon se eleva
-  const comp = document.querySelector(".comparar");
-  alVer(comp, () => {
-    comp.querySelectorAll(".opcion").forEach((o, i) => {
-      // mismas funciones y unidades en ambos extremos: si no, el resorte genera keyframes inválidos
-      const fin = o.classList.contains("bueno") ? "rotate(-1.2deg) translateY(0px) scale(1)" : "translateY(0px)";
-      play(o, { opacity: [0, 1], transform: [o.classList.contains("bueno") ? "rotate(2deg) translateY(50px) scale(0.94)" : "translateY(30px)", fin] },
-        { duration: .7, delay: .15 * i, type: o.classList.contains("bueno") ? "spring" : undefined, bounce: .35, ease: [.22, 1, .36, 1] });
-    });
-  });
-
-  // luces de fondo con el scroll
-  if (!reduce) { const luces = [...document.querySelectorAll(".luz")];
-    addEventListener("scroll", () => { const y = scrollY; luces.forEach((l, i) => l.style.transform = "translateY(" + (-y * (.08 + i*.05)).toFixed(1) + "px)"); }, { passive: true }); }
-
-  // encabezado con sombra al bajar
-  const hd = document.querySelector("header");
-  addEventListener("scroll", () => hd.classList.toggle("sombra", scrollY > 8), { passive: true });
-
+  // estado del servicio
   fetch(API + "/v1/health").then(r => r.ok ? r.json() : Promise.reject()).then(() => {
     $("estado").classList.add("ok"); $("estado").lastElementChild.textContent = "servicio en línea";
-  }).catch(() => { $("estado").lastElementChild.textContent = "servicio no disponible"; });
+    $("estado").setAttribute("aria-label", "Servicio en línea");
+  }).catch(() => { $("estado").classList.add("mal"); $("estado").lastElementChild.textContent = "servicio no disponible"; $("estado").setAttribute("aria-label", "Servicio no disponible"); });
 
-  const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+  // demo: POST /v1/anonymize
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const boton = $("anonimizar");
   let n = 0;
   async function anonimizar(){
     const texto = $("entrada").value.trim();
-    if (!texto){ $("salida").innerHTML = '<span class="vacio">Escribe un mensaje primero.</span>'; return; }
-    $("tiempo").textContent = "Anonimizando…";
+    if (!texto){ $("salida").innerHTML = '<span class="vacio">Escribe un mensaje primero.</span>'; $("entrada").focus(); return; }
+    boton.setAttribute("aria-busy", "true");
+    $("tiempo").textContent = "anonimizando…";
+    $("salida").innerHTML = '<div class="skel" aria-hidden="true"><i></i><i></i><i></i></div>';
     const t0 = performance.now();
     try {
       const r = await fetch(API + "/v1/anonymize", {method:"POST", headers:{"content-type":"application/json"},
@@ -770,21 +624,29 @@ section > .wrap > .intro{text-align:center;margin-left:auto;margin-right:auto;te
       let html = esc(out);
       [...new Set(nuevos)].sort((a,b)=>b.length-a.length).forEach(v => { html = html.split(esc(v)).join('<mark class="f">'+esc(v)+'</mark>'); });
       $("salida").innerHTML = html;
-      const marcas = [...document.querySelectorAll("#salida mark.f")];
-      marcas.forEach((mk, i) => {
+      [...document.querySelectorAll("#salida mark.f")].forEach((mk, i) => {
         const fin = mk.textContent;
-        setTimeout(() => descifrar(mk, fin, 550).then(() => play(mk, { transform: ["scale(1.1)", "scale(1)"] }, { type: "spring", bounce: .5, duration: .35 })), reduce ? 0 : i * 140);
+        setTimeout(() => descifrar(mk, fin, 480), reduce ? 0 : i * 120);
       });
       // solo mostramos lo que la persona escribió: nunca otros datos del corpus
       const enTexto = o => texto.toLowerCase().includes(String(o).toLowerCase());
-      $("fichas").innerHTML = (d.entities||[]).filter(e => !e.kept && (e.originals||[]).some(enTexto)).map(e =>
-        '<div class="ficha">' + (e.originals||[]).filter(enTexto).slice(0,3).map(o => '<s>'+esc(o)+'</s>').join(", ") +
-        ' pasa a <strong>' + esc((e.pseudonyms||{}).name || Object.values(e.pseudonyms||{})[0] || "") + '</strong></div>').join("");
-      $("tiempo").textContent = "Listo en " + Math.round(performance.now()-t0) + " ms";
-    } catch(e){ $("salida").innerHTML = '<span class="vacio">'+esc(e.message || "No se pudo conectar con el servicio.")+'</span>'; $("tiempo").textContent = ""; }
+      const filas = (d.entities||[]).filter(e => !e.kept && (e.originals||[]).some(enTexto)).map(e =>
+        '<li><s>' + (e.originals||[]).filter(enTexto).slice(0,3).map(esc).join(", ") + '</s><svg aria-hidden="true"><use href="#i-arrow"/></svg><b>' +
+        esc((e.pseudonyms||{}).name || Object.values(e.pseudonyms||{})[0] || "") + '</b></li>');
+      $("fichas").innerHTML = filas.join("");
+      $("cambios-caja").hidden = !filas.length;
+      $("tiempo").textContent = "200 OK · " + Math.round(performance.now()-t0) + " ms";
+    } catch(e){
+      $("salida").innerHTML = '<div class="error"><span>' + esc(e.message && !/fetch/i.test(e.message) ? e.message : "No se pudo conectar con el servicio. Revisa tu conexión.") + '</span><button class="btn btn-s" type="button" id="reintentar" style="color:var(--on-forest);border-color:var(--forest-line)">Reintentar</button></div>';
+      $("reintentar").onclick = anonimizar;
+      $("cambios-caja").hidden = true;
+      $("tiempo").textContent = "";
+    } finally { boton.removeAttribute("aria-busy"); }
   }
-  $("anonimizar").onclick = anonimizar;
-  document.querySelectorAll(".ej").forEach(b => b.onclick = () => { $("entrada").value = b.dataset.t; anonimizar(); });
+  boton.onclick = anonimizar;
+  const ejs = document.querySelectorAll(".ej");
+  ejs.forEach(b => b.onclick = () => { ejs.forEach(x => x.setAttribute("aria-pressed", String(x === b))); $("entrada").value = b.dataset.t; anonimizar(); });
+  $("entrada").addEventListener("input", () => ejs.forEach(x => x.setAttribute("aria-pressed", "false")));
 })();
 </script>
 </body>
